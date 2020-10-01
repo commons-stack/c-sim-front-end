@@ -5,7 +5,47 @@ body button:disabled {
   background: var(--color-muted) !important;
 }
 button {
-  padding: 0.5rem;
+  text-transform: uppercase;
+  position: relative;
+  padding: 0 2rem;
+  height: 64px;
+  min-width: 200px;
+  font-size: 21px;
+  letter-spacing: 10px;
+  text-indent: 10px;
+  border: 2px solid transparent;
+  border-image-slice: 2;
+  border-image-source: linear-gradient(
+    94.92deg,
+    #67de69 -57.72%,
+    #0047b0 114.27%
+  );
+  &::before {
+    content: '';
+    transition: opacity ease-in-out 0.2s;
+    opacity: 50%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+      98.03deg,
+      rgba(103, 222, 105, 0.5) -7.95%,
+      rgba(0, 71, 176, 0.5) 116.37%
+    );
+  }
+}
+button:hover {
+  &::before {
+    opacity: 80%;
+  }
+}
+button:active {
+  &::before {
+    opacity: 90%;
+  }
 }
 
 button[primary] {

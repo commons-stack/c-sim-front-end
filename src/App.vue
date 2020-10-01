@@ -1,15 +1,13 @@
 <template>
-  <grid gtr="auto 1fr" class="h-1-1">
+  <div class="h-1-1">
     <Notification />
-    <Navigation />
     <main class="app-main" container-expand>
       <router-view />
     </main>
-  </grid>
+  </div>
 </template>
 
 <script>
-import Navigation from '@/components/app/Navigation.vue'
 import Notification from '@/components/app/Notification.vue'
 
 export default {
@@ -17,7 +15,6 @@ export default {
   props: {},
   methods: {},
   components: {
-    Navigation,
     Notification,
   },
 }
@@ -26,6 +23,6 @@ export default {
 <style scoped lang="scss">
 // leave this comment if style tag is empty; scss doesn't compile properly otherwise
 .app-main {
-  @extend .pt-1, .pb-2;
+  @extend .pt-1, .pb-2, .h-1-1;
 }
 </style>

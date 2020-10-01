@@ -14,6 +14,7 @@
 import ArrowBack from './icons/ArrowBack.vue'
 import ArrowForward from './icons/ArrowForward.vue'
 import ArrowForwardSmall from './icons/ArrowForwardSmall.vue'
+import Cad from './icons/Cad.vue'
 import Close from './icons/Close.vue'
 import Dot from './icons/Dot.vue'
 import DropdownLeft from './icons/DropdownLeft.vue'
@@ -33,6 +34,7 @@ const icons = {
   ArrowBack,
   ArrowForward,
   ArrowForwardSmall,
+  Cad,
   Close,
   Dot,
   DropdownLeft,
