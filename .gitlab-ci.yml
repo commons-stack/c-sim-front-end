@@ -9,7 +9,7 @@ development:
   stage: development
   script:
     - echo "Deploying development"
-    - cd /home/ubuntu/PROJECTDIR/development/web.client.js
+    - cd /home/ubuntu/commons/development/web.client.js
     - sudo git pull origin development
     - sudo docker-compose up --force-recreate
     - echo "Done deploying development"
@@ -20,7 +20,7 @@ staging:
   stage: staging
   script:
     - echo "Deploying staging"
-    - cd /home/ubuntu/PROJECTDIR/staging/web.client.js
+    - cd /home/ubuntu/commons/staging/web.client.js
     - sudo git pull origin staging
     - sudo docker-compose up --force-recreate
     - echo "Done deploying staging"
@@ -31,7 +31,7 @@ production:
   stage: production
   script:
     - echo "Deploying production"
-    - cd /home/ubuntu/PROJECTDIR/production/web.client.js
+    - cd /home/ubuntu/commons/production/web.client.js
     - sudo git pull origin production
     - sudo docker-compose up --force-recreate
     - echo "Done deploying production"
