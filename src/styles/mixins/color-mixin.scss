@@ -1,0 +1,6 @@
+@function darker($color, $amount: 10%) {
+  @return scale-color($color, $lightness: -$amount);
+}
+@function lighter($color, $amount: 10%) {
+  @return scale-color($color, $lightness: $amount);
+}

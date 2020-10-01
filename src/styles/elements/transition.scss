@@ -1,0 +1,16 @@
+.transition-all {
+  transition-property: all;
+}
+.transition-ease {
+  transition-timing-function: ease-in-out;
+}
+.transition {
+  @extend .transition-all, .transition-ease;
+  transition-duration: 0.2s;
+}
+.transition-fast {
+  transition-duration: 0.1s;
+}
+.transition-slow {
+  transition-duration: 0.4s;
+}

@@ -1,0 +1,133 @@
+body button:disabled {
+  cursor: default;
+  color: white !important;
+  box-shadow: none !important;
+  background: var(--color-muted) !important;
+}
+button {
+  padding: 0.5rem;
+}
+
+button[primary] {
+  color: var(--color-white);
+  background: var(--color-primary);
+  &:hover {
+    background: darker($color-primary);
+  }
+  &:active {
+    background: darker($color-primary, 20%);
+  }
+}
+button[secondary] {
+  color: var(--color-white);
+  background: var(--color-secondary);
+  &:hover {
+    background: darker($color-secondary);
+  }
+  &:active {
+    background: darker($color-secondary, 20%);
+  }
+}
+button[tertiary] {
+  color: var(--color-white);
+  background: var(--color-tertiary);
+  &:hover {
+    background: darker($color-tertiary);
+  }
+  &:active {
+    background: darker($color-tertiary, 20%);
+  }
+}
+button[success] {
+  color: var(--color-white);
+  background: var(--color-success);
+  &:hover {
+    background: darker($color-success);
+  }
+  &:active {
+    background: darker($color-success, 20%);
+  }
+}
+button[error] {
+  color: var(--color-white);
+  background: var(--color-error);
+  &:hover {
+    background: darker($color-error);
+  }
+  &:active {
+    background: darker($color-error, 20%);
+  }
+}
+button[white] {
+  color: var(--color-dark);
+  background: var(--color-white);
+  &:hover {
+    background: darker($color-white, 3%);
+  }
+  &:active {
+    background: darker($color-white, 6%);
+  }
+}
+button[light] {
+  color: var(--color-dark);
+  background: var(--color-light);
+  &:hover {
+    background: darker($color-light, 3%);
+  }
+  &:active {
+    background: darker($color-light, 6%);
+  }
+}
+button[muted] {
+  color: var(--color-dark);
+  background: var(--color-muted);
+  &:hover {
+    background: darker($color-muted, 3%);
+  }
+  &:active {
+    background: darker($color-muted, 6%);
+  }
+}
+button[grey] {
+  color: var(--color-white);
+  background: var(--color-grey);
+  &:hover {
+    background: lighter($color-grey);
+  }
+  &:active {
+    background: lighter($color-grey, 20%);
+  }
+}
+button[dark] {
+  color: var(--color-white);
+  background: var(--color-dark);
+  &:hover {
+    background: lighter($color-dark);
+  }
+  &:active {
+    background: lighter($color-dark, 20%);
+  }
+}
+button[black] {
+  color: var(--color-white);
+  background: var(--color-black);
+  &:hover {
+    background: lighter($color-black, 13%);
+  }
+  &:active {
+    background: lighter($color-black, 20%);
+  }
+}
+
+button[small] {
+  @extend .p-0p5, .w-100;
+}
+button[medium] {
+  @extend .p-1, .w-150;
+}
+button[large] {
+  @extend .p-1, .w-200;
+}
+button[expand] {
+  @extend .p-1, .w-1-1;
+}

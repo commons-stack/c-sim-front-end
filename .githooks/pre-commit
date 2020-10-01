@@ -1,0 +1,10 @@
+#!/bin/sh
+echo -n 'Check configurations...'
+
+npm run lint --max-warnings=0
+if [[ $? -ne 0 ]]; then
+  echo 'Failed to fix errors!'
+  exit 1
+fi
+echo 'Success!'
+exit 0

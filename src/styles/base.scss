@@ -1,0 +1,84 @@
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  outline: none;
+}
+a:focus,
+a::-moz-focus-inner {
+  outline: none;
+}
+ol,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+fieldset {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  list-style: none;
+  border: 0;
+}
+img {
+  vertical-align: bottom;
+}
+svg {
+  fill: currentColor;
+}
+button,
+input,
+select,
+textarea {
+  background: none;
+  border-radius: 0;
+  border: none;
+  box-sizing: border-box;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  margin: 0;
+  outline: none;
+}
+input,
+textarea {
+  padding: 0.5rem;
+}
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: vertical;
+}
+label,
+button {
+  cursor: pointer;
+  border-width: 0;
+  padding: 0;
+  transition: all ease-in-out 0.2s;
+}
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  color: #212121;
+  height: 100%;
+}
+body {
+  font-size: 0.875rem;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+*,
+*::before,
+*:after {
+  box-sizing: border-box;
+}

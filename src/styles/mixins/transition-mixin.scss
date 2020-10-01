@@ -1,0 +1,10 @@
+@mixin transition($transition-property-value) {
+  &-enter,
+  &-leave-to {
+    @content;
+  }
+  &-enter-active,
+  &-leave-active {
+    transition: $transition-property-value;
+  }
+}

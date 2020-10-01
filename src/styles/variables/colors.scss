@@ -1,0 +1,35 @@
+// palette
+$color-primary: #f42f04;
+$color-secondary: #fdb73b;
+$color-tertiary: #76bfc2;
+$color-success: #6cb76f;
+$color-error: #f42f04;
+// greyscale
+$color-white: #fff;
+$color-light: #fafafa;
+$color-muted: #dcdcdc;
+$color-grey: #b0b0b0;
+$color-dark: #212121;
+$color-black: #000;
+$color-transparent: #0000;
+$color-transparent-white: rgba(0, 0, 0, 0.1);
+$color-transparent-black: rgba(0, 0, 0, 0.5);
+
+:root {
+  // palette
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-tertiary: #{$color-tertiary};
+  --color-success: #{$color-success};
+  --color-error: #{$color-error};
+  // greyscale
+  --color-white: #{$color-white};
+  --color-light: #{$color-light};
+  --color-muted: #{$color-muted};
+  --color-grey: #{$color-grey};
+  --color-dark: #{$color-dark};
+  --color-black: #{$color-black};
+  --color-transparent: #{$color-transparent};
+  --color-transparent-white: #{$color-transparent-white};
+  --color-transparent-black: #{$color-transparent-black};
+}

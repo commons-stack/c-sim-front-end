@@ -1,0 +1,181 @@
+@font-face {
+  font-family: LuciferSans;
+  src: url('~@/assets/fonts/LuciferSans/LuciferSansWide-Regular.eot');
+  src: url('~@/assets/fonts/LuciferSans/LuciferSansWide-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@/assets/fonts/LuciferSans/LuciferSansWide-Regular.otf')
+      format('opentype'),
+    url('~@/assets/fonts/LuciferSans/LuciferSansWide-Regular.svg') format('svg'),
+    url('~@/assets/fonts/LuciferSans/LuciferSansWide-Regular.ttf')
+      format('truetype'),
+    url('~@/assets/fonts/LuciferSans/LuciferSansWide-Regular.woff')
+      format('woff'),
+    url('~@/assets/fonts/LuciferSans/LuciferSansWide-Regular.woff2')
+      format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: LuciferSans;
+  src: url('~@/assets/fonts/LuciferSans/LuciferSansWide-Bold.eot');
+  src: url('~@/assets/fonts/LuciferSans/LuciferSansWide-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@/assets/fonts/LuciferSans/LuciferSansWide-Bold.otf')
+      format('opentype'),
+    url('~@/assets/fonts/LuciferSans/LuciferSansWide-Bold.svg') format('svg'),
+    url('~@/assets/fonts/LuciferSans/LuciferSansWide-Bold.ttf')
+      format('truetype'),
+    url('~@/assets/fonts/LuciferSans/LuciferSansWide-Bold.woff') format('woff'),
+    url('~@/assets/fonts/LuciferSans/LuciferSansWide-Bold.woff2')
+      format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: GTSuper;
+  src: url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light.eot');
+  src: url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light.otf') format('opentype'),
+    url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light.svg') format('svg'),
+    url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light.ttf') format('truetype'),
+    url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light.woff') format('woff'),
+    url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: GTSuper;
+  src: url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light-Italic.eot');
+  src: url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light-Italic.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light-Italic.otf')
+      format('opentype'),
+    url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light-Italic.svg') format('svg'),
+    url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light-Italic.ttf')
+      format('truetype'),
+    url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light-Italic.woff')
+      format('woff'),
+    url('~@/assets/fonts/GTSuper/GTSuperDisplay-Light-Italic.woff2')
+      format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: SpaceMono;
+  src: url('~@/assets/fonts/SpaceMono/SpaceMono-Bold.eot');
+  src: url('~@/assets/fonts/SpaceMono/SpaceMono-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Bold.otf') format('opentype'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Bold.svg') format('svg'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Bold.ttf') format('truetype'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Bold.woff') format('woff'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: SpaceMono;
+  src: url('~@/assets/fonts/SpaceMono/SpaceMono-Bold-Italic.eot');
+  src: url('~@/assets/fonts/SpaceMono/SpaceMono-Bold-Italic.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Bold-Italic.otf')
+      format('opentype'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Bold-Italic.svg') format('svg'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Bold-Italic.ttf')
+      format('truetype'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Bold-Italic.woff') format('woff'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Bold-Italic.woff2') format('woff2');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: SpaceMono;
+  src: url('~@/assets/fonts/SpaceMono/SpaceMono-Italic.eot');
+  src: url('~@/assets/fonts/SpaceMono/SpaceMono-Italic.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Italic.otf') format('opentype'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Italic.svg') format('svg'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Italic.ttf') format('truetype'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Italic.woff') format('woff'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: SpaceMono;
+  src: url('~@/assets/fonts/SpaceMono/SpaceMono-Regular.eot');
+  src: url('~@/assets/fonts/SpaceMono/SpaceMono-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Regular.otf') format('opentype'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Regular.svg') format('svg'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Regular.ttf') format('truetype'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Regular.woff') format('woff'),
+    url('~@/assets/fonts/SpaceMono/SpaceMono-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: DDin;
+  src: url('~@/assets/fonts/DDin/DDin.eot');
+  src: url('~@/assets/fonts/DDin/DDin.eot?#iefix') format('embedded-opentype'),
+    url('~@/assets/fonts/DDin/DDin.otf') format('opentype'),
+    url('~@/assets/fonts/DDin/DDin.svg') format('svg'),
+    url('~@/assets/fonts/DDin/DDin.ttf') format('truetype'),
+    url('~@/assets/fonts/DDin/DDin.woff') format('woff'),
+    url('~@/assets/fonts/DDin/DDin.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: DDin;
+  src: url('~@/assets/fonts/DDin/DDin-Bold.eot');
+  src: url('~@/assets/fonts/DDin/DDin-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@/assets/fonts/DDin/DDin-Bold.otf') format('opentype'),
+    url('~@/assets/fonts/DDin/DDin-Bold.svg') format('svg'),
+    url('~@/assets/fonts/DDin/DDin-Bold.ttf') format('truetype'),
+    url('~@/assets/fonts/DDin/DDin-Bold.woff') format('woff'),
+    url('~@/assets/fonts/DDin/DDin-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: DDin;
+  src: url('~@/assets/fonts/DDin/DDin-Italic.eot');
+  src: url('~@/assets/fonts/DDin/DDin-Italic.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@/assets/fonts/DDin/DDin-Italic.otf') format('opentype'),
+    url('~@/assets/fonts/DDin/DDin-Italic.svg') format('svg'),
+    url('~@/assets/fonts/DDin/DDin-Italic.ttf') format('truetype'),
+    url('~@/assets/fonts/DDin/DDin-Italic.woff') format('woff'),
+    url('~@/assets/fonts/DDin/DDin-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+
+[font-mono],
+.font-mono {
+  font-family: SpaceMono;
+}
+[font-gtsuper],
+.font-gtsuper {
+  font-family: GTSuper;
+}
+[font-lucifer],
+.font-lucifer {
+  font-family: LuciferSans;
+}
+[font-ddin],
+.font-ddin {
+  font-family: DDin;
+}
+[font-default],
+.font-default {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}

@@ -1,0 +1,61 @@
+%container-base {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  @include s() {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  @include m() {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+.container-xs,
+[container-xs] {
+  @extend %container-base;
+  max-width: 400px;
+}
+.container-s,
+[container-s] {
+  @extend %container-base;
+  max-width: 750px;
+}
+.container,
+[container] {
+  @extend %container-base;
+  max-width: 900px;
+}
+.container-l,
+[container-l] {
+  @extend %container-base;
+  max-width: 1400px;
+}
+.container-xl,
+[container-xl] {
+  @extend %container-base;
+  max-width: 1600px;
+}
+.container-expand,
+[container-expand] {
+  @extend %container-base;
+  margin-left: initial;
+  margin-right: initial;
+}
+.container-fixed,
+[container-fixed] {
+  @extend %container-base;
+  width: initial;
+  @include s() {
+    width: 400px;
+  }
+  @include m() {
+    width: 640px;
+  }
+  @include l() {
+    width: 960px;
+  }
+}

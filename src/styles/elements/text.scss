@@ -1,0 +1,86 @@
+// text sizes
+[text-xxs],
+.text-xxs {
+  font-size: xx-small;
+}
+[text-xs],
+.text-xs {
+  font-size: x-small;
+}
+[text-s],
+.text-s {
+  font-size: small;
+}
+[text-m],
+.text-m {
+  font-size: medium;
+}
+[text-l],
+.text-l {
+  font-size: large;
+}
+[text-xl],
+.text-xl {
+  font-size: x-large;
+}
+[text-xxl],
+.text-xxl {
+  font-size: xx-large;
+}
+[text-xxxl],
+.text-xxxl {
+  font-size: xxx-large;
+}
+// text align
+[text-center],
+.text-center {
+  text-align: center;
+}
+[text-left],
+.text-left {
+  text-align: left;
+}
+[text-right],
+.text-right {
+  text-align: right;
+}
+// text style
+[bold],
+.bold {
+  font-weight: bold;
+}
+[italic],
+.italic {
+  font-style: italic;
+}
+[capitalize],
+.capitalize {
+  text-transform: capitalize;
+}
+[uppercase],
+.uppercase {
+  text-transform: uppercase;
+}
+[lowercase],
+.lowercase {
+  text-transform: lowercase;
+}
+[underline],
+.underline {
+  text-decoration: underline;
+}
+
+[text-break],
+.text-break {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+[text-shadow],
+.text-shadow {
+  text-shadow: 1px 1px #ddd;
+}
+[text-shadow-dark],
+.text-shadow-dark {
+  text-shadow: 1px 1px #212121;
+}

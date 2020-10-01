@@ -1,0 +1,113 @@
+.grid {
+  display: grid;
+}
+
+// gap
+.gap-0p25 {
+  gap: 0.25rem;
+}
+.gap-0p5 {
+  gap: 0.5rem;
+}
+.gap-0p75 {
+  gap: 0.75rem;
+}
+.gap-1 {
+  gap: 1rem;
+}
+.gap-1p5 {
+  gap: 1.5rem;
+}
+.gap-2 {
+  gap: 2rem;
+}
+.gap-2p5 {
+  gap: 2.5rem;
+}
+.gap-3 {
+  gap: 3rem;
+}
+.gap-4 {
+  gap: 4rem;
+}
+.gap-5 {
+  gap: 5rem;
+}
+
+// columns
+.gtc-a {
+  grid-template-rows: auto;
+}
+.gtc-1 {
+  grid-template-rows: 1fr;
+}
+.gtc-a-1 {
+  grid-template-rows: auto 1fr;
+}
+.gtc-1-a {
+  grid-template-rows: 1fr auto;
+}
+.gtc-1-1 {
+  grid-template-rows: repeat(2, 1fr);
+}
+.gtc-1-1-1 {
+  grid-template-rows: repeat(3, 1fr);
+}
+.gtr-1-a-1 {
+  grid-template-rows: 1fr auto 1fr;
+}
+
+// columns auto fill/fit
+.gtc-fill-100 {
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+.gtc-fill-200 {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.gtc-fill-300 {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.gtc-fill-400 {
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+.gtc-fit-100 {
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.gtc-fit-200 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.gtc-fit-300 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.gtc-fit-400 {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+// rows
+.gtr-a {
+  grid-template-rows: auto;
+}
+.gtr-1 {
+  grid-template-rows: 1fr;
+}
+.gtr-a-1 {
+  grid-template-rows: auto 1fr;
+}
+.gtr-1-a {
+  grid-template-rows: 1fr auto;
+}
+.gtr-1-1 {
+  grid-template-rows: repeat(2, 1fr);
+}
+.gtr-1-1-1 {
+  grid-template-rows: repeat(3, 1fr);
+}
+.gtr-1-a-1 {
+  grid-template-rows: 1fr auto 1fr;
+}
+.gtr-auto {
+  grid-auto-rows: max-content;
+}
+.gtr-auto-min {
+  grid-auto-rows: min-content;
+}
