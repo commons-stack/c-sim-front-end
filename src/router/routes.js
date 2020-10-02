@@ -116,11 +116,6 @@ export const routes = [
     component: Level52,
   },
   {
-    path: '/level/0-2',
-    name: 'Level02',
-    component: Level02,
-  },
-  {
     path: '/results',
     name: 'Results',
     component: Results,

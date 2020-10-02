@@ -1,4 +1,15 @@
-export const CSSDataVars = {
+const camelToKebab = s =>
+  s
+    .split('')
+    .reduce((a, c) => {
+      const isUpper = c === c.toUpperCase()
+      if (isUpper) a.push('-')
+      a.push(isUpper ? c.toLowerCase() : c)
+      return a
+    }, [])
+    .join('')
+
+export const CSSVars = {
   install(Vue) {
     Vue.mixin({
       mounted: function() {
@@ -7,7 +18,7 @@ export const CSSDataVars = {
           'cssVars',
           function(n) {
             Object.entries(n).forEach(([k, v]) =>
-              this.$el.style.setProperty(`--${k}`, v),
+              this.$el.style.setProperty(`--${camelToKebab(k)}`, v),
             )
           },
           {

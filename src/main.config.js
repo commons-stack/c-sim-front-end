@@ -6,20 +6,22 @@ import { Api } from './services/base/Api'
 import { configureComponents } from './main.config.components'
 import { routes } from './router/routes'
 import { store } from './store/store'
-import { CSSDataVars } from './plugins/CssDataVars'
+import { CSSVars } from './plugins/CSSVars'
 
 export const configure = () => {
   Api.init(`${process.env.VUE_APP_BASE_URL}/api`)
   Vue.use(vOutsideEvents)
   Vue.use(VueI18n)
-  Vue.use(CSSDataVars)
+  Vue.use(CSSVars)
 
   Vue.directive('focus', { inserted: el => el.focus() })
+  Vue.prototype.$body = document.getElementsByTagName('body')[0]
   Vue.prototype.$routes = routes
   Vue.prototype.$notification = {
     success: message => store.dispatch('NotificationModule/success', message),
     error: message => store.dispatch('NotificationModule/error', message),
   }
+  Vue.prototype.$sleep = ms => new Promise(res => setTimeout(res, ms))
 
   const i18n = new VueI18n({
     locale: 'en',
