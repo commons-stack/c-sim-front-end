@@ -62,9 +62,6 @@ export const utils = {
     remToPx: rem =>
       rem * parseFloat(getComputedStyle(document.documentElement).fontSize),
   },
-  el: {
-    body: document.getElementsByTagName('body')[0],
-  },
   css: {
     getProperty: (element, property) =>
       window.getComputedStyle(element).getPropertyValue(property),
