@@ -15,13 +15,13 @@ export const configure = () => {
   Vue.use(CSSVars)
 
   Vue.directive('focus', { inserted: el => el.focus() })
-  Vue.prototype.$body = document.getElementsByTagName('body')[0]
+
+  Vue.prototype.$sleep = ms => new Promise(res => setTimeout(res, ms))
   Vue.prototype.$routes = routes
   Vue.prototype.$notification = {
     success: message => store.dispatch('NotificationModule/success', message),
     error: message => store.dispatch('NotificationModule/error', message),
   }
-  Vue.prototype.$sleep = ms => new Promise(res => setTimeout(res, ms))
 
   const i18n = new VueI18n({
     locale: 'en',

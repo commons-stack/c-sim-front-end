@@ -1,4 +1,5 @@
 export const utils = {
+  body: document.getElementsByTagName('body')[0],
   capitalize: str => str.charAt(0).toUpperCase() + str.slice(1),
   date: {
     readable: x => new Date(x).toDateString(),

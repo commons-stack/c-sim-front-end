@@ -19,7 +19,10 @@
         <button
           class="mt-3"
           v-if="stage === 1"
-          @click="enterHandler"
+          @click="
+            nextStage()
+            enterHandler()
+          "
           style="transition-delay: 0.3s"
         >
           Enter
@@ -52,6 +55,7 @@
 </template>
 
 <script>
+import { utils } from '../../utils/utils.js'
 export default {
   name: 'Home',
   async mounted() {
@@ -71,13 +75,16 @@ export default {
     }
   },
   methods: {
+    nextStage() {
+      this.stage += 1
+    },
     enterHandler() {
       this.cssVars.beforeHeight = '28vh'
-      this.stage += 1
       this.cssVars.iconScale = 'scale(2.5)'
-    },
-    introHandler() {
-      this.stage += 1
+      utils.body.style.overflowY = 'hidden'
+      setTimeout(() => {
+        utils.body.style.overflowY = 'auto'
+      }, 1000)
     },
   },
 }
