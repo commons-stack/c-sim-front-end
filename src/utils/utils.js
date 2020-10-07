@@ -1,4 +1,5 @@
 export const utils = {
+  body: document.getElementsByTagName('body')[0],
   capitalize: str => str.charAt(0).toUpperCase() + str.slice(1),
   date: {
     readable: x => new Date(x).toDateString(),
@@ -32,7 +33,7 @@ export const utils = {
   },
   array: {
     getRandomElement: array => array[Math.floor(Math.random() * array.length)],
-    deferr: (array = [], delay = 100) =>
+    defer: (array = [], delay = 100) =>
       array.reduce((a, c, i) => {
         setTimeout(() => a.push(c), delay * i)
         return a
@@ -61,9 +62,6 @@ export const utils = {
   units: {
     remToPx: rem =>
       rem * parseFloat(getComputedStyle(document.documentElement).fontSize),
-  },
-  el: {
-    body: document.getElementsByTagName('body')[0],
   },
   css: {
     getProperty: (element, property) =>

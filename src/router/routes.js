@@ -1,3 +1,4 @@
+import Test from '@/views/Test.vue'
 import Home from '@/views/home/Home.vue'
 import Intro from '@/views/intro/Intro.vue'
 import Level01 from '@/views/level0/Level01.vue'
@@ -36,6 +37,11 @@ export const routes = [
     meta: {
       title: 'Home',
     },
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: Test,
   },
   {
     path: '/intro',
@@ -114,11 +120,6 @@ export const routes = [
     path: '/level/5-2',
     name: 'Level52',
     component: Level52,
-  },
-  {
-    path: '/level/0-2',
-    name: 'Level02',
-    component: Level02,
   },
   {
     path: '/results',

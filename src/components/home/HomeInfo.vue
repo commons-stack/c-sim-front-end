@@ -1,0 +1,67 @@
+<template>
+  <transition-group name="home-trans" tag="div" class="home-list" text-center>
+    <p uppercase key="1" class="item" :class="state > 4 && 'item-active'">
+      leap one
+    </p>
+    <p text-xxxl key="2" class="item" :class="state > 3 && 'item-active'">
+      Initiating the RadicalXChange Commons
+    </p>
+    <p
+      style="max-width: 700px"
+      text-l
+      key="3"
+      class="item"
+      :class="state > 2 && 'item-active'"
+    >
+      The Commons Simulator main character is creating a solar punk themed
+      future. Your mission is to travel back to 2020 with cadCAD to save the
+      planet and create a Solarpunk future by teaching important communities to
+      set up their own Commons.
+    </p>
+    <button
+      @click="$router.push('/intro')"
+      key="4"
+      class="item"
+      :class="state > 1 && 'item-active'"
+    >
+      watch intro
+    </button>
+    <p
+      class="cursor-pointer item"
+      :class="state > 0 && 'item-active'"
+      @click="$router.push('/level/0-1')"
+      key="5"
+    >
+      Skip
+    </p>
+  </transition-group>
+</template>
+
+<script>
+export default {
+  name: 'home-info',
+  created() {
+    const interval = setInterval(() => {
+      if (this.state === 5) clearInterval(interval)
+      this.state += 1
+    }, 200)
+  },
+  data() {
+    return {
+      state: 0,
+    }
+  },
+}
+</script>
+
+<style scoped lang="scss">
+.item {
+  transition: all 1.5s ease;
+  transform: translateY(-400px);
+  opacity: 0;
+}
+.item-active {
+  transform: translateY(0px);
+  opacity: 1;
+}
+</style>

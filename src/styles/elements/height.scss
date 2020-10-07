@@ -1,10 +1,12 @@
 // relative heights
-.h-vh {
-  height: 100vh;
-}
 .h-auto {
   height: auto;
 }
+[h-vh],
+.h-vh {
+  height: 100vh;
+}
+[h-1-1],
 .h-1-1 {
   height: 100%;
 }
