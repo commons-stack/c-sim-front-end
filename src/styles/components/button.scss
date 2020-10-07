@@ -20,7 +20,7 @@ button {
     #67de69 -57.72%,
     #0047b0 114.27%
   );
-  &::before {
+  &:before {
     content: '';
     transition: opacity ease-in-out 0.2s;
     opacity: 50%;
