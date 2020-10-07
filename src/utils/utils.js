@@ -33,7 +33,7 @@ export const utils = {
   },
   array: {
     getRandomElement: array => array[Math.floor(Math.random() * array.length)],
-    deferr: (array = [], delay = 100) =>
+    defer: (array = [], delay = 100) =>
       array.reduce((a, c, i) => {
         setTimeout(() => a.push(c), delay * i)
         return a

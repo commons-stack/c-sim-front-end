@@ -1,68 +1,37 @@
 <template>
-  <div class="h-1-1 w-1-1"></div>
+  <grid h-1-1 flex-center @click="shown++">
+    <transition-group name="list-complete" tag="div" class="list">
+      <div key="1">qweqweqweqwe</div>
+      <div v-if="shown === 0" key="2">2</div>
+      <div v-if="shown > 0" key="3">3</div>
+    </transition-group>
+  </grid>
 </template>
 
 <script>
 export default {
-  name: 'Test',
-  async mounted() {},
+  name: 'test',
+  components: {},
   data() {
     return {
-      stage: 0,
-      cssVars: {
-        beforeHeight: '40vh',
-        iconScale: 'scale(1.5)',
-      },
+      shown: 0,
     }
-  },
-  methods: {
-    nextStage() {
-      this.stage += 1
-    },
-    enterHandler() {
-      this.cssVars.beforeHeight = '28vh'
-      this.cssVars.iconScale = 'scale(2.5)'
-    },
   },
 }
 </script>
 
-<style lang="scss" scoped>
-.wrap {
-  &::before {
-    content: '';
-    transition: all cubic-bezier(0.28, 0.04, 0.34, 1.02) 1s;
-    height: var(--before-height);
-  }
-}
-.icon {
-  transition: all ease-in-out 1s;
-  transform: var(--icon-scale);
+<style scoped lang="scss">
+.list > div {
+  margin-top: 2rem;
+  transition: all 1s;
 }
 
-.tr-icon-leave-active {
-  transition: all ease-in-out 1s;
-}
-.tr-icon-leave-to {
+.list-complete-enter,
+.list-complete-leave-to {
   opacity: 0;
+  // transform: translateY(300px);
 }
-
-.tr-hero-enter-active,
-.tr-hero-leave-active {
-  transition: all 1s cubic-bezier(0.28, 0.04, 0.34, 1.02);
-}
-.tr-hero-leave-to,
-.tr-hero-enter {
-  opacity: 0;
-  transform: translateY(30vh);
-}
-.tr-hero-2-enter-active,
-.tr-hero-2-leave-active {
-  transition: all 1s cubic-bezier(0.28, 0.04, 0.34, 1.02);
-}
-.tr-hero-2-enter,
-.tr-hero-2-leave-to {
-  transform: translateY(-30vh);
-  opacity: 0;
+.list-complete-leave-active {
+  position: absolute;
 }
 </style>

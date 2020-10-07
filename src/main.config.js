@@ -7,12 +7,14 @@ import { configureComponents } from './main.config.components'
 import { routes } from './router/routes'
 import { store } from './store/store'
 import { CSSVars } from './plugins/CSSVars'
+import { XState } from './plugins/XState'
 
 export const configure = () => {
   Api.init(`${process.env.VUE_APP_BASE_URL}/api`)
   Vue.use(vOutsideEvents)
   Vue.use(VueI18n)
   Vue.use(CSSVars)
+  Vue.use(XState)
 
   Vue.directive('focus', { inserted: el => el.focus() })
 

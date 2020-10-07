@@ -1,0 +1,25 @@
+:root {
+  --bezier-home: cubic-bezier(0.2, 0, 0.5, 1);
+}
+
+.bezier-home {
+  transition-timing-function: var(--bezier-home);
+}
+
+.home-list {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+  position: relative;
+  & > * {
+    transition: all 1.4s var(--bezier-home);
+  }
+}
+.home-trans-leave-to,
+.home-trans-enter {
+  opacity: 0;
+  transform: translateY(300px);
+}
+.home-trans-leave-active {
+  position: absolute;
+}

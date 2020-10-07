@@ -13,7 +13,7 @@ export const CSSVars = {
   install(Vue) {
     Vue.mixin({
       mounted: function() {
-        if (!this.cssVars && typeof this.cssVars !== 'object') return
+        if (!this.cssVars || typeof this.cssVars !== 'object') return
         this.$watch(
           'cssVars',
           function(n) {
