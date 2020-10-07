@@ -1,5 +1,5 @@
 <template>
-  <grid flex-center h-1-1 @click="$send('HERO')">
+  <grid class="flex-center h-1-1" @click="$send('HERO')">
     <transition-group
       name="home-trans"
       tag="div"
@@ -22,7 +22,12 @@
           v-if="xstate !== 'afterInfo'"
         />
       </grid>
-      <home-hero key="1" v-if="xstate === 'hero'" @click="$send('INFO')" />
+      <home-hero
+        key="1"
+        class="pb-2"
+        v-if="xstate === 'hero'"
+        @click="$send('INFO')"
+      />
     </transition-group>
 
     <transition-group
@@ -31,7 +36,11 @@
       class="home-list"
       v-if="['info', 'afterInfo'].includes(xstate)"
     >
-      <home-info key="1" v-if="['info', 'afterInfo'].includes(xstate)" />
+      <home-info
+        key="1"
+        v-if="['info', 'afterInfo'].includes(xstate)"
+        class="pb-2"
+      />
     </transition-group>
   </grid>
 </template>
@@ -40,6 +49,7 @@
 import * as xstate from 'xstate'
 import HomeHero from '../../components/home/HomeHero.vue'
 import HomeInfo from '../../components/home/HomeInfo.vue'
+import { utils } from '../../utils/utils.js'
 
 const machine = xstate.Machine({
   initial: 'splash',
@@ -81,6 +91,12 @@ export default {
   },
   watch: {
     xstate(type) {
+      if (type !== 'splash') {
+        utils.body.style.overflowY = 'hidden'
+        setTimeout(() => {
+          utils.body.style.overflowY = 'auto'
+        }, 2000)
+      }
       if (type === 'hero') {
         this.cssVars.iconScale = 'scale(1)'
         clearInterval(this.dots.interval)
