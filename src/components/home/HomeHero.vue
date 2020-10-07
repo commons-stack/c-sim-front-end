@@ -1,5 +1,5 @@
 <template>
-  <transition-group name="home-trans" tag="div" class="home-list">
+  <transition-group name="home-trans" tag="div" class="home-list" text-center>
     <h1 text-xxxl bold key="1" class="item" :class="state > 0 && 'item-active'">
       The Commons Simulator
     </h1>
