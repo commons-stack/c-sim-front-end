@@ -1,7 +1,7 @@
 <template>
   <div class="h-1-1">
     <Notification />
-    <main class="h-1-1" container-expand>
+    <main class="h-1-1 pv-2" container-expand>
       <router-view />
     </main>
   </div>
