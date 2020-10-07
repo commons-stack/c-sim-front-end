@@ -164,7 +164,7 @@ $ie-bottom-track-color: darken($track-color, $contrast) !default;
 @mixin track {
   cursor: default;
   height: $track-height;
-  transition: all ease-in-out 0.2s;
+  transition: all 0.2s ease-in-out;
   width: $track-width;
 }
 

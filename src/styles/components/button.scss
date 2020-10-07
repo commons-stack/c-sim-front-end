@@ -20,10 +20,10 @@ button {
     #67de69 -57.72%,
     #0047b0 114.27%
   );
-  &:before {
+  &::before {
     content: '';
-    transition: opacity ease-in-out 0.2s;
-    opacity: 50%;
+    transition: all 0.2s ease-in-out;
+    opacity: 0.5;
     position: absolute;
     z-index: -1;
     top: 0;
@@ -39,12 +39,12 @@ button {
 }
 button:hover {
   &::before {
-    opacity: 80%;
+    opacity: 0.8;
   }
 }
 button:active {
   &::before {
-    opacity: 90%;
+    opacity: 0.9;
   }
 }
 
