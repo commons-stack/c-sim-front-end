@@ -118,7 +118,7 @@ export default {
   },
   watch: {
     xstate(x) {
-      if (x === 'end') this.$router.push('level-0-1')
+      if (x === 'end') this.$router.push('/level/0-1')
     }
   }
 }
