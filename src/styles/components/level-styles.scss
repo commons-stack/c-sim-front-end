@@ -1,0 +1,31 @@
+.level-wrap {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  transition: margin-top 0.5s ease;
+  margin-top: 2rem;
+  @include s {
+    margin-top: 5rem;
+  }
+  @include m {
+    margin-top: 7rem;
+  }
+  padding-bottom: 5rem;
+}
+
+.level-title {
+  @extend .text-xxl, .bold, .text-center;
+}
+
+.level-text {
+  max-width: 800px;
+  font-size: 20px;
+  @extend .text-xl, .text-center;
+}
+
+.level-image {
+  margin-top: 2rem;
+  background: grey;
+  width: 450px;
+  height: 450px;
+}
