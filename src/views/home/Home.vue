@@ -73,6 +73,9 @@ export default {
       else this.dots.count += 1
     }, 400)
   },
+  beforeDestroy() {
+    clearInterval(this.dots.interval)
+  },
   data() {
     return {
       machine: xstate.interpret(machine),
