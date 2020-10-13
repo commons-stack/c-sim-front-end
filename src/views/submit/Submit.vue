@@ -1,17 +1,22 @@
 <template>
-  <div>
-    <p>Submit</p>
-    <button @click="$router.push('/results')">next</button>
+  <div class="layout-vertical">
+    <p text-xl>Generating your Commons Simulation</p>
+    <p class="text-center mt-2" style="max-width: 800px;">
+      This is the moment of truth! Did they choose the right parameters to yield positive results
+      for the success of the RxC community, and the continuation of humankind into a just,
+      prosperous, and decentralized future?
+    </p>
+    <button class="mt-2" @click="$router.push('/results')">results</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'submit',
-  props: {},
-  methods: {},
+  created() {
+    // setTimeout(() => this.$router.push('/results'), 5000)
+  },
 }
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

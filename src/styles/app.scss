@@ -1,3 +1,67 @@
 body {
   @extend .font-default, .color-light, .bg-dark;
 }
+:root {
+  --app-margin-top: 0rem;
+  @include s {
+    --app-margin-top: 1rem;
+  }
+  @include m {
+    --app-margin-top: 2rem;
+  }
+  --app-vertical-padding: 3rem;
+}
+
+.layout-center {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout-vertical {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  transition: padding-top 0.5s ease;
+  padding-top: var(--app-margin-top);
+}
+
+.layout-form {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  grid-template-columns: 160px 1fr 160px;
+  & > div:first-child {
+    justify-self: start;
+  }
+}
+
+.layout-modal {
+  @extend .layout-vertical;
+  gap: 2rem;
+}
+
+.layout-right {
+  padding-top: var(--app-margin-top);
+  padding-left: initial;
+  @include s {
+    padding-left: 8rem;
+  }
+  @include m {
+    padding-left: 16rem;
+  }
+  @include l {
+    padding-left: 24rem;
+  }
+  @include xl {
+    padding-left: 36rem;
+  }
+}
+
+.letter-spacing-5 {
+  @include letter-spacing(5px);
+}

@@ -15,19 +15,9 @@
             </transition-group>
           </p>
         </transition>
-        <icon
-          icon="Cad"
-          ref="icon"
-          class="logo-icon"
-          v-if="xstate !== 'afterInfo'"
-        />
+        <icon icon="Cad" ref="icon" class="logo-icon" v-if="xstate !== 'afterInfo'" />
       </grid>
-      <home-hero
-        key="1"
-        class="pb-2"
-        v-if="xstate === 'hero'"
-        @click="$send('INFO')"
-      />
+      <home-hero key="1" class="pb-2" v-if="xstate === 'hero'" @click="$send('INFO')" />
     </transition-group>
 
     <transition-group
@@ -36,11 +26,7 @@
       class="home-list"
       v-if="['info', 'afterInfo'].includes(xstate)"
     >
-      <home-info
-        key="1"
-        v-if="['info', 'afterInfo'].includes(xstate)"
-        class="pb-2"
-      />
+      <home-info key="1" v-if="['info', 'afterInfo'].includes(xstate)" class="pb-2" />
     </transition-group>
   </grid>
 </template>

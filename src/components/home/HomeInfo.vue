@@ -6,17 +6,10 @@
     <p text-xxxl key="2" class="item" :class="state > 3 && 'item-active'">
       Initiating the RadicalXChange Commons
     </p>
-    <p
-      style="max-width: 700px"
-      text-l
-      key="3"
-      class="item"
-      :class="state > 2 && 'item-active'"
-    >
-      The Commons Simulator main character is creating a solar punk themed
-      future. Your mission is to travel back to 2020 with cadCAD to save the
-      planet and create a Solarpunk future by teaching important communities to
-      set up their own Commons.
+    <p style="max-width: 700px" text-l key="3" class="item" :class="state > 2 && 'item-active'">
+      The Commons Simulator main character is creating a solar punk themed future. Your mission is
+      to travel back to 2020 with cadCAD to save the planet and create a Solarpunk future by
+      teaching important communities to set up their own Commons.
     </p>
     <button
       @click="$router.push('/intro')"
@@ -29,7 +22,7 @@
     <p
       class="cursor-pointer item"
       :class="state > 0 && 'item-active'"
-      @click="$router.push('/level/0-1')"
+      @click="$router.push('/level/0/1')"
       key="5"
     >
       Skip

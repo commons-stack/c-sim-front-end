@@ -1,7 +1,7 @@
 <template>
   <div class="h-1-1">
     <Notification />
-    <main class="h-1-1 pv-2" container-expand>
+    <main class="app-content" container-expand>
       <router-view />
     </main>
   </div>
@@ -20,6 +20,13 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 // leave this comment if style tag is empty; scss doesn't compile properly otherwise
+.app-content {
+  height: 100%;
+  padding-top: 3rem;
+  & > *:first-child {
+    padding-bottom: var(--app-vertical-padding);
+  }
+}
 </style>

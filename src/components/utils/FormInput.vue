@@ -37,8 +37,7 @@ export default {
     isValid() {
       let valid = this.htmlValid
       if (this.validator) valid = valid && this.validator(this.value)
-      if (this.storeValidator)
-        valid = valid && this.$store.getters[this.storeValidator]
+      if (this.storeValidator) valid = valid && this.$store.getters[this.storeValidator]
       return valid
     },
     showError() {
@@ -111,18 +110,6 @@ export default {
   font-size: 16px;
   &::placeholder {
     @extend .color-muted;
-  }
-}
-.x-default {
-  @extend .shadow-bot-1, .p-0p5;
-  &:focus {
-    @extend .shadow-bot-2;
-  }
-}
-.x-error {
-  box-shadow: 0 1px $color-error;
-  &:focus {
-    box-shadow: 0 2px $color-error;
   }
 }
 
@@ -214,9 +201,7 @@ input[type='range'] {
   &::-webkit-slider-thumb {
     @include thumb;
     -webkit-appearance: none;
-    margin-top: (
-      (-$track-border-width * 2 + $track-height) / 2 - $thumb-height / 2
-    );
+    margin-top: ((-$track-border-width * 2 + $track-height) / 2 - $thumb-height / 2);
   }
 
   &::-moz-range-track {
