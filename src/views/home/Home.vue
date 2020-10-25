@@ -68,12 +68,15 @@ export default {
       if (this.dots.count === 3) this.dots.count = 0
       else this.dots.count += 1
     }, 400)
+    this.windowWidth = window.innerWidth
+    window.addEventListener('resize', this.windowWidthWatcher)
   },
   beforeDestroy() {
     clearInterval(this.dots.interval)
   },
   data() {
     return {
+      windowWidth: 0,
       machine: xstate.interpret(machine),
       cssVars: {
         bgY: '-30px',
@@ -93,11 +96,17 @@ export default {
       },
     }
   },
+  methods: {
+    windowWidthWatcher: utils.throttle(function() {
+      this.cssVars.shapeDistance = `${this.xstate === 'splash' ? 0 : this.getShapeDistance()}px`
+    }),
+    getShapeDistance: () => window.innerWidth / 2 - window.innerWidth / 4,
+  },
   watch: {
     xstate(type) {
       // if (type === 'splash') {}
       if (type === 'hero') {
-        this.cssVars.shapeDistance = '200px'
+        this.cssVars.shapeDistance = `${this.getShapeDistance()}px`
         this.cssVars.bgY = 0
         this.cssVars.iconScale = 'scale(1)'
         this.cssVars.bgOpacity = 1
