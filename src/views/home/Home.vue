@@ -68,15 +68,14 @@ export default {
       if (this.dots.count === 3) this.dots.count = 0
       else this.dots.count += 1
     }, 400)
-    this.windowWidth = window.innerWidth
     window.addEventListener('resize', this.windowWidthWatcher)
   },
   beforeDestroy() {
     clearInterval(this.dots.interval)
+    window.removeEventListener('resize', this.windowWidthWatcher)
   },
   data() {
     return {
-      windowWidth: 0,
       machine: xstate.interpret(machine),
       cssVars: {
         bgY: '-30px',
@@ -195,7 +194,6 @@ export default {
 .home-trans-reverse-leave-to,
 .home-trans-reverse-enter {
   opacity: 0;
-  // transform: translateY(-300px);
 }
 .home-trans-reverse-leave-active {
   position: absolute;
