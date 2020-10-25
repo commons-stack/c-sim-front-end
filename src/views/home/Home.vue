@@ -1,5 +1,8 @@
 <template>
   <grid class="flex-center h-1-1" @click="$send('HERO')">
+    <div class="x-home-bg"></div>
+    <img class="x-home-bg-img" src="@/assets/home_bg.png" alt="background image" />
+
     <transition-group
       name="home-trans"
       tag="div"
@@ -28,6 +31,13 @@
     >
       <home-info key="1" v-if="['info', 'afterInfo'].includes(xstate)" class="pb-2" />
     </transition-group>
+
+    <div class="x-home-shapes-wrap">
+      <div class="x-home-shapes">
+        <icon icon="ShapeRight" class="x-shape-right" />
+        <icon icon="ShapeLeft" class="x-shape-left" />
+      </div>
+    </div>
   </grid>
 </template>
 
@@ -66,6 +76,11 @@ export default {
     return {
       machine: xstate.interpret(machine),
       cssVars: {
+        bgY: '-30px',
+        shapeDistance: '0px',
+        shapeTop: '-1680px',
+        shapeTransition: 'all 1.8s cubic-bezier(0.37, 0, 0.25, 1)',
+        bgOpacity: 0.5,
         iconScale: 'scale(2)',
         iconOpacity: 1,
         iconHeight: '200px',
@@ -80,17 +95,21 @@ export default {
   },
   watch: {
     xstate(type) {
-      if (type !== 'splash') {
-        utils.body.style.overflowY = 'hidden'
-        setTimeout(() => {
-          utils.body.style.overflowY = 'auto'
-        }, 2000)
-      }
+      // if (type === 'splash') {}
       if (type === 'hero') {
+        this.cssVars.shapeDistance = '200px'
+        this.cssVars.bgY = 0
         this.cssVars.iconScale = 'scale(1)'
+        this.cssVars.bgOpacity = 1
+        utils.body.style.overflowY = 'hidden'
+        setTimeout(() => (utils.body.style.overflowY = 'auto'), 2000)
         clearInterval(this.dots.interval)
       }
       if (type === 'info') {
+        this.cssVars.shapeTransition = 'all 2.7s cubic-bezier(0.37, 0, 0.1, 1)'
+        this.cssVars.shapeTop = '-500px'
+        this.cssVars.bgY = '-10px'
+        this.cssVars.bgOpacity = 0.5
         this.cssVars.iconTransDuration = '1.4s'
         this.cssVars.iconScale = 'scale(3)'
         this.cssVars.iconOpacity = 0
@@ -102,6 +121,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.x-home-bg,
+.x-home-bg-img,
+.x-home-shapes-wrap {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.x-home-shapes-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.x-home-shapes {
+  position: relative;
+}
+.x-shape-left,
+.x-shape-right {
+  top: var(--shape-top);
+  position: absolute;
+  transition: var(--shape-transition);
+}
+.x-shape-left {
+  left: calc(-963px + -1 * var(--shape-distance));
+}
+.x-shape-right {
+  left: var(--shape-distance);
+}
+.x-home-bg {
+  background: black;
+}
+.x-home-bg-img {
+  transform: translateY(var(--bg-y));
+  object-position: top;
+  object-fit: cover;
+  opacity: var(--bg-opacity);
+  transition-property: opacity, transform;
+  transition-duration: 3s;
+  transition-timing-function: cubic-bezier(0.2, -0.13, 0, 1);
+}
 .logo {
   justify-items: center;
   min-width: 350px;

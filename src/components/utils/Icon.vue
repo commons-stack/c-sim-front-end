@@ -26,6 +26,8 @@ import Heart from './icons/Heart.vue'
 import Profile from './icons/Profile.vue'
 import Search from './icons/Search.vue'
 import Settings from './icons/Settings.vue'
+import ShapeLeft from './icons/ShapeLeft.vue'
+import ShapeRight from './icons/ShapeRight.vue'
 import Trash from './icons/Trash.vue'
 import Twitter from './icons/Twitter.vue'
 import { utils } from '../../utils/utils.js'
@@ -48,11 +50,12 @@ const icons = {
   Settings,
   Trash,
   Twitter,
+  ShapeLeft,
+  ShapeRight,
 }
 
 const getIcon = ico => icons[ico]
-const pickColorOrVar = (x = '') =>
-  x && x.charAt[0] === '#' ? x : utils.css.getVar(`color-${x}`)
+const pickColorOrVar = (x = '') => (x && x.charAt[0] === '#' ? x : utils.css.getVar(`color-${x}`))
 
 export default {
   name: 'icon',
