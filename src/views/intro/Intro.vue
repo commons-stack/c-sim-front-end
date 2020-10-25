@@ -1,73 +1,74 @@
 <template>
   <div class="wrap h-1-1" @click="$send('NEXT')">
     <transition name="fade" appear>
-      <div v-if="xstate === 'i1'">
+      <div v-show="xstate === '1'">
         <div class="hero">{{ text[1] }}</div>
         <p>{{ text[1] }}.</p>
-        <img src="@/assets/intro1.png" alt="Intro image (1)" />
+        <img src="@/assets/intro_1.png" alt="Intro image (1)" />
       </div>
     </transition>
-    <transition name="fade">
-      <div v-if="xstate === 'i2'">
+    <transition name="fade" appear>
+      <div v-show="xstate === '2'">
         <div class="hero">{{ text[2] }}</div>
         <p>{{ text[2] }}</p>
-        <img src="@/assets/intro2.png" alt="Intro image (1)" />
+        <img src="@/assets/intro_2.png" alt="Intro image (2)" />
       </div>
     </transition>
-    <transition name="fade">
-      <div v-if="xstate === 'i3'">
-        <div class="hero">{{ text[3] }}</div>
-        <p>{{ text[3] }}</p>
-        <img src="@/assets/intro3.png" alt="Intro image (1)" />
+    <transition name="fade" appear>
+      <div v-show="['3', '4'].includes(xstate)">
+        <transition name="fade" appear>
+          <div v-if="xstate === '3'" class="absolute">
+            <div class="hero">{{ text[3] }}</div>
+            <p>{{ text[3] }}</p>
+          </div>
+        </transition>
+        <transition name="fade" appear>
+          <div v-if="xstate === '4'" class="absolute">
+            <div class="hero">{{ text[4] }}</div>
+            <p>{{ text[4] }}</p>
+          </div>
+        </transition>
+        <img src="@/assets/intro_3.png" alt="Intro image (3)" />
       </div>
     </transition>
-    <transition name="fade">
-      <div v-if="xstate === 'i4'">
-        <div class="hero">{{ text[4] }}</div>
-        <p>{{ text[4] }}</p>
-        <img src="@/assets/intro3.png" alt="Intro image (1)" />
+    <transition name="fade" appear>
+      <div v-show="xstate === '5'">
+        <p v-if="xstate === '5'">{{ text[5] }}</p>
+        <img src="@/assets/intro_5.png" alt="Intro image (5)" />
       </div>
     </transition>
-    <transition name="fade">
-      <div v-if="xstate === 'i5'">
-        <p>{{ text[5] }}</p>
-        <img src="@/assets/intro5.png" alt="Intro image (1)" />
+    <transition name="fade" appear>
+      <div v-show="xstate === '6'">
+        <p v-if="xstate === '6'">{{ text[6] }}</p>
+        <img src="@/assets/intro_6.png" alt="Intro image (6)" />
       </div>
     </transition>
-    <transition name="fade">
-      <div v-if="xstate === 'i6'">
-        <p>{{ text[6] }}</p>
-        <img src="@/assets/intro6.png" alt="Intro image (1)" />
+    <transition name="fade" appear>
+      <div v-show="xstate === '7'">
+        <p v-if="xstate === '7'" class="t7-text">{{ text[7] }}</p>
+        <img src="@/assets/intro_7.png" alt="Intro image (7)" />
       </div>
     </transition>
-    <transition name="fade">
-      <div v-if="xstate === 'i7'">
-        <p class="t7-text">{{ text[7] }}</p>
-        <img src="@/assets/intro7.png" alt="Intro image (1)" />
+    <transition name="fade" appear>
+      <div v-show="['8', '9'].includes(xstate)">
+        <transition name="fade" appear>
+          <p v-if="xstate === '8'">{{ text[8] }}</p>
+        </transition>
+        <transition name="fade" appear>
+          <p v-if="xstate === '9'">{{ text[9] }}</p>
+        </transition>
+        <img src="@/assets/intro_8.png" alt="Intro image (8)" />
       </div>
     </transition>
-    <transition name="fade">
-      <div v-if="xstate === 'i8'">
-        <p>{{ text[8] }}</p>
-        <img src="@/assets/intro8.png" alt="Intro image (1)" />
-      </div>
-    </transition>
-    <transition name="fade">
-      <div v-if="xstate === 'i9'">
-        <p>{{ text[9] }}</p>
-        <img src="@/assets/intro8.png" alt="Intro image (1)" />
-      </div>
-    </transition>
-    <transition name="fade">
-      <div v-if="xstate === 'i10'">
-        <p>{{ text[10] }}</p>
-        <img src="@/assets/intro10.png" alt="Intro image (1)" />
-      </div>
-    </transition>
-    <transition name="fade">
-      <div v-if="xstate === 'i11'">
-        <p>{{ text[11] }}</p>
-        <img src="@/assets/intro10.png" alt="Intro image (1)" />
+    <transition name="fade" appear>
+      <div v-show="['10', '11'].includes(xstate)">
+        <transition name="fade" appear>
+          <p v-if="xstate === '10'">{{ text[10] }}</p>
+        </transition>
+        <transition name="fade" appear>
+          <p v-if="xstate === '11'">{{ text[11] }}</p>
+        </transition>
+        <img src="@/assets/intro_10.png" alt="Intro image (10)" />
       </div>
     </transition>
   </div>
@@ -76,20 +77,21 @@
 <script>
 import * as xstate from 'xstate'
 
+const createState = next => ({ on: { NEXT: next }, after: { 4000: next } })
 const machine = xstate.Machine({
-  initial: 'i1',
+  initial: '1',
   states: {
-    i1: { on: { NEXT: 'i2' }, after: { 5000: 'i2' } },
-    i2: { on: { NEXT: 'i3' }, after: { 5000: 'i3' } },
-    i3: { on: { NEXT: 'i4' }, after: { 5000: 'i4' } },
-    i4: { on: { NEXT: 'i5' }, after: { 5000: 'i5' } },
-    i5: { on: { NEXT: 'i6' }, after: { 5000: 'i6' } },
-    i6: { on: { NEXT: 'i7' }, after: { 5000: 'i7' } },
-    i7: { on: { NEXT: 'i8' }, after: { 5000: 'i8' } },
-    i8: { on: { NEXT: 'i9' }, after: { 5000: 'i9' } },
-    i9: { on: { NEXT: 'i10' }, after: { 5000: 'i10' } },
-    i10: { on: { NEXT: 'i11' }, after: { 5000: 'i11' } },
-    i11: { on: { NEXT: 'end' }, after: { 5000: 'end' } },
+    1: createState('2'),
+    2: createState('3'),
+    3: createState('4'),
+    4: createState('5'),
+    5: createState('6'),
+    6: createState('7'),
+    7: createState('8'),
+    8: createState('9'),
+    9: createState('10'),
+    10: createState('11'),
+    11: createState('end'),
     end: { type: 'final' },
   },
 })
