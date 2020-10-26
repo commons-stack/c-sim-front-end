@@ -1,10 +1,13 @@
 <template>
   <div class="layout-vertical">
     <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
-    <p text-xl>What percentage goes to funding at exit?</p>
+    <p text-xl text-center>What percentage goes to funding at exit?</p>
     <div class="layout-form">
       <form-progress />
-      <input type="range" />
+      <flex class="flex-center flex-column">
+        <form-input type="range" store-model="CommonsModule/exiting" min="1" max="50" />
+        <p>{{ $store.state.CommonsModule.exiting }}</p>
+      </flex>
     </div>
 
     <button @click="$router.push('/level/7/1')">next</button>

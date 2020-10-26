@@ -1,10 +1,15 @@
 <template>
   <div class="layout-vertical">
     <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
-    <p text-xl>How many ‘Hatchers’ will you choose to initialize the RadicalxChange Commons?</p>
+    <p text-xl text-center>
+      How many ‘Hatchers’ will you choose to initialize the RadicalxChange Commons?
+    </p>
     <div class="layout-form">
       <form-progress />
-      <input type="range" />
+      <flex class="flex-column flex-center">
+        <form-input type="range" store-model="CommonsModule/foundingMembers" min="0" max="300" />
+        <p>{{ $store.state.CommonsModule.foundingMembers }}</p>
+      </flex>
     </div>
     <button @click="$router.push('/level/1/3')">next</button>
 
@@ -36,8 +41,6 @@ export default {
     FormNavigation,
     FormProgress,
   },
-  props: {},
-  methods: {},
 }
 </script>
 

@@ -1,14 +1,17 @@
 <template>
   <div class="layout-vertical">
     <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
-    <p text-xl>How much of the community funds can be distributed at any given time?</p>
-    <p style="opacity: 0.6;">
+    <p text-xl text-center>How much of the community funds can be distributed at any given time?</p>
+    <p style="opacity: 0.6;" text-center>
       Ensuring that larger proposals require a greater amount of collective voting power from the
       community in order to pass.
     </p>
     <div class="layout-form">
       <form-progress />
-      <input type="range" />
+      <flex class="flex-center flex-column">
+        <form-input type="range" store-model="CommonsModule/votingPower" min="0" max="100" />
+        <p>{{ $store.state.CommonsModule.votingPower }}</p>
+      </flex>
     </div>
 
     <button @click="$router.push('/level/4/2')">next</button>

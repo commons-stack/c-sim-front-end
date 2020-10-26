@@ -1,10 +1,22 @@
 <template>
   <div class="layout-vertical">
     <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
-    <p text-xl>How many proposals should be collected for the Hatchers to kick off their voting?</p>
+    <p text-xl text-center>
+      How many proposals should be collected for the Hatchers to kick off their voting?
+    </p>
     <div class="layout-form">
       <form-progress />
-      <input type="number" placeholder="0" text-xxxl text-center v-model="inputValue" min="0" />
+      <flex class="flex-center flex-column">
+        <form-input
+          type="number"
+          placeholder="0"
+          text-xxxl
+          text-center
+          store-model="CommonsModule/proposals"
+          min="0"
+        />
+        <p>{{ $store.state.CommonsModule.proposals }}</p>
+      </flex>
     </div>
 
     <button @click="$router.push('/level/2/2')">next</button>
@@ -45,9 +57,15 @@ export default {
     FormProgress,
   },
   data() {
-    return {
-      inputValue: '',
-    }
+    return { proposals: undefined }
+  },
+  watch: {
+    proposals: {
+      immediate: true,
+      handler(x) {
+        this.$store.commit('CommonsModule/setProposals', x)
+      },
+    },
   },
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <grid gap="1">
+  <grid gap="1" class="align-self-start">
     <form-progress-button v-for="lvl in numOfLevels" :key="lvl" :level="lvl - 1" />
   </grid>
 </template>
