@@ -103,8 +103,8 @@ const machine = xstate.Machine({
 
 export default {
   name: 'intro',
-  created() {
-    window.addEventListener('click', this.clickHandler)
+  mounted() {
+    setTimeout(() => window.addEventListener('click', this.clickHandler), 750)
   },
   beforeDestroy() {
     window.removeEventListener('click', this.clickHandler)
