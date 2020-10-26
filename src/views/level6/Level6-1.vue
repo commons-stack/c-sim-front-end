@@ -7,7 +7,7 @@
       <input type="range" />
     </div>
 
-    <button @click="$router.push('/level/6/2')">next</button>
+    <button @click="$router.push('/level/7/1')">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">

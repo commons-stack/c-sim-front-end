@@ -1,6 +1,6 @@
 <template>
   <div class="layout-vertical">
-    <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
+    <form-navigation @help="$refs.modal.show()" @restart="() => {}" :help="false" />
     <p text-xl>Inputs Received by cadCAD!</p>
     <p>
       Will the Commons succeed, the Movement take off, and new economy creation cascade around the

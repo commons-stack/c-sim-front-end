@@ -14,7 +14,7 @@ export default {
   },
   data() {
     return {
-      numOfLevels: 7,
+      numOfLevels: 8,
     }
   },
   computed: {

@@ -1,26 +1,27 @@
 <template>
-  <flex
+  <grid
     gap="1"
-    align-items
-    class="x-wrap"
+    gtc="auto auto"
+    class="x-wrap align-items justify-content-start"
     :active="currentLevel === level"
     :visited="currentLevel >= level"
     @click="clickHandler"
   >
     <div class="x-button">{{ level }}</div>
     <p class="x-text">{{ levelName }}</p>
-  </flex>
+  </grid>
 </template>
 
 <script>
 const levelNames = {
   0: 'intro',
-  1: 'members',
+  1: 'founding members',
   2: 'proposals',
   3: 'funding',
-  4: 'decisions',
-  5: 'exiting',
-  6: 'simulation',
+  4: 'voting power',
+  5: 'decisions',
+  6: 'exiting',
+  7: 'simulation',
 }
 
 export default {
