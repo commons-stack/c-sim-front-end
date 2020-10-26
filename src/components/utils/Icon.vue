@@ -103,9 +103,8 @@ export default {
 
 <style lang="scss">
 .g-icon-component {
-  & > svg > * {
+  & > svg * {
     @extend .transition;
-    color: rgba(0, 0, 0, 0);
   }
   &-color > svg > *[stroke] {
     stroke: var(--icon-color);

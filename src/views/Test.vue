@@ -1,11 +1,7 @@
 <template>
-  <grid h-1-1 flex-center @click="shown++">
-    <transition-group name="list-complete" tag="div" class="list">
-      <div key="1">qweqweqweqwe</div>
-      <div v-if="shown === 0" key="2">2</div>
-      <div v-if="shown > 0" key="3">3</div>
-    </transition-group>
-  </grid>
+  <div>
+    <icon icon="Profile" color="primary" button></icon>
+  </div>
 </template>
 
 <script>
