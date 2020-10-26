@@ -1,12 +1,16 @@
 <template>
   <div class="layout-vertical">
     <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
-    <p text-xl>
+    <p text-xl text-center>
       How much time should pass before an individual’s voting power reaches 80% of it’s full power?
     </p>
     <div class="layout-form">
       <form-progress />
-      <input type="range" />
+      <flex class="flex-center flex-column">
+        <p>TODO RADIO</p>
+        <form-input type="range" store-model="CommonsModule/decisions" min="0" max="100" />
+        <p>{{ $store.state.CommonsModule.decisions }}</p>
+      </flex>
     </div>
 
     <button @click="$router.push('/level/5/2')">next</button>

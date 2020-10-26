@@ -1,11 +1,18 @@
 <template>
   <div class="layout-vertical">
     <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
-    <p text-xl>What percent of the contributions will be allocated to the Funding Pool?</p>
-    <p style="opacity: 0.6;">The balance will be the Reserve that backs the RxC tokens.</p>
+    <p text-xl text-center>
+      What percent of the contributions will be allocated to the Funding Pool?
+    </p>
+    <p style="opacity: 0.6;" text-center>
+      The balance will be the Reserve that backs the RxC tokens.
+    </p>
     <div class="layout-form">
       <form-progress />
-      <input type="range" />
+      <flex class="flex-center flex-column">
+        <form-input type="range" store-model="CommonsModule/funding" min="30" max="70" />
+        <p>{{ $store.state.CommonsModule.funding }}</p>
+      </flex>
     </div>
 
     <button @click="$router.push('/level/3/2')">next</button>
@@ -55,8 +62,17 @@ export default {
     FormNavigation,
     FormProgress,
   },
-  props: {},
-  methods: {},
+  data() {
+    return { funding: 50 }
+  },
+  watch: {
+    funding: {
+      immediate: true,
+      handler(x) {
+        this.$store.commit('CommonsModule/setFoundingMembers', x)
+      },
+    },
+  },
 }
 </script>
 
