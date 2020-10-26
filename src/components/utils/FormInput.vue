@@ -109,7 +109,12 @@ export default {
   @extend .transition, .w-1-1;
   font-size: 16px;
   &::placeholder {
-    @extend .color-muted;
+    color: #666;
+    font-weight: bold;
+    @extend .transition;
+  }
+  &:focus::placeholder {
+    color: #0000;
   }
 }
 
