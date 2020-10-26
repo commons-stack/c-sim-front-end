@@ -28,7 +28,11 @@ export default {
   name: 'level-0-1',
   created() {
     window.addEventListener('resize', this.windowWidthWatcher)
-    this.cssVars.shapeDistance = this.getShapeDistance() + 'px'
+    const shapeDist = this.getShapeDistance()
+    this.cssVars.shapeDistance = shapeDist * 2 + 'px'
+    setTimeout(() => {
+      this.cssVars.shapeDistance = shapeDist + 'px'
+    })
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.windowWidthWatcher)
