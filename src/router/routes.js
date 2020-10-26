@@ -14,7 +14,7 @@ import Level42 from '@/views/level4/Level4-2.vue'
 import Level51 from '@/views/level5/Level5-1.vue'
 import Level52 from '@/views/level5/Level5-2.vue'
 import Level61 from '@/views/level6/Level6-1.vue'
-import Level62 from '@/views/level6/Level6-2.vue'
+import Level71 from '@/views/level7/Level7-1.vue'
 import Outcome from '@/views/outcome/Outcome.vue'
 import Results from '@/views/results/Results.vue'
 import Submit from '@/views/submit/Submit.vue'
@@ -106,8 +106,8 @@ export const routes = [
     component: Level61,
   },
   {
-    path: '/level/6/2',
-    component: Level62,
+    path: '/level/7/1',
+    component: Level71,
   },
   {
     path: '/results',

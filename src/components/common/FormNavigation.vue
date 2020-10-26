@@ -5,7 +5,7 @@
     </div>
     <p class="x-title" justify-self>DESIGNING THE COMMONS</p>
     <flex gap="1" justify-self-end>
-      <p class="x-button" @click="$emit('help')">Help</p>
+      <p class="x-button" v-if="help" @click="$emit('help')">Help</p>
       <p class="x-button" @click="$router.push('/')">Exit</p>
     </flex>
   </grid>
@@ -14,7 +14,12 @@
 <script>
 export default {
   name: 'form-navigation',
-  props: {},
+  props: {
+    help: {
+      type: Boolean,
+      default: true,
+    },
+  },
   methods: {},
 }
 </script>
