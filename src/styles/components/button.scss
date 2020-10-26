@@ -15,17 +15,13 @@ button {
   text-indent: 10px;
   border: 2px solid transparent;
   border-image-slice: 2;
-  border-image-source: linear-gradient(
-    94.92deg,
-    #67de69 -57.72%,
-    #0047b0 114.27%
-  );
+  border-image-source: linear-gradient(94.92deg, #67de69 -57.72%, #0047b0 114.27%);
   &::before {
     content: '';
     transition: all 0.2s ease-in-out;
     opacity: 0.5;
     position: absolute;
-    z-index: -1;
+    z-index: -2;
     top: 0;
     left: 0;
     right: 0;
