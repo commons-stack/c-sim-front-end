@@ -8,11 +8,11 @@
         of possible futures with just a few key inputs.
       </p>
       <grid class="x-points" gtc="auto 1fr" gap="2" align-items>
-        <icon icon="Facebook" />
+        <img src="@/assets/p-button-1.png" alt="" />
         <p>Educate the Radx community on what a Commons is and how the mechanisms work.</p>
-        <icon icon="Facebook" />
+        <img src="@/assets/p-button-2.png" alt="" />
         <p>Guide them in choosing parameters that will work for their unique situation.</p>
-        <icon icon="Facebook" />
+        <img src="@/assets/p-button-3.png" alt="" />
         <p>
           Sneak away and plug the chose parameters into cadCAD to see if their Commons is a success
           and will fix the future!
