@@ -1,6 +1,6 @@
 <template>
   <div class="layout-vertical" text-center>
-    <form-navigation />
+    <form-navigation :help="false" />
     <p class="level-title">Your Commons...</p>
     <div>
       <p>Do you think you did a good job?</p>
