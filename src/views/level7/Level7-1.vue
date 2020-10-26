@@ -1,13 +1,41 @@
 <template>
   <div class="layout-vertical">
     <form-navigation @help="$refs.modal.show()" @restart="() => {}" :help="false" />
-    <p text-xl>Inputs Received by cadCAD!</p>
-    <p>
+    <p text-xl text-center>Inputs Received by cadCAD!</p>
+    <p text-center>
       Will the Commons succeed, the Movement take off, and new economy creation cascade around the
       world?
     </p>
     <div class="layout-form">
-      <form-progress />
+      <form-progress style="grid-area: nav;" />
+      <flex class="text-center flex-center" style="grid-area: field;">
+        <grid class="sim-data">
+          <div>
+            <p>{{ $store.state.CommonsModule.foundingMembers }}</p>
+            <p>FOUNDING MEMBERS</p>
+          </div>
+          <div>
+            <p>{{ $store.state.CommonsModule.proposals }}</p>
+            <p>PROPOSALS</p>
+          </div>
+          <div>
+            <p>{{ $store.state.CommonsModule.funding }}</p>
+            <p>FUNDING</p>
+          </div>
+          <div>
+            <p>{{ $store.state.CommonsModule.votingPower }}</p>
+            <p>VOTING POWER</p>
+          </div>
+          <div>
+            <p>{{ $store.state.CommonsModule.decisions }}</p>
+            <p>DECISITONS</p>
+          </div>
+          <div>
+            <p>{{ $store.state.CommonsModule.exiting }}</p>
+            <p>EXITING</p>
+          </div>
+        </grid>
+      </flex>
     </div>
 
     <button @click="$router.push('/submit')">run simulation</button>
@@ -54,4 +82,40 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.layout-form {
+  grid-template-areas: 'nav field field';
+  @include m {
+    grid-template-areas: 'nav field nothing';
+  }
+}
+.sim-data {
+  @include s {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+    justify-self: flex-end;
+  }
+  @include m {
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
+  }
+  gap: 1rem;
+  & > div {
+    border: 2px solid #143b5f;
+    height: 90px;
+    width: 130px;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    padding: 10px;
+    & > * {
+      &:first-child {
+        font-size: 22px;
+      }
+      &:last-child {
+        font-size: 12px;
+      }
+    }
+  }
+}
+</style>
