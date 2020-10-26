@@ -1,5 +1,6 @@
 <template>
   <div class="layout-right h-1-1">
+    <presentation-img />
     <grid gtr="auto auto 1fr auto" class="h-1-1" justify-items-start align-items-start gap="2">
       <p class="letter-spacing-5">DESIGNING THE COMMONS</p>
       <p class="x-title">

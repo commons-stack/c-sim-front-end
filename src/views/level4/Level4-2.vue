@@ -1,5 +1,6 @@
 <template>
   <div class="layout-right h-1-1">
+    <presentation-img />
     <grid justify-items-start align-items-start gap="2">
       <p class="level-title">You did good.</p>
       <grid gap="2" style="max-width: 650px">
@@ -15,7 +16,7 @@
           collective voting power from the community in order to pass.
         </p>
       </grid>
-      <button @click="$router.push('/level/5/1')" class="mt-2 mb-3">next</button>
+      <button @click="$router.push('/level/5/1')" class="mt-2 mb-3 ml-2">next</button>
     </grid>
   </div>
 </template>
