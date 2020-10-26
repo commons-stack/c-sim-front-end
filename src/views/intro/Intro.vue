@@ -1,83 +1,88 @@
 <template>
-  <div class="wrap h-1-1" @click="$send('NEXT')">
-    <transition name="fade" appear>
-      <div v-show="xstate === '1'">
-        <div class="hero">{{ text[1] }}</div>
-        <p>{{ text[1] }}.</p>
+  <div class="wrap">
+    <transition name="test-fade" appear>
+      <div class="section" v-show="xstate === '1'">
+        <div class="hero hero-1">{{ text[1] }}</div>
+        <p>{{ text[1] }}</p>
         <img src="@/assets/intro_1.png" alt="Intro image (1)" />
       </div>
     </transition>
-    <transition name="fade" appear>
-      <div v-show="xstate === '2'">
+    <transition name="test-fade" appear>
+      <div class="section" v-show="xstate === '2'">
         <div class="hero">{{ text[2] }}</div>
         <p>{{ text[2] }}</p>
         <img src="@/assets/intro_2.png" alt="Intro image (2)" />
       </div>
     </transition>
-    <transition name="fade" appear>
+    <transition name="test-fade" appear>
       <div v-show="['3', '4'].includes(xstate)">
-        <transition name="fade" appear>
-          <div v-if="xstate === '3'" class="absolute">
+        <transition name="test-fade" appear>
+          <div v-show="xstate === '3'" class="section">
             <div class="hero">{{ text[3] }}</div>
             <p>{{ text[3] }}</p>
+            <img src="@/assets/intro_3.png" alt="Intro image (3)" />
           </div>
         </transition>
-        <transition name="fade" appear>
-          <div v-if="xstate === '4'" class="absolute">
+        <transition name="test-fade" appear>
+          <div v-show="xstate === '4'" class="section">
             <div class="hero">{{ text[4] }}</div>
             <p>{{ text[4] }}</p>
+            <img src="@/assets/intro_3.png" alt="Intro image (3)" />
           </div>
         </transition>
         <img src="@/assets/intro_3.png" alt="Intro image (3)" />
       </div>
     </transition>
-    <transition name="fade" appear>
-      <div v-show="xstate === '5'">
-        <p v-if="xstate === '5'">{{ text[5] }}</p>
-        <img src="@/assets/intro_5.png" alt="Intro image (5)" />
+    <transition name="test-fade" appear>
+      <div class="section" v-show="xstate === '5'">
+        <p>{{ text[5] }}</p>
+        <img src="@/assets/intro_5.png" alt="Intro image (4)" />
       </div>
     </transition>
-    <transition name="fade" appear>
-      <div v-show="xstate === '6'">
-        <p v-if="xstate === '6'">{{ text[6] }}</p>
-        <img src="@/assets/intro_6.png" alt="Intro image (6)" />
+    <transition name="test-fade" appear>
+      <div class="section" v-show="xstate === '6'">
+        <p>{{ text[6] }}</p>
+        <img src="@/assets/intro_6.png" alt="Intro image (5)" />
       </div>
     </transition>
-    <transition name="fade" appear>
-      <div v-show="xstate === '7'">
-        <p v-if="xstate === '7'" class="t7-text">{{ text[7] }}</p>
-        <img src="@/assets/intro_7.png" alt="Intro image (7)" />
+    <transition name="test-fade" appear>
+      <div class="section" v-show="xstate === '7'">
+        <p class="t7-text">{{ text[7] }}</p>
+        <img src="@/assets/intro_7.png" alt="Intro image (6)" />
       </div>
     </transition>
-    <transition name="fade" appear>
-      <div v-show="['8', '9'].includes(xstate)">
-        <transition name="fade" appear>
+    <transition name="test-fade" appear>
+      <div class="section" v-show="['8', '9'].includes(xstate)">
+        <transition name="test-fade" appear>
           <p v-if="xstate === '8'">{{ text[8] }}</p>
         </transition>
-        <transition name="fade" appear>
+        <transition name="test-fade" appear>
           <p v-if="xstate === '9'">{{ text[9] }}</p>
         </transition>
-        <img src="@/assets/intro_8.png" alt="Intro image (8)" />
+        <img src="@/assets/intro_8.png" alt="Intro image (7)" />
       </div>
     </transition>
-    <transition name="fade" appear>
-      <div v-show="['10', '11'].includes(xstate)">
-        <transition name="fade" appear>
+    <transition name="test-fade" appear>
+      <div class="section" v-show="['10', '11'].includes(xstate)">
+        <transition name="test-fade" appear>
           <p v-if="xstate === '10'">{{ text[10] }}</p>
         </transition>
-        <transition name="fade" appear>
+        <transition name="test-fade" appear>
           <p v-if="xstate === '11'">{{ text[11] }}</p>
         </transition>
-        <img src="@/assets/intro_10.png" alt="Intro image (10)" />
+        <img src="@/assets/intro_10.png" alt="Intro image (8)" />
       </div>
     </transition>
+    <div class="skip-intro">
+      <p @click="skip">SKIP</p>
+    </div>
   </div>
 </template>
 
 <script>
 import * as xstate from 'xstate'
 
-const createState = next => ({ on: { NEXT: next }, after: { 4000: next } })
+const createState = next => ({ on: { NEXT: next }, after: { 7500: next } })
 const machine = xstate.Machine({
   initial: '1',
   states: {
@@ -98,7 +103,12 @@ const machine = xstate.Machine({
 
 export default {
   name: 'intro',
-  created() {},
+  created() {
+    window.addEventListener('click', this.clickHandler)
+  },
+  beforeDestroy() {
+    window.removeEventListener('click', this.clickHandler)
+  },
   data() {
     return {
       machine: xstate.interpret(machine),
@@ -117,33 +127,81 @@ export default {
       },
     }
   },
+  methods: {
+    clickHandler() {
+      this.$send('NEXT')
+    },
+    skip() {
+      this.$router.push('/level/0/1')
+    },
+  },
   watch: {
     xstate(x) {
-      if (x === 'end') this.$router.push('/level/0/1')
+      if (x === 'end') this.skip()
     },
   },
 }
 </script>
 
 <style scoped lang="scss">
-.wrap > div {
+.skip-intro {
   position: absolute;
-  top: 0;
+  bottom: 0;
+  display: flex;
+  width: 100vw;
+  flex-direction: row-reverse;
+  & > p {
+    margin: 1rem;
+    padding: 0.2rem;
+    cursor: pointer;
+  }
+}
+.wrap {
+  position: absolute;
   left: 0;
-  @extend .container-expand;
+  height: 100%;
+}
+.section {
+  position: absolute;
+  width: 100vw;
 }
 .hero {
-  font-size: 90px;
-  letter-spacing: -4px;
-  opacity: 20%;
-}
-p {
   position: absolute;
-  top: 0;
-  margin-top: 325px;
-  font-size: 44px;
+  mix-blend-mode: overlay;
+  opacity: 0.3;
+  width: 100vw;
+  line-height: 1.2;
+  letter-spacing: -4px;
+  padding: 2rem 1.5rem;
+  font-size: 60px;
   @include m {
-    width: 50%;
+    padding: 3rem 2rem;
+    font-size: 80px;
+  }
+}
+.hero-1 {
+  text-align: center;
+  @include m {
+    font-size: 160px;
+  }
+}
+.section > p {
+  position: absolute;
+  width: 80vw;
+  padding: 0 1.5rem;
+  margin-top: 6rem;
+  font-size: 36px;
+  @include m {
+    margin-top: 16.5rem;
+    padding: 0 2rem;
+    font-size: 44px;
+    width: 65vw;
+  }
+  @include l {
+    width: 55vw;
+  }
+  @include xl {
+    margin-top: 25.5rem;
   }
 }
 .t7-text {
