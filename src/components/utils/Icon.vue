@@ -94,7 +94,7 @@ export default {
     styles() {
       const styles = {}
       if (this.color) styles['--icon-color'] = this.baseColor
-      if (this.hover) styles['--icon-hover'] = this.hoverColor
+      if (this.hover) styles['--icon-hover-color'] = this.hoverColor
       return styles
     },
   },
@@ -104,7 +104,8 @@ export default {
 <style lang="scss">
 .g-icon-component {
   & > svg > * {
-    @extend .transition, .color-transparent;
+    @extend .transition;
+    color: rgba(0, 0, 0, 0);
   }
   &-color > svg > *[stroke] {
     stroke: var(--icon-color);
@@ -113,10 +114,10 @@ export default {
     fill: var(--icon-color);
   }
   &-hover:hover > svg > *[stroke] {
-    stroke: var(--icon-hover);
+    stroke: var(--icon-hover-color);
   }
   &-hover:hover > svg > *[fill] {
-    fill: var(--icon-hover);
+    fill: var(--icon-hover-color);
   }
 }
 </style>
