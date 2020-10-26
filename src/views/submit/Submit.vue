@@ -1,5 +1,6 @@
 <template>
   <div class="layout-vertical">
+    <icon icon="CircleNet" class="bg-net" />
     <p text-xl>Generating your Commons Simulation</p>
     <p class="text-center mt-2" style="max-width: 800px;">
       This is the moment of truth! Did they choose the right parameters to yield positive results
@@ -19,4 +20,13 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.bg-net {
+  position: fixed;
+  bottom: -100px;
+  left: 0;
+  @include l {
+    bottom: 0;
+  }
+}
+</style>
