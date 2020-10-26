@@ -97,6 +97,8 @@ export default {
   methods: {
     windowWidthWatcher: utils.throttle(function() {
       this.cssVars.shapeDistance = `${this.getShapeDistance()}px`
+      this.maxScrollPos =
+        document.documentElement.scrollHeight - document.documentElement.clientHeight
     }),
     getShapeDistance: () => window.innerWidth / 2 - window.innerWidth / 4,
     windowScrollWatcher: utils.throttle(function() {

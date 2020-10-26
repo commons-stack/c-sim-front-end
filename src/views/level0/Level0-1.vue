@@ -1,5 +1,7 @@
 <template>
   <div class="layout-center">
+    <div class="x-home-bg"></div>
+    <img class="x-home-bg-img" src="@/assets/home_bg.png" alt="background image" />
     <p class="letter-spacing-5" uppercase>Level 0</p>
     <h2 class="level-title">Choose the rules for the Commons</h2>
     <p class="level-text mt-2">
@@ -26,13 +28,16 @@ import { utils } from '../../utils/utils.js'
 
 export default {
   name: 'level-0-1',
-  created() {
+  async created() {
     window.addEventListener('resize', this.windowWidthWatcher)
     const shapeDist = this.getShapeDistance()
     this.cssVars.shapeDistance = shapeDist * 2 + 'px'
-    setTimeout(() => {
-      this.cssVars.shapeDistance = shapeDist + 'px'
-    })
+    await this.$sleep(1)
+    this.cssVars.shapeDistance = shapeDist + 'px'
+    this.cssVars.bgY = 0
+    this.cssVars.bgOpacity = 0.7
+    await this.$sleep(1000)
+    this.cssVars.bgDuration = '1s'
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.windowWidthWatcher)
@@ -40,6 +45,9 @@ export default {
   data() {
     return {
       cssVars: {
+        bgY: '-20px',
+        bgOpacity: 0,
+        bgDuration: '3s',
         shapeDistance: '0px',
         shapeTop: '-700px',
       },
@@ -51,10 +59,12 @@ export default {
     }),
     getShapeDistance: () => window.innerWidth / 2 - window.innerWidth / 4,
     goNext() {
-      this.cssVars.shapeDistance = `${this.getShapeDistance() * 2}px`
+      this.cssVars.shapeDistance = `${this.getShapeDistance() * 2.1}px`
+      this.cssVars.bgOpacity = 0
+      this.cssVars.bgY = '-20px'
       setTimeout(() => {
         this.$router.push('/level/0/2')
-      }, 1000)
+      }, 1100)
     },
   },
 }
@@ -63,6 +73,27 @@ export default {
 <style scoped lang="scss">
 .x-input {
   border: solid 1px black;
+}
+.x-home-bg,
+.x-home-bg-img {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition-property: opacity, transform;
+  transition-duration: var(--bg-duration);
+  transition-timing-function: cubic-bezier(0.2, -0.13, 0, 1);
+  opacity: var(--bg-opacity);
+}
+.x-home-bg {
+  background: black;
+}
+.x-home-bg-img {
+  transform: translateY(var(--bg-y));
+  object-position: top;
+  object-fit: cover;
 }
 .x-home-shapes-wrap {
   position: fixed;
