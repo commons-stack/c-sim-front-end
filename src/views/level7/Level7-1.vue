@@ -102,15 +102,22 @@ export default {
   gap: 1rem;
   & > div {
     border: 2px solid #143b5f;
-    height: 90px;
-    width: 130px;
+    height: 70px;
+    width: 120px;
+    @include s {
+      width: 130px;
+      height: 90px;
+    }
     display: grid;
     justify-items: center;
     align-content: center;
     padding: 10px;
     & > * {
       &:first-child {
-        font-size: 22px;
+        font-size: 18px;
+        @include s {
+          font-size: 22px;
+        }
       }
       &:last-child {
         font-size: 12px;
