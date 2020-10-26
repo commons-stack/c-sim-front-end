@@ -29,7 +29,7 @@
           </div>
           <div>
             <p>{{ $store.state.CommonsModule.decisions }}</p>
-            <p>DECISITONS</p>
+            <p>DECISIONS</p>
           </div>
           <div>
             <p>{{ $store.state.CommonsModule.exiting }}</p>
