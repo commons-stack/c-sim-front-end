@@ -24,7 +24,6 @@ export default {
 // leave this comment if style tag is empty; scss doesn't compile properly otherwise
 .app-content {
   height: 100%;
-  padding-top: 3rem;
   & > *:first-child {
     padding-bottom: var(--app-vertical-padding);
   }

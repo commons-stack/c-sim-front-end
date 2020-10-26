@@ -43,3 +43,9 @@ $bezier-3: cubic-bezier(0.2, -0.13, 0, 1);
     opacity: 0;
   }
 }
+
+.test-fade {
+  @include transition(all 1s $bezier-1) {
+    opacity: 0;
+  }
+}

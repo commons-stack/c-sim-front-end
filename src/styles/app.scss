@@ -2,14 +2,14 @@ body {
   @extend .font-default, .color-light, .bg-dark;
 }
 :root {
-  --app-margin-top: 0rem;
+  --app-margin-top: 3rem;
   @include s {
-    --app-margin-top: 1rem;
+    --app-margin-top: 4rem;
   }
   @include m {
-    --app-margin-top: 2rem;
+    --app-margin-top: 5rem;
   }
-  --app-vertical-padding: 3rem;
+  --app-vertical-padding: 6rem;
 }
 
 .layout-center {
