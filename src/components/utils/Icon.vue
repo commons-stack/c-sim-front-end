@@ -20,6 +20,7 @@ import Dot from './icons/Dot.vue'
 import DropdownLeft from './icons/DropdownLeft.vue'
 import DropdownRight from './icons/DropdownRight.vue'
 import Edit from './icons/Edit.vue'
+import CircleNet from './icons/CircleNet.vue'
 import Facebook from './icons/Facebook.vue'
 import Google from './icons/Google.vue'
 import Heart from './icons/Heart.vue'
@@ -42,6 +43,7 @@ const icons = {
   DropdownLeft,
   DropdownRight,
   Edit,
+  CircleNet,
   Facebook,
   Google,
   Heart,

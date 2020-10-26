@@ -1,5 +1,6 @@
 <template>
-  <div class="layout-vertical">
+  <div class="layout-vertical relative">
+    <icon icon="CircleNet" class="bg-net" />
     <form-navigation @help="$refs.modal.show()" @restart="() => {}" :help="false" />
     <p text-xl text-center>Inputs Received by cadCAD!</p>
     <p text-center>
@@ -83,6 +84,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.bg-net {
+  position: fixed;
+  bottom: -200px;
+  left: 0;
+  @include l {
+    bottom: -100px;
+  }
+  @include xl {
+    bottom: 0;
+  }
+}
 .layout-form {
   grid-template-areas: 'nav field field';
   @include m {
