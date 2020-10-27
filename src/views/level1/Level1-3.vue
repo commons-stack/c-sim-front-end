@@ -15,7 +15,7 @@
           Hatchers start their voting.
         </p>
       </grid>
-      <button @click="$router.push('/level/2/1')" class="mt-2 mb-3 ml-2">next</button>
+      <button @click="$router.push('/level/2/1')" class="mt-2 mb-3">next</button>
     </grid>
   </div>
 </template>

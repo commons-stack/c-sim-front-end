@@ -2,7 +2,7 @@
   <div class="layout-right h-1-1">
     <presentation-img />
     <grid gtr="auto auto 1fr auto" class="h-1-1" justify-items-start align-items-start gap="2">
-      <p class="letter-spacing-5">DESIGNING THE COMMONS</p>
+      <p style="letter-spacing: 5px;">DESIGNING THE COMMONS</p>
       <p class="x-title">
         Holographically embedded into your arm and invisible to others, cadCAD can simulate millions
         of possible futures with just a few key inputs.
@@ -18,7 +18,7 @@
           and will fix the future!
         </p>
       </grid>
-      <button @click="$router.push('/level/1/2')" class="ml-2 mt-2 mb-3">next</button>
+      <button @click="$router.push('/level/1/2')" class="mt-2 mb-3">next</button>
     </grid>
   </div>
 </template>

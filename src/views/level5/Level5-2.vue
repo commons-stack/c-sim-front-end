@@ -26,7 +26,7 @@
           sells their tokens, and how much of the value remains for the contributor to receive?
         </p>
       </grid>
-      <button @click="$router.push('/level/6/1')" class="mt-2 mb-3 ml-2">next</button>
+      <button @click="$router.push('/level/6/1')" class="mt-2 mb-3">next</button>
     </grid>
   </div>
 </template>
