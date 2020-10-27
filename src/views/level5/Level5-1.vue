@@ -13,8 +13,8 @@
           v-model="forms.input.decisions"
           @valid="forms.vset.input.decisions"
           required
-          min="0"
-          max="100"
+          min="1"
+          max="50"
         />
         <p>{{ forms.input.decisions }}</p>
       </flex>

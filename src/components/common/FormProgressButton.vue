@@ -2,7 +2,7 @@
   <grid
     gap="1"
     gtc="auto auto"
-    class="x-wrap align-items justify-content-start"
+    class="x-wrap "
     :active="currentLevel === level"
     :visited="currentLevel >= level"
     @click="clickHandler"
@@ -50,6 +50,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.x-wrap {
+  align-items: center;
+  justify-content: flex-start;
+}
 .x-button {
   @extend .flex, .flex-center;
   position: relative;

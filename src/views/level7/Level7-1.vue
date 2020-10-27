@@ -20,26 +20,26 @@
             <p>PROPOSALS</p>
           </div>
           <div>
-            <p>{{ $store.state.CommonsModule.funding }}</p>
+            <p>{{ $store.state.CommonsModule.funding }}%</p>
             <p>FUNDING</p>
           </div>
           <div>
-            <p>{{ $store.state.CommonsModule.votingPower }}</p>
+            <p>{{ $store.state.CommonsModule.votingPower }}%</p>
             <p>VOTING POWER</p>
           </div>
           <div>
-            <p>{{ $store.state.CommonsModule.decisions }}</p>
+            <p>{{ $store.state.CommonsModule.decisions }} Days</p>
             <p>DECISIONS</p>
           </div>
           <div>
-            <p>{{ $store.state.CommonsModule.exiting }}</p>
+            <p>{{ $store.state.CommonsModule.exiting }}%</p>
             <p>EXITING</p>
           </div>
         </grid>
       </flex>
     </div>
 
-    <button @click="runSim">run simulation</button>
+    <button @click="$router.push('/submit')">run simulation</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -95,14 +95,14 @@ export default {
       this.$store.dispatch('CommonsModule/fetch', {
         hatchers: this.foundingMembers,
         proposals: this.proposals,
-        hatch_tribute: this.funding,
+        hatch_tribute: this.funding / 100,
         vesting_80p_unlocked: 60,
-        exit_tribute: this.exiting,
+        exit_tribute: this.exiting / 100,
         kappa: 3,
         days_to_80p_of_max_voting_weight: this.decisions,
-        proposal_max_size: this.votingPower,
+        proposal_max_size: this.votingPower / 100,
       })
-      this.$router.push('/submit')
+      // this.$router.push('/submit')
     },
   },
 }
@@ -111,6 +111,7 @@ export default {
 <style scoped lang="scss">
 .bg-net {
   position: fixed;
+  z-index: -100;
   bottom: -200px;
   left: 0;
   @include l {

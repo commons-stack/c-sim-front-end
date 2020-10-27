@@ -18,12 +18,12 @@
       </transition>
       <icon icon="Cad" ref="icon" class="logo-icon" />
     </grid>
-    <button class="mt-2" @click="$router.push('/results')">results</button>
     <icon icon="CircleNet" class="bg-net" />
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'submit',
   created() {
@@ -31,7 +31,10 @@ export default {
       if (this.dots.count === 3) this.dots.count = 0
       else this.dots.count += 1
     }, 400)
-    // setTimeout(() => this.$router.push('/results'), 5000)
+    this.runSimulationWithTimer()
+  },
+  beforeDestroy() {
+    clearInterval(this.dots.interval)
   },
   data() {
     return {
@@ -40,6 +43,41 @@ export default {
         count: 0,
       },
     }
+  },
+  computed: {
+    ...mapState('CommonsModule', [
+      'foundingMembers',
+      'proposals',
+      'funding',
+      'votingPower',
+      'decisions',
+      'exiting',
+      'response',
+    ]),
+  },
+  methods: {
+    runSimulation() {
+      const input = {
+        hatchers: this.foundingMembers,
+        proposals: this.proposals,
+        hatch_tribute: this.funding / 100,
+        vesting_80p_unlocked: 60,
+        exit_tribute: this.exiting / 100,
+        kappa: 3,
+        days_to_80p_of_max_voting_weight: this.decisions,
+        proposal_max_size: this.votingPower / 100,
+      }
+      return this.$store.dispatch('CommonsModule/fetch', input)
+    },
+    runTimer: () =>
+      new Promise(resolve => {
+        setTimeout(() => resolve(true), 2500)
+      }),
+    runSimulationWithTimer() {
+      Promise.all([this.runSimulation(), this.runTimer()]).then(() => {
+        this.$router.push('/results')
+      })
+    },
   },
 }
 </script>
