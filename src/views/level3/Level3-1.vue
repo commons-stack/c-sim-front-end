@@ -10,12 +10,19 @@
     <div class="layout-form">
       <form-progress />
       <flex class="flex-center flex-column">
-        <form-input type="range" store-model="CommonsModule/funding" min="30" max="70" />
-        <p>{{ $store.state.CommonsModule.funding }}</p>
+        <form-input
+          type="range"
+          v-model="forms.input.funding"
+          @valid="forms.vset.input.funding"
+          required
+          min="30"
+          max="70"
+        />
+        <p>{{ forms.input.funding }}</p>
       </flex>
     </div>
 
-    <button @click="$router.push('/level/3/2')">next</button>
+    <button @click="submit" :disabled="!forms.vget.input.form">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -62,15 +69,22 @@ export default {
     FormNavigation,
     FormProgress,
   },
-  data() {
-    return { funding: 50 }
+  created() {
+    this.forms.input.funding = this.$store.state.CommonsModule.funding
   },
-  watch: {
-    funding: {
-      immediate: true,
-      handler(x) {
-        this.$store.commit('CommonsModule/setFoundingMembers', x)
+  data() {
+    return {
+      forms: {
+        input: {
+          funding: undefined,
+        },
       },
+    }
+  },
+  methods: {
+    submit() {
+      this.$store.commit('CommonsModule/setFunding', this.forms.input.funding)
+      this.$router.push('/level/3/2')
     },
   },
 }

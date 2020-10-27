@@ -7,11 +7,18 @@
     <div class="layout-form">
       <form-progress />
       <flex class="flex-column flex-center">
-        <form-input type="range" store-model="CommonsModule/foundingMembers" min="0" max="300" />
-        <p>{{ $store.state.CommonsModule.foundingMembers }}</p>
+        <form-input
+          type="range"
+          v-model="forms.input.foundingMembers"
+          @valid="forms.vset.input.foundingMembers"
+          required
+          min="0"
+          max="300"
+        />
+        <p>{{ forms.input.foundingMembers }}</p>
       </flex>
     </div>
-    <button @click="$router.push('/level/1/3')">next</button>
+    <button @click="submit" :disabled="!forms.vget.input.form">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -40,6 +47,24 @@ export default {
   components: {
     FormNavigation,
     FormProgress,
+  },
+  created() {
+    this.forms.input.foundingMembers = this.$store.state.CommonsModule.foundingMembers
+  },
+  data() {
+    return {
+      forms: {
+        input: {
+          foundingMembers: 30,
+        },
+      },
+    }
+  },
+  methods: {
+    submit() {
+      this.$store.commit('CommonsModule/setFoundingMembers', this.forms.input.foundingMembers)
+      this.$router.push('/level/1/3')
+    },
   },
 }
 </script>

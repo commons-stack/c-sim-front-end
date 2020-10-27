@@ -12,14 +12,15 @@
           placeholder="0"
           text-xxxl
           text-center
-          store-model="CommonsModule/proposals"
+          v-model="forms.input.proposals"
+          @valid="forms.vset.input.proposals"
+          required
           min="0"
         />
-        <p>{{ $store.state.CommonsModule.proposals }}</p>
       </flex>
     </div>
 
-    <button @click="$router.push('/level/2/2')">next</button>
+    <button @click="submit" :disabled="!forms.vget.input.form">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -56,15 +57,22 @@ export default {
     FormNavigation,
     FormProgress,
   },
-  data() {
-    return { proposals: undefined }
+  created() {
+    this.forms.input.proposals = this.$store.state.CommonsModule.proposals
   },
-  watch: {
-    proposals: {
-      immediate: true,
-      handler(x) {
-        this.$store.commit('CommonsModule/setProposals', x)
+  data() {
+    return {
+      forms: {
+        input: {
+          proposals: undefined,
+        },
       },
+    }
+  },
+  methods: {
+    submit() {
+      this.$store.commit('CommonsModule/setProposals', this.forms.input.proposals)
+      this.$router.push('/level/2/2')
     },
   },
 }

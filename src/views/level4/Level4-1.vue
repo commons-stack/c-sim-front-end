@@ -9,12 +9,19 @@
     <div class="layout-form">
       <form-progress />
       <flex class="flex-center flex-column">
-        <form-input type="range" store-model="CommonsModule/votingPower" min="0" max="100" />
-        <p>{{ $store.state.CommonsModule.votingPower }}</p>
+        <form-input
+          type="range"
+          v-model="forms.input.votingPower"
+          @valid="forms.vset.input.votingPower"
+          required
+          min="0"
+          max="100"
+        />
+        <p>{{ forms.input.votingPower }}</p>
       </flex>
     </div>
 
-    <button @click="$router.push('/level/4/2')">next</button>
+    <button @click="submit" :disabled="!forms.vget.input.form">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -46,8 +53,24 @@ export default {
     FormNavigation,
     FormProgress,
   },
-  props: {},
-  methods: {},
+  created() {
+    this.forms.input.votingPower = this.$store.state.CommonsModule.votingPower
+  },
+  data() {
+    return {
+      forms: {
+        input: {
+          votingPower: undefined,
+        },
+      },
+    }
+  },
+  methods: {
+    submit() {
+      this.$store.commit('CommonsModule/setVotingPower', this.forms.input.votingPower)
+      this.$router.push('/level/4/2')
+    },
+  },
 }
 </script>
 

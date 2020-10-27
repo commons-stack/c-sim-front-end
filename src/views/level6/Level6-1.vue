@@ -5,12 +5,19 @@
     <div class="layout-form">
       <form-progress />
       <flex class="flex-center flex-column">
-        <form-input type="range" store-model="CommonsModule/exiting" min="1" max="50" />
-        <p>{{ $store.state.CommonsModule.exiting }}</p>
+        <form-input
+          type="range"
+          v-model="forms.input.exiting"
+          @valid="forms.vset.input.exiting"
+          required
+          min="1"
+          max="50"
+        />
+        <p>{{ forms.input.exiting }}</p>
       </flex>
     </div>
 
-    <button @click="$router.push('/level/7/1')">next</button>
+    <button @click="submit" :disabled="!forms.vget.input.form">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -49,8 +56,24 @@ export default {
     FormNavigation,
     FormProgress,
   },
-  props: {},
-  methods: {},
+  created() {
+    this.forms.input.exiting = this.$store.state.CommonsModule.exiting
+  },
+  data() {
+    return {
+      forms: {
+        input: {
+          exiting: undefined,
+        },
+      },
+    }
+  },
+  methods: {
+    submit() {
+      this.$store.commit('CommonsModule/setExiting', this.forms.input.exiting)
+      this.$router.push('/level/7/1')
+    },
+  },
 }
 </script>
 

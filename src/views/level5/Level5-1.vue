@@ -8,12 +8,19 @@
       <form-progress />
       <flex class="flex-center flex-column">
         <p>TODO RADIO</p>
-        <form-input type="range" store-model="CommonsModule/decisions" min="0" max="100" />
-        <p>{{ $store.state.CommonsModule.decisions }}</p>
+        <form-input
+          type="range"
+          v-model="forms.input.decisions"
+          @valid="forms.vset.input.decisions"
+          required
+          min="0"
+          max="100"
+        />
+        <p>{{ forms.input.decisions }}</p>
       </flex>
     </div>
 
-    <button @click="$router.push('/level/5/2')">next</button>
+    <button @click="submit" :disabled="!forms.vget.input.form">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -54,8 +61,24 @@ export default {
     FormNavigation,
     FormProgress,
   },
-  props: {},
-  methods: {},
+  created() {
+    this.forms.input.decisions = this.$store.state.CommonsModule.decisions
+  },
+  data() {
+    return {
+      forms: {
+        input: {
+          decisions: undefined,
+        },
+      },
+    }
+  },
+  methods: {
+    submit() {
+      this.$store.commit('CommonsModule/setDecisions', this.forms.input.decisions)
+      this.$router.push('/level/5/2')
+    },
+  },
 }
 </script>
 
