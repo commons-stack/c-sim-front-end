@@ -27,7 +27,7 @@
           Commons won’t be able to support very many projects.
         </p>
       </grid>
-      <button @click="$router.push('/level/3/1')" class="mt-2 mb-3 ml-2">next</button>
+      <button @click="$router.push('/level/3/1')" class="mt-2 mb-3">next</button>
     </grid>
   </div>
 </template>

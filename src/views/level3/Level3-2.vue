@@ -16,7 +16,7 @@
           collective voting power from the community in order to pass.
         </p>
       </grid>
-      <button @click="$router.push('/level/4/1')" class="mt-2 mb-3 ml-2">next</button>
+      <button @click="$router.push('/level/4/1')" class="mt-2 mb-3">next</button>
     </grid>
   </div>
 </template>
