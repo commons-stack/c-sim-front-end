@@ -34,6 +34,17 @@ button {
     );
   }
 }
+
+.text-button {
+  @extend .transition;
+  color: #43a983;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    color: lighter(#43a983, 5%);
+  }
+}
+
 button:hover:not(:disabled) {
   &::before {
     opacity: 0.8;

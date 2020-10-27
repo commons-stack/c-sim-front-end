@@ -10,24 +10,17 @@ export const CommonsModule = createModule({
     decisions: 90,
     exiting: 8,
     response: null,
-    inProgress: false,
   },
   actions: {
-    fetch: ({ commit }, data) => {
-      commit('setInProgress', true)
-      return new Promise((resolve, reject) => {
+    fetch: ({ commit }, data) =>
+      new Promise((resolve, reject) => {
         CommonsService.fetch(data)
           .then(x => {
             resolve(x)
-            console.log(x)
             commit('setResponse', x)
           })
           .catch(reject)
-          .then(() => {
-            commit('setInProgress', false)
-          })
-      })
-    },
+      }),
   },
 })
 
