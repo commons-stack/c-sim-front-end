@@ -1,5 +1,6 @@
 <template>
   <div class="layout-vertical" text-center>
+    <icon icon="CircleNet" class="bg-net" />
     <form-navigation :help="false" />
     <p class="level-title">Your Commons...</p>
     <div>
@@ -138,5 +139,11 @@ export default {
   & > div {
     font-size: 11px;
   }
+}
+.bg-net {
+  position: fixed;
+  z-index: -100;
+  bottom: -300px;
+  left: 0;
 }
 </style>
