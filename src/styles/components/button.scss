@@ -1,12 +1,13 @@
 body button:disabled {
   cursor: default;
-  color: white !important;
+  color: #444 !important;
   box-shadow: none !important;
-  background: var(--color-muted) !important;
+  background: #000 !important;
 }
 button {
   text-transform: uppercase;
   position: relative;
+  z-index: 100;
   padding: 0 2rem;
   min-height: 64px;
   min-width: 200px;
@@ -33,12 +34,12 @@ button {
     );
   }
 }
-button:hover {
+button:hover:not(:disabled) {
   &::before {
     opacity: 0.8;
   }
 }
-button:active {
+button:active:not(:disabled) {
   &::before {
     opacity: 0.9;
   }

@@ -103,7 +103,7 @@ export default {
 
 <style lang="scss">
 .g-icon-component {
-  & > svg * {
+  & > svg > * {
     @extend .transition;
   }
   &-color > svg > *[stroke] {

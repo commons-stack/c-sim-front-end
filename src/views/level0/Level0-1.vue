@@ -10,10 +10,12 @@
     </p>
     <form-input
       class="text-xxxl text-center mt-2"
+      @valid="forms.vset.input.name"
+      v-model="forms.input.name"
+      required
       placeholder="Enter your name"
-      store-model="UserModule/name"
     />
-    <button @click="goNext" class="mt-2">next</button>
+    <button @click="goNext" class="mt-2" :disabled="!forms.vget.input.form">next</button>
     <div class="x-home-shapes-wrap">
       <div class="x-home-shapes">
         <icon icon="ShapeRight" class="x-shape-right" />
@@ -30,6 +32,7 @@ export default {
   name: 'level-0-1',
   async created() {
     window.addEventListener('resize', this.windowWidthWatcher)
+    this.forms.input.name = this.$store.state.UserModule.name
     const shapeDist = this.getShapeDistance()
     this.cssVars.shapeDistance = shapeDist * 2 + 'px'
     await this.$sleep(1)
@@ -44,6 +47,11 @@ export default {
   },
   data() {
     return {
+      forms: {
+        input: {
+          name: '',
+        },
+      },
       cssVars: {
         bgY: '-20px',
         bgOpacity: 0,
@@ -59,6 +67,7 @@ export default {
     }),
     getShapeDistance: () => window.innerWidth / 2 - window.innerWidth / 4,
     goNext() {
+      this.$store.commit('UserModule/setName', this.forms.input.name)
       this.cssVars.shapeDistance = `${this.getShapeDistance() * 2.1}px`
       this.cssVars.bgOpacity = 0
       this.cssVars.bgY = '-20px'

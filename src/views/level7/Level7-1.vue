@@ -39,7 +39,7 @@
       </flex>
     </div>
 
-    <button @click="$router.push('/submit')">run simulation</button>
+    <button @click="runSim">run simulation</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import FormNavigation from '../../components/common/FormNavigation.vue'
 import FormProgress from '../../components/common/FormProgress.vue'
 
@@ -78,8 +79,32 @@ export default {
     FormNavigation,
     FormProgress,
   },
-  props: {},
-  methods: {},
+  computed: {
+    ...mapState('CommonsModule', [
+      'foundingMembers',
+      'proposals',
+      'funding',
+      'votingPower',
+      'decisions',
+      'exiting',
+      'response',
+    ]),
+  },
+  methods: {
+    runSim() {
+      this.$store.dispatch('CommonsModule/fetch', {
+        hatchers: this.foundingMembers,
+        proposals: this.proposals,
+        hatch_tribute: this.funding,
+        vesting_80p_unlocked: 60,
+        exit_tribute: this.exiting,
+        kappa: 3,
+        days_to_80p_of_max_voting_weight: this.decisions,
+        proposal_max_size: this.votingPower,
+      })
+      this.$router.push('/submit')
+    },
+  },
 }
 </script>
 
