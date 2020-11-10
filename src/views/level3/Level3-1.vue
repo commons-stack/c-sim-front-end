@@ -9,7 +9,8 @@
     </p>
     <div class="layout-form">
       <form-progress />
-      <flex class="flex-center flex-column">
+      <grid column class="align-content w-1-1 ph-5">
+        <Cylinder />
         <form-input
           type="range"
           v-model="forms.input.funding"
@@ -18,8 +19,12 @@
           min="30"
           max="70"
         />
-        <p>{{ forms.input.funding }}</p>
-      </flex>
+        <grid gtc="auto 1fr auto">
+          <p>30%</p>
+          <p class="justify-self">{{ forms.input.funding }}%</p>
+          <p>70%</p>
+        </grid>
+      </grid>
     </div>
 
     <button @click="submit" :disabled="!forms.vget.input.form">next</button>
@@ -60,14 +65,17 @@
 </template>
 
 <script>
+import Cylinder from '../../components/common/Cylinder.vue'
 import FormNavigation from '../../components/common/FormNavigation.vue'
 import FormProgress from '../../components/common/FormProgress.vue'
+Cylinder
 
 export default {
   name: 'level-3-1',
   components: {
     FormNavigation,
     FormProgress,
+    Cylinder,
   },
   created() {
     this.forms.input.funding = this.$store.state.CommonsModule.funding
@@ -93,5 +101,12 @@ export default {
 <style scoped lang="scss">
 .x-subsection {
   max-width: 800px;
+}
+.plavi {
+  background: linear-gradient(180deg, #007bb0 0%, #46deff 100%);
+}
+.zeleni {
+  background: linear-gradient(180deg, #00a5b0 0%, #67de69 100%);
+  opacity: 0.8;
 }
 </style>

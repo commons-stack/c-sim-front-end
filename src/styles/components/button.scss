@@ -1,8 +1,16 @@
 body button:disabled {
   cursor: default;
-  color: #444 !important;
+  color: #fff8 !important;
   box-shadow: none !important;
   background: #000 !important;
+  &::before {
+    content: '';
+    background-image: linear-gradient(
+      98.03deg,
+      rgba(103, 222, 105, 0.45) -7.95%,
+      rgba(0, 71, 176, 0.45) 116.37%
+    );
+  }
 }
 button {
   text-transform: uppercase;

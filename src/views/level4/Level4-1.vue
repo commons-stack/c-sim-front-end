@@ -8,7 +8,7 @@
     </p>
     <div class="layout-form">
       <form-progress />
-      <flex class="flex-center flex-column">
+      <grid column class="align-content justify-items w-1-1 ph-5">
         <form-input
           type="range"
           v-model="forms.input.votingPower"
@@ -18,7 +18,7 @@
           max="100"
         />
         <p>{{ forms.input.votingPower }}</p>
-      </flex>
+      </grid>
     </div>
 
     <button @click="submit" :disabled="!forms.vget.input.form">next</button>
