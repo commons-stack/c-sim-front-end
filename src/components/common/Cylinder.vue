@@ -13,12 +13,41 @@
 </template>
 
 <script>
+// TODO - colors
+
+const topColor = {
+  blue: '',
+  teal: '',
+  green: '',
+}
+const progressColor = {
+  blue: '',
+  teal: '',
+  green: '',
+}
+const botColor = {
+  blue: '',
+  teal: '',
+  green: '',
+}
+const baseColor = {
+  blue: '',
+  teal: '',
+  green: '',
+}
+
 export default {
   name: 'cylinder',
   props: {
     progress: {
       type: Number,
       default: 0,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: true,
+      validator: x => ['blue', 'green', 'teal'].includes(x),
     },
   },
   data() {
@@ -27,6 +56,10 @@ export default {
         botOffset: 0,
         cylWidth: '135px',
         progressHeight: 0,
+        topColor: topColor[this.type],
+        progressColor: progressColor[this.type],
+        botColor: botColor[this.type],
+        baseColor: baseColor[this.type],
       },
     }
   },
@@ -72,5 +105,12 @@ export default {
   height: var(--progress-height);
   background: yellow;
   width: var(--cyl-width);
+}
+.plavi {
+  background: linear-gradient(180deg, #007bb0 0%, #46deff 100%);
+}
+.zeleni {
+  background: linear-gradient(180deg, #00a5b0 0%, #67de69 100%);
+  opacity: 0.8;
 }
 </style>
