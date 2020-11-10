@@ -1,11 +1,12 @@
 <template>
-  <div class="wrap">
-    <div class="top-section">
+  <div class="relative">
+    <div class="cylinder-top">
       <icon icon="CylinderTop" color="#00f" />
     </div>
-    <icon icon="CylinderEmpty" class="cyl" />
-    <div class="fill-bot"></div>
-    <div class="bot-section">
+    <icon icon="CylinderEmpty" class="cylinder-body" />
+    <div class="cylinder-progrss"></div>
+    <div class="cylinder-bottom">
+      <div class="cylinder-bottom-fill"></div>
       <icon icon="CylinderBottom" color="#f00" />
     </div>
   </div>
@@ -15,57 +16,61 @@
 export default {
   name: 'cylinder',
   props: {
-    percentage: Number,
-  },
-  created() {
-    this.setBotOffset()
+    progress: {
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
-      percent: 1,
       cssVars: {
         botOffset: 0,
+        cylWidth: '135px',
+        progressHeight: 0,
       },
     }
   },
   watch: {
-    percent() {
-      this.setBotOffset()
+    progress: {
+      immediate: true,
+      handler(x) {
+        this.cssVars.botOffset = `${9.5 + (x / 100) * 68}px`
+        this.cssVars.progressHeight = `${(x / 100) * 66}px`
+      },
     },
   },
   methods: {
-    setBotOffset() {
-      const progress = this.percent ? 0 : (this.percent / 100) * 68
-      this.cssVars.botOffset = 9.3 + progress
-    },
+    setBotOffset() {},
   },
 }
 </script>
 
 <style scoped lang="scss">
-.wrap {
-  position: relative;
-}
-.cyl {
+.cylinder-body {
   position: relative;
   left: -1px;
 }
-.top-section {
+.cylinder-top {
   position: absolute;
-  // top: 13.5px;
   z-index: 2;
-  // bottom: 77.3px;
   bottom: var(--bot-offset);
 }
-.fill-bot {
+.cylinder-bottom {
+  position: absolute;
+  bottom: 0;
+}
+.cylinder-bottom-fill {
   height: 15px;
   position: absolute;
   bottom: 14px;
   background: red;
-  width: 135px;
+  width: var(--cyl-width);
 }
-.bot-section {
+.cylinder-progrss {
   position: absolute;
-  bottom: 0;
+  bottom: 29px;
+  height: var(--progress-height);
+  background: yellow;
+  width: var(--cyl-width);
 }
 </style>

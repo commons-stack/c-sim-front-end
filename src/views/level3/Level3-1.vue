@@ -10,7 +10,7 @@
     <div class="layout-form">
       <form-progress />
       <grid column class="align-content w-1-1 ph-5">
-        <Cylinder />
+        <Cylinder :progress="forms.input.funding" />
         <form-input
           type="range"
           v-model="forms.input.funding"
