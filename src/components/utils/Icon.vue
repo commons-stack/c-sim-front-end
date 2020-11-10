@@ -15,14 +15,26 @@ import ArrowBack from './icons/ArrowBack.vue'
 import ArrowForward from './icons/ArrowForward.vue'
 import ArrowForwardSmall from './icons/ArrowForwardSmall.vue'
 import Cad from './icons/Cad.vue'
+import CircleNet from './icons/CircleNet.vue'
 import Close from './icons/Close.vue'
+import CylinderBottom from './icons/CylinderBottom.vue'
+import CylinderEmpty from './icons/CylinderEmpty.vue'
+import CylinderTop from './icons/CylinderTop.vue'
 import Dot from './icons/Dot.vue'
 import DropdownLeft from './icons/DropdownLeft.vue'
 import DropdownRight from './icons/DropdownRight.vue'
 import Edit from './icons/Edit.vue'
-import CircleNet from './icons/CircleNet.vue'
 import Facebook from './icons/Facebook.vue'
 import Google from './icons/Google.vue'
+import Hatchers120 from './icons/Hatchers120.vue'
+import Hatchers150 from './icons/Hatchers150.vue'
+import Hatchers180 from './icons/Hatchers180.vue'
+import Hatchers240 from './icons/Hatchers240.vue'
+import Hatchers3 from './icons/Hatchers3.vue'
+import Hatchers30 from './icons/Hatchers30.vue'
+import Hatchers300 from './icons/Hatchers300.vue'
+import Hatchers60 from './icons/Hatchers60.vue'
+import Hatchers90 from './icons/Hatchers90.vue'
 import Heart from './icons/Heart.vue'
 import Profile from './icons/Profile.vue'
 import Search from './icons/Search.vue'
@@ -38,46 +50,69 @@ const icons = {
   ArrowForward,
   ArrowForwardSmall,
   Cad,
+  CircleNet,
+  CylinderBottom,
+  CylinderEmpty,
+  CylinderTop,
   Close,
   Dot,
   DropdownLeft,
   DropdownRight,
   Edit,
-  CircleNet,
   Facebook,
   Google,
+  Hatchers120,
+  Hatchers150,
+  Hatchers180,
+  Hatchers240,
+  Hatchers3,
+  Hatchers30,
+  Hatchers300,
+  Hatchers60,
+  Hatchers90,
   Heart,
   Profile,
   Search,
   Settings,
-  Trash,
-  Twitter,
   ShapeLeft,
   ShapeRight,
+  Trash,
+  Twitter,
 }
 
 const getIcon = ico => icons[ico]
-const pickColorOrVar = (x = '') => (x && x.charAt[0] === '#' ? x : utils.css.getVar(`color-${x}`))
+const pickColorOrVar = x => (x && x[0] === '#' ? x : utils.css.getVar(`color-${x}`))
 
 export default {
   name: 'icon',
   props: {
+    icon: {
+      type: String,
+      required: true,
+      validator: x => getIcon(x),
+    },
     button: Boolean,
     color: String,
     hover: {
       type: String,
       default: 'tertiary',
     },
-    icon: {
-      type: String,
-      required: true,
-      validator: x => getIcon(x),
+    inline: Boolean,
+  },
+  watch: {
+    color(x) {
+      this.cssVars.baseColor = pickColorOrVar(x)
+    },
+    hover(x) {
+      this.cssVars.hoverColor = pickColorOrVar(x)
     },
   },
   data() {
     return {
-      baseColor: pickColorOrVar(this.color),
-      hoverColor: pickColorOrVar(this.hover),
+      cssVars: {
+        baseColor: pickColorOrVar(this.color),
+        hoverColor: pickColorOrVar(this.hover),
+      },
     }
   },
   computed: {
@@ -93,8 +128,7 @@ export default {
     },
     styles() {
       const styles = {}
-      if (this.color) styles['--icon-color'] = this.baseColor
-      if (this.hover) styles['--icon-hover-color'] = this.hoverColor
+      if (this.inline) styles.display = 'inline'
       return styles
     },
   },
@@ -103,20 +137,21 @@ export default {
 
 <style lang="scss">
 .g-icon-component {
+  @extend .align-items;
   & > svg > * {
     @extend .transition;
   }
   &-color > svg > *[stroke] {
-    stroke: var(--icon-color);
+    stroke: var(--base-color);
   }
   &-color > svg > *[fill] {
-    fill: var(--icon-color);
+    fill: var(--base-color);
   }
   &-hover:hover > svg > *[stroke] {
-    stroke: var(--icon-hover-color);
+    stroke: var(--hover-color);
   }
   &-hover:hover > svg > *[fill] {
-    fill: var(--icon-hover-color);
+    fill: var(--hover-color);
   }
 }
 </style>

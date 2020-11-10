@@ -32,7 +32,6 @@ export default {
   name: 'level-0-1',
   async created() {
     window.addEventListener('resize', this.windowWidthWatcher)
-    this.forms.input.name = this.$store.state.UserModule.name
     const shapeDist = this.getShapeDistance()
     this.cssVars.shapeDistance = shapeDist * 2 + 'px'
     await this.$sleep(1)
@@ -49,7 +48,7 @@ export default {
     return {
       forms: {
         input: {
-          name: '',
+          name: this.$store.state.UserModule.name,
         },
       },
       cssVars: {
@@ -61,13 +60,17 @@ export default {
       },
     }
   },
+  watch: {
+    'forms.input.name'(x) {
+      this.$store.commit('UserModule/setName', x)
+    },
+  },
   methods: {
     windowWidthWatcher: utils.throttle(function() {
       this.cssVars.shapeDistance = `${this.getShapeDistance()}px`
     }),
     getShapeDistance: () => window.innerWidth / 2 - window.innerWidth / 4,
     goNext() {
-      this.$store.commit('UserModule/setName', this.forms.input.name)
       this.cssVars.shapeDistance = `${this.getShapeDistance() * 2.1}px`
       this.cssVars.bgOpacity = 0
       this.cssVars.bgY = '-20px'

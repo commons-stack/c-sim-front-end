@@ -6,7 +6,8 @@
     </p>
     <div class="layout-form">
       <form-progress />
-      <flex class="flex-column flex-center">
+      <grid column class="align-content w-1-1 ph-5">
+        <icon :icon="hatcherIcon" class="justify-self" />
         <form-input
           type="range"
           v-model="forms.input.foundingMembers"
@@ -15,10 +16,14 @@
           min="0"
           max="300"
         />
-        <p>{{ forms.input.foundingMembers }}</p>
-      </flex>
+        <grid gtc="auto 1fr auto">
+          <p>0</p>
+          <p class="justify-self">{{ forms.input.foundingMembers }}</p>
+          <p>300</p>
+        </grid>
+      </grid>
     </div>
-    <button @click="submit" :disabled="!forms.vget.input.form">next</button>
+    <button @click="$router.push('/level/1/3')" :disabled="!forms.vget.input.form">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -48,22 +53,29 @@ export default {
     FormNavigation,
     FormProgress,
   },
-  created() {
-    this.forms.input.foundingMembers = this.$store.state.CommonsModule.foundingMembers
-  },
   data() {
     return {
       forms: {
         input: {
-          foundingMembers: 30,
+          foundingMembers: this.$store.state.CommonsModule.foundingMembers,
         },
       },
     }
   },
-  methods: {
-    submit() {
-      this.$store.commit('CommonsModule/setFoundingMembers', this.forms.input.foundingMembers)
-      this.$router.push('/level/1/3')
+  watch: {
+    'forms.input.foundingMembers'(x) {
+      this.$store.commit('CommonsModule/setFoundingMembers', x)
+    },
+  },
+  computed: {
+    hatcherIcon() {
+      const entries = [30, 60, 90, 120, 150, 180, 240, 300]
+      const num =
+        entries.reduce((a, c, i) => {
+          if (this.forms.input.foundingMembers > c) return entries[i + 1]
+          return a
+        }, 30) || entries.slice(-1)[0]
+      return `Hatchers${num}`
     },
   },
 }

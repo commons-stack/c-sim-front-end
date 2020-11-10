@@ -4,7 +4,7 @@
     <p text-xl text-center>What percentage goes to funding at exit?</p>
     <div class="layout-form">
       <form-progress />
-      <flex class="flex-center flex-column">
+      <grid column class="align-content justify-items w-1-1 ph-5">
         <form-input
           type="range"
           v-model="forms.input.exiting"
@@ -14,7 +14,7 @@
           max="50"
         />
         <p>{{ forms.input.exiting }}</p>
-      </flex>
+      </grid>
     </div>
 
     <button @click="submit" :disabled="!forms.vget.input.form">next</button>

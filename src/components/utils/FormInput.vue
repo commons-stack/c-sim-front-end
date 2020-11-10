@@ -133,20 +133,20 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 // range input
-$track-color: #000 !default;
-$thumb-color: $color-light !default;
-// $thumb-color: url('~@/assets/icons/FormInputThumbSlider.svg');
+$track-color: #182932 !default;
+// $thumb-color: $color-light !default;
+$thumb-color: url('~@/assets/icons/FormInputThumbSlider.svg');
 
 $thumb-radius: 22px !default;
-$thumb-height: 43px !default;
-$thumb-width: 43px !default;
+$thumb-height: 32px !default;
+$thumb-width: 32px !default;
 $thumb-border-width: 0px !default;
 $thumb-border-color: #000 !default;
 
 $track-width: 100% !default;
-$track-height: 2px !default;
-$track-border-width: 0px !default;
-$track-border-color: #000 !default;
+$track-height: 8px !default;
+$track-border-width: 1px !default;
+$track-border-color: #32373e !default;
 
 $track-radius: 5px !default;
 $contrast: 5% !default;
