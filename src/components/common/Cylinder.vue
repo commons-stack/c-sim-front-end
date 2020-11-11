@@ -13,29 +13,25 @@
 </template>
 
 <script>
-// TODO - colors
-
 const colors = {
   blue: { min: '#007bb0', max: '#1294C4' },
-  teal: { min: '#', max: '#' },
-  green: { min: '#34C28D', max: '#1AB39E' },
+  teal: { min: '#1AB39E', max: '#00A5B0' },
+  green: { min: '#4DD07B', max: '#34C28D' },
 }
 
 const topColor = {
   blue: `${colors.blue.min}`,
-  teal: '',
+  teal: `${colors.teal.min}`,
   green: `${colors.green.min}`,
 }
 const botColor = {
-  // blue: `linear-gradient(180deg, ${colors.blue.min} 0%, #46deff 100%)`,
   blue: `linear-gradient(180deg, ${colors.blue.min} 0%, ${colors.blue.max} 100%)`,
-  teal: '',
-  // green: `linear-gradient(180deg, #34C28D 0%, #67de69 100%)`,
+  teal: `linear-gradient(180deg, ${colors.teal.min} 0%, ${colors.teal.max} 100%)`,
   green: `linear-gradient(180deg, ${colors.green.min} 0%, ${colors.green.max} 100%)`,
 }
 const baseColor = {
   blue: `${colors.blue.max}`,
-  teal: '',
+  teal: `${colors.teal.max}`,
   green: `${colors.green.max}`,
 }
 

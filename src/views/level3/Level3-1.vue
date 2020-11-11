@@ -11,12 +11,14 @@
       <form-progress />
       <grid column class="align-content w-1-1 ph-5">
         <grid gtc="1fr 1fr" gap="2" class="ph-5">
-          <div class="justify-self-start">
+          <grid class="justify-self-start justify-items" gap="1">
+            <p>FUNDING POOL</p>
             <Cylinder :progress="100 - fundingProgress" type="green" />
-          </div>
-          <div class="justify-self-end">
+          </grid>
+          <grid class="justify-self-end justify-items" gap="1">
+            <p>COMMONS RESERVE</p>
             <Cylinder :progress="fundingProgress" type="blue" />
-          </div>
+          </grid>
         </grid>
         <form-input
           type="range"
