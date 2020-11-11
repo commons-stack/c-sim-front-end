@@ -8,20 +8,29 @@
     </p>
     <div class="layout-form">
       <form-progress />
-      <grid column class="align-content justify-items w-1-1 ph-5">
+      <grid class="align-content w-1-1 ph-5">
+        <grid class="justify-items relative" gap="1.5">
+          <p>FUNDING POOL</p>
+          <icon icon="ElipseGradient" class="absolute" style="bottom: -20px; opacity: 0.8;" />
+          <Cylinder :progress="forms.input.votingPower" type="teal" />
+        </grid>
         <form-input
           type="range"
           v-model="forms.input.votingPower"
           @valid="forms.vset.input.votingPower"
           required
-          min="0"
-          max="100"
+          :min="min"
+          :max="max"
         />
-        <p>{{ forms.input.votingPower }}</p>
+        <grid gtc="auto 1fr auto">
+          <p>{{ min }}%</p>
+          <p class="justify-self">{{ forms.input.votingPower }}%</p>
+          <p>{{ max }}%</p>
+        </grid>
       </grid>
     </div>
 
-    <button @click="submit" :disabled="!forms.vget.input.form">next</button>
+    <button @click="$router.push('/level/4/2')" :disabled="!forms.vget.input.form">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -46,29 +55,29 @@
 <script>
 import FormNavigation from '../../components/common/FormNavigation.vue'
 import FormProgress from '../../components/common/FormProgress.vue'
+import Cylinder from '../../components/common/Cylinder.vue'
 
 export default {
   name: 'level-4-1',
   components: {
     FormNavigation,
     FormProgress,
-  },
-  created() {
-    this.forms.input.votingPower = this.$store.state.CommonsModule.votingPower
+    Cylinder,
   },
   data() {
     return {
+      min: 0,
+      max: 100,
       forms: {
         input: {
-          votingPower: undefined,
+          votingPower: this.$store.state.CommonsModule.votingPower,
         },
       },
     }
   },
-  methods: {
-    submit() {
-      this.$store.commit('CommonsModule/setVotingPower', this.forms.input.votingPower)
-      this.$router.push('/level/4/2')
+  watch: {
+    'forms.input.votingPower'(x) {
+      this.$store.commit('CommonsModule/setVotingPower', x)
     },
   },
 }

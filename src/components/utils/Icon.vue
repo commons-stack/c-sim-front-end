@@ -24,6 +24,7 @@ import Dot from './icons/Dot.vue'
 import DropdownLeft from './icons/DropdownLeft.vue'
 import DropdownRight from './icons/DropdownRight.vue'
 import Edit from './icons/Edit.vue'
+import ElipseGradient from './icons/ElipseGradient.vue'
 import Facebook from './icons/Facebook.vue'
 import Google from './icons/Google.vue'
 import GridNet from './icons/GridNet.vue'
@@ -60,6 +61,7 @@ const icons = {
   DropdownLeft,
   DropdownRight,
   Edit,
+  ElipseGradient,
   Facebook,
   Google,
   GridNet,
