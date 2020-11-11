@@ -1,13 +1,13 @@
 <template>
   <div class="relative">
     <div class="cylinder-top">
-      <icon icon="CylinderTop" color="#00f" />
+      <icon icon="CylinderTop" :color="cssVars.topColor" />
     </div>
     <icon icon="CylinderEmpty" class="cylinder-body" />
     <div class="cylinder-progrss"></div>
     <div class="cylinder-bottom">
       <div class="cylinder-bottom-fill"></div>
-      <icon icon="CylinderBottom" color="#f00" />
+      <icon icon="CylinderBottom" :color="cssVars.baseColor" />
     </div>
   </div>
 </template>
@@ -15,25 +15,28 @@
 <script>
 // TODO - colors
 
-const topColor = {
-  blue: '',
-  teal: '',
-  green: '',
+const colors = {
+  blue: { min: '#007bb0', max: '#1294C4' },
+  teal: { min: '#', max: '#' },
+  green: { min: '#34C28D', max: '#1AB39E' },
 }
-const progressColor = {
-  blue: '',
+
+const topColor = {
+  blue: `${colors.blue.min}`,
   teal: '',
-  green: '',
+  green: `${colors.green.min}`,
 }
 const botColor = {
-  blue: '',
+  // blue: `linear-gradient(180deg, ${colors.blue.min} 0%, #46deff 100%)`,
+  blue: `linear-gradient(180deg, ${colors.blue.min} 0%, ${colors.blue.max} 100%)`,
   teal: '',
-  green: '',
+  // green: `linear-gradient(180deg, #34C28D 0%, #67de69 100%)`,
+  green: `linear-gradient(180deg, ${colors.green.min} 0%, ${colors.green.max} 100%)`,
 }
 const baseColor = {
-  blue: '',
+  blue: `${colors.blue.max}`,
   teal: '',
-  green: '',
+  green: `${colors.green.max}`,
 }
 
 export default {
@@ -57,7 +60,6 @@ export default {
         cylWidth: '135px',
         progressHeight: 0,
         topColor: topColor[this.type],
-        progressColor: progressColor[this.type],
         botColor: botColor[this.type],
         baseColor: baseColor[this.type],
       },
@@ -67,7 +69,7 @@ export default {
     progress: {
       immediate: true,
       handler(x) {
-        this.cssVars.botOffset = `${9.5 + (x / 100) * 68}px`
+        this.cssVars.botOffset = `${9.6 + (x / 100) * 68}px`
         this.cssVars.progressHeight = `${(x / 100) * 66}px`
       },
     },
@@ -96,14 +98,14 @@ export default {
   height: 15px;
   position: absolute;
   bottom: 14px;
-  background: red;
+  background: var(--bot-color);
   width: var(--cyl-width);
 }
 .cylinder-progrss {
   position: absolute;
   bottom: 29px;
   height: var(--progress-height);
-  background: yellow;
+  background: var(--top-color);
   width: var(--cyl-width);
 }
 .plavi {
