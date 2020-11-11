@@ -9,7 +9,7 @@
     </p>
     <div class="layout-form">
       <form-progress />
-      <grid column class="align-content w-1-1 ph-5">
+      <grid class="align-content w-1-1 ph-5">
         <grid gtc="1fr 1fr" gap="2" class="ph-5">
           <grid class="justify-self-start justify-items" gap="1">
             <p>FUNDING POOL</p>
@@ -36,7 +36,7 @@
       </grid>
     </div>
 
-    <button @click="submit" :disabled="!forms.vget.input.form">next</button>
+    <button @click="$router.push('/level/3/2')" :disabled="!forms.vget.input.form">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -103,10 +103,9 @@ export default {
       return ((input - this.min) / (this.max - this.min)) * 100
     },
   },
-  methods: {
-    submit() {
-      this.$store.commit('CommonsModule/setFunding', this.forms.input.funding)
-      this.$router.push('/level/3/2')
+  watch: {
+    'forms.input.funding'(x) {
+      this.$store.commit('CommonsModule/setFunding', x)
     },
   },
 }

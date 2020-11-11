@@ -20,7 +20,7 @@
       </flex>
     </div>
 
-    <button @click="submit" :disabled="!forms.vget.input.form">next</button>
+    <button @click="$router.push('/level/2/2')" :disabled="!forms.vget.input.form">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -57,22 +57,18 @@ export default {
     FormNavigation,
     FormProgress,
   },
-  created() {
-    this.forms.input.proposals = this.$store.state.CommonsModule.proposals
-  },
   data() {
     return {
       forms: {
         input: {
-          proposals: undefined,
+          proposals: this.$store.state.CommonsModule.proposals,
         },
       },
     }
   },
-  methods: {
-    submit() {
-      this.$store.commit('CommonsModule/setProposals', this.forms.input.proposals)
-      this.$router.push('/level/2/2')
+  watch: {
+    'forms.input.proposals'(x) {
+      this.$store.commit('CommonsModule/setProposals', x)
     },
   },
 }
