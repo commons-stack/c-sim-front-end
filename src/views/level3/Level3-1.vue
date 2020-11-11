@@ -10,19 +10,28 @@
     <div class="layout-form">
       <form-progress />
       <grid column class="align-content w-1-1 ph-5">
-        <Cylinder :progress="forms.input.funding" />
+        <grid gtc="1fr 1fr" gap="2" class="ph-5">
+          <grid class="justify-self-start justify-items" gap="1">
+            <p>FUNDING POOL</p>
+            <Cylinder :progress="100 - fundingProgress" type="green" />
+          </grid>
+          <grid class="justify-self-end justify-items" gap="1">
+            <p>COMMONS RESERVE</p>
+            <Cylinder :progress="fundingProgress" type="blue" />
+          </grid>
+        </grid>
         <form-input
           type="range"
           v-model="forms.input.funding"
           @valid="forms.vset.input.funding"
           required
-          min="30"
-          max="70"
+          :min="min"
+          :max="max"
         />
         <grid gtc="auto 1fr auto">
-          <p>30%</p>
+          <p>{{ min }}%</p>
           <p class="justify-self">{{ forms.input.funding }}%</p>
-          <p>70%</p>
+          <p>{{ max }}%</p>
         </grid>
       </grid>
     </div>
@@ -77,17 +86,22 @@ export default {
     FormProgress,
     Cylinder,
   },
-  created() {
-    this.forms.input.funding = this.$store.state.CommonsModule.funding
-  },
   data() {
     return {
+      min: 30,
+      max: 70,
       forms: {
         input: {
-          funding: undefined,
+          funding: this.$store.state.CommonsModule.funding,
         },
       },
     }
+  },
+  computed: {
+    fundingProgress() {
+      const input = this.forms.input.funding
+      return ((input - this.min) / (this.max - this.min)) * 100
+    },
   },
   methods: {
     submit() {
@@ -101,12 +115,5 @@ export default {
 <style scoped lang="scss">
 .x-subsection {
   max-width: 800px;
-}
-.plavi {
-  background: linear-gradient(180deg, #007bb0 0%, #46deff 100%);
-}
-.zeleni {
-  background: linear-gradient(180deg, #00a5b0 0%, #67de69 100%);
-  opacity: 0.8;
 }
 </style>

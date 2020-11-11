@@ -26,6 +26,7 @@ import DropdownRight from './icons/DropdownRight.vue'
 import Edit from './icons/Edit.vue'
 import Facebook from './icons/Facebook.vue'
 import Google from './icons/Google.vue'
+import GridNet from './icons/GridNet.vue'
 import Hatchers120 from './icons/Hatchers120.vue'
 import Hatchers150 from './icons/Hatchers150.vue'
 import Hatchers180 from './icons/Hatchers180.vue'
@@ -61,6 +62,7 @@ const icons = {
   Edit,
   Facebook,
   Google,
+  GridNet,
   Hatchers120,
   Hatchers150,
   Hatchers180,
