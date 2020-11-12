@@ -6,8 +6,13 @@
     </p>
     <div class="layout-form">
       <form-progress />
-      <flex class="flex-center flex-column">
-        <p>TODO RADIO</p>
+      <grid class="align-content w-1-1 ph-5">
+        <grid class="justify-items relative" gap="1.5">
+          <p>TODO RADIO</p>
+          <icon icon="GridNet" class="absolute" style="bottom: -10px; zoom: 1.3;" />
+          <icon icon="ElipseGradient" class="absolute" style="bottom: -20px; opacity: 0.8;" />
+          <Cylinder :progress="forms.input.decisions" type="teal" />
+        </grid>
         <form-input
           type="range"
           v-model="forms.input.decisions"
@@ -16,8 +21,12 @@
           min="1"
           max="50"
         />
-        <p>{{ forms.input.decisions }}</p>
-      </flex>
+        <grid gtc="auto 1fr auto">
+          <p>{{ min }}</p>
+          <p class="justify-self">{{ forms.input.decisions }}</p>
+          <p>{{ max }}</p>
+        </grid>
+      </grid>
     </div>
 
     <button @click="submit" :disabled="!forms.vget.input.form">next</button>

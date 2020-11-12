@@ -7,19 +7,27 @@
     <div class="layout-form">
       <form-progress />
       <grid column class="align-content w-1-1 ph-5">
-        <icon :icon="hatcherIcon" class="justify-self" />
+        <flex class="relative flex-center">
+          <icon icon="Hatchers3" class="justify-self" />
+          <icon
+            :icon="hatcherIcon"
+            class="absolute-center"
+            style="z-index: -1;"
+            v-if="forms.input.foundingMembers > 3"
+          />
+        </flex>
         <form-input
           type="range"
           v-model="forms.input.foundingMembers"
           @valid="forms.vset.input.foundingMembers"
           required
-          min="0"
-          max="300"
+          :min="min"
+          :max="max"
         />
         <grid gtc="auto 1fr auto">
-          <p>0</p>
+          <p>{{ min }}</p>
           <p class="justify-self">{{ forms.input.foundingMembers }}</p>
-          <p>300</p>
+          <p>{{ max }}</p>
         </grid>
       </grid>
     </div>
@@ -55,6 +63,8 @@ export default {
   },
   data() {
     return {
+      min: 1,
+      max: 300,
       forms: {
         input: {
           foundingMembers: this.$store.state.CommonsModule.foundingMembers,

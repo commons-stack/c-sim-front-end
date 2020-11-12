@@ -10,9 +10,10 @@
       <form-progress />
       <grid class="align-content w-1-1 ph-5">
         <grid class="justify-items relative" gap="1.5">
-          <p>FUNDING POOL</p>
+          <p>Funding Pool</p>
           <icon icon="ElipseGradient" class="absolute" style="bottom: -20px; opacity: 0.8;" />
-          <Cylinder :progress="forms.input.votingPower" type="teal" />
+          <Cylinder :progress="forms.input.votingPower" type="green" />
+          <icon icon="GridNet" class="absolute" style="bottom: -10px; z-index: -1; zoom: 2" />
         </grid>
         <form-input
           type="range"

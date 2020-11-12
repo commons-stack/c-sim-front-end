@@ -4,20 +4,35 @@
     <p text-xl text-center>What percentage goes to funding at exit?</p>
     <div class="layout-form">
       <form-progress />
-      <grid column class="align-content justify-items w-1-1 ph-5">
+      <grid class="align-content w-1-1 ph-5">
+        <grid gtc="1fr 1fr 1fr" gap="2" class="ph-5">
+          <grid class="justify-self-start justify-items align-content relative" gap="1">
+            <p>Your Wallet</p>
+            <Cylinder :progress="100 - exitingProgress" type="green" />
+          </grid>
+          <icon icon="Man" />
+          <grid class="justify-self-end justify-items align-content relative" gap="1">
+            <p>Funding Pool</p>
+            <Cylinder :progress="exitingProgress" type="blue" />
+          </grid>
+        </grid>
         <form-input
           type="range"
           v-model="forms.input.exiting"
           @valid="forms.vset.input.exiting"
           required
-          min="1"
-          max="50"
+          :min="min"
+          :max="max"
         />
-        <p>{{ forms.input.exiting }}</p>
+        <grid gtc="auto 1fr auto">
+          <p>{{ min }}%</p>
+          <p class="justify-self">{{ forms.input.exiting }}%</p>
+          <p>{{ max }}%</p>
+        </grid>
       </grid>
     </div>
 
-    <button @click="submit" :disabled="!forms.vget.input.form">next</button>
+    <button @click="$router.push('/level/7/1')" :disabled="!forms.vget.input.form">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -49,29 +64,35 @@
 <script>
 import FormNavigation from '../../components/common/FormNavigation.vue'
 import FormProgress from '../../components/common/FormProgress.vue'
+import Cylinder from '../../components/common/Cylinder.vue'
 
 export default {
   name: 'level-6-1',
   components: {
     FormNavigation,
     FormProgress,
-  },
-  created() {
-    this.forms.input.exiting = this.$store.state.CommonsModule.exiting
+    Cylinder,
   },
   data() {
     return {
+      min: 1,
+      max: 50,
       forms: {
         input: {
-          exiting: undefined,
+          exiting: this.$store.state.CommonsModule.exiting,
         },
       },
     }
   },
-  methods: {
-    submit() {
-      this.$store.commit('CommonsModule/setExiting', this.forms.input.exiting)
-      this.$router.push('/level/7/1')
+  computed: {
+    exitingProgress() {
+      const input = this.forms.input.exiting
+      return ((input - this.min) / (this.max - this.min)) * 100
+    },
+  },
+  watch: {
+    'forms.input.exiting'(x) {
+      this.$store.commit('CommonsModule/setExiting', x)
     },
   },
 }

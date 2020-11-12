@@ -38,6 +38,7 @@ import Hatchers300 from './icons/Hatchers300.vue'
 import Hatchers60 from './icons/Hatchers60.vue'
 import Hatchers90 from './icons/Hatchers90.vue'
 import Heart from './icons/Heart.vue'
+import Man from './icons/Man.vue'
 import Profile from './icons/Profile.vue'
 import Search from './icons/Search.vue'
 import Settings from './icons/Settings.vue'
@@ -52,6 +53,7 @@ const icons = {
   ArrowForward,
   ArrowForwardSmall,
   Cad,
+  Man,
   CircleNet,
   CylinderBottom,
   CylinderEmpty,
