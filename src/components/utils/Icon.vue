@@ -25,6 +25,7 @@ import DropdownLeft from './icons/DropdownLeft.vue'
 import DropdownRight from './icons/DropdownRight.vue'
 import Edit from './icons/Edit.vue'
 import ElipseGradient from './icons/ElipseGradient.vue'
+import ExitFormCircle from './icons/ExitFormCircle.vue'
 import Facebook from './icons/Facebook.vue'
 import Google from './icons/Google.vue'
 import GridNet from './icons/GridNet.vue'
@@ -53,17 +54,17 @@ const icons = {
   ArrowForward,
   ArrowForwardSmall,
   Cad,
-  Man,
   CircleNet,
+  Close,
   CylinderBottom,
   CylinderEmpty,
   CylinderTop,
-  Close,
   Dot,
   DropdownLeft,
   DropdownRight,
   Edit,
   ElipseGradient,
+  ExitFormCircle,
   Facebook,
   Google,
   GridNet,
@@ -77,6 +78,7 @@ const icons = {
   Hatchers60,
   Hatchers90,
   Heart,
+  Man,
   Profile,
   Search,
   Settings,
