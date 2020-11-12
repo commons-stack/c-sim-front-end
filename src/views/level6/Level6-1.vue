@@ -5,15 +5,17 @@
     <div class="layout-form">
       <form-progress />
       <grid class="align-content w-1-1 ph-5">
-        <grid gtc="1fr 1fr 1fr" gap="2" class="ph-5">
+        <grid gtc="1fr auto 1fr" gap="2" class="ph-5">
           <grid class="justify-self-start justify-items align-content relative" gap="1">
             <p>Your Wallet</p>
             <Cylinder :progress="100 - exitingProgress" type="green" />
+            <exit-form-circles :progress="100 - exitingProgress" style="right: -90px;" />
           </grid>
           <icon icon="Man" />
           <grid class="justify-self-end justify-items align-content relative" gap="1">
             <p>Funding Pool</p>
             <Cylinder :progress="exitingProgress" type="blue" />
+            <exit-form-circles :progress="exitingProgress" style="left: -90px;" />
           </grid>
         </grid>
         <form-input
@@ -65,6 +67,7 @@
 import FormNavigation from '../../components/common/FormNavigation.vue'
 import FormProgress from '../../components/common/FormProgress.vue'
 import Cylinder from '../../components/common/Cylinder.vue'
+import ExitFormCircles from '../../components/common/ExitFormCircles.vue'
 
 export default {
   name: 'level-6-1',
@@ -72,6 +75,7 @@ export default {
     FormNavigation,
     FormProgress,
     Cylinder,
+    ExitFormCircles,
   },
   data() {
     return {
