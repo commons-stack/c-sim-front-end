@@ -8,25 +8,27 @@
     </p>
     <div class="layout-form">
       <form-progress />
-      <grid class="align-content w-1-1 ph-5">
+      <grid class="align-content w-1-1 ph-5" gap="2">
         <grid class="justify-items relative" gap="1.5">
           <p>Funding Pool</p>
           <icon icon="ElipseGradient" class="absolute" style="bottom: -20px; opacity: 0.8;" />
           <Cylinder :progress="forms.input.votingPower" type="green" />
         </grid>
-        <form-input
-          type="range"
-          v-model="forms.input.votingPower"
-          @valid="forms.vset.input.votingPower"
-          required
-          :min="min"
-          :max="max"
-        />
-        <grid gtc="auto 1fr auto">
-          <p>{{ min }}%</p>
-          <p class="justify-self">{{ forms.input.votingPower }}%</p>
-          <p>{{ max }}%</p>
-        </grid>
+        <div>
+          <form-input
+            type="range"
+            v-model="forms.input.votingPower"
+            @valid="forms.vset.input.votingPower"
+            required
+            :min="min"
+            :max="max"
+          />
+          <grid gtc="auto 1fr auto">
+            <p>{{ min }}%</p>
+            <p class="justify-self">{{ forms.input.votingPower }}%</p>
+            <p>{{ max }}%</p>
+          </grid>
+        </div>
       </grid>
     </div>
 

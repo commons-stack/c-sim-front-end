@@ -9,7 +9,7 @@
     </p>
     <div class="layout-form">
       <form-progress />
-      <grid class="align-content w-1-1 ph-5">
+      <grid class="align-content w-1-1 ph-5" gap="2">
         <grid gtc="1fr 1fr" gap="2" class="ph-5">
           <grid class="justify-self-start justify-items" gap="1">
             <p>Funding Pool</p>
@@ -20,19 +20,21 @@
             <Cylinder :progress="fundingProgress" type="blue" />
           </grid>
         </grid>
-        <form-input
-          type="range"
-          v-model="forms.input.funding"
-          @valid="forms.vset.input.funding"
-          required
-          :min="min"
-          :max="max"
-        />
-        <grid gtc="auto 1fr auto">
-          <p>{{ min }}%</p>
-          <p class="justify-self">{{ forms.input.funding }}%</p>
-          <p>{{ max }}%</p>
-        </grid>
+        <div>
+          <form-input
+            type="range"
+            v-model="forms.input.funding"
+            @valid="forms.vset.input.funding"
+            required
+            :min="min"
+            :max="max"
+          />
+          <grid gtc="auto 1fr auto">
+            <p>{{ min }}%</p>
+            <p class="justify-self">{{ forms.input.funding }}%</p>
+            <p>{{ max }}%</p>
+          </grid>
+        </div>
       </grid>
     </div>
 
