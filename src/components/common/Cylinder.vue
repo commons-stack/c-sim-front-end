@@ -1,13 +1,15 @@
 <template>
-  <div class="relative">
-    <div class="cylinder-top">
-      <icon icon="CylinderTop" :color="cssVars.topColor" />
-    </div>
-    <icon icon="CylinderEmpty" class="cylinder-body" />
-    <div class="cylinder-progrss"></div>
-    <div class="cylinder-bottom">
-      <div class="cylinder-bottom-fill"></div>
-      <icon icon="CylinderBottom" :color="cssVars.baseColor" />
+  <div>
+    <div class="relative">
+      <div class="cylinder-top">
+        <icon icon="CylinderTop" :color="cssVars.topColor" />
+      </div>
+      <icon icon="CylinderEmpty" class="cylinder-body" />
+      <div class="cylinder-progrss"></div>
+      <div class="cylinder-bottom">
+        <div class="cylinder-bottom-fill"></div>
+        <icon icon="CylinderBottom" :color="cssVars.baseColor" />
+      </div>
     </div>
   </div>
 </template>

@@ -12,11 +12,11 @@
       <grid class="align-content w-1-1 ph-5">
         <grid gtc="1fr 1fr" gap="2" class="ph-5">
           <grid class="justify-self-start justify-items" gap="1">
-            <p>FUNDING POOL</p>
+            <p>Funding Pool</p>
             <Cylinder :progress="100 - fundingProgress" type="green" />
           </grid>
           <grid class="justify-self-end justify-items" gap="1">
-            <p>COMMONS RESERVE</p>
+            <p>Commons Reserve</p>
             <Cylinder :progress="fundingProgress" type="blue" />
           </grid>
         </grid>
@@ -77,7 +77,6 @@
 import Cylinder from '../../components/common/Cylinder.vue'
 import FormNavigation from '../../components/common/FormNavigation.vue'
 import FormProgress from '../../components/common/FormProgress.vue'
-Cylinder
 
 export default {
   name: 'level-3-1',
