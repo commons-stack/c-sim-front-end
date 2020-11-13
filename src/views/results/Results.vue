@@ -2,8 +2,8 @@
   <div class="layout-vertical" text-center>
     <icon icon="CircleNet" class="bg-net" />
     <form-navigation :help="false" />
-    <p class="level-title">Your Commons...</p>
-    <div>
+    <p class="teko-title">Your Commons...</p>
+    <div class="level-text">
       <p>Do you think you did a good job?</p>
       <p>Analyze these charts and see if your commons is a success!</p>
     </div>
@@ -56,10 +56,12 @@
         <div :key="`${key}-data`" style="font-size: 9px;">{{ results[key] }}</div>
       </template>
     </div>
-    <p class="level-subtitle mt-5">
+    <p class="teko-subtitle mt-5">
       Did the RxC community create a sustainable Commons to support RxC gatherings?
     </p>
-    <p>Do you want to submit your score, or do you want to try to run another simulation?</p>
+    <p class="level-text">
+      Do you want to submit your score, or do you want to try to run another simulation?
+    </p>
     <flex gap="2" class="mt-2">
       <button @click="$router.push('/outcome')">BACK TO THE FUTURE</button>
       <button @click="$router.push('/level/1/1')">play again</button>
@@ -68,16 +70,11 @@
 </template>
 
 <script>
-import FormNavigation from '../../components/common/FormNavigation.vue'
-
 export default {
   name: 'results',
-  components: {
-    FormNavigation,
-  },
   computed: {
     results() {
-      return this.$store.state.CommonsModule.response.data
+      return this.$store.state.CommonsModule.response?.data || []
     },
   },
 }
@@ -116,9 +113,14 @@ export default {
     padding: 10px;
     & > * {
       &:first-child {
+        @extend .font-teko;
         font-size: 18px;
+        @include s {
+          font-size: 22px;
+        }
       }
       &:last-child {
+        @extend .font-lato;
         font-size: 12px;
       }
     }

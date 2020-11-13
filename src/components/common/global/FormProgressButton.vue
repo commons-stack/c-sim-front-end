@@ -83,8 +83,9 @@ export default {
 }
 
 .x-text {
-  @extend .uppercase;
+  @extend .uppercase, .font-lato;
   @include letter-spacing(1px);
+  font-size: 12px;
   color: white;
   opacity: 0.4;
 }

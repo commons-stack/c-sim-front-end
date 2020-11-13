@@ -166,6 +166,7 @@ export default {
   width: 100vw;
 }
 .hero {
+  @extend .font-teko;
   position: absolute;
   mix-blend-mode: overlay;
   opacity: 0.3;
@@ -181,11 +182,13 @@ export default {
 }
 .hero-1 {
   text-align: center;
+  line-height: 0.8;
   @include m {
     font-size: 160px;
   }
 }
 .section > p {
+  @extend .font-teko;
   position: absolute;
   width: 80vw;
   padding: 0 1.5rem;

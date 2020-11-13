@@ -110,7 +110,6 @@ export default {
   font-size: 16px;
   &::placeholder {
     color: #666;
-    font-weight: bold;
     @extend .transition;
   }
   &:focus::placeholder {

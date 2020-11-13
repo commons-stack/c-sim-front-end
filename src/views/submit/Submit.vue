@@ -1,7 +1,8 @@
 <template>
   <div class="layout-vertical">
-    <p text-xl text-center>Generating your Commons Simulation</p>
-    <p class="text-center mt-2" style="max-width: 800px;">
+    <form-navigation title-only />
+    <p class="teko-subtitle">Generating your Commons Simulation</p>
+    <p class="text-center font-ibm fs-20 mt-2" style="max-width: 800px;">
       This is the moment of truth! Did they choose the right parameters to yield positive results
       for the success of the RxC community, and the continuation of humankind into a just,
       prosperous, and decentralized future?
@@ -9,10 +10,10 @@
 
     <grid key="0" class="logo">
       <transition name="fade">
-        <p class="logo-loading" text-xl font-mono>
+        <p class="logo-loading">
           Loading
           <transition-group name="slide" tag="span" class="absolute">
-            <span v-for="dot in dots.count" :key="dot">.</span>
+            <span v-for="dot in dots.count" :key="dot" class="logo-loading-dot">.</span>
           </transition-group>
         </p>
       </transition>
@@ -74,9 +75,9 @@ export default {
         setTimeout(() => resolve(true), 2500)
       }),
     runSimulationWithTimer() {
-      Promise.all([this.runSimulation(), this.runTimer()]).then(() => {
-        this.$router.push('/results')
-      })
+      Promise.all([this.runSimulation(), this.runTimer()]).finally(() =>
+        this.$router.push('/results'),
+      )
     },
   },
 }
@@ -101,12 +102,27 @@ export default {
     padding: 6rem 0 3rem;
   }
   @include xl {
-    padding: 10rem 0 4rem;
+    padding: 7rem 0 4rem;
   }
   justify-items: center;
   &-icon {
     margin-top: 3rem;
     transform: scale(1.5);
+  }
+  &-loading {
+    @extend .font-orbitron;
+    font-size: 24px;
+    background: linear-gradient(94.78deg, #67de69 -5.54%, #2c6bca 110.77%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.8s var(--bezier-home);
+    text-align: center;
+    top: -120px;
+    &-dot {
+      background: #2c6bca;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 }
 </style>

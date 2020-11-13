@@ -114,8 +114,8 @@ export default {
   z-index: -100;
 }
 .x-form-grid {
-  gap: 3px;
-  padding: 3px;
+  gap: 1px;
+  padding: 1px;
   opacity: 0.5;
   background: linear-gradient(#0047b0, #67de69);
   & > div {
