@@ -1,7 +1,7 @@
 <template>
   <grid :gtc="titleOnly ? '1fr' : '120px 1fr 120px'" class="x-wrap">
     <div justify-self-start v-if="!titleOnly">
-      <p class="x-text-button inline" @click="$router.push('/level/1/2').catch(() => {})">
+      <p class="x-text-button inline" v-if="restart" @click="$router.push('/level/1/2')">
         Restart
       </p>
     </div>
@@ -18,6 +18,10 @@ export default {
   name: 'form-navigation',
   props: {
     help: {
+      type: Boolean,
+      default: true,
+    },
+    restart: {
       type: Boolean,
       default: true,
     },
