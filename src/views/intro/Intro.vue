@@ -4,14 +4,14 @@
       <div class="section" v-show="xstate === '1'">
         <div class="hero hero-1">{{ text[1] }}</div>
         <p>{{ text[1] }}</p>
-        <img src="@/assets/intro_1.png" alt="Intro image (1)" />
+        <img src="@/assets/intro_1.jpg" alt="Intro image (1)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
       <div class="section" v-show="xstate === '2'">
         <div class="hero">{{ text[2] }}</div>
         <p>{{ text[2] }}</p>
-        <img src="@/assets/intro_2.png" alt="Intro image (2)" />
+        <img src="@/assets/intro_2.jpg" alt="Intro image (2)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
@@ -20,35 +20,35 @@
           <div v-show="xstate === '3'" class="section">
             <div class="hero">{{ text[3] }}</div>
             <p>{{ text[3] }}</p>
-            <img src="@/assets/intro_3.png" alt="Intro image (3)" />
+            <img src="@/assets/intro_3.jpg" alt="Intro image (3)" />
           </div>
         </transition>
         <transition name="test-fade" appear>
           <div v-show="xstate === '4'" class="section">
             <div class="hero">{{ text[4] }}</div>
             <p>{{ text[4] }}</p>
-            <img src="@/assets/intro_3.png" alt="Intro image (3)" />
+            <img src="@/assets/intro_3.jpg" alt="Intro image (3)" />
           </div>
         </transition>
-        <img src="@/assets/intro_3.png" alt="Intro image (3)" />
+        <img src="@/assets/intro_3.jpg" alt="Intro image (3)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
       <div class="section" v-show="xstate === '5'">
         <p>{{ text[5] }}</p>
-        <img src="@/assets/intro_5.png" alt="Intro image (4)" />
+        <img src="@/assets/intro_5.jpg" alt="Intro image (4)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
       <div class="section" v-show="xstate === '6'">
         <p>{{ text[6] }}</p>
-        <img src="@/assets/intro_6.png" alt="Intro image (5)" />
+        <img src="@/assets/intro_6.jpg" alt="Intro image (5)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
       <div class="section" v-show="xstate === '7'">
         <p class="t7-text">{{ text[7] }}</p>
-        <img src="@/assets/intro_7.png" alt="Intro image (6)" />
+        <img src="@/assets/intro_7.jpg" alt="Intro image (6)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
@@ -59,7 +59,7 @@
         <transition name="test-fade" appear>
           <p v-if="xstate === '9'">{{ text[9] }}</p>
         </transition>
-        <img src="@/assets/intro_8.png" alt="Intro image (7)" />
+        <img src="@/assets/intro_8.jpg" alt="Intro image (7)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
@@ -70,7 +70,7 @@
         <transition name="test-fade" appear>
           <p v-if="xstate === '11'">{{ text[11] }}</p>
         </transition>
-        <img src="@/assets/intro_10.png" alt="Intro image (8)" />
+        <img src="@/assets/intro_10.jpg" alt="Intro image (8)" />
       </div>
     </transition>
     <div class="skip-intro">
