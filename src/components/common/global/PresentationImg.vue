@@ -1,5 +1,5 @@
 <template>
-  <img class="x-img" src="@/assets/presentation_img.png" />
+  <img class="x-img" src="@/assets/presentation.jpg" />
 </template>
 
 <script>
@@ -15,5 +15,13 @@ export default {
   height: 100%;
   top: 0;
   z-index: -100;
+  @extend .transition;
+  opacity: 0.3;
+  @include m {
+    opacity: 0.5;
+  }
+  @include l {
+    opacity: 1;
+  }
 }
 </style>
