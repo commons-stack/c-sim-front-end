@@ -2,8 +2,8 @@
   <div class="layout-right h-1-1">
     <presentation-img />
     <grid gtr="auto auto 1fr auto" class="h-1-1" justify-items-start align-items-start gap="2">
-      <p style="letter-spacing: 5px;">DESIGNING THE COMMONS</p>
-      <p class="x-title">
+      <p class="lato-title">DESIGNING THE COMMONS</p>
+      <p class="x-title font-ibm fs-20">
         Holographically embedded into your arm and invisible to others, cadCAD can simulate millions
         of possible futures with just a few key inputs.
       </p>
@@ -39,6 +39,9 @@ export default {
   max-width: 600px;
   & > *:nth-child(odd) {
     align-self: start;
+  }
+  & > p {
+    @extend .fs-18, .font-ibm;
   }
 }
 </style>

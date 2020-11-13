@@ -2,17 +2,17 @@
   <div class="layout-right h-1-1">
     <presentation-img />
     <grid justify-items-start align-items-start gap="2">
-      <p class="level-title">Almost there...</p>
+      <h3 class="teko-title">Almost there...</h3>
       <grid gap="2" style="max-width: 650px">
-        <p text-m>
+        <p>
           The last set of parameters that cadCAD requires to calculate are now being defiend.
         </p>
-        <p text-m>
+        <p>
           Members choose to pass good proposals that produce valuable outcomes for the community.
           They contribute time and resources in exchange for their governance tokens. They continue
           to grow the Commons and raise the price of the token.
         </p>
-        <p text-m>
+        <p>
           Some members may not like the results of the proposals passed by the RadicalxChange
           Commons, or may need to sell some of their tokens to cover their expenses. When they sell
           their RxC token, the overall price of the token decreases as value is being withdrawn from
@@ -21,7 +21,7 @@
           protects the Commons from profit-extracting behaviour, and ensures continuous funding for
           the community pool of funds that can be put towards proposals.
         </p>
-        <p text-m>
+        <p>
           What percentage of the released Reserve goes to the Funding Pool when an exiting member
           sells their tokens, and how much of the value remains for the contributor to receive?
         </p>
@@ -39,4 +39,8 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+p {
+  @extend .font-ibm, .fs-20;
+}
+</style>

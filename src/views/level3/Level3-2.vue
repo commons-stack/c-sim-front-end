@@ -2,14 +2,14 @@
   <div class="layout-right h-1-1">
     <presentation-img />
     <grid justify-items-start align-items-start gap="2">
-      <p class="level-title">Well done!</p>
+      <h3 class="teko-title">Well done!</h3>
       <grid gap="2" style="max-width: 650px">
-        <p text-m>
+        <p>
           Seizing the opportunity to harvest another parameter from the wisdom of the group, one of
           a few you need to configure the Conviction Voting simulator, you ask about how much of the
           community funds can be distributed at any given time.
         </p>
-        <p text-m>
+        <p>
           This parameter is defined by selecting a percentage of the available funding pool that can
           be distributed at any time. It effectively sets a maximum for a single proposal (or for a
           group of smaller proposals), ensuring that larger proposals require a greater amount of
@@ -29,4 +29,8 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+p {
+  @extend .font-ibm, .fs-20;
+}
+</style>

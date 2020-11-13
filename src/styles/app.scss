@@ -1,6 +1,7 @@
 body {
   @extend .font-default, .color-light, .bg-dark;
 }
+
 :root {
   --app-margin-top: 3rem;
   @include s {
@@ -60,8 +61,4 @@ body {
   @include xl {
     padding-left: 36rem;
   }
-}
-
-.letter-spacing-5 {
-  @include letter-spacing(5px);
 }

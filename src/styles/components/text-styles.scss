@@ -1,0 +1,55 @@
+.lato-title {
+  @extend .font-lato;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+}
+
+.lato-header {
+  @extend .lato-title;
+  text-align: center;
+  text-indent: 8px;
+}
+
+.teko-title {
+  @extend .font-teko;
+  font-size: 60px;
+  text-align: center;
+  line-height: 48px;
+}
+
+.teko-subtitle {
+  @extend .font-teko;
+  font-size: 36px;
+  text-align: center;
+}
+
+.level-text {
+  @extend .font-ibm;
+  max-width: 800px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.form-text {
+  @extend .font-teko;
+  font-size: 24px;
+}
+.form-text-value {
+  @extend .font-teko;
+  font-size: 24px;
+  color: #32908e;
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}

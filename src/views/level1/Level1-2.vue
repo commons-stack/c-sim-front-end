@@ -1,9 +1,9 @@
 <template>
   <div class="layout-vertical">
     <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
-    <p text-xl text-center>
+    <h2 class="teko-subtitle text-center">
       How many ‘Hatchers’ will you choose to initialize the RadicalxChange Commons?
-    </p>
+    </h2>
     <div class="layout-form">
       <form-progress />
       <grid column class="align-content w-1-1 ph-5">
@@ -25,9 +25,9 @@
           :max="max"
         />
         <grid gtc="auto 1fr auto">
-          <p>{{ min }}</p>
-          <p class="justify-self">{{ forms.input.foundingMembers }}</p>
-          <p>{{ max }}</p>
+          <p class="form-text">{{ min }}</p>
+          <p class="form-text-value justify-self">{{ forms.input.foundingMembers }}</p>
+          <p class="form-text">{{ max }}</p>
         </grid>
       </grid>
     </div>
@@ -35,7 +35,7 @@
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
-        <h2 class="level-title">Founding members - ‘Hatchers’</h2>
+        <h2 class="teko-title">Founding members - ‘Hatchers’</h2>
         <p class="level-text mt-1">
           Only trusted experts who accept accountability for upholding the values and honorable
           intentions of the community should be chosen to be the founding members of your RxC
@@ -52,15 +52,8 @@
 </template>
 
 <script>
-import FormNavigation from '../../components/common/FormNavigation.vue'
-import FormProgress from '../../components/common/FormProgress.vue'
-
 export default {
   name: 'level-1-2',
-  components: {
-    FormNavigation,
-    FormProgress,
-  },
   data() {
     return {
       min: 1,

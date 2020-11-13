@@ -2,10 +2,11 @@
   <div>
     <transition name="dropdown" appear>
       <div class="layout-vertical">
-        <p class="level-subtitle">Good future</p>
-        <p class="level-title mt-5">You made a High Score, {{ name }}!</p>
-        <p text-hero>800</p>
-        <p class="level-subtitle mt-4">Try to improve your score</p>
+        <form-navigation title-only />
+        <p class="teko-subtitle">Good future</p>
+        <p class="teko-title score-margin">You made a High Score, {{ name }}!</p>
+        <p style="font-size: 124px;" class="font-teko">800</p>
+        <p class="teko-subtitle improve-margin">Try to improve your score</p>
         <button @click="$router.push('/')">play again</button>
         <flex gap="1" align-items class="mt-2">
           <p>Share your score:</p>
@@ -58,5 +59,11 @@ export default {
   background: linear-gradient(180deg, #67de69 0%, #0047b0 100%);
   mix-blend-mode: multiply;
   opacity: 0.8;
+}
+.score-margin {
+  margin-top: 5rem;
+}
+.improve-margin {
+  margin-top: 4rem;
 }
 </style>

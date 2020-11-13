@@ -1,9 +1,9 @@
 <template>
   <div class="layout-vertical">
     <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
-    <p text-xl text-center>
+    <h2 class="teko-subtitle text-center">
       How much time should pass before an individual’s voting power reaches 80% of it’s full power?
-    </p>
+    </h2>
     <div class="layout-form">
       <form-progress />
       <grid class="align-content w-1-1 ph-5" gap="2">
@@ -11,7 +11,6 @@
           <p>TODO RADIO</p>
           <icon icon="GridNet" class="absolute" style="bottom: -10px; zoom: 1.3;" />
           <icon icon="ElipseGradient" class="absolute" style="bottom: -20px; opacity: 0.8;" />
-          <Cylinder :progress="forms.input.decisions" type="teal" />
         </grid>
         <div>
           <form-input
@@ -19,13 +18,13 @@
             v-model="forms.input.decisions"
             @valid="forms.vset.input.decisions"
             required
-            min="1"
-            max="50"
+            :min="1"
+            :max="50"
           />
           <grid gtc="auto 1fr auto">
-            <p>{{ min }}</p>
-            <p class="justify-self">{{ forms.input.decisions }}</p>
-            <p>{{ max }}</p>
+            <p class="form-text">{{ min }}</p>
+            <p class="form-text-value justify-self">{{ forms.input.decisions }}</p>
+            <p class="form-text">{{ max }}</p>
           </grid>
         </div>
       </grid>
@@ -35,7 +34,7 @@
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
-        <h2 class="level-title">Conviction Voting</h2>
+        <h2 class="teko-title">Conviction Voting</h2>
         <p class="level-text mt-1">
           Conviction Voting is a continuous process - kind of like ‘vote streaming’.
         </p>
@@ -63,20 +62,15 @@
 </template>
 
 <script>
-import FormNavigation from '../../components/common/FormNavigation.vue'
-import FormProgress from '../../components/common/FormProgress.vue'
-
 export default {
   name: 'level-5-1',
-  components: {
-    FormNavigation,
-    FormProgress,
-  },
   created() {
     this.forms.input.decisions = this.$store.state.CommonsModule.decisions
   },
   data() {
     return {
+      min: 1,
+      max: 50,
       forms: {
         input: {
           decisions: undefined,

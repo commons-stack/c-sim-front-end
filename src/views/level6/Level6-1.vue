@@ -1,19 +1,19 @@
 <template>
   <div class="layout-vertical">
     <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
-    <p text-xl text-center>What percentage goes to funding at exit?</p>
+    <h2 class="teko-subtitle text-center">What percentage goes to funding at exit?</h2>
     <div class="layout-form">
       <form-progress />
       <grid class="align-content w-1-1 ph-5">
         <grid gtc="1fr auto 1fr" gap="2" class="ph-5">
           <grid class="justify-self-start justify-items align-content relative" gap="1">
-            <p>Your Wallet</p>
+            <p class="font-teko fs-24">Your Wallet</p>
             <Cylinder :progress="100 - exitingProgress" type="green" />
             <exit-form-circles :progress="100 - exitingProgress" style="right: -90px;" />
           </grid>
           <icon icon="Man" />
           <grid class="justify-self-end justify-items align-content relative" gap="1">
-            <p>Funding Pool</p>
+            <p class="font-teko fs-24">Funding Pool</p>
             <Cylinder :progress="exitingProgress" type="blue" />
             <exit-form-circles :progress="exitingProgress" style="left: -90px;" />
           </grid>
@@ -27,9 +27,9 @@
           :max="max"
         />
         <grid gtc="auto 1fr auto">
-          <p>{{ min }}%</p>
-          <p class="justify-self">{{ forms.input.exiting }}%</p>
-          <p>{{ max }}%</p>
+          <p class="form-text">{{ min }}%</p>
+          <p class="form-text-value justify-self">{{ forms.input.exiting }}%</p>
+          <p class="form-text">{{ max }}%</p>
         </grid>
       </grid>
     </div>
@@ -38,7 +38,7 @@
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
-        <h2 class="level-title">Exit Tribute</h2>
+        <h2 class="teko-title">Exit Tribute</h2>
         <p class="level-text mt-1">
           Members choose to pass good proposals that produce valuable outcomes for the community.
           They contribute time and resources in exchange for their governance tokens. They continue
@@ -64,16 +64,12 @@
 </template>
 
 <script>
-import FormNavigation from '../../components/common/FormNavigation.vue'
-import FormProgress from '../../components/common/FormProgress.vue'
 import Cylinder from '../../components/common/Cylinder.vue'
 import ExitFormCircles from '../../components/common/ExitFormCircles.vue'
 
 export default {
   name: 'level-6-1',
   components: {
-    FormNavigation,
-    FormProgress,
     Cylinder,
     ExitFormCircles,
   },

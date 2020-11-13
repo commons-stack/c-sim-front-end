@@ -1,8 +1,10 @@
 <template>
   <div class="layout-vertical">
     <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
-    <p text-xl text-center>How much of the community funds can be distributed at any given time?</p>
-    <p style="opacity: 0.6;" text-center>
+    <h2 class="teko-subtitle text-center">
+      How much of the community funds can be distributed at any given time?
+    </h2>
+    <p class="font-ibm fs-20 text-center">
       Ensuring that larger proposals require a greater amount of collective voting power from the
       community in order to pass.
     </p>
@@ -10,7 +12,7 @@
       <form-progress />
       <grid class="align-content w-1-1 ph-5" gap="2">
         <grid class="justify-items relative" gap="1.5">
-          <p>Funding Pool</p>
+          <p class="font-teko fs-24">Funding Pool</p>
           <icon icon="ElipseGradient" class="absolute" style="bottom: -20px; opacity: 0.8;" />
           <Cylinder :progress="forms.input.votingPower" type="green" />
         </grid>
@@ -24,9 +26,9 @@
             :max="max"
           />
           <grid gtc="auto 1fr auto">
-            <p>{{ min }}%</p>
-            <p class="justify-self">{{ forms.input.votingPower }}%</p>
-            <p>{{ max }}%</p>
+            <p class="form-text">{{ min }}%</p>
+            <p class="form-text-value justify-self">{{ forms.input.votingPower }}%</p>
+            <p class="form-text">{{ max }}%</p>
           </grid>
         </div>
       </grid>
@@ -36,7 +38,7 @@
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
-        <h2 class="level-title">Funding distribution</h2>
+        <h2 class="teko-title">Funding distribution</h2>
         <p class="level-text mt-1">
           The graph demonstrates how if the threshold is high it will allow large proposals to pass,
           however it may drain your funding pool too fast, weakening the economy. A lower threshold
@@ -55,15 +57,11 @@
 </template>
 
 <script>
-import FormNavigation from '../../components/common/FormNavigation.vue'
-import FormProgress from '../../components/common/FormProgress.vue'
 import Cylinder from '../../components/common/Cylinder.vue'
 
 export default {
   name: 'level-4-1',
   components: {
-    FormNavigation,
-    FormProgress,
     Cylinder,
   },
   data() {

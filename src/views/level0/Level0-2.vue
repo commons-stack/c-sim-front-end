@@ -1,6 +1,6 @@
 <template>
   <div class="layout-vertical">
-    <h2 class="level-title">
+    <h2 class="teko-title">
       You have been chosen to bring cadCAD back in time
     </h2>
     <p class="level-text mt-1">
@@ -18,20 +18,20 @@
       sunshine and catch a glimpse of yourself in a store window. A cheery woman with definitive
       style and charisma is reflected back!
     </p>
-    <h2 class="level-title mt-3">Who am I?</h2>
+    <h2 class="teko-title mt-3">Who am I?</h2>
     <p class="level-text mt-1">
       Looking at the phone in your pocket you intuitively know how to unlock it and scroll through
       to find out that your name is Nik.
     </p>
     <img class="level-image" src="@/assets/level_0_img_2.jpg" alt="intro image 2" />
-    <h2 class="level-title mt-3">Your mission</h2>
+    <h2 class="teko-title mt-3">Your mission</h2>
     <p class="level-text mt-1">
       You determine that your mission is to initiate the design of a self-sustaining Commons at a
       strategic open source distribution point. This could ripple the needed economic value
       throughout concentric spheres of human interaction worldwide regardless of class or access.
     </p>
     <img class="level-image" src="@/assets/level_0_img_3.jpg" alt="intro image 3" />
-    <h2 class="level-title mt-3">Commons</h2>
+    <h2 class="teko-title mt-3">Commons</h2>
     <p class="level-text mt1">
       A Commons is a well- engineered, community- focused economy that can reward value creation
       where business models fail to do so. They can be formed whenever a community is creating value
@@ -52,84 +52,35 @@
       DESIGN THE COMMONS
     </button>
     <transition name="fade" appear>
-      <div class="x-home-shapes-wrap">
-        <div class="x-home-shapes">
-          <icon icon="ShapeRight" class="x-shape-right" />
-          <icon icon="ShapeLeft" class="x-shape-left" />
-        </div>
-      </div>
+      <scrollable-gfx />
     </transition>
   </div>
 </template>
 
 <script>
-import { utils } from '../../utils/utils.js'
+import ScrollableGfx from '@/components/common/ScrollableGfx.vue'
 
 export default {
   name: 'level-0-2',
-  created() {
-    window.addEventListener('resize', this.windowWidthWatcher)
-    window.addEventListener('scroll', this.windowScrollWatcher)
-  },
-  mounted() {
-    const distance = this.getShapeDistance()
-    this.cssVars.shapeDistance = distance * 2 + 'px'
-    setTimeout(() => {
-      this.cssVars.shapeDistance = distance + 'px'
-    })
-    this.maxScrollPos =
-      document.documentElement.scrollHeight - document.documentElement.clientHeight
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.windowWidthWatcher)
-    window.removeEventListener('scroll', this.windowScrollWatcher)
-  },
-  data() {
-    return {
-      maxScrollPos: undefined,
-      shapeBounds: [-1620, -4200],
-      cssVars: {
-        shapeDistance: undefined,
-        offsetTop: '-4200px',
-      },
-    }
-  },
-  methods: {
-    windowWidthWatcher: utils.throttle(function() {
-      this.cssVars.shapeDistance = `${this.getShapeDistance()}px`
-      this.maxScrollPos =
-        document.documentElement.scrollHeight - document.documentElement.clientHeight
-    }),
-    getShapeDistance: () => window.innerWidth / 2 - window.innerWidth / 4,
-    windowScrollWatcher: utils.throttle(function() {
-      const offset = Math.floor((window.scrollY / this.maxScrollPos) * 100) / 100
-      const value = `${offset * 2580 - 4200}px`
-      this.cssVars.offsetTop = value
-    }),
-  },
+  components: { ScrollableGfx },
 }
 </script>
 
 <style scoped lang="scss">
-.x-home-shapes-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+h2,
+p {
+  max-width: 60% !important;
 }
-.x-home-shapes {
-  position: relative;
+p {
+  text-align: justify !important;
 }
-.x-shape-left,
-.x-shape-right {
-  top: var(--offset-top);
-  position: absolute;
-  z-index: -1;
-  transition: all 1.8s cubic-bezier(0.35, 0.14, 0.23, 0.93);
-}
-.x-shape-left {
-  left: calc(-963px + -1 * var(--shape-distance));
-}
-.x-shape-right {
-  left: var(--shape-distance);
+.level-image {
+  margin-top: 2rem;
+  background: grey;
+  width: 450px;
+  max-width: 100%;
+  height: 450px;
+  object-fit: cover;
+  object-position: center;
 }
 </style>

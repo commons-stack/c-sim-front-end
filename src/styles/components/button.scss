@@ -13,15 +13,16 @@ body button:disabled {
   }
 }
 button {
+  @extend .font-teko;
   text-transform: uppercase;
+  letter-spacing: 10px;
+  text-indent: 10px;
   position: relative;
   z-index: 100;
   padding: 0 2rem;
   min-height: 64px;
   min-width: 200px;
   font-size: 21px;
-  letter-spacing: 10px;
-  text-indent: 10px;
   border: 2px solid transparent;
   border-image-slice: 2;
   border-image-source: linear-gradient(94.92deg, #67de69 -57.72%, #0047b0 114.27%);

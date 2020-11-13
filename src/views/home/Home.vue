@@ -11,10 +11,10 @@
     >
       <grid key="0" class="logo">
         <transition name="fade">
-          <p class="logo-loading" text-xl font-mono v-if="xstate === 'splash'">
+          <p class="logo-loading" v-if="xstate === 'splash'">
             Loading
             <transition-group name="slide" tag="span" class="absolute">
-              <span v-for="dot in dots.count" :key="dot">.</span>
+              <span v-for="dot in dots.count" :key="dot" class="logo-loading-dot">.</span>
             </transition-group>
           </p>
         </transition>
@@ -185,10 +185,20 @@ export default {
     max-height: var(--icon-height);
   }
   &-loading {
+    @extend .font-orbitron;
+    font-size: 24px;
+    background: linear-gradient(94.78deg, #67de69 -5.54%, #2c6bca 110.77%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     transition: all 0.8s var(--bezier-home);
     position: absolute;
     text-align: center;
     top: -120px;
+    &-dot {
+      background: #2c6bca;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 }
 .home-trans-reverse-leave-to,

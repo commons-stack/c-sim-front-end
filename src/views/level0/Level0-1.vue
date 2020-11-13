@@ -2,19 +2,21 @@
   <div class="layout-center">
     <div class="x-home-bg"></div>
     <img class="x-home-bg-img" src="@/assets/home_bg.png" alt="background image" />
-    <p class="letter-spacing-5" uppercase>Level 0</p>
-    <h2 class="level-title">Choose the rules for the Commons</h2>
-    <p class="level-text mt-2">
-      To whom can we give these fantastical tools that will empower humanity to save life on earth?
-      Are you ready to find out?
-    </p>
-    <form-input
-      class="text-xxxl text-center mt-2"
-      @valid="forms.vset.input.name"
-      v-model="forms.input.name"
-      required
-      placeholder="Enter your name"
-    />
+    <grid gap="1" justify-items style="max-width: 50%;">
+      <p class="lato-header" uppercase>Level 0</p>
+      <h2 class="teko-title mt-1p5">Choose the rules for the Commons</h2>
+      <p class="level-text mt-2">
+        To whom can we give these fantastical tools that will empower humanity to save life on
+        earth? Are you ready to find out?
+      </p>
+      <form-input
+        class="teko-title mt-2"
+        @valid="forms.vset.input.name"
+        v-model="forms.input.name"
+        placeholder="Enter your name"
+        required
+      />
+    </grid>
     <button @click="goNext" class="mt-2" :disabled="!forms.vget.input.form">next</button>
     <div class="x-home-shapes-wrap">
       <div class="x-home-shapes">
@@ -93,7 +95,7 @@ export default {
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -2;
   transition-property: opacity, transform;
   transition-duration: var(--bg-duration);
   transition-timing-function: cubic-bezier(0.2, -0.13, 0, 1);
@@ -112,6 +114,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: -1;
 }
 .x-home-shapes {
   position: relative;
@@ -120,7 +123,6 @@ export default {
 .x-shape-right {
   top: var(--shape-top);
   position: absolute;
-  z-index: -1;
   transition: all 1s cubic-bezier(0.37, 0, 0.1, 1);
 }
 .x-shape-left {
