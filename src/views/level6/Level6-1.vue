@@ -4,7 +4,7 @@
     <h2 class="teko-subtitle text-center">What percentage goes to funding at exit?</h2>
     <div class="layout-form">
       <form-progress />
-      <grid class="align-content w-1-1 ph-5">
+      <grid class="align-content w-1-1 ph-5" style="max-width: 1200px;">
         <grid gtc="1fr auto 1fr" gap="2" class="ph-5">
           <grid class="justify-self-start justify-items align-content relative" gap="1">
             <p class="font-teko fs-24">Your Wallet</p>

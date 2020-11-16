@@ -6,31 +6,52 @@
     </h2>
     <div class="layout-form">
       <form-progress />
-      <grid class="align-content w-1-1 ph-5" gap="2">
-        <grid class="justify-items relative" gap="1.5">
-          <p>TODO RADIO</p>
-          <icon icon="GridNet" class="absolute" style="bottom: -10px; zoom: 1.3;" />
-          <icon icon="ElipseGradient" class="absolute" style="bottom: -20px; opacity: 0.8;" />
+      <grid class="main-section">
+        <grid class="graph-section">
+          <icon icon="GridNet" class="absolute" style="bottom: 23px; zoom: 1.3;" />
+          <icon icon="ElipseGradient" class="absolute" style="bottom: 40px; opacity: 0.5;" />
+          <div class="relative">
+            <Chart :chart="chart" width="600" gradient="#59c973dd #247c9744" />
+          </div>
         </grid>
-        <div>
-          <form-input
-            type="range"
-            v-model="forms.input.decisions"
-            @valid="forms.vset.input.decisions"
-            required
-            :min="1"
-            :max="50"
-          />
-          <grid gtc="auto 1fr auto">
-            <p class="form-text">{{ min }}</p>
-            <p class="form-text-value justify-self">{{ forms.input.decisions }}</p>
-            <p class="form-text">{{ max }}</p>
-          </grid>
-        </div>
+        <grid class="form-section">
+          <label
+            :id="`${day}-days`"
+            v-for="day in [3, 10, 30, 60]"
+            :key="day"
+            @click="forms.input.decisions = day"
+          >
+            <input
+              class="cursor-pointer"
+              type="radio"
+              :id="`${day}-days`"
+              :name="`${day} Days`"
+              :value="day"
+              v-model="forms.input.decisions"
+            />
+            <span>{{ day }} Days</span>
+          </label>
+          <label>
+            <form-input
+              id="days-input"
+              type="number"
+              placeholder="Custom value"
+              class="text-center"
+              style="font-size: 26px; width: 125px;"
+              v-model="forms.input.decisions"
+              :value="forms.input.decisions"
+              @valid="forms.vset.input.decisions"
+              required
+              :min="min"
+              :max="max"
+            />
+            <span style="font-size: 16px;">Days</span>
+          </label>
+        </grid>
       </grid>
     </div>
 
-    <button @click="submit" :disabled="!forms.vget.input.form">next</button>
+    <button @click="$router.push('/level/5/2')" :disabled="!forms.vget.input.form">next</button>
 
     <modal ref="modal" bg="" overlay="dark">
       <div class="layout-modal">
@@ -62,29 +83,91 @@
 </template>
 
 <script>
+import Chart from '../../components/common/Chart.vue'
+
 export default {
   name: 'level-5-1',
-  created() {
-    this.forms.input.decisions = this.$store.state.CommonsModule.decisions
-  },
+  components: { Chart },
   data() {
     return {
       min: 1,
-      max: 50,
+      max: 120,
       forms: {
         input: {
-          decisions: undefined,
+          decisions: this.$store.state.CommonsModule.decisions,
         },
       },
     }
   },
-  methods: {
-    submit() {
-      this.$store.commit('CommonsModule/setDecisions', this.forms.input.decisions)
-      this.$router.push('/level/5/2')
+  watch: {
+    'forms.input.decisions'(x) {
+      this.$store.commit('CommonsModule/setDecisions', x)
+    },
+  },
+  computed: {
+    chart() {
+      const input = this.forms.input.decisions
+      return {
+        type: 'line',
+        data: {
+          labels: [0, 3, 10, 30, 60],
+          datasets: [
+            {
+              data: [0, input, 3, 5, 0],
+              strokeColor: '#ff6c23',
+              pointBackgroundColor: '#fff',
+              pointBorderWidth: 8,
+              pointBorderColor: '#fff4',
+              pointHoverBackgroundColor: '#fff',
+              pointHoverBorderWidth: 12,
+              pointRadius: ctx => (ctx.dataIndex === 1 ? 3 : 0),
+              pointHitRadius: ctx => (ctx.dataIndex === 1 ? 10 : 0),
+              borderColor: '#67DE69',
+              borderWidth: 0.5,
+            },
+          ],
+        },
+        options: {
+          legend: {
+            display: false,
+          },
+          scales: {
+            yAxes: [{ ticks: { beginAtZero: true } }],
+            // xAxes: [{ type: 'logarithmic' }],
+          },
+        },
+      }
     },
   },
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.main-section {
+  align-content: center;
+  width: 100%;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  gap: 1rem;
+}
+.graph-section {
+  justify-items: center;
+  position: relative;
+  gap: 1.5rem;
+}
+.form-section {
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  column-gap: 2rem;
+  grid-template-columns: repeat(5, auto);
+  & > label {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 0.5rem;
+    @extend .font-teko;
+    font-size: 26px;
+  }
+}
+</style>

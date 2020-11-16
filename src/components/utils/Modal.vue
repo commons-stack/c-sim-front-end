@@ -36,9 +36,9 @@ export default {
   props: {
     xClass: [String, Object, Array],
     xStyle: [String, Object],
-    overlay: [String, Boolean],
+    overlay: [Boolean, String],
     bg: {
-      type: [String, Boolean],
+      type: [Boolean, String],
       default: true,
     },
   },
@@ -107,7 +107,7 @@ export default {
 
 <style scoped lang="scss">
 .x-wrap {
-  @extend .center, .h-1-1, .w-1-1, .flex, .box;
+  @extend .center, .h-vh, .w-vw, .flex, .box;
   z-index: 100;
   overflow: auto;
 }

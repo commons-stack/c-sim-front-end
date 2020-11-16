@@ -1,11 +1,9 @@
 export const XState = {
   install(Vue) {
     Vue.prototype.$send = function(event) {
-      if (
-        typeof this.machine !== 'object' ||
-        typeof this.machine.send !== 'function'
-      )
-        console.warn('Can not send event if machine has not been registered')
+      if (typeof this.machine?.send !== 'function')
+        // eslint-disable-next-line no-console
+        console.warn('Can not send event if machine has not been registered.')
       else this.machine.send(event)
     }
     Vue.mixin({

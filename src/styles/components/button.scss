@@ -1,8 +1,9 @@
 body button:disabled {
   cursor: default;
   color: #fff8 !important;
+  opacity: 0.5;
   box-shadow: none !important;
-  background: #000 !important;
+  background: #4444 !important;
   &::before {
     content: '';
     background-image: linear-gradient(
