@@ -6,7 +6,7 @@
     </h2>
     <div class="layout-form">
       <form-progress />
-      <grid column class="align-content w-1-1 ph-5">
+      <grid column class="align-content w-1-1 ph-5" style="max-width: 1200px;">
         <flex class="relative flex-center">
           <icon icon="Hatchers3" class="justify-self" />
           <icon

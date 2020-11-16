@@ -9,7 +9,7 @@
     </p>
     <div class="layout-form">
       <form-progress />
-      <grid class="align-content w-1-1 ph-5" gap="2">
+      <grid class="align-content w-1-1 ph-5" gap="2" style="max-width: 1200px;">
         <grid gtc="1fr 1fr" gap="2" class="ph-5">
           <grid class="justify-self-start justify-items" gap="1">
             <p class="font-teko fs-24">Funding Pool</p>
@@ -29,7 +29,7 @@
             :min="min"
             :max="max"
           />
-          <grid gtc="auto 1fr auto">
+          <grid gtc="auto 1fr auto" class="w-1-1">
             <p class="form-text">{{ min }}%</p>
             <p class="form-text-value justify-self">{{ forms.input.funding }}%</p>
             <p class="form-text">{{ max }}%</p>
