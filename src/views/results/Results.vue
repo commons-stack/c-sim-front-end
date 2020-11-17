@@ -85,6 +85,7 @@ export default {
 <style scoped lang="scss">
 .graph-wrap {
   text-align: start;
+  margin-top: 2rem;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
