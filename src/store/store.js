@@ -16,7 +16,6 @@ export const store = new Vuex.Store({
   actions: {
     onOpen({ commit }) {
       commit('NotificationModule/clear')
-      console.log('OPENING APP')
     },
     onClose() {},
     onLogin() {},
