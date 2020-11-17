@@ -77,6 +77,7 @@
 
 <script>
 import Cylinder from '../../components/common/Cylinder.vue'
+import { utils } from '../../utils/utils'
 
 export default {
   name: 'level-3-1',
@@ -85,8 +86,8 @@ export default {
   },
   data() {
     return {
-      min: 30,
-      max: 70,
+      min: 1,
+      max: 99,
       forms: {
         input: {
           funding: this.$store.state.CommonsModule.funding,
@@ -96,8 +97,7 @@ export default {
   },
   computed: {
     fundingProgress() {
-      const input = this.forms.input.funding
-      return ((input - this.min) / (this.max - this.min)) * 100
+      return utils.changeScale(this.forms.input.funding, this.min, this.max)
     },
   },
   watch: {

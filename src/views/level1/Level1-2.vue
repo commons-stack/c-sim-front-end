@@ -56,8 +56,8 @@ export default {
   name: 'level-1-2',
   data() {
     return {
-      min: 1,
-      max: 300,
+      min: 3,
+      max: 150,
       forms: {
         input: {
           foundingMembers: this.$store.state.CommonsModule.foundingMembers,

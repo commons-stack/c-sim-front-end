@@ -14,7 +14,7 @@
         <grid class="justify-items relative" gap="1.5">
           <p class="font-teko fs-24">Funding Pool</p>
           <icon icon="ElipseGradient" class="absolute" style="bottom: -20px; opacity: 0.8;" />
-          <Cylinder :progress="forms.input.votingPower" type="green" />
+          <Cylinder :progress="votingPowerProgress" type="green" />
         </grid>
         <grid class="justify-items">
           <form-input
@@ -58,6 +58,7 @@
 
 <script>
 import Cylinder from '../../components/common/Cylinder.vue'
+import { utils } from '../../utils/utils'
 
 export default {
   name: 'level-4-1',
@@ -66,14 +67,19 @@ export default {
   },
   data() {
     return {
-      min: 0,
-      max: 100,
+      min: 5,
+      max: 50,
       forms: {
         input: {
           votingPower: this.$store.state.CommonsModule.votingPower,
         },
       },
     }
+  },
+  computed: {
+    votingPowerProgress() {
+      return utils.changeScale(this.forms.input.votingPower, this.min, this.max, 0, 100)
+    },
   },
   watch: {
     'forms.input.votingPower'(x) {

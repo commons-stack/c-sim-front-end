@@ -66,6 +66,7 @@
 <script>
 import Cylinder from '../../components/common/Cylinder.vue'
 import ExitFormCircles from '../../components/common/ExitFormCircles.vue'
+import { utils } from '../../utils/utils'
 
 export default {
   name: 'level-6-1',
@@ -76,7 +77,7 @@ export default {
   data() {
     return {
       min: 1,
-      max: 50,
+      max: 80,
       forms: {
         input: {
           exiting: this.$store.state.CommonsModule.exiting,
@@ -86,8 +87,7 @@ export default {
   },
   computed: {
     exitingProgress() {
-      const input = this.forms.input.exiting
-      return ((input - this.min) / (this.max - this.min)) * 100
+      return utils.changeScale(this.forms.input.exiting, this.min, this.max)
     },
   },
   watch: {

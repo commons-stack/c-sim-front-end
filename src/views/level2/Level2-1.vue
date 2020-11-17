@@ -15,7 +15,8 @@
           v-model="forms.input.proposals"
           @valid="forms.vset.input.proposals"
           required
-          min="0"
+          :min="min"
+          :max="max"
         />
       </flex>
     </div>
@@ -52,6 +53,8 @@ export default {
   name: 'level-2-1',
   data() {
     return {
+      min: 1,
+      max: 50,
       forms: {
         input: {
           proposals: this.$store.state.CommonsModule.proposals,

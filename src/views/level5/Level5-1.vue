@@ -90,7 +90,7 @@ export default {
   data() {
     return {
       min: 1,
-      max: 120,
+      max: 60,
       forms: {
         input: {
           decisions: this.$store.state.CommonsModule.decisions,
