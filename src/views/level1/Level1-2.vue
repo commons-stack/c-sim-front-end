@@ -6,7 +6,7 @@
     </h2>
     <div class="layout-form">
       <form-progress />
-      <grid column class="align-content w-1-1 ph-5" style="max-width: 1200px;">
+      <grid class="layout-form-grid">
         <flex class="relative flex-center">
           <icon icon="Hatchers3" class="justify-self" />
           <icon
@@ -21,13 +21,13 @@
           v-model="forms.input.foundingMembers"
           @valid="forms.vset.input.foundingMembers"
           required
-          :min="min"
-          :max="max"
+          :min="minmax.foundingMembers.min"
+          :max="minmax.foundingMembers.max"
         />
         <grid gtc="auto 1fr auto">
-          <p class="form-text">{{ min }}</p>
+          <p class="form-text">{{ minmax.foundingMembers.min }}</p>
           <p class="form-text-value justify-self">{{ forms.input.foundingMembers }}</p>
-          <p class="form-text">{{ max }}</p>
+          <p class="form-text">{{ minmax.foundingMembers.max }}</p>
         </grid>
       </grid>
     </div>
@@ -52,25 +52,25 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'level-1-2',
   data() {
     return {
-      min: 3,
-      max: 150,
       forms: {
         input: {
-          foundingMembers: this.$store.state.CommonsModule.foundingMembers,
+          foundingMembers: this.$store.state.CommonsModule.form.foundingMembers,
         },
       },
     }
   },
   watch: {
     'forms.input.foundingMembers'(x) {
-      this.$store.commit('CommonsModule/setFoundingMembers', x)
+      this.$store.commit('CommonsModule/setFormFoundingMembers', x)
     },
   },
   computed: {
+    ...mapState('CommonsModule', ['minmax']),
     hatcherIcon() {
       const entries = [30, 60, 90, 120, 150, 180, 240, 300]
       const num =

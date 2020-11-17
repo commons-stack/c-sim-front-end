@@ -1,5 +1,5 @@
-import { is } from '../utils/validation'
 import { utils } from '../utils/utils'
+import { is } from '../utils/validation'
 
 // createModule({state, getters, mutations, actions})
 // - vuex module factory function which generates MUTATIONS & GETTERS based on STATE (works on nested states)
@@ -59,22 +59,14 @@ export const wrapPromise = (
       })
   })
 
-const mapMutationsAndGetters = (
-  object,
-  mutations,
-  getters,
-  parentKeys = [],
-) => {
+const mapMutationsAndGetters = (object, mutations, getters, parentKeys = []) => {
   Object.entries(object).forEach(([key, value]) => {
     const allKeys = [...parentKeys, key]
     const getCurrentObj = state => parentKeys.reduce((a, c) => a[c], state)
     const currentObj = state => getCurrentObj(state)[key]
     const capitalizedKeys = allKeys.map(utils.capitalize).join('')
-    const capitalizedExceptFirst = allKeys
-      .map((x, i) => (i > 0 ? utils.capitalize(x) : x))
-      .join('')
-    mutations[`set${capitalizedKeys}`] = (state, data) =>
-      (getCurrentObj(state)[key] = data)
+    const capitalizedExceptFirst = allKeys.map((x, i) => (i > 0 ? utils.capitalize(x) : x)).join('')
+    mutations[`set${capitalizedKeys}`] = (state, data) => (getCurrentObj(state)[key] = data)
     mutations[`clear${capitalizedKeys}`] = state =>
       (getCurrentObj(state)[key] = JSON.parse(JSON.stringify(value)))
     getters[`get${capitalizedKeys}`] = state => getCurrentObj(state)[key]
@@ -86,19 +78,14 @@ const mapMutationsAndGetters = (
   })
 }
 
-const mapCollectionMutations = (
-  mutations,
-  currentObj,
-  capitalizedExceptFirst,
-) => {
+const mapCollectionMutations = (mutations, currentObj, capitalizedExceptFirst) => {
   const add = `${capitalizedExceptFirst}CollectionAdd`
   const addMultiple = `${capitalizedExceptFirst}CollectionAddMultiple`
   const remove = `${capitalizedExceptFirst}CollectionRemove`
   const update = `${capitalizedExceptFirst}CollectionUpdate`
 
   mutations[add] = (state, item) =>
-    currentObj(state).some(x => x.id !== item.id) &&
-    currentObj(state).push(item)
+    currentObj(state).some(x => x.id !== item.id) && currentObj(state).push(item)
   mutations[addMultiple] = (state, itemArray) =>
     itemArray.forEach(i => {
       if (!currentObj(state).some(x => x.id === i.id)) currentObj(state).push(i)
@@ -107,8 +94,7 @@ const mapCollectionMutations = (
     const _id =
       typeof id === 'number'
         ? id
-        : typeof id === 'object' &&
-          Object.prototype.hasOwnProperty.call(id, 'id')
+        : typeof id === 'object' && Object.prototype.hasOwnProperty.call(id, 'id')
         ? id.id
         : undefined
     if (_id) {

@@ -62,3 +62,37 @@ body {
     padding-left: 36rem;
   }
 }
+
+.layout-form-grid {
+  --layout-form-padding: 0;
+  @include s {
+    --layout-form-padding: 1rem;
+  }
+  @include m {
+    --layout-form-padding: 2rem;
+  }
+  @include l {
+    --layout-form-padding: 5rem;
+  }
+  display: grid;
+  align-content: center;
+  width: 100%;
+  max-width: 1200px;
+  padding-left: var(--layout-form-padding);
+  padding-right: var(--layout-form-padding);
+  gap: 1rem;
+}
+
+.layout-form-icons {
+  --x-padding-horizontal: 1rem;
+  @include s {
+    --x-padding-horizontal: 2rem;
+  }
+  @include m {
+    --x-padding-horizontal: 5rem;
+  }
+  gap: 2rem;
+  padding-left: var(--x-padding-horizontal);
+  padding-right: var(--x-padding-horizontal);
+  grid-template-columns: 1fr 1fr;
+}

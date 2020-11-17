@@ -12,27 +12,27 @@
       <flex class="text-center flex-center" style="grid-area: field;">
         <grid class="sim-data">
           <div>
-            <p>{{ $store.state.CommonsModule.foundingMembers }}</p>
+            <p>{{ form.foundingMembers }}</p>
             <p>FOUNDING MEMBERS</p>
           </div>
           <div>
-            <p>{{ $store.state.CommonsModule.proposals }}</p>
+            <p>{{ form.proposals }}</p>
             <p>PROPOSALS</p>
           </div>
           <div>
-            <p>{{ $store.state.CommonsModule.funding }}%</p>
+            <p>{{ form.funding }}%</p>
             <p>FUNDING</p>
           </div>
           <div>
-            <p>{{ $store.state.CommonsModule.votingPower }}%</p>
+            <p>{{ form.votingPower }}%</p>
             <p>VOTING POWER</p>
           </div>
           <div>
-            <p>{{ $store.state.CommonsModule.decisions }} Days</p>
+            <p>{{ form.decisions }} Days</p>
             <p>DECISIONS</p>
           </div>
           <div>
-            <p>{{ $store.state.CommonsModule.exiting }}%</p>
+            <p>{{ form.exiting }}%</p>
             <p>EXITING</p>
           </div>
         </grid>
@@ -47,16 +47,12 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'level-6-1',
-  computed: {
-    ...mapState('CommonsModule', [
-      'foundingMembers',
-      'proposals',
-      'funding',
-      'votingPower',
-      'decisions',
-      'exiting',
-      'response',
-    ]),
+  computed: { ...mapState('CommonsModule', ['form']) },
+  methods: {
+    runSimulation() {
+      this.$store.dispatch('CommonsModule/runSimulation')
+      this.$router.push('/submit')
+    },
   },
 }
 </script>

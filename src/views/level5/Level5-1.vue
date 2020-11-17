@@ -6,7 +6,7 @@
     </h2>
     <div class="layout-form">
       <form-progress />
-      <grid class="main-section">
+      <grid class="layout-form-grid">
         <grid class="graph-section">
           <!-- <icon icon="GridNet" class="absolute" style="bottom: 23px; zoom: 1.3;" /> -->
           <icon icon="ElipseGradient" class="absolute" style="bottom: 20px; opacity: 0.2;" />
@@ -41,8 +41,8 @@
               v-model="forms.input.decisions"
               @valid="forms.vset.input.decisions"
               required
-              :min="min"
-              :max="max"
+              :min="minmax.decisions.min"
+              :max="minmax.decisions.max"
             />
             <span style="font-size: 16px;">Days</span>
           </label>
@@ -82,6 +82,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Chart from '../../components/common/Chart.vue'
 
 export default {
@@ -89,18 +90,16 @@ export default {
   components: { Chart },
   data() {
     return {
-      min: 1,
-      max: 120,
       forms: {
         input: {
-          decisions: this.$store.state.CommonsModule.decisions,
+          decisions: this.$store.state.CommonsModule.form.decisions,
         },
       },
     }
   },
   watch: {
     'forms.input.decisions'(x) {
-      this.$store.commit('CommonsModule/setDecisions', x)
+      this.$store.commit('CommonsModule/setFormDecisions', x)
     },
   },
   methods: {
@@ -110,6 +109,7 @@ export default {
     },
   },
   computed: {
+    ...mapState('CommonsModule', ['minmax']),
     chart() {
       const input = this.forms.input.decisions
       return {
@@ -148,13 +148,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.main-section {
-  align-content: center;
-  width: 100%;
-  padding-left: 5rem;
-  padding-right: 5rem;
-  gap: 1rem;
-}
 .graph-section {
   justify-items: center;
   position: relative;

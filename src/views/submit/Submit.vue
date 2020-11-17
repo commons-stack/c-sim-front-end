@@ -79,11 +79,11 @@ export default {
     runSimulationWithTimer() {
       Promise.all([this.runSimulation(), this.runTimer()])
         .then(() => {
-          this.$notification.success('Simulation success')
+          this.$notification.success('Simulation finished')
           this.$router.push('/results')
         })
         .catch(() => {
-          this.$notification.error('Simulation error...')
+          this.$notification.error('Simulation failed')
           this.$router.push('/level/7/1')
         })
     },

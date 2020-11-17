@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     styles(i) {
-      if (((i - 1) % 3) % 2) return { position: 'relative', top: '-15px' }
+      if (!(((i - 1) % 3) % 2)) return { position: 'relative', top: '15px' }
     },
   },
   computed: {

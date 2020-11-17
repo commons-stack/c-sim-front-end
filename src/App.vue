@@ -12,11 +12,7 @@ import Notification from '@/components/app/Notification.vue'
 
 export default {
   name: 'app',
-  props: {},
-  methods: {},
-  components: {
-    Notification,
-  },
+  components: { Notification },
 }
 </script>
 

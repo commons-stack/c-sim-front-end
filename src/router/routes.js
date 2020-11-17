@@ -23,16 +23,10 @@ export const routes = [
   {
     path: '/',
     component: Home,
-    meta: {
-      title: 'Home',
-    },
   },
   {
     path: '/intro',
     component: Intro,
-    meta: {
-      title: 'Introduction',
-    },
   },
   {
     path: '/level/0/1',
