@@ -11,9 +11,6 @@
 </template>
 
 <script>
-import ArrowBack from './icons/ArrowBack.vue'
-import ArrowForward from './icons/ArrowForward.vue'
-import ArrowForwardSmall from './icons/ArrowForwardSmall.vue'
 import Cad from './icons/Cad.vue'
 import CircleNet from './icons/CircleNet.vue'
 import Close from './icons/Close.vue'
@@ -21,8 +18,6 @@ import CylinderBottom from './icons/CylinderBottom.vue'
 import CylinderEmpty from './icons/CylinderEmpty.vue'
 import CylinderTop from './icons/CylinderTop.vue'
 import Dot from './icons/Dot.vue'
-import DropdownLeft from './icons/DropdownLeft.vue'
-import DropdownRight from './icons/DropdownRight.vue'
 import Edit from './icons/Edit.vue'
 import ElipseGradient from './icons/ElipseGradient.vue'
 import ExitFormCircle from './icons/ExitFormCircle.vue'
@@ -50,9 +45,6 @@ import Twitter from './icons/Twitter.vue'
 import { utils } from '../../utils/utils.js'
 
 const icons = {
-  ArrowBack,
-  ArrowForward,
-  ArrowForwardSmall,
   Cad,
   CircleNet,
   Close,
@@ -60,8 +52,6 @@ const icons = {
   CylinderEmpty,
   CylinderTop,
   Dot,
-  DropdownLeft,
-  DropdownRight,
   Edit,
   ElipseGradient,
   ExitFormCircle,
