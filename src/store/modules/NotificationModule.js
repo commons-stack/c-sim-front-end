@@ -5,41 +5,30 @@ export const NotificationModule = createModule({
     notifications: [],
     timeout: undefined,
   },
-  getters: {
-    getId(state) {
-      if (state.notifications.length > 0) return state.notifications[0].id
+  mutations: {
+    clear: state => {
+      state.notificaitons = []
+      state.timeout = undefined
     },
   },
-  mutations: {},
   actions: {
     success({ dispatch }, message) {
-      dispatch('send', {
-        type: 'success',
-        message,
-      })
+      dispatch('send', { type: 'success', message })
     },
     error({ dispatch }, message) {
-      dispatch('send', {
-        type: 'error',
-        message,
-      })
+      dispatch('send', { type: 'error', message })
     },
     send({ state, dispatch }, { type, message }) {
-      const id = Date.now()
-      state.notifications.push({
-        id,
-        type,
-        message,
-      })
-      if (!state.timeout) dispatch('remove', id)
+      state.notifications.push({ id: Date.now(), type, message })
+      if (!state.timeout) dispatch('remove')
     },
-    remove({ state, commit, getters, dispatch }, payload) {
+    remove({ state, commit, dispatch }) {
+      if (state.timeout) clearInterval(state.timeout)
       state.timeout = setTimeout(() => {
-        commit('notificationsCollectionRemove', payload)
+        commit('notificationsListShift')
         state.timeout = undefined
-        const id = getters['getId']
-        if (id) dispatch('remove', id)
-      }, 1200)
+        if (state.notifications.length !== 0) dispatch('remove')
+      }, 2000)
     },
   },
 })
