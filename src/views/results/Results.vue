@@ -68,12 +68,6 @@
         <p>Example chart</p>
       </div>
     </div>
-    <div style="text-align: start;">
-      <template v-for="key in Object.keys(data)">
-        <p :key="key">{{ key.toUpperCase() }}:</p>
-        <div :key="`${key}-data`" style="font-size: 9px;">{{ data[key] }}</div>
-      </template>
-    </div>
     <p class="teko-subtitle mt-5">
       Did the RxC community create a sustainable Commons to support RxC gatherings?
     </p>
@@ -217,7 +211,7 @@ export default {
         options: {
           legend: {
             labels: {
-              fontColor: '#fff8',
+              fontColor: '#fffa',
             },
           },
           scales: {
