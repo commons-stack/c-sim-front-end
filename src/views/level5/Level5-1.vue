@@ -8,8 +8,8 @@
       <form-progress />
       <grid class="main-section">
         <grid class="graph-section">
-          <icon icon="GridNet" class="absolute" style="bottom: 23px; zoom: 1.3;" />
-          <icon icon="ElipseGradient" class="absolute" style="bottom: 40px; opacity: 0.5;" />
+          <!-- <icon icon="GridNet" class="absolute" style="bottom: 23px; zoom: 1.3;" /> -->
+          <icon icon="ElipseGradient" class="absolute" style="bottom: 20px; opacity: 0.2;" />
           <div class="relative">
             <Chart :chart="chart" width="600" gradient="#59c973dd #247c9744" />
           </div>
@@ -19,7 +19,7 @@
             :id="`${day}-days`"
             v-for="day in [3, 10, 30, 60]"
             :key="day"
-            @click="forms.input.decisions = day"
+            @click="setOption(day)"
           >
             <input
               class="cursor-pointer"
@@ -39,7 +39,6 @@
               class="text-center"
               style="font-size: 26px; width: 125px;"
               v-model="forms.input.decisions"
-              :value="forms.input.decisions"
               @valid="forms.vset.input.decisions"
               required
               :min="min"
@@ -102,6 +101,12 @@ export default {
   watch: {
     'forms.input.decisions'(x) {
       this.$store.commit('CommonsModule/setDecisions', x)
+    },
+  },
+  methods: {
+    setOption(day) {
+      this.forms.input.decisions = day
+      this.forms.vset.input.decisions(true)
     },
   },
   computed: {
