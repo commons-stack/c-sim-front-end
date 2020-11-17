@@ -9,8 +9,8 @@
     </p>
     <div class="layout-form">
       <form-progress />
-      <grid class="align-content w-1-1 ph-5" gap="2" style="max-width: 1200px;">
-        <grid gtc="1fr 1fr" gap="2" class="ph-5">
+      <grid class="layout-form-grid">
+        <grid class="layout-form-icons">
           <grid class="justify-self-start justify-items" gap="1">
             <p class="font-teko fs-24">Funding Pool</p>
             <Cylinder :progress="100 - fundingProgress" type="green" />
@@ -26,13 +26,13 @@
             v-model="forms.input.funding"
             @valid="forms.vset.input.funding"
             required
-            :min="min"
-            :max="max"
+            :min="minmax.funding.min"
+            :max="minmax.funding.max"
           />
           <grid gtc="auto 1fr auto" class="w-1-1">
-            <p class="form-text">{{ min }}%</p>
+            <p class="form-text">{{ minmax.funding.min }}%</p>
             <p class="form-text-value justify-self">{{ forms.input.funding }}%</p>
-            <p class="form-text">{{ max }}%</p>
+            <p class="form-text">{{ minmax.funding.max }}%</p>
           </grid>
         </div>
       </grid>
@@ -48,7 +48,7 @@
           they will always have monetary value. The Funding Pool will be used to fund RadicalxChange
           initiatives.
         </p>
-        <grid class="x-subsection" gtc="1fr 1fr" gap="3">
+        <grid gtc="1fr 1fr" gap="3" style="max-width: 800px;">
           <div>
             <p class="teko-subtitle" style="text-align: start;">Hatch Tribute</p>
             <p class="fs-20 font-ibm">
@@ -76,7 +76,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Cylinder from '../../components/common/Cylinder.vue'
+import { utils } from '../../utils/utils'
 
 export default {
   name: 'level-3-1',
@@ -85,31 +87,29 @@ export default {
   },
   data() {
     return {
-      min: 30,
-      max: 70,
       forms: {
         input: {
-          funding: this.$store.state.CommonsModule.funding,
+          funding: this.$store.state.CommonsModule.form.funding,
         },
       },
     }
   },
   computed: {
+    ...mapState('CommonsModule', ['minmax']),
     fundingProgress() {
-      const input = this.forms.input.funding
-      return ((input - this.min) / (this.max - this.min)) * 100
+      return utils.changeScale(
+        this.forms.input.funding,
+        this.minmax.funding.min,
+        this.minmax.funding.max,
+      )
     },
   },
   watch: {
     'forms.input.funding'(x) {
-      this.$store.commit('CommonsModule/setFunding', x)
+      this.$store.commit('CommonsModule/setFormFunding', x)
     },
   },
 }
 </script>
 
-<style scoped lang="scss">
-.x-subsection {
-  max-width: 800px;
-}
-</style>
+<style scoped lang="scss"></style>

@@ -3,6 +3,7 @@ import VueI18n from 'vue-i18n'
 import vOutsideEvents from 'vue-outside-events'
 import en from './locales/en.json'
 import { configureComponents } from './main.config.components'
+import { BreakpointPlugin } from './plugins/BreakpointsPlugin'
 import { CSSVars } from './plugins/CSSVars'
 import { FormsPlugin } from './plugins/FormsPlugin'
 import { XState } from './plugins/XState'
@@ -17,6 +18,7 @@ export const configure = () => {
   Vue.use(CSSVars)
   Vue.use(XState)
   Vue.use(FormsPlugin)
+  Vue.use(BreakpointPlugin)
 
   Vue.directive('focus', { inserted: el => el.focus() })
 

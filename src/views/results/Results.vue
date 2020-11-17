@@ -10,27 +10,27 @@
     <div class="graph-wrap">
       <grid class="graph-nav">
         <div>
-          <p>{{ $store.state.CommonsModule.foundingMembers }}</p>
+          <p>{{ form.foundingMembers }}</p>
           <p>FOUNDING MEMBERS</p>
         </div>
         <div>
-          <p>{{ $store.state.CommonsModule.proposals }}</p>
+          <p>{{ form.proposals }}</p>
           <p>PROPOSALS</p>
         </div>
         <div>
-          <p>{{ $store.state.CommonsModule.funding }}%</p>
+          <p>{{ form.funding }}%</p>
           <p>FUNDING</p>
         </div>
         <div>
-          <p>{{ $store.state.CommonsModule.votingPower }}%</p>
+          <p>{{ form.votingPower }}%</p>
           <p>VOTING POWER</p>
         </div>
         <div>
-          <p>{{ $store.state.CommonsModule.decisions }} Days</p>
+          <p>{{ form.decisions }} Days</p>
           <p>DECISIONS</p>
         </div>
         <div>
-          <p>{{ $store.state.CommonsModule.exiting }}%</p>
+          <p>{{ form.exiting }}%</p>
           <p>EXITING</p>
         </div>
       </grid>
@@ -51,9 +51,9 @@
       </div>
     </div>
     <div style="text-align: start;">
-      <template v-for="key in Object.keys(results)">
+      <template v-for="key in Object.keys(outcome.result.data)">
         <p :key="key">{{ key.toUpperCase() }}:</p>
-        <div :key="`${key}-data`" style="font-size: 9px;">{{ results[key] }}</div>
+        <div :key="`${key}-data`" style="font-size: 9px;">{{ outcome.result.data[key] }}</div>
       </template>
     </div>
     <p class="teko-subtitle mt-5">
@@ -70,12 +70,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'results',
   computed: {
-    results() {
-      return this.$store.state.CommonsModule.response?.data || []
-    },
+    ...mapState('CommonsModule', ['form', 'outcome']),
   },
 }
 </script>

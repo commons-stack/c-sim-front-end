@@ -10,11 +10,11 @@
     </p>
     <div class="layout-form">
       <form-progress />
-      <grid class="align-content w-1-1 ph-5" gap="2" style="max-width: 1200px;">
+      <grid class="layout-form-grid">
         <grid class="justify-items relative" gap="1.5">
           <p class="font-teko fs-24">Funding Pool</p>
           <icon icon="ElipseGradient" class="absolute" style="bottom: -20px; opacity: 0.8;" />
-          <Cylinder :progress="forms.input.votingPower" type="green" />
+          <Cylinder :progress="votingPowerProgress" type="green" />
         </grid>
         <grid class="justify-items">
           <form-input
@@ -22,13 +22,13 @@
             v-model="forms.input.votingPower"
             @valid="forms.vset.input.votingPower"
             required
-            :min="min"
-            :max="max"
+            :min="minmax.votingPower.min"
+            :max="minmax.votingPower.max"
           />
           <grid gtc="auto 1fr auto" class="w-1-1">
-            <p class="form-text">{{ min }}%</p>
+            <p class="form-text">{{ minmax.votingPower.min }}%</p>
             <p class="form-text-value justify-self">{{ forms.input.votingPower }}%</p>
-            <p class="form-text">{{ max }}%</p>
+            <p class="form-text">{{ minmax.votingPower.max }}%</p>
           </grid>
         </grid>
       </grid>
@@ -57,7 +57,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Cylinder from '../../components/common/Cylinder.vue'
+import { utils } from '../../utils/utils'
 
 export default {
   name: 'level-4-1',
@@ -66,18 +68,26 @@ export default {
   },
   data() {
     return {
-      min: 0,
-      max: 100,
       forms: {
         input: {
-          votingPower: this.$store.state.CommonsModule.votingPower,
+          votingPower: this.$store.state.CommonsModule.form.votingPower,
         },
       },
     }
   },
+  computed: {
+    ...mapState('CommonsModule', ['minmax']),
+    votingPowerProgress() {
+      return utils.changeScale(
+        this.forms.input.votingPower,
+        this.minmax.votingPower.min,
+        this.minmax.votingPower.max,
+      )
+    },
+  },
   watch: {
     'forms.input.votingPower'(x) {
-      this.$store.commit('CommonsModule/setVotingPower', x)
+      this.$store.commit('CommonsModule/setFormVotingPower', x)
     },
   },
 }

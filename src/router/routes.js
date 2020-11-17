@@ -18,36 +18,15 @@ import Level71 from '@/views/level7/Level7-1.vue'
 import Outcome from '@/views/outcome/Outcome.vue'
 import Results from '@/views/results/Results.vue'
 import Submit from '@/views/submit/Submit.vue'
-import Test from '@/views/Test.vue'
 
-// const mapMeta = metaObject => route => {
-//   const currentMeta = route.meta || {}
-//   route.meta = {
-//     ...currentMeta,
-//     ...metaObject,
-//   }
-//   return route
-// }
-
-// routes.map(mapMeta(metaObject))
 export const routes = [
   {
     path: '/',
     component: Home,
-    meta: {
-      title: 'Home',
-    },
-  },
-  {
-    path: '/test',
-    component: Test,
   },
   {
     path: '/intro',
     component: Intro,
-    meta: {
-      title: 'Introduction',
-    },
   },
   {
     path: '/level/0/1',
@@ -60,65 +39,113 @@ export const routes = [
   {
     path: '/level/1/1',
     component: Level11,
+    meta: {
+      title: 'Founding Members',
+    },
   },
   {
     path: '/level/1/2',
     component: Level12,
+    meta: {
+      title: 'Founding Members',
+    },
   },
   {
     path: '/level/1/3',
     component: Level13,
+    meta: {
+      title: 'Founding Members',
+    },
   },
   {
     path: '/level/2/1',
     component: Level21,
+    meta: {
+      title: 'Proposals',
+    },
   },
   {
     path: '/level/2/2',
     component: Level22,
+    meta: {
+      title: 'Proposals',
+    },
   },
   {
     path: '/level/3/1',
     component: Level31,
+    meta: {
+      title: 'Funding',
+    },
   },
   {
     path: '/level/3/2',
     component: Level32,
+    meta: {
+      title: 'Funding',
+    },
   },
   {
     path: '/level/4/1',
     component: Level41,
+    meta: {
+      title: 'Voting Power',
+    },
   },
   {
     path: '/level/4/2',
     component: Level42,
+    meta: {
+      title: 'Voting Power',
+    },
   },
   {
     path: '/level/5/1',
     component: Level51,
+    meta: {
+      title: 'Decisions',
+    },
   },
   {
     path: '/level/5/2',
     component: Level52,
+    meta: {
+      title: 'Decisions',
+    },
   },
   {
     path: '/level/6/1',
     component: Level61,
+    meta: {
+      title: 'Exiting',
+    },
   },
   {
     path: '/level/7/1',
     component: Level71,
+    meta: {
+      title: 'Simulation',
+    },
   },
   {
     path: '/results',
     component: Results,
+    meta: {
+      title: 'Results',
+    },
   },
   {
     path: '/submit',
     component: Submit,
+    meta: {
+      title: 'Simulation',
+    },
   },
   {
     path: '/outcome',
     component: Outcome,
+    meta: {
+      title: 'Outcome',
+    },
   },
 ]

@@ -4,18 +4,21 @@
     <h2 class="teko-subtitle text-center">What percentage goes to funding at exit?</h2>
     <div class="layout-form">
       <form-progress />
-      <grid class="align-content w-1-1 ph-5" style="max-width: 1200px;">
-        <grid gtc="1fr auto 1fr" gap="2" class="ph-5">
+      <grid class="layout-form-grid">
+        <grid class="layout-form-icons">
           <grid class="justify-self-start justify-items align-content relative" gap="1">
             <p class="font-teko fs-24">Your Wallet</p>
             <Cylinder :progress="100 - exitingProgress" type="green" />
             <exit-form-circles :progress="100 - exitingProgress" style="right: -90px;" />
           </grid>
-          <icon icon="Man" />
+          <icon icon="Man" v-if="$breakpoints.xl" />
           <grid class="justify-self-end justify-items align-content relative" gap="1">
             <p class="font-teko fs-24">Funding Pool</p>
             <Cylinder :progress="exitingProgress" type="blue" />
-            <exit-form-circles :progress="exitingProgress" style="left: -90px;" />
+            <exit-form-circles
+              :progress="exitingProgress"
+              :style="$breakpoints.xl ? 'left: -90px;' : 'right: -90px;'"
+            />
           </grid>
         </grid>
         <form-input
@@ -23,13 +26,13 @@
           v-model="forms.input.exiting"
           @valid="forms.vset.input.exiting"
           required
-          :min="min"
-          :max="max"
+          :min="minmax.exiting.min"
+          :max="minmax.exiting.max"
         />
         <grid gtc="auto 1fr auto">
-          <p class="form-text">{{ min }}%</p>
+          <p class="form-text">{{ minmax.exiting.min }}%</p>
           <p class="form-text-value justify-self">{{ forms.input.exiting }}%</p>
-          <p class="form-text">{{ max }}%</p>
+          <p class="form-text">{{ minmax.exiting.max }}%</p>
         </grid>
       </grid>
     </div>
@@ -64,8 +67,10 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Cylinder from '../../components/common/Cylinder.vue'
 import ExitFormCircles from '../../components/common/ExitFormCircles.vue'
+import { utils } from '../../utils/utils'
 
 export default {
   name: 'level-6-1',
@@ -75,27 +80,38 @@ export default {
   },
   data() {
     return {
-      min: 1,
-      max: 50,
       forms: {
         input: {
-          exiting: this.$store.state.CommonsModule.exiting,
+          exiting: this.$store.state.CommonsModule.form.exiting,
         },
       },
     }
   },
   computed: {
+    ...mapState('CommonsModule', ['minmax']),
     exitingProgress() {
-      const input = this.forms.input.exiting
-      return ((input - this.min) / (this.max - this.min)) * 100
+      return utils.changeScale(
+        this.forms.input.exiting,
+        this.minmax.exiting.min,
+        this.minmax.exiting.max,
+      )
     },
   },
   watch: {
     'forms.input.exiting'(x) {
-      this.$store.commit('CommonsModule/setExiting', x)
+      this.$store.commit('CommonsModule/setFormExiting', x)
     },
   },
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.layout-form-icons {
+  height: 300px;
+  gap: 5rem;
+  @include xl {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+  }
+}
+</style>

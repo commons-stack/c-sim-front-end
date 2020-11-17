@@ -6,7 +6,7 @@
     </h2>
     <div class="layout-form">
       <form-progress />
-      <flex class="flex-center flex-column">
+      <flex column class="flex-center">
         <form-input
           type="number"
           placeholder="0"
@@ -15,7 +15,8 @@
           v-model="forms.input.proposals"
           @valid="forms.vset.input.proposals"
           required
-          min="0"
+          :min="minmax.proposals.min"
+          :max="minmax.proposals.max"
         />
       </flex>
     </div>
@@ -48,21 +49,25 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'level-2-1',
   data() {
     return {
       forms: {
         input: {
-          proposals: this.$store.state.CommonsModule.proposals,
+          proposals: this.$store.state.CommonsModule.form.proposals,
         },
       },
     }
   },
   watch: {
     'forms.input.proposals'(x) {
-      this.$store.commit('CommonsModule/setProposals', x)
+      this.$store.commit('CommonsModule/setFormProposals', x)
     },
+  },
+  computed: {
+    ...mapState('CommonsModule', ['minmax']),
   },
 }
 </script>
