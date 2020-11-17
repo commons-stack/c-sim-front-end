@@ -13,5 +13,17 @@ export const store = new Vuex.Store({
     CommonsModule,
     NotificationModule,
   },
+  actions: {
+    onOpen({ commit }) {
+      commit('NotificationModule/clear')
+      console.log('OPENING APP')
+    },
+    onClose() {},
+    onLogin() {},
+    onLogout() {},
+  },
   plugins: [createPersistedState()],
 })
+
+store.dispatch('onOpen')
+window.addEventListener('beforeunload', () => store.dispatch('onClose'))
