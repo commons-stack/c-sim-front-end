@@ -4,11 +4,11 @@ import { createModule } from '../store.utils'
 export const CommonsModule = createModule({
   state: {
     foundingMembers: 30,
-    proposals: undefined,
-    funding: 50,
-    votingPower: 30,
-    decisions: 90,
-    exiting: 8,
+    proposals: 3,
+    funding: 40,
+    votingPower: 50,
+    decisions: 10,
+    exiting: 25,
     response: null,
   },
   actions: {
