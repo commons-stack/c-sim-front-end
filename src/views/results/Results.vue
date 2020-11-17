@@ -34,27 +34,39 @@
           <p>EXITING</p>
         </div>
       </grid>
-      <div class="graph" style="grid-area: g1;"></div>
-      <div class="graph-info" style="grid-area: ginfo1;">
+      <div class="graph" style="`grid-area: graph1;`">
+        <Chart
+          :chart="buildChart(chart1)"
+          :width="cssVars.graphWidth"
+          :height="cssVars.graphHeight"
+        />
+      </div>
+      <div class="graph-info" style="`grid-area: desc1;`">
         <p>Metrics glossary</p>
         <p>Example chart</p>
       </div>
-      <div class="graph" style="grid-area: g2;"></div>
-      <div class="graph-info" style="grid-area: ginfo2;">
+      <div class="graph" style="`grid-area: graph2;`">
+        <Chart
+          :chart="buildChart(chart2)"
+          :width="cssVars.graphWidth"
+          :height="cssVars.graphHeight"
+        />
+      </div>
+      <div class="graph-info" style="`grid-area: desc2;`">
         <p>Metrics glossary</p>
         <p>Example chart</p>
       </div>
-      <div class="graph" style="grid-area: g3;"></div>
-      <div class="graph-info" style="grid-area: ginfo3;">
+      <div class="graph" style="`grid-area: graph3;`">
+        <Chart
+          :chart="buildChart(chart3)"
+          :width="cssVars.graphWidth"
+          :height="cssVars.graphHeight"
+        />
+      </div>
+      <div class="graph-info" style="`grid-area: desc3;`">
         <p>Metrics glossary</p>
         <p>Example chart</p>
       </div>
-    </div>
-    <div style="text-align: start;">
-      <template v-for="key in Object.keys(data)">
-        <p :key="key">{{ key.toUpperCase() }}:</p>
-        <div :key="`${key}-data`" style="font-size: 9px;">{{ data[key] }}</div>
-      </template>
     </div>
     <p class="teko-subtitle mt-5">
       Did the RxC community create a sustainable Commons to support RxC gatherings?
@@ -71,12 +83,151 @@
 
 <script>
 import { mapState } from 'vuex'
+import Chart from '../../components/common/Chart.vue'
+
 export default {
   name: 'results',
+  components: { Chart },
+  data() {
+    return {
+      cssVars: {
+        graphWidth: '400px',
+        graphHeight: '200px',
+      },
+    }
+  },
   computed: {
     ...mapState('CommonsModule', ['form', 'outcome']),
     data() {
-      return this.outcome.result?.data
+      const d = {}
+      Object.entries(this.outcome.result?.data || {}).forEach(
+        ([k, v]) => (d[k] = v.map(x => Math.round(x))),
+      )
+      return d
+    },
+    chart1() {
+      return {
+        datasets: [
+          {
+            data: this.data.funding_pool,
+            borderColor: '#17b160',
+            yAxisID: 'funding-pool',
+            label: 'funding pool',
+          },
+          {
+            data: this.data.token_supply,
+            borderColor: '#156ce2',
+            yAxisID: 'token-supply',
+            label: 'token supply',
+          },
+        ],
+        yAxes: [
+          {
+            id: 'funding-pool',
+            ticks: { fontColor: '#17b160' },
+          },
+          {
+            id: 'token-supply',
+            position: 'right',
+            ticks: { fontColor: '#156ce2' },
+          },
+        ],
+      }
+    },
+    chart2() {
+      return {
+        datasets: [
+          {
+            data: this.data.funding_pool,
+            borderColor: '#17b160',
+            yAxisID: 'funding-pool',
+            label: 'funding pool',
+          },
+          {
+            data: this.data.collateral,
+            borderColor: '#94b418',
+            yAxisID: 'collateral',
+            label: 'collateral',
+          },
+        ],
+        yAxes: [
+          {
+            id: 'funding-pool',
+            ticks: { fontColor: '#17b160' },
+          },
+          {
+            id: 'collateral',
+            position: 'right',
+            ticks: { fontColor: '#94b418' },
+          },
+        ],
+      }
+    },
+    chart3() {
+      return {
+        datasets: [
+          {
+            data: this.data.token_supply,
+            borderColor: '#156ce2',
+            yAxisID: 'token-supply',
+            label: 'token supply',
+          },
+          {
+            data: this.data.collateral,
+            borderColor: '#94b418',
+            yAxisID: 'collateral',
+            label: 'collateral',
+          },
+        ],
+        yAxes: [
+          {
+            id: 'token-supply',
+            ticks: { fontColor: '#156ce2' },
+          },
+          {
+            id: 'collateral',
+            position: 'right',
+            ticks: { fontColor: '#94b418' },
+          },
+        ],
+      }
+    },
+  },
+  methods: {
+    buildChart(input) {
+      const d = this.data
+      return {
+        type: 'line',
+        data: {
+          labels: d.timestep,
+          datasets: input.datasets.map(x => ({
+            ...x,
+            borderWidth: 1,
+            pointRadius: 0,
+            pointHitRadius: 0,
+            backgroundColor: `${x.borderColor}44`,
+          })),
+        },
+        options: {
+          legend: {
+            labels: {
+              fontColor: '#fffa',
+            },
+          },
+          scales: {
+            yAxes: input.yAxes,
+            xAxes: [
+              {
+                ticks: {
+                  fontColor: '#fff6',
+                  autoSkip: true,
+                  maxRotation: 0,
+                },
+              },
+            ],
+          },
+        },
+      }
     },
   },
 }
@@ -91,9 +242,9 @@ export default {
   grid-template-columns: 1fr auto 1fr;
   grid-template-rows: repeat(3, auto);
   grid-template-areas:
-    'gnav g1 ginfo1'
-    'gnav g2 ginfo2'
-    'gnav g3 ginfo3';
+    'gnav graph1 desc1'
+    'gnav graph2 desc2'
+    'gnav graph3 desc3';
   row-gap: 0.75rem;
   column-gap: 1.5rem;
 }
@@ -138,9 +289,9 @@ export default {
   }
 }
 .graph {
-  width: 400px;
-  height: 200px;
-  background: #43a98344;
+  width: var(--graph-width);
+  height: var(--graph-height);
+  background: #141e29;
   & > div {
     font-size: 11px;
   }
