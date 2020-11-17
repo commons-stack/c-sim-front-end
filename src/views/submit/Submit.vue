@@ -55,10 +55,8 @@ export default {
       'exiting',
       'response',
     ]),
-  },
-  methods: {
-    runSimulation() {
-      const input = {
+    formData() {
+      return {
         hatchers: this.foundingMembers,
         proposals: this.proposals,
         hatch_tribute: this.funding / 100,
@@ -68,16 +66,26 @@ export default {
         days_to_80p_of_max_voting_weight: this.decisions,
         proposal_max_size: this.votingPower / 100,
       }
-      return this.$store.dispatch('CommonsModule/fetch', input)
+    },
+  },
+  methods: {
+    runSimulation() {
+      return this.$store.dispatch('CommonsModule/fetch', this.formData)
     },
     runTimer: () =>
       new Promise(resolve => {
         setTimeout(() => resolve(true), 2500)
       }),
     runSimulationWithTimer() {
-      Promise.all([this.runSimulation(), this.runTimer()]).finally(() =>
-        this.$router.push('/results'),
-      )
+      Promise.all([this.runSimulation(), this.runTimer()])
+        .then(() => {
+          this.$notification.success('Simulation success')
+          this.$router.push('/results')
+        })
+        .catch(() => {
+          this.$notification.error('Simulation error...')
+          this.$router.push('/level/7/1')
+        })
     },
   },
 }

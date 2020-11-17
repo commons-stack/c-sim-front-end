@@ -38,7 +38,6 @@
         </grid>
       </flex>
     </div>
-
     <button @click="$router.push('/submit')">run simulation</button>
   </div>
 </template>
@@ -58,21 +57,6 @@ export default {
       'exiting',
       'response',
     ]),
-  },
-  methods: {
-    runSim() {
-      this.$store.dispatch('CommonsModule/fetch', {
-        hatchers: this.foundingMembers,
-        proposals: this.proposals,
-        hatch_tribute: this.funding / 100,
-        vesting_80p_unlocked: 60,
-        exit_tribute: this.exiting / 100,
-        kappa: 3,
-        days_to_80p_of_max_voting_weight: this.decisions,
-        proposal_max_size: this.votingPower / 100,
-      })
-      // this.$router.push('/submit')
-    },
   },
 }
 </script>
