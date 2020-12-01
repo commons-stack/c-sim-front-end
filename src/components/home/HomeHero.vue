@@ -6,7 +6,13 @@
     <p key="2" class="item sub" :class="state > 1 && 'item-active'">
       Designing the Commons with the power of cadCAD
     </p>
-    <button @click="$emit('click')" key="3" class="item mt-3" :class="state > 2 && 'item-active'">
+    <button
+      commons
+      @click="$emit('click')"
+      key="3"
+      class="item mt-3"
+      :class="state > 2 && 'item-active'"
+    >
       Enter
     </button>
   </transition-group>
@@ -41,10 +47,13 @@ export default {
 }
 .hero {
   @extend .font-teko;
+  margin-top: 2rem;
+  line-height: 0.85;
   font-size: 90px;
 }
 .sub {
   @extend .font-ibm;
+  margin-top: 1rem;
   font-size: 20px;
   position: relative;
   top: -10px;

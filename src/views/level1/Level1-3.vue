@@ -3,7 +3,7 @@
     <presentation-img />
     <grid justify-items-start align-items-start gap="2">
       <h3 class="teko-title">Great!</h3>
-      <grid gap="2" style="max-width: 650px">
+      <grid gap="2" style="max-width: 650px;">
         <p>
           Now you know how many Hatchers will contribute to the first round of funding. But what
           will be funded? There are many great projects to create value for this community, but it
@@ -15,7 +15,7 @@
           Hatchers start their voting.
         </p>
       </grid>
-      <button @click="$router.push('/level/2/1')" class="mt-2 mb-3">next</button>
+      <button commons @click="$router.push('/level/2/1')" class="mt-2 mb-3">next</button>
     </grid>
   </div>
 </template>

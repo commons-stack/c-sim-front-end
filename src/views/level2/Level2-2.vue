@@ -3,7 +3,7 @@
     <presentation-img />
     <grid justify-items-start align-items-start gap="2">
       <h3 class="teko-title">You are on a roll!</h3>
-      <grid gap="2" style="max-width: 650px">
+      <grid gap="2" style="max-width: 650px;">
         <p>
           The crowd is engaged, we have many proposals on the table - now how will they be funded
           once passed?
@@ -14,7 +14,7 @@
         </p>
       </grid>
       <p class="teko-subtitle">Funding Pools</p>
-      <grid gap="2" style="max-width: 650px">
+      <grid gap="2" style="max-width: 650px;">
         <p>
           The RxC Reserve backs the RxC token, guaranteeing liquidity for all tokens issued so that
           they will always have monetary value. The Funding Pool will be used to fund RadicalxChange
@@ -27,7 +27,7 @@
           Commons won’t be able to support very many projects.
         </p>
       </grid>
-      <button @click="$router.push('/level/3/1')" class="mt-2 mb-3">next</button>
+      <button commons @click="$router.push('/level/3/1')" class="mt-2 mb-3">next</button>
     </grid>
   </div>
 </template>

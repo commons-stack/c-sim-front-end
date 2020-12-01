@@ -38,9 +38,11 @@
       </grid>
     </div>
 
-    <button @click="$router.push('/level/3/2')" :disabled="!forms.vget.input.form">next</button>
+    <button commons @click="$router.push('/level/3/2')" :disabled="!forms.vget.input.form">
+      next
+    </button>
 
-    <modal ref="modal" bg="" overlay="dark">
+    <modal ref="modal" :bg="false" overlay="dark">
       <div class="layout-modal">
         <h2 class="teko-title">Funding Pools</h2>
         <p class="level-text mt-1">
@@ -69,7 +71,7 @@
           value, and if you put too much in the RxC Reserve, the Commons won’t be able to support
           very many projects.
         </p>
-        <button class="mt-2" @click="$refs.modal.hide()">OK</button>
+        <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>
     </modal>
   </div>

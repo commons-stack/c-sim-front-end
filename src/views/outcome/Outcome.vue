@@ -1,24 +1,37 @@
 <template>
-  <div>
+  <div class="h-1-1">
     <transition name="dropdown" appear>
-      <div class="layout-vertical">
+      <grid class="layout-vertical h-1-1" gtr="auto 1fr">
         <form-navigation title-only />
-        <p class="teko-subtitle">Good future</p>
-        <p class="teko-title score-margin">You made a High Score, {{ name }}!</p>
-        <p style="font-size: 124px;" class="font-teko">800</p>
-        <p class="teko-subtitle improve-margin">Try to improve your score</p>
-        <button @click="$router.push('/')">play again</button>
-        <flex gap="1" align-items class="mt-2">
-          <p>Share your score:</p>
-          <icon class="ml-1" icon="Facebook" button color="secondary" />
-          <icon icon="Facebook" button color="secondary" />
-          <icon icon="Facebook" button color="secondary" />
-        </flex>
-      </div>
+
+        <grid class="align-self justify-items">
+          <p class="teko-subtitle">{{ display.title }}</p>
+          <p class="x-subtitle">{{ display.subtitle }}</p>
+          <p class="x-score">{{ score }}</p>
+
+          <p class="x-improve">Try to improve your score</p>
+          <button commons @click="$router.push('/')">play again</button>
+
+          <grid gap="1" gtc="repeat(4, auto)" align-items class="mt-2" v-if="future === 'good'">
+            <p>Share your score:</p>
+            <icon class="ml-1" icon="Facebook" button color="secondary" />
+            <icon icon="Facebook" button color="secondary" />
+            <icon icon="Facebook" button color="secondary" />
+          </grid>
+          <button v-else class="text-button mt-2" @click="$router.push('/')">
+            No thanks, quit the game
+          </button>
+          <p
+            class="fixed bot right m-1 p-1 cursor-pointer"
+            @click="future = future === 'bad' ? 'good' : 'bad'"
+          >
+            Toggle future
+          </p>
+        </grid>
+      </grid>
     </transition>
     <div class="x-img-wrap">
-      <img src="@/assets/outcome_good.png" class="image-center" alt="" />
-      <div class="x-img-overlay"></div>
+      <img :src="display.image" class="x-img" alt="" />
     </div>
   </div>
 </template>
@@ -26,16 +39,41 @@
 <script>
 export default {
   name: 'outcome',
-  props: {},
+  data() {
+    return {
+      future: 'bad',
+    }
+  },
   computed: {
     name() {
-      return this.$store.getters['UserModule/getName'] || 'Sample Name'
+      return this.$store.getters['UserModule/getName']
+    },
+    score() {
+      return this.$store.state.CommonsModule.response?.score || '800'
+    },
+    display() {
+      return {
+        good: {
+          title: 'Good future',
+          subtitle: this.name ? `You made a High Score, ${this.name}!` : 'You made a High Score!',
+          image: require('@/assets/outcome_good.jpg'),
+        },
+        bad: {
+          title: 'Bad future',
+          subtitle: 'Your score',
+          image: require('@/assets/outcome_bad.jpg'),
+        },
+      }[this.future]
     },
   },
 }
 </script>
 
 <style scoped lang="scss">
+.x-img {
+  object-fit: cover;
+  object-position: center;
+}
 .x-img-wrap {
   position: fixed;
   width: 100vw;
@@ -48,22 +86,22 @@ export default {
     height: 100vh;
   }
 }
-.x-img-overlay {
-  position: fixed;
-  transform: translateX(-50%);
-  mix-blend-mode: multiply;
-  top: 0;
-  left: 50%;
-  width: 686px;
-  height: 100vh;
-  background: linear-gradient(180deg, #67de69 0%, #0047b0 100%);
-  mix-blend-mode: multiply;
-  opacity: 0.8;
+.x-subtitle {
+  @extend .teko-title;
+  margin-top: 3rem;
+  @include s {
+    margin-top: 6rem;
+  }
 }
-.score-margin {
-  margin-top: 5rem;
+.x-score {
+  @extend .font-teko;
+  font-size: 124px;
 }
-.improve-margin {
-  margin-top: 4rem;
+.x-improve {
+  @extend .teko-subtitle;
+  margin-top: 1rem;
+  @include s {
+    margin-top: 4rem;
+  }
 }
 </style>

@@ -21,9 +21,11 @@
       </flex>
     </div>
 
-    <button @click="$router.push('/level/2/2')" :disabled="!forms.vget.input.form">next</button>
+    <button commons @click="$router.push('/level/2/2')" :disabled="!forms.vget.input.form">
+      next
+    </button>
 
-    <modal ref="modal" bg="" overlay="dark">
+    <modal ref="modal" :bg="false" overlay="dark">
       <div class="layout-modal">
         <h2 class="teko-title">Proposals</h2>
         <p class="level-text mt-1">
@@ -42,7 +44,7 @@
           complex systems. You must find out how many proposals will be collected for when the
           Hatchers start their voting.
         </p>
-        <button class="mt-2" @click="$refs.modal.hide()">OK</button>
+        <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>
     </modal>
   </div>

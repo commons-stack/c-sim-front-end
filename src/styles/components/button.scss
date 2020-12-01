@@ -1,4 +1,4 @@
-body button:disabled {
+body button[commons]:disabled {
   cursor: default;
   color: #fff8 !important;
   opacity: 0.5;
@@ -13,7 +13,7 @@ body button:disabled {
     );
   }
 }
-button {
+button[commons] {
   @extend .font-teko;
   text-transform: uppercase;
   letter-spacing: 10px;
@@ -55,12 +55,12 @@ button {
   }
 }
 
-button:hover:not(:disabled) {
+button[commons]:hover:not(:disabled) {
   &::before {
     opacity: 0.8;
   }
 }
-button:active:not(:disabled) {
+button[commons]:active:not(:disabled) {
   &::before {
     opacity: 0.9;
   }

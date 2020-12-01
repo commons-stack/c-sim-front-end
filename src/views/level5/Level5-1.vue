@@ -50,9 +50,11 @@
       </grid>
     </div>
 
-    <button @click="$router.push('/level/5/2')" :disabled="!forms.vget.input.form">next</button>
+    <button commons @click="$router.push('/level/5/2')" :disabled="!forms.vget.input.form">
+      next
+    </button>
 
-    <modal ref="modal" bg="" overlay="dark">
+    <modal ref="modal" :bg="false" overlay="dark">
       <div class="layout-modal">
         <h2 class="teko-title">Conviction Voting</h2>
         <p class="level-text mt-1">
@@ -75,7 +77,7 @@
           How much time should pass before an individual’s voting power reaches 80% of it’s full
           power?
         </p>
-        <button class="mt-2" @click="$refs.modal.hide()">OK</button>
+        <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>
     </modal>
   </div>

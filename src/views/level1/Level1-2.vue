@@ -31,9 +31,11 @@
         </grid>
       </grid>
     </div>
-    <button @click="$router.push('/level/1/3')" :disabled="!forms.vget.input.form">next</button>
+    <button commons @click="$router.push('/level/1/3')" :disabled="!forms.vget.input.form">
+      next
+    </button>
 
-    <modal ref="modal" bg="" overlay="dark">
+    <modal ref="modal" :bg="false" overlay="dark">
       <div class="layout-modal">
         <h2 class="teko-title">Founding members - ‘Hatchers’</h2>
         <p class="level-text mt-1">
@@ -45,7 +47,7 @@
           These founding members, referred to as <strong>‘Hatchers’</strong> are the first to take
           responsibility over the commons prioritizing the needs of the community.
         </p>
-        <button class="mt-2" @click="$refs.modal.hide()">OK</button>
+        <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>
     </modal>
   </div>

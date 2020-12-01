@@ -34,9 +34,11 @@
       </grid>
     </div>
 
-    <button @click="$router.push('/level/4/2')" :disabled="!forms.vget.input.form">next</button>
+    <button commons @click="$router.push('/level/4/2')" :disabled="!forms.vget.input.form">
+      next
+    </button>
 
-    <modal ref="modal" bg="" overlay="dark">
+    <modal ref="modal" :bg="false" overlay="dark">
       <div class="layout-modal">
         <h2 class="teko-title">Funding distribution</h2>
         <p class="level-text mt-1">
@@ -50,7 +52,7 @@
           group of smaller proposals), ensuring that larger proposals require a greater amount of
           collective voting power from the community in order to pass.
         </p>
-        <button class="mt-2" @click="$refs.modal.hide()">OK</button>
+        <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>
     </modal>
   </div>

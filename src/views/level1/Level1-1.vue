@@ -18,7 +18,7 @@
           and will fix the future!
         </p>
       </grid>
-      <button @click="$router.push('/level/1/2')" class="mt-2 mb-3">next</button>
+      <button commons @click="$router.push('/level/1/2')" class="mt-2 mb-3">next</button>
     </grid>
   </div>
 </template>

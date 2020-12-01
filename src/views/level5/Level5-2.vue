@@ -3,7 +3,7 @@
     <presentation-img />
     <grid justify-items-start align-items-start gap="2">
       <h3 class="teko-title">Almost there...</h3>
-      <grid gap="2" style="max-width: 650px">
+      <grid gap="2" style="max-width: 650px;">
         <p>
           The last set of parameters that cadCAD requires to calculate are now being defiend.
         </p>
@@ -26,7 +26,7 @@
           sells their tokens, and how much of the value remains for the contributor to receive?
         </p>
       </grid>
-      <button @click="$router.push('/level/6/1')" class="mt-2 mb-3">next</button>
+      <button commons @click="$router.push('/level/6/1')" class="mt-2 mb-3">next</button>
     </grid>
   </div>
 </template>

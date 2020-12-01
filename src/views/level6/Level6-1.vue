@@ -37,9 +37,11 @@
       </grid>
     </div>
 
-    <button @click="$router.push('/level/7/1')" :disabled="!forms.vget.input.form">next</button>
+    <button commons @click="$router.push('/level/7/1')" :disabled="!forms.vget.input.form">
+      next
+    </button>
 
-    <modal ref="modal" bg="" overlay="dark">
+    <modal ref="modal" :bg="false" overlay="dark">
       <div class="layout-modal">
         <h2 class="teko-title">Exit Tribute</h2>
         <p class="level-text mt-1">
@@ -60,7 +62,7 @@
           What percentage of the released Reserve goes to the Funding Pool when an exiting member
           sells their tokens, and how much of the value remains for the contributor to receive?
         </p>
-        <button class="mt-2" @click="$refs.modal.hide()">OK</button>
+        <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>
     </modal>
   </div>

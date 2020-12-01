@@ -48,7 +48,7 @@
         >your task is to guide them down that path.</strong
       >
     </p>
-    <button @click="$router.push('/level/1/1')" class="mt-3">
+    <button commons @click="$router.push('/level/1/1')" class="mt-3">
       DESIGN THE COMMONS
     </button>
     <transition name="fade" appear>

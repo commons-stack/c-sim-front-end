@@ -7,7 +7,7 @@
       Initiating the RadicalXChange Commons
     </p>
     <p
-      style="max-width: 700px"
+      style="max-width: 700px;"
       text-l
       key="3"
       class="item font-ibm mt-2"
@@ -18,6 +18,7 @@
       teaching important communities to set up their own Commons.
     </p>
     <button
+      commons
       @click="$router.push('/intro')"
       key="4"
       class="item mt-4"

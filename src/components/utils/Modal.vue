@@ -16,7 +16,6 @@
 </template>
 
 <script>
-// TODO - details-summary modal
 import { utils } from '../../utils/utils.js'
 
 const defaults = {
@@ -51,7 +50,8 @@ export default {
   methods: {
     show() {
       if (this.isShown) return
-      this.openEl.includes(event.target) || this.openEl.push(event.target)
+      const target = event?.target
+      if (target) this.openEl.includes(target) || this.openEl.push(target)
       this.$emit('show')
       this.isShown = true
       this.$nextTick(() => {
@@ -107,8 +107,8 @@ export default {
 
 <style scoped lang="scss">
 .x-wrap {
-  @extend .center, .h-vh, .w-vw, .flex, .box;
-  z-index: 100;
+  @extend .center, .h-1-1, .w-1-1, .flex, .box;
+  z-index: 1000;
   overflow: auto;
 }
 .x-modal {

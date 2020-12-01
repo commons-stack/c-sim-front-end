@@ -40,7 +40,7 @@ export default Vue.extend({
   transform: translateX(-50%);
 }
 .x-notification {
-  @extend .color-dark, .mb-1, .text-center, .w-1-1, .ph-0p5, .pv-1, .br-s;
+  @extend .color-dark, .mb-1, .text-center, .w-1-1, .ph-0p5, .pv-1, .border-radius-s;
   transition: all 0.6s ease-in-out;
 }
 .x-success {

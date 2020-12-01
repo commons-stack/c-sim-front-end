@@ -34,38 +34,56 @@
           <p>EXITING</p>
         </div>
       </grid>
-      <div class="graph" style="`grid-area: graph1;`">
+      <div class="graph" style="grid-area: graph1;">
         <Chart
           :chart="buildChart(chart1)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
         />
       </div>
-      <div class="graph-info" style="`grid-area: desc1;`">
-        <p>Metrics glossary</p>
-        <p>Example chart</p>
+      <div class="graph-info" style="grid-area: desc1;">
+        <p @click="$refs.glossary1.show()">Metrics glossary</p>
+        <modal :bg="false" :overlay="modalBg" ref="glossary1">
+          Metric glossary 1
+        </modal>
+        <p @click="$refs.chart1.show()">Example chart</p>
+        <modal :bg="false" :overlay="modalBg" ref="chart1">
+          Example chart 1
+        </modal>
       </div>
-      <div class="graph" style="`grid-area: graph2;`">
+      <div class="graph" style="grid-area: graph2;">
         <Chart
           :chart="buildChart(chart2)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
         />
       </div>
-      <div class="graph-info" style="`grid-area: desc2;`">
-        <p>Metrics glossary</p>
-        <p>Example chart</p>
+      <div class="graph-info" style="grid-area: desc2;">
+        <p @click="$refs.glossary2.show()">Metrics glossary</p>
+        <modal :bg="false" :overlay="modalBg" ref="glossary2">
+          Metric glossary 2
+        </modal>
+        <p @click="$refs.chart2.show()">Example chart</p>
+        <modal :bg="false" :overlay="modalBg" ref="chart2">
+          Example chart 2
+        </modal>
       </div>
-      <div class="graph" style="`grid-area: graph3;`">
+      <div class="graph" style="grid-area: graph3;">
         <Chart
           :chart="buildChart(chart3)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
         />
       </div>
-      <div class="graph-info" style="`grid-area: desc3;`">
-        <p>Metrics glossary</p>
-        <p>Example chart</p>
+      <div class="graph-info" style="grid-area: desc3;">
+        <p @click="$refs.glossary3.show()">Metrics glossary</p>
+        <modal :bg="false" :overlay="modalBg" ref="glossary3">
+          Metric glossary 3
+        </modal>
+        <p @click="$refs.chart3.show()">Example chart</p>
+        <modal :bg="false" :overlay="modalBg" ref="chart3">
+          Example chart 3
+        </modal>
       </div>
     </div>
     <p class="teko-subtitle mt-5">
@@ -75,8 +93,8 @@
       Do you want to submit your score, or do you want to try to run another simulation?
     </p>
     <flex gap="2" class="mt-2">
-      <button @click="$router.push('/outcome')">BACK TO THE FUTURE</button>
-      <button @click="$router.push('/level/1/1')">play again</button>
+      <button commons @click="$router.push('/outcome')">SEE YOUR FUTURE</button>
+      <button commons @click="$router.push('/level/1/1')">play again</button>
     </flex>
   </div>
 </template>
@@ -90,6 +108,7 @@ export default {
   components: { Chart },
   data() {
     return {
+      modalBg: '#0008',
       cssVars: {
         graphWidth: '400px',
         graphHeight: '200px',

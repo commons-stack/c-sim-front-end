@@ -38,7 +38,7 @@
         </grid>
       </flex>
     </div>
-    <button @click="$router.push('/submit')">run simulation</button>
+    <button commons @click="$router.push('/submit')">run simulation</button>
   </div>
 </template>
 

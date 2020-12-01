@@ -3,21 +3,21 @@
     <div class="x-home-bg"></div>
     <img class="x-home-bg-img" src="@/assets/home_bg.png" alt="background image" />
     <grid gap="1" justify-items style="max-width: 50%;">
-      <p class="lato-header" uppercase>Level 0</p>
+      <p class="lato-header mt-2" uppercase>Level 0</p>
       <h2 class="teko-title mt-1p5">Choose the rules for the Commons</h2>
       <p class="level-text mt-2">
         To whom can we give these fantastical tools that will empower humanity to save life on
         earth? Are you ready to find out?
       </p>
       <form-input
-        class="teko-title mt-2"
+        class="x-input"
         @valid="forms.vset.input.name"
         v-model="forms.input.name"
         placeholder="Enter your name"
         required
       />
     </grid>
-    <button @click="goNext" class="mt-2" :disabled="!forms.vget.input.form">next</button>
+    <button commons @click="goNext" class="mt-2" :disabled="!forms.vget.input.form">next</button>
     <div class="x-home-shapes-wrap">
       <div class="x-home-shapes">
         <icon icon="ShapeRight" class="x-shape-right" />
@@ -68,7 +68,7 @@ export default {
     },
   },
   methods: {
-    windowWidthWatcher: utils.throttle(function() {
+    windowWidthWatcher: utils.throttle(function () {
       this.cssVars.shapeDistance = `${this.getShapeDistance()}px`
     }),
     getShapeDistance: () => window.innerWidth / 2 - window.innerWidth / 4,
@@ -86,7 +86,15 @@ export default {
 
 <style scoped lang="scss">
 .x-input {
-  border: solid 1px black;
+  @extend .teko-title;
+  margin-top: 2rem;
+  font-size: 40px;
+  @include s {
+    font-size: 50px;
+  }
+  @include m {
+    font-size: 60px;
+  }
 }
 .x-home-bg,
 .x-home-bg-img {
