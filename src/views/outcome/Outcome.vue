@@ -21,17 +21,14 @@
           <button v-else class="text-button mt-2" @click="$router.push('/')">
             No thanks, quit the game
           </button>
-          <p
-            class="fixed bot right m-1 p-1 cursor-pointer"
-            @click="future = future === 'bad' ? 'good' : 'bad'"
-          >
+          <p class="fixed bot right m-1 p-1 cursor-pointer" @click="toggleFuture">
             Toggle future
           </p>
         </grid>
       </grid>
     </transition>
     <div class="x-img-wrap">
-      <img :src="display.image" class="x-img" alt="" />
+      <img :src="display.image" class="x-img" alt="outcome image background" />
     </div>
   </div>
 </template>
@@ -39,10 +36,18 @@
 <script>
 export default {
   name: 'outcome',
+  created() {
+    this.future = this.score < 800 ? 'bad' : 'good'
+  },
   data() {
     return {
       future: 'bad',
     }
+  },
+  methods: {
+    toggleFuture() {
+      this.future = this.future === 'bad' ? 'good' : 'bad'
+    },
   },
   computed: {
     name() {
