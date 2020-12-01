@@ -1,6 +1,6 @@
 <template>
   <div class="layout-vertical">
-    <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
+    <commons-header @help="$refs.modal.show()" @restart="() => {}" />
     <h2 class="teko-subtitle text-center">
       How much of the community funds can be distributed at any given time?
     </h2>
@@ -9,7 +9,7 @@
       community in order to pass.
     </p>
     <div class="layout-form">
-      <form-progress />
+      <commons-navigation />
       <grid class="layout-form-grid">
         <grid class="justify-items relative" gap="1.5">
           <p class="font-teko fs-24">Funding Pool</p>

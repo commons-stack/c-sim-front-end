@@ -1,6 +1,6 @@
 <template>
   <div class="layout-vertical">
-    <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
+    <commons-header @help="$refs.modal.show()" @restart="() => {}" />
     <h2 class="teko-subtitle text-center">
       What ercent of the contributions will be allocated to the Funding Pool?
     </h2>
@@ -8,7 +8,7 @@
       The balance will be the Reserve that backs the RxC tokens.
     </p>
     <div class="layout-form">
-      <form-progress />
+      <commons-navigation />
       <grid class="layout-form-grid">
         <grid class="layout-form-icons">
           <grid class="justify-self-start justify-items" gap="1">

@@ -1,11 +1,11 @@
 <template>
   <div class="layout-vertical">
-    <form-navigation @help="$refs.modal.show()" :restart="false" />
+    <commons-header @help="$refs.modal.show()" :restart="false" />
     <h2 class="teko-subtitle text-center">
       How many ‘Hatchers’ will you choose to initialize the RadicalxChange Commons?
     </h2>
     <div class="layout-form">
-      <form-progress />
+      <commons-navigation />
       <grid class="layout-form-grid">
         <flex class="relative flex-center">
           <icon icon="Hatchers3" class="justify-self" />

@@ -1,6 +1,6 @@
 <template>
   <div class="layout-right h-1-1">
-    <presentation-img />
+    <presentation-image />
     <grid justify-items-start align-items-start gap="2">
       <h3 class="teko-title">Well done!</h3>
       <grid gap="2" style="max-width: 650px;">

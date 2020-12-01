@@ -1,9 +1,9 @@
 <template>
   <div class="layout-vertical">
-    <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
+    <commons-header @help="$refs.modal.show()" @restart="() => {}" />
     <h2 class="teko-subtitle text-center">What percentage goes to funding at exit?</h2>
     <div class="layout-form">
-      <form-progress />
+      <commons-navigation />
       <grid class="layout-form-grid">
         <grid class="layout-form-icons">
           <grid class="justify-self-start justify-items align-content relative" gap="1">

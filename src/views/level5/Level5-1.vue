@@ -1,11 +1,11 @@
 <template>
   <div class="layout-vertical">
-    <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
+    <commons-header @help="$refs.modal.show()" @restart="() => {}" />
     <h2 class="teko-subtitle text-center">
       How much time should pass before an individual’s voting power reaches 80% of it’s full power?
     </h2>
     <div class="layout-form">
-      <form-progress />
+      <commons-navigation />
       <grid class="layout-form-grid">
         <grid class="graph-section">
           <!-- <icon icon="GridNet" class="absolute" style="bottom: 23px; zoom: 1.3;" /> -->

@@ -1,6 +1,6 @@
 <template>
   <div class="layout-vertical">
-    <form-navigation title-only />
+    <commons-header title-only />
     <p class="teko-subtitle">Generating your Commons Simulation</p>
     <p class="text-center font-ibm fs-20 mt-2" style="max-width: 800px;">
       This is the moment of truth! Did they choose the right parameters to yield positive results

@@ -1,16 +1,16 @@
 <template>
   <grid gap="1" class="align-self-start">
-    <form-progress-button v-for="lvl in numOfLevels" :key="lvl" :level="lvl - 1" />
+    <commons-navigation-button v-for="lvl in numOfLevels" :key="lvl" :level="lvl - 1" />
   </grid>
 </template>
 
 <script>
-import FormProgressButton from './FormProgressButton.vue'
+import CommonsNavigationButton from './CommonsNavigationButton.vue'
 
 export default {
-  name: 'form-progress',
+  name: 'commons-navigation',
   components: {
-    FormProgressButton,
+    CommonsNavigationButton,
   },
   data() {
     return {

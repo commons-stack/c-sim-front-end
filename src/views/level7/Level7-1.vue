@@ -1,14 +1,14 @@
 <template>
   <div class="layout-vertical relative">
     <icon icon="CircleNet" class="bg-net" />
-    <form-navigation @restart="() => {}" :help="false" />
+    <commons-header @restart="() => {}" :help="false" />
     <h2 class="teko-subtitle">Inputs Received by cadCAD!</h2>
     <p class="font-ibm fs-20 text-center">
       Will the Commons succeed, the Movement take off, and new economy creation cascade around the
       world?
     </p>
     <div class="layout-form">
-      <form-progress style="grid-area: nav;" />
+      <commons-navigation style="grid-area: nav;" />
       <flex class="text-center flex-center" style="grid-area: field;">
         <grid class="sim-data">
           <div>

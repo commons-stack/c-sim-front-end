@@ -1,7 +1,7 @@
 <template>
   <div class="layout-vertical" text-center>
     <icon icon="CircleNet" class="bg-net" />
-    <form-navigation :help="false" />
+    <commons-header :help="false" />
     <p class="teko-title">Your Commons...</p>
     <div class="level-text">
       <p>Do you think you did a good job?</p>

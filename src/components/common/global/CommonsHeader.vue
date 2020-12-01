@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'form-navigation',
+  name: 'commons-header',
   props: {
     help: {
       type: Boolean,

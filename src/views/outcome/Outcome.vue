@@ -2,7 +2,7 @@
   <div class="h-1-1">
     <transition name="dropdown" appear>
       <grid class="layout-vertical h-1-1" gtr="auto 1fr">
-        <form-navigation title-only />
+        <commons-header title-only />
 
         <grid class="align-self justify-items">
           <p class="teko-subtitle">{{ display.title }}</p>

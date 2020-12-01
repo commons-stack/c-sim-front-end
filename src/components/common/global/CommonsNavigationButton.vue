@@ -2,7 +2,7 @@
   <grid
     gap="1"
     gtc="auto auto"
-    class="x-wrap "
+    class="x-wrap"
     :active="currentLevel === level"
     :visited="currentLevel >= level"
     @click="clickHandler"
@@ -25,7 +25,7 @@ const levelNames = {
 }
 
 export default {
-  name: 'form-progress-button',
+  name: 'commons-navigation-button',
   props: {
     level: Number,
   },

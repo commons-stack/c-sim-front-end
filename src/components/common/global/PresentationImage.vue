@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'presentation-img',
+  name: 'presentation-image',
 }
 </script>
 

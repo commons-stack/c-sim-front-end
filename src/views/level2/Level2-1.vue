@@ -1,11 +1,11 @@
 <template>
   <div class="layout-vertical">
-    <form-navigation @help="$refs.modal.show()" @restart="() => {}" />
+    <commons-header @help="$refs.modal.show()" @restart="() => {}" />
     <h2 class="teko-subtitle text-center">
       How many proposals should be collected for the Hatchers to kick off their voting?
     </h2>
     <div class="layout-form">
-      <form-progress />
+      <commons-navigation />
       <flex column class="flex-center">
         <form-input
           type="number"
