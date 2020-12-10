@@ -1,11 +1,6 @@
-import { is } from '../utils/validation'
 import { utils } from '../utils/utils'
-
-// createModule({state, getters, mutations, actions})
-// - vuex module factory function which generates MUTATIONS & GETTERS based on STATE (works on nested states)
-// mutations: setState(x), clearState()
-// collection mutations: stateCollectionAdd(x), stateCollectionAddMultiple(x[]), stateCollectionRemove(x), stateCollectionUpdate(x)
-// generates getters: getState
+import { is } from '../utils/validation'
+import { store } from './store'
 
 export const createModule = (
   module = {
@@ -17,10 +12,11 @@ export const createModule = (
 ) => {
   const mutations = {}
   const getters = {}
-  mapMutationsAndGetters(module.state, mutations, getters)
+  const state = module.state || {}
+  mapMutationsAndGetters(state, mutations, getters)
   return {
     namespaced: true,
-    state: module.state,
+    state,
     getters: {
       ...getters,
       ...module.getters,
@@ -33,85 +29,109 @@ export const createModule = (
   }
 }
 
-// wrapPromise(promise, {onSuccess, onFailure, after})
-// - propagate a promise with an interface and hooks
-export const wrapPromise = (
-  promise,
+export const wrapStream = (
+  endpoint,
   functions = {
+    onStart: () => {},
     onSuccess: () => {},
     onFailure: () => {},
-    after: () => {},
+    onEnd: () => {},
   },
 ) =>
   new Promise((resolve, reject) => {
+    const sse = new EventSource(endpoint)
+    typeof functions.onStart === 'function' && functions.onStart()
+    sse.onmessage = m => {
+      const parsedData = JSON.parse(m.data)
+      typeof functions.onSuccess === 'function' && functions.onSuccess(parsedData)
+      resolve(parsedData)
+    }
+    sse.onerror = e => {
+      EventSource.CLOSED == e.eventPhase && sse.close()
+      typeof functions.onFailure === 'function' && functions.onFailure(e)
+      typeof functions.onEnd === 'function' && functions.onEnd()
+      reject(e)
+    }
+  })
+
+export const wrapPromise = (
+  promise,
+  functions = {
+    notifications: false,
+    onStart: () => {},
+    onSuccess: () => {},
+    onFailure: () => {},
+    onEnd: () => {},
+  },
+) =>
+  new Promise((resolve, reject) => {
+    typeof functions.onStart === 'function' && functions.onStart()
     promise
       .then(res => {
         if (typeof functions.onSuccess === 'function') functions.onSuccess(res)
+        if (functions.notifications === true || functions.notifications === 'success')
+          store.dispatch('NotificationModule/success', res.msg)
         resolve(res)
         return res
       })
       .catch(err => {
-        if (typeof functions.onFailer === 'function') functions.onFailure(err)
+        if (typeof functions.onFailure === 'function') functions.onFailure(err)
+        if (functions.notifications === true || functions.notifications === 'error')
+          store.dispatch('NotificationModule/error', err.msg)
         reject(err)
       })
       .finally(() => {
-        if (typeof functions.after === 'function') functions.after()
+        if (typeof functions.onEnd === 'function') functions.onEnd()
       })
   })
 
-const mapMutationsAndGetters = (
-  object,
-  mutations,
-  getters,
-  parentKeys = [],
-) => {
+const mapMutationsAndGetters = (object, mutations, getters, parentKeys = []) => {
   Object.entries(object).forEach(([key, value]) => {
     const allKeys = [...parentKeys, key]
     const getCurrentObj = state => parentKeys.reduce((a, c) => a[c], state)
     const currentObj = state => getCurrentObj(state)[key]
     const capitalizedKeys = allKeys.map(utils.capitalize).join('')
-    const capitalizedExceptFirst = allKeys
-      .map((x, i) => (i > 0 ? utils.capitalize(x) : x))
-      .join('')
-    mutations[`set${capitalizedKeys}`] = (state, data) =>
-      (getCurrentObj(state)[key] = data)
-    mutations[`clear${capitalizedKeys}`] = state =>
-      (getCurrentObj(state)[key] = JSON.parse(JSON.stringify(value)))
+    const capitalizedExceptFirst = allKeys.map((x, i) => (i > 0 ? utils.capitalize(x) : x)).join('')
+    mutations[`set${capitalizedKeys}`] = (state, data) => (getCurrentObj(state)[key] = data)
+    mutations[`clear${capitalizedKeys}`] = state => (getCurrentObj(state)[key] = value)
     getters[`get${capitalizedKeys}`] = state => getCurrentObj(state)[key]
     if (Array.isArray(value)) {
-      mapCollectionMutations(mutations, currentObj, capitalizedExceptFirst)
+      mapListMutations(mutations, currentObj, capitalizedExceptFirst)
     } else if (is.plainObject(value)) {
       mapMutationsAndGetters(value, mutations, getters, allKeys)
     }
   })
 }
 
-const mapCollectionMutations = (
-  mutations,
-  currentObj,
-  capitalizedExceptFirst,
-) => {
-  const add = `${capitalizedExceptFirst}CollectionAdd`
-  const addMultiple = `${capitalizedExceptFirst}CollectionAddMultiple`
-  const remove = `${capitalizedExceptFirst}CollectionRemove`
-  const update = `${capitalizedExceptFirst}CollectionUpdate`
+const mapListMutations = (mutations, currentObj, capitalizedExceptFirst) => {
+  const add = `${capitalizedExceptFirst}ListAdd`
+  const addMultiple = `${capitalizedExceptFirst}ListAddMultiple`
+  const remove = `${capitalizedExceptFirst}ListRemove`
+  const update = `${capitalizedExceptFirst}ListUpdate`
+  const push = `${capitalizedExceptFirst}ListPush`
+  const pop = `${capitalizedExceptFirst}ListPop`
+  const shift = `${capitalizedExceptFirst}ListShift`
 
-  mutations[add] = (state, item) =>
-    currentObj(state).some(x => x.id !== item.id) &&
-    currentObj(state).push(item)
-  mutations[addMultiple] = (state, itemArray) =>
-    itemArray.forEach(i => {
-      if (!currentObj(state).some(x => x.id === i.id)) currentObj(state).push(i)
+  mutations[add] = (state, item) => {
+    const arr = currentObj(state)
+    const existingIndex = arr.findIndex(x => x.id === item.id)
+    existingIndex >= 0 ? arr.splice(existingIndex, 1, item) : arr.push(item)
+  }
+  mutations[addMultiple] = (state, itemArray) => {
+    const arr = currentObj(state)
+    itemArray.forEach(item => {
+      const existingIndex = arr.findIndex(x => x.id === item.id)
+      existingIndex >= 0 ? arr.splice(existingIndex, 1, item) : arr.push(item)
     })
+  }
   mutations[remove] = (state, id) => {
     const _id =
       typeof id === 'number'
         ? id
-        : typeof id === 'object' &&
-          Object.prototype.hasOwnProperty.call(id, 'id')
+        : typeof id === 'object' && Object.prototype.hasOwnProperty.call(id, 'id')
         ? id.id
         : undefined
-    if (_id) {
+    if (_id !== undefined) {
       const index = currentObj(state).findIndex(x => x.id === _id)
       if (index >= 0) currentObj(state).splice(index, 1)
     }
@@ -120,4 +140,7 @@ const mapCollectionMutations = (
     const index = currentObj(state).findIndex(x => x.id === item.id)
     if (index >= 0) currentObj(state).splice(index, 1, item)
   }
+  mutations[push] = state => currentObj(state).push()
+  mutations[pop] = state => currentObj(state).pop()
+  mutations[shift] = state => currentObj(state).shift()
 }

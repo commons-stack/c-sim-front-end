@@ -1,5 +1,6 @@
 $bezier-1: cubic-bezier(0.8, 0.4, 0.2, 0.8);
 $bezier-2: cubic-bezier(0.81, 0.17, 0.28, 1.02);
+$bezier-3: cubic-bezier(0.2, -0.13, 0, 1);
 
 :root {
   --bezier-1: #{$bezier-1};
@@ -30,14 +31,21 @@ $bezier-2: cubic-bezier(0.81, 0.17, 0.28, 1.02);
   }
 }
 .dropdown {
-  @include transition(all 0.4s $bezier-2) {
-    transform: translateY(-80px);
+  @include transition(all 1.4s cubic-bezier(0.6, 0.17, 0.23, 0.99)) {
+    transform: translateY(-5px);
     opacity: 0;
+    position: absolute;
   }
 }
 .dropdown-l {
   @include transition(all 0.6s $bezier-2) {
     transform: translateY(-160px);
+    opacity: 0;
+  }
+}
+
+.test-fade {
+  @include transition(all 1s $bezier-1) {
     opacity: 0;
   }
 }

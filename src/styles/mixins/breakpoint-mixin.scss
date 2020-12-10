@@ -1,20 +1,46 @@
-@mixin s() {
-  @media (min-width: 640px) {
+$breakpoint-s: 640px;
+$breakpoint-m: 960px;
+$breakpoint-l: 1200px;
+$breakpoint-xl: 1600px;
+:root {
+  --breakpoint-s: #{$breakpoint-s};
+  --breakpoint-m: #{$breakpoint-m};
+  --breakpoint-l: #{$breakpoint-l};
+  --breakpoint-xl: #{$breakpoint-xl};
+}
+
+@mixin s {
+  @media (min-width: $breakpoint-s) {
     @content;
   }
 }
-@mixin m() {
-  @media (min-width: 960px) {
+@mixin m {
+  @media (min-width: $breakpoint-m) {
     @content;
   }
 }
-@mixin l() {
-  @media (min-width: 1200px) {
+@mixin l {
+  @media (min-width: $breakpoint-l) {
     @content;
   }
 }
-@mixin xl() {
-  @media (min-width: 1600px) {
+@mixin xl {
+  @media (min-width: $breakpoint-xl) {
     @content;
+  }
+}
+
+:root {
+  @include s {
+    --breakpoint-s-active: 1;
+  }
+  @include m {
+    --breakpoint-m-active: 1;
+  }
+  @include l {
+    --breakpoint-l-active: 1;
+  }
+  @include xl {
+    --breakpoint-xl-active: 1;
   }
 }

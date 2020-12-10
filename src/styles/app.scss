@@ -1,3 +1,98 @@
 body {
   @extend .font-default, .color-light, .bg-dark;
 }
+
+:root {
+  --app-margin-top: 3rem;
+  @include s {
+    --app-margin-top: 4rem;
+  }
+  @include m {
+    --app-margin-top: 5rem;
+  }
+  --app-vertical-padding: 4rem;
+}
+
+.layout-center {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout-vertical {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  transition: padding-top 0.5s ease;
+  padding-top: var(--app-margin-top);
+}
+
+.layout-form {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  grid-template-columns: 160px 1fr 160px;
+  & > div:first-child {
+    justify-self: start;
+  }
+}
+
+.layout-modal {
+  @extend .layout-vertical;
+  gap: 2rem;
+}
+
+.layout-right {
+  padding-top: var(--app-margin-top);
+  padding-left: initial;
+  @include s {
+    padding-left: 8rem;
+  }
+  @include m {
+    padding-left: 16rem;
+  }
+  @include l {
+    padding-left: 24rem;
+  }
+  @include xl {
+    padding-left: 36rem;
+  }
+}
+
+.layout-form-grid {
+  --layout-form-padding: 0;
+  @include s {
+    --layout-form-padding: 1rem;
+  }
+  @include m {
+    --layout-form-padding: 2rem;
+  }
+  @include l {
+    --layout-form-padding: 5rem;
+  }
+  display: grid;
+  align-content: center;
+  width: 100%;
+  max-width: 1200px;
+  padding-left: var(--layout-form-padding);
+  padding-right: var(--layout-form-padding);
+  gap: 1rem;
+}
+
+.layout-form-icons {
+  --x-padding-horizontal: 1rem;
+  @include s {
+    --x-padding-horizontal: 2rem;
+  }
+  @include m {
+    --x-padding-horizontal: 5rem;
+  }
+  gap: 2rem;
+  padding-left: var(--x-padding-horizontal);
+  padding-right: var(--x-padding-horizontal);
+  grid-template-columns: 1fr 1fr;
+}

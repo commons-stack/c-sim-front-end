@@ -1,31 +1,38 @@
-body button:disabled {
+body button[commons]:disabled {
   cursor: default;
-  color: white !important;
+  color: #fff8 !important;
+  opacity: 0.5;
   box-shadow: none !important;
-  background: var(--color-muted) !important;
-}
-button {
-  text-transform: uppercase;
-  position: relative;
-  padding: 0 2rem;
-  height: 64px;
-  min-width: 200px;
-  font-size: 21px;
-  letter-spacing: 10px;
-  text-indent: 10px;
-  border: 2px solid transparent;
-  border-image-slice: 2;
-  border-image-source: linear-gradient(
-    94.92deg,
-    #67de69 -57.72%,
-    #0047b0 114.27%
-  );
+  background: #4444 !important;
   &::before {
     content: '';
-    transition: opacity ease-in-out 0.2s;
-    opacity: 50%;
+    background-image: linear-gradient(
+      98.03deg,
+      rgba(103, 222, 105, 0.45) -7.95%,
+      rgba(0, 71, 176, 0.45) 116.37%
+    );
+  }
+}
+button[commons] {
+  @extend .font-teko;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  text-indent: 10px;
+  position: relative;
+  z-index: 100;
+  padding: 0 2rem;
+  min-height: 64px;
+  min-width: 200px;
+  font-size: 21px;
+  border: 2px solid transparent;
+  border-image-slice: 2;
+  border-image-source: linear-gradient(94.92deg, #67de69 -57.72%, #0047b0 114.27%);
+  &::before {
+    content: '';
+    transition: all 0.2s ease-in-out;
+    opacity: 0.5;
     position: absolute;
-    z-index: -1;
+    z-index: -2;
     top: 0;
     left: 0;
     right: 0;
@@ -37,14 +44,25 @@ button {
     );
   }
 }
-button:hover {
-  &::before {
-    opacity: 80%;
+
+.text-button {
+  @extend .transition;
+  color: #43a983;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    color: lighter(#43a983, 5%);
   }
 }
-button:active {
+
+button[commons]:hover:not(:disabled) {
   &::before {
-    opacity: 90%;
+    opacity: 0.8;
+  }
+}
+button[commons]:active:not(:disabled) {
+  &::before {
+    opacity: 0.9;
   }
 }
 

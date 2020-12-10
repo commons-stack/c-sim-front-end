@@ -12,6 +12,8 @@ export const utils = {
       return `${d}d ${h}h ${m}m`
     },
   },
+  changeScale: (value, min, max, newMin = 0, newMax = 100) =>
+    ((value - min) * (newMax - newMin)) / (max - min) + newMin,
   time: {
     seconds: (x, offset = 0) => x * 1000 + offset,
     minutes: (x, offset = 0) => this.time.seconds(x * 60, offset),
@@ -19,10 +21,7 @@ export const utils = {
   },
   generate: {
     cantorPair: (num1, num2) => ((num1 + num2) * (num1 + num2 + 1)) / 2 + num2,
-    string: (length = 8) =>
-      Math.random()
-        .toString(36)
-        .substr(2, length),
+    string: (length = 8) => Math.random().toString(36).substr(2, length),
   },
   map: {
     id: (x, index) => {
@@ -47,7 +46,7 @@ export const utils = {
       func.apply(_this, _args)
       callTime = now
     }
-    return function(...args) {
+    return function (...args) {
       if (waiting) return
       _this = this
       _args = args
@@ -60,21 +59,14 @@ export const utils = {
     }
   },
   units: {
-    remToPx: rem =>
-      rem * parseFloat(getComputedStyle(document.documentElement).fontSize),
+    remToPx: rem => rem * parseFloat(getComputedStyle(document.documentElement).fontSize),
   },
   css: {
-    getProperty: (element, property) =>
-      window.getComputedStyle(element).getPropertyValue(property),
-    setProperty: (element, property, value) =>
-      element.style.setProperty(property, value),
+    getProperty: (element, property) => window.getComputedStyle(element).getPropertyValue(property),
+    setProperty: (element, property, value) => element.style.setProperty(property, value),
     getVar: name =>
-      window
-        .getComputedStyle(document.documentElement)
-        .getPropertyValue(`--${name}`)
-        .trim(),
-    setVar: (name, value) =>
-      document.documentElement.style.setProperty(`--${name}`, value),
+      window.getComputedStyle(document.documentElement).getPropertyValue(`--${name}`).trim(),
+    setVar: (name, value) => document.documentElement.style.setProperty(`--${name}`, value),
     parseStyles: input => {
       let out = {}
       if (Array.isArray(input)) input.forEach(x => (out[x] = true))

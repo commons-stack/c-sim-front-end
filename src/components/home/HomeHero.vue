@@ -1,15 +1,16 @@
 <template>
-  <transition-group name="home-trans" tag="div" class="home-list">
-    <h1 text-xxxl bold key="1" class="item" :class="state > 0 && 'item-active'">
+  <transition-group name="home-trans" tag="div" class="home-list" text-center>
+    <h1 key="1" class="item hero" :class="state > 0 && 'item-active'">
       The Commons Simulator
     </h1>
-    <p key="2" class="item" :class="state > 1 && 'item-active'">
+    <p key="2" class="item sub" :class="state > 1 && 'item-active'">
       Designing the Commons with the power of cadCAD
     </p>
     <button
+      commons
       @click="$emit('click')"
       key="3"
-      class="item mt-1"
+      class="item mt-3"
       :class="state > 2 && 'item-active'"
     >
       Enter
@@ -37,12 +38,24 @@ export default {
 <style scoped lang="scss">
 .item {
   transition: all 1.7s ease;
-  // position: relative;
   transform: translateY(300px);
   opacity: 0;
 }
 .item-active {
   transform: translateY(0px);
   opacity: 1;
+}
+.hero {
+  @extend .font-teko;
+  margin-top: 2rem;
+  line-height: 0.85;
+  font-size: 90px;
+}
+.sub {
+  @extend .font-ibm;
+  margin-top: 1rem;
+  font-size: 20px;
+  position: relative;
+  top: -10px;
 }
 </style>

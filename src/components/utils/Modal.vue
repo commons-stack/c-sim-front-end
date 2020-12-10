@@ -1,15 +1,14 @@
 <template>
   <transition name="modal-fade">
-    <div class="x-wrap" :style="wrapStyle" :class="wrapClass" v-show="isShown">
+    <div class="x-wrap" :style="wrapStyle" v-show="isShown">
       <div
         ref="modal"
         tabindex="-1"
         v-click-outside="hide"
         class="x-modal"
-        :class="modalClass"
+        :class="xClass"
         :style="modalStyle"
       >
-        <component :is="modalComponent" :data="modalData" />
         <slot></slot>
       </div>
     </div>
@@ -19,6 +18,11 @@
 <script>
 import { utils } from '../../utils/utils.js'
 
+const defaults = {
+  background: '#fff',
+  overlay: '#000c',
+}
+
 export default {
   name: 'modal',
   created() {
@@ -26,35 +30,28 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('keydown', this.handleEscape)
-    utils.el.body.style.overflowY = 'auto'
+    utils.body.style.overflowY = 'auto'
   },
   props: {
     xClass: [String, Object, Array],
     xStyle: [String, Object],
-    overlay: {
-      type: [String, Boolean],
-      default: '#000c',
-    },
+    overlay: [Boolean, String],
     bg: {
-      type: [String, Boolean],
-      default: '#fff',
+      type: [Boolean, String],
+      default: true,
     },
-    data: Object,
   },
   data() {
     return {
       isShown: false,
       openEl: [],
-      modalData: this.data,
-      modalComponent: this.data?.is,
     }
   },
   methods: {
-    show(component = undefined, data = undefined) {
-      if (component) this.modalComponent = component
-      if (data) this.modalData = data
+    show() {
       if (this.isShown) return
-      this.openEl.includes(event.target) || this.openEl.push(event.target)
+      const target = event?.target
+      if (target) this.openEl.includes(target) || this.openEl.push(target)
       this.$emit('show')
       this.isShown = true
       this.$nextTick(() => {
@@ -73,44 +70,35 @@ export default {
   computed: {
     wrapStyle() {
       const styles = {}
-      utils.el.body.style.overflowY = this.isShown ? 'hidden' : 'auto'
+      utils.body.style.overflowY = this.isShown ? 'hidden' : 'auto'
       styles.overflowY = this.isShown ? 'auto' : 'hidden'
-      if (this.overlay && this.overlay[0] === '#')
-        styles.background = this.overlay
-      return styles
-    },
-    wrapClass() {
-      const classes = {}
-      if (this.overlay && this.overlay[0] !== '#')
-        classes[`bg-${this.overlay}`] = true
-      return classes
-    },
-    modalClass() {
-      const classes = {}
-      if (
-        this.bg &&
-        this.bg !== 'none' &&
-        this.bg !== 'false' &&
-        this.bg[0] !== '#'
-      )
-        classes[`bg-${this.bg}`] = true
-      return {
-        ...classes,
-        ...utils.css.parseStyles(this.xClass),
+      if (this.overlay) {
+        styles.background =
+          this.overlay === true
+            ? defaults.overlay
+            : this.overlay === 'true'
+            ? defaults.overlay
+            : this.overlay[0] === '#'
+            ? this.overlay
+            : utils.css.getVar(`color-${this.overlay}`)
       }
+      return styles
     },
     modalStyle() {
       const styles = {}
-      if (
-        this.bg &&
-        this.bg !== 'none' &&
-        this.bg !== 'false' &&
-        this.bg[0] === '#'
-      )
-        styles.background = this.bg
+      if (this.bg && this.bg !== 'false') {
+        styles.background =
+          this.bg === true
+            ? defaults.background
+            : this.bg === 'true'
+            ? defaults.background
+            : this.bg[0] === '#'
+            ? this.bg
+            : utils.css.getVar(`color-${this.bg}`)
+      }
       return {
-        ...styles,
-        ...utils.css.parseStyles(this.xStyle),
+        ...utils.css.parseStyles(styles),
+        ...this.xStyle,
       }
     },
   },
@@ -120,7 +108,7 @@ export default {
 <style scoped lang="scss">
 .x-wrap {
   @extend .center, .h-1-1, .w-1-1, .flex, .box;
-  z-index: 100;
+  z-index: 1000;
   overflow: auto;
 }
 .x-modal {

@@ -9,7 +9,6 @@
 .home-list {
   display: grid;
   justify-items: center;
-  gap: 1.5rem;
   position: relative;
   & > * {
     transition: all 1.4s var(--bezier-home);

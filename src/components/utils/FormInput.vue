@@ -37,8 +37,7 @@ export default {
     isValid() {
       let valid = this.htmlValid
       if (this.validator) valid = valid && this.validator(this.value)
-      if (this.storeValidator)
-        valid = valid && this.$store.getters[this.storeValidator]
+      if (this.storeValidator) valid = valid && this.$store.getters[this.storeValidator]
       return valid
     },
     showError() {
@@ -110,19 +109,11 @@ export default {
   @extend .transition, .w-1-1;
   font-size: 16px;
   &::placeholder {
-    @extend .color-muted;
+    color: #666;
+    @extend .transition;
   }
-}
-.x-default {
-  @extend .shadow-bot-1, .p-0p5;
-  &:focus {
-    @extend .shadow-bot-2;
-  }
-}
-.x-error {
-  box-shadow: 0 1px $color-error;
-  &:focus {
-    box-shadow: 0 2px $color-error;
+  &:focus::placeholder {
+    color: #0000;
   }
 }
 
@@ -141,20 +132,20 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 // range input
-$track-color: #000 !default;
-$thumb-color: $color-light !default;
-// $thumb-color: url('~@/assets/icons/FormInputThumbSlider.svg');
+$track-color: #182932 !default;
+// $thumb-color: $color-light !default;
+$thumb-color: url('~@/assets/icons/FormInputThumbSlider.svg');
 
 $thumb-radius: 22px !default;
-$thumb-height: 43px !default;
-$thumb-width: 43px !default;
+$thumb-height: 32px !default;
+$thumb-width: 32px !default;
 $thumb-border-width: 0px !default;
 $thumb-border-color: #000 !default;
 
 $track-width: 100% !default;
-$track-height: 2px !default;
-$track-border-width: 0px !default;
-$track-border-color: #000 !default;
+$track-height: 8px !default;
+$track-border-width: 1px !default;
+$track-border-color: #32373e !default;
 
 $track-radius: 5px !default;
 $contrast: 5% !default;
@@ -164,7 +155,7 @@ $ie-bottom-track-color: darken($track-color, $contrast) !default;
 @mixin track {
   cursor: default;
   height: $track-height;
-  transition: all ease-in-out 0.2s;
+  transition: all 0.2s ease-in-out;
   width: $track-width;
 }
 
@@ -214,9 +205,7 @@ input[type='range'] {
   &::-webkit-slider-thumb {
     @include thumb;
     -webkit-appearance: none;
-    margin-top: (
-      (-$track-border-width * 2 + $track-height) / 2 - $thumb-height / 2
-    );
+    margin-top: ((-$track-border-width * 2 + $track-height) / 2 - $thumb-height / 2);
   }
 
   &::-moz-range-track {

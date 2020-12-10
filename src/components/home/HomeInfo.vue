@@ -1,35 +1,35 @@
 <template>
   <transition-group name="home-trans" tag="div" class="home-list" text-center>
-    <p uppercase key="1" class="item" :class="state > 4 && 'item-active'">
+    <p uppercase key="1" class="item lato-header pt-3" :class="state > 4 && 'item-active'">
       leap one
     </p>
-    <p text-xxxl key="2" class="item" :class="state > 3 && 'item-active'">
+    <p text-xxxl key="2" class="item mt-1p5" :class="state > 3 && 'item-active'">
       Initiating the RadicalXChange Commons
     </p>
     <p
-      style="max-width: 700px"
+      style="max-width: 700px;"
       text-l
       key="3"
-      class="item"
+      class="item font-ibm mt-2"
       :class="state > 2 && 'item-active'"
     >
-      The Commons Simulator main character is creating a solar punk themed
-      future. Your mission is to travel back to 2020 with cadCAD to save the
-      planet and create a Solarpunk future by teaching important communities to
-      set up their own Commons.
+      The Commons Simulator main character is creating a solar punk themed future. Your mission is
+      to travel back to 2020 with cadCAD to save the planet and create a Solarpunk future by
+      teaching important communities to set up their own Commons.
     </p>
     <button
+      commons
       @click="$router.push('/intro')"
       key="4"
-      class="item"
+      class="item mt-4"
       :class="state > 1 && 'item-active'"
     >
       watch intro
     </button>
     <p
-      class="cursor-pointer item"
+      class="cursor-pointer item mt-3"
       :class="state > 0 && 'item-active'"
-      @click="$router.push('/level/0-1')"
+      @click="$router.push('/level/0/1')"
       key="5"
     >
       Skip

@@ -40,8 +40,8 @@ export default Vue.extend({
   transform: translateX(-50%);
 }
 .x-notification {
-  @extend .color-dark, .mb-1, .text-center, .w-1-1, .ph-0p5, .pv-1, .br-s;
-  transition: all ease-in-out 0.6s;
+  @extend .color-dark, .mb-1, .text-center, .w-1-1, .ph-0p5, .pv-1, .border-radius-s;
+  transition: all 0.6s ease-in-out;
 }
 .x-success {
   @extend .border-success;
@@ -53,7 +53,7 @@ export default Vue.extend({
 }
 .my-list-enter-active,
 .my-list-leave-active {
-  transition: all ease-in-out 0.3s;
+  transition: all 0.3s ease-in-out;
   position: absolute;
 }
 .my-list-enter {

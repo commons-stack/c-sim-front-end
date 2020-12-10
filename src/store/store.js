@@ -1,33 +1,28 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { AuthModule } from './modules/AuthModule'
-import { ExampleModule } from './modules/ExampleModule'
-import { UserModule } from './modules/UserModule'
+import createPersistedState from 'vuex-persistedstate'
+import { CommonsModule } from './modules/CommonsModule'
 import { NotificationModule } from './modules/NotificationModule'
+import { UserModule } from './modules/UserModule'
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
-  state: {
-    testState: 'root state',
-  },
-  getters: {
-    testGetter: state => state.testState,
-  },
-  mutations: {
-    testMutation(state) {
-      state.testState += ' +mutation'
-    },
-  },
-  actions: {
-    testAction(ctx) {
-      ctx.state.testState += ' +action'
-    },
-  },
   modules: {
-    AuthModule,
-    ExampleModule,
     UserModule,
+    CommonsModule,
     NotificationModule,
   },
+  actions: {
+    onOpen({ commit }) {
+      commit('NotificationModule/clear')
+    },
+    onClose() {},
+    onLogin() {},
+    onLogout() {},
+  },
+  plugins: [createPersistedState()],
 })
+
+store.dispatch('onOpen')
+window.addEventListener('beforeunload', () => store.dispatch('onClose'))

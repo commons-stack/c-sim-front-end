@@ -1,5 +1,5 @@
 <template>
-  <div class="br-rounded" :class="classes" :style="styles"></div>
+  <div class="border-radius-rounded" :class="classes" :style="styles"></div>
 </template>
 
 <script>
