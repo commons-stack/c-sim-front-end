@@ -117,7 +117,7 @@ export default {
         2: 'Extraction, pollution and poor decision-making have rendered the water and air toxic to life.',
         3: 'The sun has been blotted out. Millions of life forms have gone extinct.',
         4: 'yet pockets of humanity survived...',
-        5: '...mostly basement gamers, held up in secret bunkers, many of whom have never seen the sun.',
+        5: '...mostly basement gamers, holed up in secret bunkers, many of whom have never seen the sun.',
         6: 'These visionary geeks turned their remote control into cadCAD; a computational prediction tool and time travel machine that can be used to prevent the catastrophic outcomes of the 21st century!',
         7: 'They can now send someone back to a point in the past to save the planet, but when?',
         8: 'With cadCAD in hand, new incentivized economic systems can be created.',
