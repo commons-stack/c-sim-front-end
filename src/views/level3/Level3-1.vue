@@ -2,7 +2,7 @@
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
     <h2 class="teko-subtitle text-center">
-      What ercent of the contributions will be allocated to the Funding Pool?
+      What percent of the contributions will be allocated to the Funding Pool?
     </h2>
     <p class="font-ibm fs-20 text-center">
       The balance will be the Reserve that backs the RxC tokens.
