@@ -4,7 +4,7 @@
       leap one
     </p>
     <p text-xxxl key="2" class="item mt-1p5" :class="state > 3 && 'item-active'">
-      Initiating the RadicalXChange Commons
+      Initiating the RadicalxChange Commons
     </p>
     <p
       style="max-width: 700px;"
