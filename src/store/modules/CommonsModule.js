@@ -8,6 +8,10 @@ const simulationDefaults = {
 
 export const CommonsModule = createModule({
   state: {
+    conviction: {
+      halfLife: 0.8,
+      inflectionPoint: 0.99,
+    },
     form: {
       foundingMembers: 30,
       proposals: 3,
@@ -21,7 +25,7 @@ export const CommonsModule = createModule({
       proposals: { min: 1, max: 50 },
       funding: { min: 1, max: 99 },
       votingPower: { min: 5, max: 50 },
-      decisions: { min: 1, max: 120 },
+      decisions: { min: 3, max: 120 },
       exiting: { min: 1, max: 80 },
     },
     outcome: {

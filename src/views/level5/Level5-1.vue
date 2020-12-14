@@ -113,35 +113,106 @@ export default {
   computed: {
     ...mapState('CommonsModule', ['minmax']),
     chart() {
-      const input = this.forms.input.decisions
+      const input = this.forms.input.decisions && this.forms.input.decisions > 2 ? this.forms.input.decisions : 3
+      const H = this.$store.state.CommonsModule.conviction.halfLife
+      const H2 = this.$store.state.CommonsModule.conviction.inflectionPoint
+      const alpha = (1 - H) ** (1 / input)
+      const S = 1 - alpha
+      const t = Math.log((((alpha - 1) * H2) + S) / S) / Math.log(alpha)
+      const maxBound = 180
+      const labels = [...Array(maxBound + 1).keys()]
+      const conviction_lbound = x => S * (1 - alpha**x) / (1 - alpha)
+      const conviction_ubound = (x, t) => H2 * (S / (1 - alpha)) * alpha**(x - t)
+      const data = labels.map(x => 100 * (x < t ? conviction_lbound(x):conviction_ubound(x, t)))
       return {
         type: 'line',
         data: {
-          labels: [0, 3, 10, 30, 60],
+          labels: labels,
           datasets: [
             {
-              data: [0, input, 3, 5, 0],
+              label: 'Conviction',
+              data: data,
               strokeColor: '#ff6c23',
               pointBackgroundColor: '#fff',
               pointBorderWidth: 8,
               pointBorderColor: '#fff4',
               pointHoverBackgroundColor: '#fff',
               pointHoverBorderWidth: 12,
-              pointRadius: ctx => (ctx.dataIndex === 1 ? 3 : 0),
-              pointHitRadius: ctx => (ctx.dataIndex === 1 ? 10 : 0),
+              pointRadius: ctx => (ctx.dataIndex === labels.findIndex(x => x === input) ||
+                  ctx.dataIndex === labels.findIndex(x => x === Math.floor(t))) ? 3: 0,
+              pointHitRadius: ctx => (ctx.dataIndex === labels.findIndex(x => x === input) ||
+                  ctx.dataIndex === labels.findIndex(x => x === Math.floor(t))) ? 10: 0,
               borderColor: '#67DE69',
               borderWidth: 0.5,
+              hoverRadius: 4,
+            },
+            {
+              label: '80p',
+              data: labels.map(x => 100 * (H * (S / (1 - alpha))) + x*0),
+              borderColor: '#67DE69',
+              borderDash: [10, 10],
+              borderWidth: 0.5,
+              fill: false,
+              pointRadius: 0,
+              pointHitRadius: 0,
             },
           ],
         },
         options: {
+          elements: { // default
+            point:{
+                hoverRadius: 0
+            }
+          },
           legend: {
             display: false,
           },
           scales: {
-            yAxes: [{ ticks: { beginAtZero: true } }],
             // xAxes: [{ type: 'logarithmic' }],
+            xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Days'
+              },
+            }],
+            yAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: '%'
+              },
+              ticks: { beginAtZero: true }
+            }],
           },
+          tooltips: {
+            callbacks: {
+                title: () => {
+                  return ''
+                },
+                label: function(tooltipItem) {
+                  let label = ''
+                  if (Math.round(tooltipItem.yLabel) === 100 * H) {
+                    label = `Conviction reaches ${Math.round(tooltipItem.yLabel * 100) / 100}% in ${tooltipItem.xLabel} days`
+                  } else if (tooltipItem.xLabel === Math.floor(t)) {
+                    label = 'Conviction decays in a similar way when support is withdrawn from a proposal'
+                    // label = `Inflection Point at day ${tooltipItem.xLabel}`
+                  }
+                  return label
+                },   
+            },
+            custom: function(tooltip) {
+              if (!tooltip) return
+              // disable displaying the color box;
+              tooltip.displayColors = false
+            },
+            filter: function (tooltipItem) {
+                return tooltipItem.datasetIndex === 0
+            },
+            backgroundColor: 'rgb(44,44,44)',
+            cornerRadius: 0,
+            xPadding: 24,
+            yPadding: 12,
+          }
         },
       }
     },
