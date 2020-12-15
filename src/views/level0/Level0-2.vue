@@ -21,7 +21,7 @@
     <h2 class="teko-title mt-3">Who am I?</h2>
     <p class="level-text mt-1">
       Looking at the phone in your pocket you intuitively know how to unlock it and scroll through
-      to find out that your name is Nik.
+      to find out that your name is Nik. When your calendar shows you are on your way to host a RadicalxChange meeting at the Akasha Hub in Barcelona, your excitement builds!
     </p>
     <img class="level-image" src="@/assets/level_0_img_2.jpg" alt="intro image 2" />
     <h2 class="teko-title mt-3">Your mission</h2>
