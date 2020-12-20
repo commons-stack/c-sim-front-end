@@ -125,6 +125,7 @@ export default {
       return d
     },
     chart1() {
+      console.log(this.data)
       return {
         datasets: [
           {
@@ -225,9 +226,21 @@ export default {
             pointRadius: 0,
             pointHitRadius: 0,
             backgroundColor: `${x.borderColor}44`,
+            strokeColor: '#ff6c23',
+            pointBackgroundColor: '#fff',
+            pointBorderWidth: 8,
+            pointBorderColor: '#fff4',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderWidth: 12,
+            hoverRadius: 4,
           })),
         },
         options: {
+          elements: { // default
+            point:{
+              hoverRadius: 0
+            }
+          },
           legend: {
             labels: {
               fontColor: '#fffa',
@@ -237,11 +250,10 @@ export default {
             yAxes: input.yAxes,
             xAxes: [
               {
-                ticks: {
-                  fontColor: '#fff6',
-                  autoSkip: true,
-                  maxRotation: 0,
-                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Weeks'
+                }
               },
             ],
           },
@@ -310,7 +322,6 @@ export default {
 .graph {
   width: var(--graph-width);
   height: var(--graph-height);
-  background: #141e29;
   & > div {
     font-size: 11px;
   }

@@ -161,7 +161,7 @@ export default {
         options: {
           elements: { // default
             point:{
-                hoverRadius: 0
+              hoverRadius: 0
             }
           },
           legend: {
@@ -198,7 +198,7 @@ export default {
                     // label = `Inflection Point at day ${tooltipItem.xLabel}`
                   }
                   return label
-                },   
+                },
             },
             custom: function(tooltip) {
               if (!tooltip) return
