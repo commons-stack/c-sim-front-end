@@ -39,7 +39,7 @@
           :chart="buildChart(chart1)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
-          :gradients="['#17b16044 #000000', '#156ce244 #000000']"
+          :gradient="`${color1}44 #000000`"
         />
       </div>
       <div class="graph-info" style="grid-area: desc1;">
@@ -57,7 +57,7 @@
           :chart="buildChart(chart2)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
-          :gradients="['#17b16044 #000000', '#94b41844 #000000']"
+          :gradient="`${color2}44 #000000`"
         />
       </div>
       <div class="graph-info" style="grid-area: desc2;">
@@ -75,7 +75,7 @@
           :chart="buildChart(chart3)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
-          :gradients="['#156ce244 #000000', '#94b41844 #000000']"
+          :gradient="`${color3}44 #000000`"
         />
       </div>
       <div class="graph-info" style="grid-area: desc3;">
@@ -112,6 +112,9 @@ export default {
   data() {
     return {
       modalBg: '#0008',
+      color1: '#17b160',
+      color2: '#156ce2',
+      color3: '#94b418',
       cssVars: {
         graphWidth: '400',
         graphHeight: '200',
@@ -132,27 +135,15 @@ export default {
         datasets: [
           {
             data: this.data.funding_pool,
-            borderColor: '#17b160',
+            borderColor: this.color1,
             yAxisID: 'funding-pool',
             label: 'funding pool',
-          },
-          {
-            data: this.data.token_supply,
-            borderColor: '#156ce2',
-            yAxisID: 'token-supply',
-            label: 'token supply',
-          },
+          }
         ],
         yAxes: [
           {
             id: 'funding-pool',
-            ticks: { fontColor: '#17b160' },
-          },
-          {
-            id: 'token-supply',
-            position: 'right',
-            ticks: { fontColor: '#156ce2' },
-          },
+          }
         ],
       }
     },
@@ -161,27 +152,15 @@ export default {
         datasets: [
           {
             data: this.data.funding_pool,
-            borderColor: '#17b160',
+            borderColor: this.color2,
             yAxisID: 'funding-pool',
             label: 'funding pool',
-          },
-          {
-            data: this.data.collateral,
-            borderColor: '#94b418',
-            yAxisID: 'collateral',
-            label: 'collateral',
-          },
+          }
         ],
         yAxes: [
           {
             id: 'funding-pool',
-            ticks: { fontColor: '#17b160' },
-          },
-          {
-            id: 'collateral',
-            position: 'right',
-            ticks: { fontColor: '#94b418' },
-          },
+          }
         ],
       }
     },
@@ -190,37 +169,20 @@ export default {
         datasets: [
           {
             data: this.data.token_supply,
-            borderColor: '#156ce2',
+            borderColor: this.color3,
             yAxisID: 'token-supply',
             label: 'token supply',
-          },
-          {
-            data: this.data.collateral,
-            borderColor: '#94b418',
-            yAxisID: 'collateral',
-            label: 'collateral',
-          },
+          }
         ],
         yAxes: [
           {
             id: 'token-supply',
-            ticks: { fontColor: '#156ce2' },
-          },
-          {
-            id: 'collateral',
-            position: 'right',
-            ticks: { fontColor: '#94b418' },
-          },
+          }
         ],
       }
     },
   },
   methods: {
-    createGradient(gradient) {
-      const carouselCtx = this.$refs.chart.getContext('2d')
-      const chartGradient = carouselCtx.createLinearGradient(0, 0, 0, Number(this.height))
-      gradient.split(' ').forEach((col, i) => chartGradient.addColorStop(i, col))
-    },
     buildChart(input) {
       const d = this.data
       return {
