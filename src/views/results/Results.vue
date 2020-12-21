@@ -137,7 +137,7 @@ export default {
             data: this.data.funding_pool,
             borderColor: this.color1,
             yAxisID: 'funding-pool',
-            label: 'funding pool',
+            label: 'Funding pool',
           }
         ],
         yAxes: [
@@ -151,15 +151,15 @@ export default {
       return {
         datasets: [
           {
-            data: this.data.funding_pool,
+            data: this.data.sentiment,
             borderColor: this.color2,
-            yAxisID: 'funding-pool',
-            label: 'funding pool',
+            yAxisID: 'sentiment',
+            label: 'Sentiment',
           }
         ],
         yAxes: [
           {
-            id: 'funding-pool',
+            id: 'sentiment',
           }
         ],
       }
@@ -168,15 +168,15 @@ export default {
       return {
         datasets: [
           {
-            data: this.data.token_supply,
+            data: this.data.token_price,
             borderColor: this.color3,
-            yAxisID: 'token-supply',
-            label: 'token supply',
+            yAxisID: 'token-price',
+            label: 'Token Price',
           }
         ],
         yAxes: [
           {
-            id: 'token-supply',
+            id: 'token-price',
           }
         ],
       }
