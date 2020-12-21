@@ -39,6 +39,7 @@
           :chart="buildChart(chart1)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
+          :gradients="['#17b16044 #000000', '#156ce244 #000000']"
         />
       </div>
       <div class="graph-info" style="grid-area: desc1;">
@@ -56,6 +57,7 @@
           :chart="buildChart(chart2)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
+          :gradients="['#17b16044 #000000', '#94b41844 #000000']"
         />
       </div>
       <div class="graph-info" style="grid-area: desc2;">
@@ -73,6 +75,7 @@
           :chart="buildChart(chart3)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
+          :gradients="['#156ce244 #000000', '#94b41844 #000000']"
         />
       </div>
       <div class="graph-info" style="grid-area: desc3;">
@@ -110,8 +113,8 @@ export default {
     return {
       modalBg: '#0008',
       cssVars: {
-        graphWidth: '400px',
-        graphHeight: '200px',
+        graphWidth: '400',
+        graphHeight: '200',
       },
     }
   },
@@ -125,7 +128,6 @@ export default {
       return d
     },
     chart1() {
-      console.log(this.data)
       return {
         datasets: [
           {
@@ -214,6 +216,11 @@ export default {
     },
   },
   methods: {
+    createGradient(gradient) {
+      const carouselCtx = this.$refs.chart.getContext('2d')
+      const chartGradient = carouselCtx.createLinearGradient(0, 0, 0, Number(this.height))
+      gradient.split(' ').forEach((col, i) => chartGradient.addColorStop(i, col))
+    },
     buildChart(input) {
       const d = this.data
       return {
@@ -225,7 +232,6 @@ export default {
             borderWidth: 1,
             pointRadius: 0,
             pointHitRadius: 0,
-            backgroundColor: `${x.borderColor}44`,
             strokeColor: '#ff6c23',
             pointBackgroundColor: '#fff',
             pointBorderWidth: 8,
