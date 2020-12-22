@@ -84,7 +84,7 @@ import * as xstate from 'xstate';
 
 const createState = (next) => ({ on: { NEXT: next }, after: { 7500: next } });
 const machine = xstate.Machine({
-  initial: '8',
+  initial: '1',
   states: {
     1: createState('2'),
     2: createState('3'),
