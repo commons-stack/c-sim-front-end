@@ -40,91 +40,91 @@ export const routes = [
     path: '/level/1/1',
     component: Level11,
     meta: {
-      title: 'Founding Members',
+      title: 'Hatchers',
     },
   },
   {
     path: '/level/1/2',
     component: Level12,
     meta: {
-      title: 'Founding Members',
+      title: 'Hatchers',
     },
   },
   {
     path: '/level/1/3',
     component: Level13,
     meta: {
-      title: 'Founding Members',
+      title: 'Hatchers',
     },
   },
   {
     path: '/level/2/1',
     component: Level21,
     meta: {
-      title: 'Proposals',
+      title: 'Initial Proposals',
     },
   },
   {
     path: '/level/2/2',
     component: Level22,
     meta: {
-      title: 'Proposals',
+      title: 'Initial Proposals',
     },
   },
   {
     path: '/level/3/1',
     component: Level31,
     meta: {
-      title: 'Funding',
+      title: 'Hatch Tribute',
     },
   },
   {
     path: '/level/3/2',
     component: Level32,
     meta: {
-      title: 'Funding',
+      title: 'Hatch Tribute',
     },
   },
   {
     path: '/level/4/1',
     component: Level41,
     meta: {
-      title: 'Voting Power',
+      title: 'Max Spending',
     },
   },
   {
     path: '/level/4/2',
     component: Level42,
     meta: {
-      title: 'Voting Power',
+      title: 'Max Spending',
     },
   },
   {
     path: '/level/5/1',
     component: Level51,
     meta: {
-      title: 'Decisions',
+      title: 'Voting Speed',
     },
   },
   {
     path: '/level/5/2',
     component: Level52,
     meta: {
-      title: 'Decisions',
+      title: 'Voting Speed',
     },
   },
   {
     path: '/level/6/1',
     component: Level61,
     meta: {
-      title: 'Exiting',
+      title: 'Exit Tribute',
     },
   },
   {
     path: '/level/7/1',
     component: Level71,
     meta: {
-      title: 'Simulation',
+      title: 'Run cadCAD',
     },
   },
   {
@@ -138,7 +138,7 @@ export const routes = [
     path: '/submit',
     component: Submit,
     meta: {
-      title: 'Simulation',
+      title: 'Run cadCAD',
     },
   },
   {

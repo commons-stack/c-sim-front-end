@@ -13,27 +13,27 @@
         <grid class="sim-data">
           <div>
             <p>{{ form.foundingMembers }}</p>
-            <p>FOUNDING MEMBERS</p>
+            <p>HATCHERS</p>
           </div>
           <div>
             <p>{{ form.proposals }}</p>
-            <p>PROPOSALS</p>
+            <p>INITIAL PROPOSALS</p>
           </div>
           <div>
             <p>{{ form.funding }}%</p>
-            <p>FUNDING</p>
+            <p>HATCH TRIBUTE</p>
           </div>
           <div>
             <p>{{ form.votingPower }}%</p>
-            <p>VOTING POWER</p>
+            <p>MAX SPENDING</p>
           </div>
           <div>
             <p>{{ form.decisions }} Days</p>
-            <p>DECISIONS</p>
+            <p>VOTING SPEED</p>
           </div>
           <div>
             <p>{{ form.exiting }}%</p>
-            <p>EXITING</p>
+            <p>EXIT TRIBUTE</p>
           </div>
         </grid>
       </flex>

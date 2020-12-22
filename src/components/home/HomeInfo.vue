@@ -1,10 +1,20 @@
 <template>
   <transition-group name="home-trans" tag="div" class="home-list" text-center>
-    <p uppercase key="1" class="item lato-header pt-3" :class="state > 4 && 'item-active'">
+    <p
+      uppercase
+      key="1"
+      class="item lato-header pt-3"
+      :class="state > 4 && 'item-active'"
+    >
       leap one
     </p>
-    <p text-xxxl key="2" class="item mt-1p5" :class="state > 3 && 'item-active'">
-      Initiating the RadicalXChange Commons
+    <p
+      text-xxxl
+      key="2"
+      class="item mt-1p5"
+      :class="state > 3 && 'item-active'"
+    >
+      Initiating the RadicalxChange Commons
     </p>
     <p
       style="max-width: 700px;"
@@ -13,9 +23,10 @@
       class="item font-ibm mt-2"
       :class="state > 2 && 'item-active'"
     >
-      The Commons Simulator main character is creating a solar punk themed future. Your mission is
-      to travel back to 2020 with cadCAD to save the planet and create a Solarpunk future by
-      teaching important communities to set up their own Commons.
+      Become the futuristic, solarpunk character in this Commons Simulator
+      adventure to correct the course of history. Your mission is to travel back
+      in time with cadCAD, and save the planet by teaching communities how to
+      create a regenerative Commons.
     </p>
     <button
       commons
@@ -42,16 +53,16 @@ export default {
   name: 'home-info',
   created() {
     const interval = setInterval(() => {
-      if (this.state === 5) clearInterval(interval)
-      this.state += 1
-    }, 200)
+      if (this.state === 5) clearInterval(interval);
+      this.state += 1;
+    }, 200);
   },
   data() {
     return {
       state: 0,
-    }
+    };
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
