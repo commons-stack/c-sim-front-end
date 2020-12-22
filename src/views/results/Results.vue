@@ -36,10 +36,11 @@
       </grid>
       <div class="graph" style="grid-area: graph1;">
         <Chart
+          responsive="true"
           :chart="buildChart(chart1)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
-          :gradient="`${color1}44 #000000`"
+          :gradient="`${color11}dd ${color12}44`"
         />
       </div>
       <div class="graph-info" style="grid-area: desc1;">
@@ -57,7 +58,7 @@
           :chart="buildChart(chart2)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
-          :gradient="`${color2}44 #000000`"
+          :gradient="`${color21}44 #000000`"
         />
       </div>
       <div class="graph-info" style="grid-area: desc2;">
@@ -75,7 +76,7 @@
           :chart="buildChart(chart3)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
-          :gradient="`${color3}44 #000000`"
+          :gradient="`${color31}44 #000000`"
         />
       </div>
       <div class="graph-info" style="grid-area: desc3;">
@@ -112,9 +113,10 @@ export default {
   data() {
     return {
       modalBg: '#0008',
-      color1: '#17b160',
-      color2: '#156ce2',
-      color3: '#94b418',
+      color11: '#17b160',
+      color12: '#247c97',
+      color21: '#156ce2',
+      color31: '#94b418',
       cssVars: {
         graphWidth: '400',
         graphHeight: '200',
@@ -135,7 +137,7 @@ export default {
         datasets: [
           {
             data: this.data.funding_pool,
-            borderColor: this.color1,
+            borderColor: this.color11,
             yAxisID: 'funding-pool',
             label: 'Funding pool',
           }
@@ -145,6 +147,7 @@ export default {
             id: 'funding-pool',
           }
         ],
+        title: 'Funding Pool'
       }
     },
     chart2() {
@@ -152,7 +155,7 @@ export default {
         datasets: [
           {
             data: this.data.sentiment,
-            borderColor: this.color2,
+            borderColor: this.color21,
             yAxisID: 'sentiment',
             label: 'Sentiment',
           }
@@ -162,6 +165,7 @@ export default {
             id: 'sentiment',
           }
         ],
+        title: 'Sentiment'
       }
     },
     chart3() {
@@ -169,7 +173,7 @@ export default {
         datasets: [
           {
             data: this.data.token_price,
-            borderColor: this.color3,
+            borderColor: this.color31,
             yAxisID: 'token-price',
             label: 'Token Price',
           }
@@ -179,6 +183,7 @@ export default {
             id: 'token-price',
           }
         ],
+        title: 'Token Price'
       }
     },
   },
@@ -191,7 +196,6 @@ export default {
           labels: d.timestep,
           datasets: input.datasets.map(x => ({
             ...x,
-            borderWidth: 1,
             pointRadius: 0,
             pointHitRadius: 0,
             strokeColor: '#ff6c23',
@@ -200,6 +204,7 @@ export default {
             pointBorderColor: '#fff4',
             pointHoverBackgroundColor: '#fff',
             pointHoverBorderWidth: 12,
+            borderWidth: 0.5,
             hoverRadius: 4,
           })),
         },
@@ -209,10 +214,12 @@ export default {
               hoverRadius: 0
             }
           },
+          title: {
+            display: true,
+            text: input.title
+          },
           legend: {
-            labels: {
-              fontColor: '#fffa',
-            },
+            display: false
           },
           scales: {
             yAxes: input.yAxes,
@@ -220,7 +227,7 @@ export default {
               {
                 scaleLabel: {
                   display: true,
-                  labelString: 'Weeks'
+                  labelString: 'Days'
                 }
               },
             ],
@@ -260,6 +267,10 @@ export default {
     border: 2px solid #143b5f;
     height: 70px;
     width: 120px;
+    @include s {
+      width: 130px;
+      height: 90px;
+    }
     display: grid;
     justify-items: center;
     align-content: center;
@@ -288,8 +299,8 @@ export default {
   }
 }
 .graph {
-  width: var(--graph-width);
-  height: var(--graph-height);
+  width: 40vw;
+  height: 20vw;
   & > div {
     font-size: 11px;
   }
