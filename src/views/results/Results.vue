@@ -58,7 +58,7 @@
           :chart="buildChart(chart2)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
-          :gradient="`${color21}44 #000000`"
+          :gradient="`${color21}dd ${color21}44`"
         />
       </div>
       <div class="graph-info" style="grid-area: desc2;">
@@ -76,7 +76,7 @@
           :chart="buildChart(chart3)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
-          :gradient="`${color31}44 #000000`"
+          :gradient="`${color31}dd ${color32}44`"
         />
       </div>
       <div class="graph-info" style="grid-area: desc3;">
@@ -116,7 +116,9 @@ export default {
       color11: '#17b160',
       color12: '#247c97',
       color21: '#156ce2',
+      color22: '#011638',
       color31: '#94b418',
+      color32: '#364958',
       cssVars: {
         graphWidth: '400',
         graphHeight: '200',
