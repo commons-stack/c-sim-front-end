@@ -20,24 +20,23 @@
           </div>
         </grid>
         <grid class="form-section">
-          <div class="radio">
-            <label
+          <label
+            :id="`${day}-days`"
+            v-for="day in [3, 10, 30, 60]"
+            :key="day"
+            @click="setOption(day)"
+            class="radio"
+          >
+            <input
+              class="cursor-pointer"
+              type="radio"
               :id="`${day}-days`"
-              v-for="day in [3, 10, 30, 60]"
-              :key="day"
-              @click="setOption(day)"
-            >
-              <input
-                class="cursor-pointer"
-                type="radio"
-                :id="`${day}-days`"
-                :name="`${day} Days`"
-                :value="day"
-                v-model="forms.input.decisions"
-              />
-              <span class="radio-label">{{ day }} Days</span>
-            </label>
-          </div>
+              :name="`${day} Days`"
+              :value="day"
+              v-model="forms.input.decisions"
+            />
+            <span class="radio-label">{{ day }} Days</span>
+          </label>
           <label>
             <form-input
               id="days-input"
@@ -264,7 +263,7 @@ export default {
   justify-content: center;
   justify-items: center;
   align-items: center;
-  column-gap: 2rem;
+  column-gap: 1rem;
   grid-template-columns: repeat(5, auto);
   & > label {
     display: grid;
@@ -277,7 +276,6 @@ export default {
 }
 .radio {
   .radio-label {
-    margin-right: 2em;
     @extend .font-teko;
     font-size: 26px;
   }
