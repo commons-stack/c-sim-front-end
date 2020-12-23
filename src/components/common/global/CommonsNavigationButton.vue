@@ -15,13 +15,13 @@
 <script>
 const levelNames = {
   0: 'intro',
-  1: 'founding members',
-  2: 'proposals',
-  3: 'funding',
-  4: 'voting power',
-  5: 'decisions',
-  6: 'exiting',
-  7: 'simulation',
+  1: 'hatchers',
+  2: 'initial proposals',
+  3: 'hatch tribute',
+  4: 'max spending',
+  5: 'voting speed',
+  6: 'exit tribute',
+  7: 'run cadcad',
 }
 
 export default {

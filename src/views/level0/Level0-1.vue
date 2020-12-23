@@ -6,8 +6,8 @@
       <p class="lato-header mt-2" uppercase>Level 0</p>
       <h2 class="teko-title mt-1p5">Choose the rules for the Commons</h2>
       <p class="level-text mt-2">
-        To whom can we give these fantastical tools that will empower humanity to save life on
-        earth? Are you ready to find out?
+        Who will be the one to help humanity save life on earth? <br/>
+        Are you ready to find out?
       </p>
       <form-input
         class="x-input"
