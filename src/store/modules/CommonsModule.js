@@ -4,6 +4,7 @@ import { createModule } from '../store.utils'
 const simulationDefaults = {
   kappa: Number(process.env.VUE_APP_SIM_KAPPA ?? 3),
   vesting_80p_unlocked: Number(process.env.VUE_APP_SIM_VESTING_80P_UNLOCKED ?? 60),
+  timesteps_days: Number(process.env.VUE_APP_SIM_TIMESTEPS_DAYS ?? 180),
 }
 
 export const CommonsModule = createModule({
@@ -41,7 +42,7 @@ export const CommonsModule = createModule({
       hatch_tribute: state.form.funding / 100,
       exit_tribute: state.form.exiting / 100,
       days_to_80p_of_max_voting_weight: state.form.decisions,
-      proposal_max_size: state.form.votingPower / 100,
+      max_proposal_request: state.form.votingPower / 100,
       ...simulationDefaults,
     }),
   },
