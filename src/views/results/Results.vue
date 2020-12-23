@@ -44,11 +44,7 @@
         />
       </div>
       <div class="graph-info" style="grid-area: desc1;">
-        <p @click="$refs.glossary1.show()">Metrics glossary</p>
-        <modal :bg="false" :overlay="modalBg" ref="glossary1">
-          Metric glossary 1
-        </modal>
-        <p @click="$refs.chart1.show()">Example chart</p>
+        <p @click="$refs.chart1.show()">What do good Funding Pool results look like?</p>
         <modal :bg="false" :overlay="modalBg" ref="chart1">
           Example chart 1
         </modal>
@@ -62,11 +58,7 @@
         />
       </div>
       <div class="graph-info" style="grid-area: desc2;">
-        <p @click="$refs.glossary2.show()">Metrics glossary</p>
-        <modal :bg="false" :overlay="modalBg" ref="glossary2">
-          Metric glossary 2
-        </modal>
-        <p @click="$refs.chart2.show()">Example chart</p>
+        <p @click="$refs.chart2.show()">What do good Sentiment results look like?</p>
         <modal :bg="false" :overlay="modalBg" ref="chart2">
           Example chart 2
         </modal>
@@ -80,11 +72,7 @@
         />
       </div>
       <div class="graph-info" style="grid-area: desc3;">
-        <p @click="$refs.glossary3.show()">Metrics glossary</p>
-        <modal :bg="false" :overlay="modalBg" ref="glossary3">
-          Metric glossary 3
-        </modal>
-        <p @click="$refs.chart3.show()">Example chart</p>
+        <p @click="$refs.chart3.show()">What do good Token Price look like?</p>
         <modal :bg="false" :overlay="modalBg" ref="chart3">
           Example chart 3
         </modal>
