@@ -35,6 +35,14 @@
         </div>
       </grid>
       <div class="graph" style="grid-area: graph1;">
+        <div class="graph-example">
+          <p style="color: #43a983;" @click="$refs.chart1.show()">
+            What do good Funding Pool results look like?
+          </p>
+          <modal :bg="false" :overlay="modalBg" ref="chart1">
+            Example chart 1
+          </modal>
+        </div>
         <Chart
           responsive="true"
           :chart="buildChart(chart1)"
@@ -43,13 +51,15 @@
           :gradient="`${color11}dd ${color12}44`"
         />
       </div>
-      <div class="graph-info" style="grid-area: desc1;">
-        <p @click="$refs.chart1.show()">What do good Funding Pool results look like?</p>
-        <modal :bg="false" :overlay="modalBg" ref="chart1">
-          Example chart 1
-        </modal>
-      </div>
       <div class="graph" style="grid-area: graph2;">
+        <div class="graph-example">
+          <p style="color: #156ce2;" @click="$refs.chart1.show()">
+            What do good Sentiment results look like?
+          </p>
+          <modal :bg="false" :overlay="modalBg" ref="chart1">
+            Example chart 1
+          </modal>
+        </div>
         <Chart
           :chart="buildChart(chart2)"
           :width="cssVars.graphWidth"
@@ -57,25 +67,21 @@
           :gradient="`${color21}dd ${color21}44`"
         />
       </div>
-      <div class="graph-info" style="grid-area: desc2;">
-        <p @click="$refs.chart2.show()">What do good Sentiment results look like?</p>
-        <modal :bg="false" :overlay="modalBg" ref="chart2">
-          Example chart 2
-        </modal>
-      </div>
       <div class="graph" style="grid-area: graph3;">
+         <div class="graph-example">
+          <p style="color: #94b418;" @click="$refs.chart1.show()">
+            What do good Token Price results look like?
+          </p>
+          <modal :bg="false" :overlay="modalBg" ref="chart1">
+            Example chart 1
+          </modal>
+        </div>
         <Chart
           :chart="buildChart(chart3)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
           :gradient="`${color31}dd ${color32}44`"
         />
-      </div>
-      <div class="graph-info" style="grid-area: desc3;">
-        <p @click="$refs.chart3.show()">What do good Token Price look like?</p>
-        <modal :bg="false" :overlay="modalBg" ref="chart3">
-          Example chart 3
-        </modal>
       </div>
     </div>
     <p class="teko-subtitle mt-5">
@@ -230,18 +236,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.graph-example {
+  text-align: center;
+  cursor: pointer;
+  & > p {
+    font-size: 14px;
+  }
+}
 .graph-wrap {
   text-align: start;
   margin-top: 2rem;
-  width: 100%;
+  margin-bottom: 2rem;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr auto;
   grid-template-rows: repeat(3, auto);
   grid-template-areas:
-    'gnav graph1 desc1'
-    'gnav graph2 desc2'
-    'gnav graph3 desc3';
-  row-gap: 0.75rem;
+    'gnav graph1'
+    'gnav graph2'
+    'gnav graph3';
+  row-gap: 10rem;
   column-gap: 1.5rem;
 }
 .graph-nav {
@@ -289,7 +302,7 @@ export default {
   }
 }
 .graph {
-  width: 40vw;
+  width: 50vw;
   height: 20vw;
   & > div {
     font-size: 11px;
