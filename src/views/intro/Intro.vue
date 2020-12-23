@@ -47,7 +47,7 @@
     </transition>
     <transition name="test-fade" appear>
       <div class="section" v-show="xstate === '7'">
-        <p class="t7-text">{{ text[7] }}</p>
+        <p class="t7-text" v-html="text[7]">{{ text[7] }}</p>
         <img src="@/assets/intro_7.jpg" alt="Intro image (6)" />
       </div>
     </transition>
@@ -63,12 +63,26 @@
       </div>
     </transition>
     <transition name="test-fade" appear>
-      <div class="section" v-show="['10', '11'].includes(xstate)">
+      <div class="section" v-show="['10', '11', '12', '13'].includes(xstate)">
         <transition name="test-fade" appear>
           <p v-if="xstate === '10'">{{ text[10] }}</p>
         </transition>
         <transition name="test-fade" appear>
-          <p v-if="xstate === '11'">{{ text[11] }}</p>
+          <p class="t11-text" v-if="xstate >= '11'">
+            {{ text[11] }}
+          </p>
+        </transition>
+        <transition name="test-fade" appear>
+          <p class="t12-text" v-if="xstate >= '12'">
+            <br /><br />
+            {{ text[12] }}
+          </p>
+        </transition>
+        <transition name="test-fade" appear>
+          <p class="t13-text" v-if="xstate >= '13'">
+            <br /><br /><br /><br />
+            {{ text[13] }}
+          </p>
         </transition>
         <img src="@/assets/intro_10.jpg" alt="Intro image (8)" />
       </div>
@@ -82,7 +96,7 @@
 <script>
 import * as xstate from 'xstate';
 
-const createState = (next) => ({ on: { NEXT: next }, after: { 7500: next } });
+const createState = (next) => ({ on: { NEXT: next }, after: { 4500: next } });
 const machine = xstate.Machine({
   initial: '1',
   states: {
@@ -96,7 +110,9 @@ const machine = xstate.Machine({
     8: createState('9'),
     9: createState('10'),
     10: createState('11'),
-    11: createState('end'),
+    11: createState('12'),
+    12: createState('13'),
+    13: createState('end'),
     end: { type: 'final' },
   },
 });
@@ -119,11 +135,13 @@ export default {
         4: 'yet pockets of humanity survived...',
         5: '...mostly basement gamers, holed up in secret bunkers, many of whom have never seen the sun.',
         6: 'These visionary geeks turned their remote control into cadCAD; a computational prediction tool and time travel machine that can be used to prevent the catastrophic outcomes of the 21st century!',
-        7: 'They can now send someone back to a point in the past to save the planet, but when?',
+        7: 'They can now send someone back to a pivotal point in the past... <br /><br /> ...but to when?',
         8: 'With cadCAD in hand, new incentivized economic systems can be created that appropriately value the precious resources of our planet.',
         9: 'YOU have been chosen to bring cadCAD back in time, but there’s a twist...',
         10: '... your consciousness will have to inhabit a human of that time period, and there’s no way to know who in advance!',
-        11: 'When and where will you end up, and what social movement has the greatest chance of creating a self-governing, regenerative Commons?',
+        11: 'When and where will you land?',
+        12: 'What social impact movement has the greatest chance of',
+        13: 'Creating a self-governing, regenerative Commons?',
       },
     };
   },
@@ -208,7 +226,7 @@ export default {
   }
 }
 .t7-text {
-  width: 100% !important;
+  width: 35% !important;
 }
 .t8-text,
 .t9-text {
