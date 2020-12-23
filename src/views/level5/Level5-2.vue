@@ -5,7 +5,7 @@
       <h3 class="teko-title">Almost there...</h3>
       <grid gap="2" style="max-width: 650px;">
         <p>
-          The last set of parameters that cadCAD requires to calculate are now being defiend.
+          The last set of parameters that cadCAD requires to calculate are now being defined.
         </p>
         <p>
           Members choose to pass good proposals that produce valuable outcomes for the community.

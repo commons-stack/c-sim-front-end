@@ -46,7 +46,7 @@
 import { mapState } from 'vuex'
 
 export default {
-  name: 'level-6-1',
+  name: 'level-7-1',
   computed: { ...mapState('CommonsModule', ['form']) },
   methods: {
     runSimulation() {
