@@ -20,7 +20,7 @@ export default {
       type: Object,
       required: true,
     },
-    gradient: String,
+    gradient: String
   },
   mounted() {
     if (this.gradient) {
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       instance: undefined,
-      chartGradient: undefined,
+      chartGradient: undefined
     }
   },
   methods: {

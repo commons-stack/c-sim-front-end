@@ -35,55 +35,53 @@
         </div>
       </grid>
       <div class="graph" style="grid-area: graph1;">
+        <div class="graph-example">
+          <p style="color: #43a983;" @click="$refs.chart1.show()">
+            What do good Funding Pool results look like?
+          </p>
+          <modal :bg="false" :overlay="modalBg" ref="chart1">
+            Example chart 1
+          </modal>
+        </div>
         <Chart
+          responsive="true"
           :chart="buildChart(chart1)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
+          :gradient="`${color11}dd ${color12}44`"
         />
       </div>
-      <div class="graph-info" style="grid-area: desc1;">
-        <p @click="$refs.glossary1.show()">Metrics glossary</p>
-        <modal :bg="false" :overlay="modalBg" ref="glossary1">
-          Metric glossary 1
-        </modal>
-        <p @click="$refs.chart1.show()">Example chart</p>
-        <modal :bg="false" :overlay="modalBg" ref="chart1">
-          Example chart 1
-        </modal>
-      </div>
       <div class="graph" style="grid-area: graph2;">
+        <div class="graph-example">
+          <p style="color: #156ce2;" @click="$refs.chart1.show()">
+            What do good Sentiment results look like?
+          </p>
+          <modal :bg="false" :overlay="modalBg" ref="chart1">
+            Example chart 1
+          </modal>
+        </div>
         <Chart
           :chart="buildChart(chart2)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
+          :gradient="`${color21}dd ${color21}44`"
         />
       </div>
-      <div class="graph-info" style="grid-area: desc2;">
-        <p @click="$refs.glossary2.show()">Metrics glossary</p>
-        <modal :bg="false" :overlay="modalBg" ref="glossary2">
-          Metric glossary 2
-        </modal>
-        <p @click="$refs.chart2.show()">Example chart</p>
-        <modal :bg="false" :overlay="modalBg" ref="chart2">
-          Example chart 2
-        </modal>
-      </div>
       <div class="graph" style="grid-area: graph3;">
+         <div class="graph-example">
+          <p style="color: #94b418;" @click="$refs.chart1.show()">
+            What do good Token Price results look like?
+          </p>
+          <modal :bg="false" :overlay="modalBg" ref="chart1">
+            Example chart 1
+          </modal>
+        </div>
         <Chart
           :chart="buildChart(chart3)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
+          :gradient="`${color31}dd ${color32}44`"
         />
-      </div>
-      <div class="graph-info" style="grid-area: desc3;">
-        <p @click="$refs.glossary3.show()">Metrics glossary</p>
-        <modal :bg="false" :overlay="modalBg" ref="glossary3">
-          Metric glossary 3
-        </modal>
-        <p @click="$refs.chart3.show()">Example chart</p>
-        <modal :bg="false" :overlay="modalBg" ref="chart3">
-          Example chart 3
-        </modal>
       </div>
     </div>
     <p class="teko-subtitle mt-5">
@@ -109,9 +107,15 @@ export default {
   data() {
     return {
       modalBg: '#0008',
+      color11: '#17b160',
+      color12: '#247c97',
+      color21: '#156ce2',
+      color22: '#011638',
+      color31: '#94b418',
+      color32: '#364958',
       cssVars: {
-        graphWidth: '400px',
-        graphHeight: '200px',
+        graphWidth: '400',
+        graphHeight: '200',
       },
     }
   },
@@ -129,86 +133,53 @@ export default {
         datasets: [
           {
             data: this.data.funding_pool,
-            borderColor: '#17b160',
+            borderColor: this.color11,
             yAxisID: 'funding-pool',
-            label: 'funding pool',
-          },
-          {
-            data: this.data.token_supply,
-            borderColor: '#156ce2',
-            yAxisID: 'token-supply',
-            label: 'token supply',
-          },
+            label: 'Funding pool',
+          }
         ],
         yAxes: [
           {
             id: 'funding-pool',
-            ticks: { fontColor: '#17b160' },
-          },
-          {
-            id: 'token-supply',
-            position: 'right',
-            ticks: { fontColor: '#156ce2' },
-          },
+          }
         ],
+        title: 'Funding Pool'
       }
     },
     chart2() {
       return {
         datasets: [
           {
-            data: this.data.funding_pool,
-            borderColor: '#17b160',
-            yAxisID: 'funding-pool',
-            label: 'funding pool',
-          },
-          {
-            data: this.data.collateral,
-            borderColor: '#94b418',
-            yAxisID: 'collateral',
-            label: 'collateral',
-          },
+            data: this.data.sentiment,
+            borderColor: this.color21,
+            yAxisID: 'sentiment',
+            label: 'Sentiment',
+          }
         ],
         yAxes: [
           {
-            id: 'funding-pool',
-            ticks: { fontColor: '#17b160' },
-          },
-          {
-            id: 'collateral',
-            position: 'right',
-            ticks: { fontColor: '#94b418' },
-          },
+            id: 'sentiment',
+          }
         ],
+        title: 'Sentiment'
       }
     },
     chart3() {
       return {
         datasets: [
           {
-            data: this.data.token_supply,
-            borderColor: '#156ce2',
-            yAxisID: 'token-supply',
-            label: 'token supply',
-          },
-          {
-            data: this.data.collateral,
-            borderColor: '#94b418',
-            yAxisID: 'collateral',
-            label: 'collateral',
-          },
+            data: this.data.token_price,
+            borderColor: this.color31,
+            yAxisID: 'token-price',
+            label: 'Token Price',
+          }
         ],
         yAxes: [
           {
-            id: 'token-supply',
-            ticks: { fontColor: '#156ce2' },
-          },
-          {
-            id: 'collateral',
-            position: 'right',
-            ticks: { fontColor: '#94b418' },
-          },
+            id: 'token-price',
+          }
         ],
+        title: 'Token Price'
       }
     },
   },
@@ -221,27 +192,39 @@ export default {
           labels: d.timestep,
           datasets: input.datasets.map(x => ({
             ...x,
-            borderWidth: 1,
             pointRadius: 0,
             pointHitRadius: 0,
-            backgroundColor: `${x.borderColor}44`,
+            strokeColor: '#ff6c23',
+            pointBackgroundColor: '#fff',
+            pointBorderWidth: 8,
+            pointBorderColor: '#fff4',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderWidth: 12,
+            borderWidth: 0.5,
+            hoverRadius: 4,
           })),
         },
         options: {
+          elements: { // default
+            point:{
+              hoverRadius: 0
+            }
+          },
+          title: {
+            display: true,
+            text: input.title
+          },
           legend: {
-            labels: {
-              fontColor: '#fffa',
-            },
+            display: false
           },
           scales: {
             yAxes: input.yAxes,
             xAxes: [
               {
-                ticks: {
-                  fontColor: '#fff6',
-                  autoSkip: true,
-                  maxRotation: 0,
-                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Days'
+                }
               },
             ],
           },
@@ -253,18 +236,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.graph-example {
+  text-align: center;
+  cursor: pointer;
+  & > p {
+    font-size: 14px;
+  }
+}
 .graph-wrap {
   text-align: start;
   margin-top: 2rem;
-  width: 100%;
+  margin-bottom: 2rem;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr auto;
   grid-template-rows: repeat(3, auto);
   grid-template-areas:
-    'gnav graph1 desc1'
-    'gnav graph2 desc2'
-    'gnav graph3 desc3';
-  row-gap: 0.75rem;
+    'gnav graph1'
+    'gnav graph2'
+    'gnav graph3';
+  row-gap: 10rem;
   column-gap: 1.5rem;
 }
 .graph-nav {
@@ -280,6 +270,10 @@ export default {
     border: 2px solid #143b5f;
     height: 70px;
     width: 120px;
+    @include s {
+      width: 130px;
+      height: 90px;
+    }
     display: grid;
     justify-items: center;
     align-content: center;
@@ -308,9 +302,8 @@ export default {
   }
 }
 .graph {
-  width: var(--graph-width);
-  height: var(--graph-height);
-  background: #141e29;
+  width: 50vw;
+  height: 20vw;
   & > div {
     font-size: 11px;
   }
