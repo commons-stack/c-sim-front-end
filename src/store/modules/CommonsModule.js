@@ -4,7 +4,7 @@ import { createModule } from '../store.utils'
 const simulationDefaults = {
   kappa: Number(process.env.VUE_APP_SIM_KAPPA ?? 3),
   vesting_80p_unlocked: Number(process.env.VUE_APP_SIM_VESTING_80P_UNLOCKED ?? 60),
-  timesteps_days: Number(process.env.VUE_APP_SIM_TIMESTEPS_DAYS ?? 180),
+  timesteps_days: Number(process.env.VUE_APP_SIM_TIMESTEPS_DAYS ?? 90),
 }
 
 export const CommonsModule = createModule({
