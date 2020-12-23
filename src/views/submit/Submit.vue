@@ -64,7 +64,7 @@ export default {
         exit_tribute: this.exiting / 100,
         kappa: 3,
         days_to_80p_of_max_voting_weight: this.decisions,
-        proposal_max_size: this.votingPower / 100,
+        max_proposal_request: this.votingPower / 100,
       }
     },
   },
