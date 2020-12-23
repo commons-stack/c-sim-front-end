@@ -47,7 +47,7 @@
     </transition>
     <transition name="test-fade" appear>
       <div class="section" v-show="xstate === '7'">
-        <p class="t7-text">{{ text[7] }}</p>
+        <p class="t7-text" v-html="text[7]">{{ text[7] }}</p>
         <img src="@/assets/intro_7.jpg" alt="Intro image (6)" />
       </div>
     </transition>
@@ -119,7 +119,7 @@ export default {
         4: 'yet pockets of humanity survived...',
         5: '...mostly basement gamers, holed up in secret bunkers, many of whom have never seen the sun.',
         6: 'These visionary geeks turned their remote control into cadCAD; a computational prediction tool and time travel machine that can be used to prevent the catastrophic outcomes of the 21st century!',
-        7: 'They can now send someone back to a point in the past to save the planet, but when?',
+        7: 'They can now send someone back to a pivotal point in the past... <br /><br /> ...but to when?',
         8: 'With cadCAD in hand, new incentivized economic systems can be created that appropriately value the precious resources of our planet.',
         9: 'YOU have been chosen to bring cadCAD back in time, but there’s a twist...',
         10: '... your consciousness will have to inhabit a human of that time period, and there’s no way to know who in advance!',
@@ -208,7 +208,7 @@ export default {
   }
 }
 .t7-text {
-  width: 100% !important;
+  width: 35% !important;
 }
 .t8-text,
 .t9-text {
