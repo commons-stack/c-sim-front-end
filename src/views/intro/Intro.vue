@@ -54,10 +54,10 @@
     <transition name="test-fade" appear>
       <div class="section" v-show="['8', '9'].includes(xstate)">
         <transition name="test-fade" appear>
-          <p v-if="xstate === '8'">{{ text[8] }}</p>
+          <p class="t8-text" v-if="xstate === '8'">{{ text[8] }}</p>
         </transition>
         <transition name="test-fade" appear>
-          <p v-if="xstate === '9'">{{ text[9] }}</p>
+          <p class="t9-text" v-if="xstate === '9'">{{ text[9] }}</p>
         </transition>
         <img src="@/assets/intro_8.jpg" alt="Intro image (7)" />
       </div>
@@ -80,9 +80,9 @@
 </template>
 
 <script>
-import * as xstate from 'xstate'
+import * as xstate from 'xstate';
 
-const createState = next => ({ on: { NEXT: next }, after: { 7500: next } })
+const createState = (next) => ({ on: { NEXT: next }, after: { 7500: next } });
 const machine = xstate.Machine({
   initial: '1',
   states: {
@@ -99,15 +99,15 @@ const machine = xstate.Machine({
     11: createState('end'),
     end: { type: 'final' },
   },
-})
+});
 
 export default {
   name: 'intro',
   mounted() {
-    setTimeout(() => window.addEventListener('click', this.clickHandler), 750)
+    setTimeout(() => window.addEventListener('click', this.clickHandler), 750);
   },
   beforeDestroy() {
-    window.removeEventListener('click', this.clickHandler)
+    window.removeEventListener('click', this.clickHandler);
   },
   data() {
     return {
@@ -117,30 +117,30 @@ export default {
         2: 'Extraction, pollution and poor decision-making have rendered the water and air toxic to life.',
         3: 'The sun has been blotted out. Millions of life forms have gone extinct.',
         4: 'yet pockets of humanity survived...',
-        5: '...mostly basement gamers, held up in secret bunkers, many of whom have never seen the sun.',
+        5: '...mostly basement gamers, holed up in secret bunkers, many of whom have never seen the sun.',
         6: 'These visionary geeks turned their remote control into cadCAD; a computational prediction tool and time travel machine that can be used to prevent the catastrophic outcomes of the 21st century!',
         7: 'They can now send someone back to a point in the past to save the planet, but when?',
-        8: 'With cadCAD in hand, new incentivized economic systems can be created.',
+        8: 'With cadCAD in hand, new incentivized economic systems can be created that appropriately value the precious resources of our planet.',
         9: 'YOU have been chosen to bring cadCAD back in time, but there’s a twist...',
         10: '... your consciousness will have to inhabit a human of that time period, and there’s no way to know who in advance!',
         11: 'When and where will you end up, and what social movement has the greatest chance of creating a self-governing, regenerative Commons?',
       },
-    }
+    };
   },
   methods: {
     clickHandler() {
-      this.$send('NEXT')
+      this.$send('NEXT');
     },
     skip() {
-      this.$router.push('/level/0/1')
+      this.$router.push('/level/0/1');
     },
   },
   watch: {
     xstate(x) {
-      if (x === 'end') this.skip()
+      if (x === 'end') this.skip();
     },
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -190,7 +190,7 @@ export default {
 .section > p {
   @extend .font-teko;
   position: absolute;
-  width: 80vw;
+  width: 70vw;
   padding: 0 1.5rem;
   margin-top: 6rem;
   font-size: 36px;
@@ -209,6 +209,11 @@ export default {
 }
 .t7-text {
   width: 100% !important;
+}
+.t8-text,
+.t9-text {
+  width: 45% !important;
+  text-align: justify;
 }
 img {
   position: fixed;
