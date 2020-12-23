@@ -2,14 +2,19 @@
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
     <h2 class="teko-subtitle text-center">
-      How much time should pass before an individual’s voting power reaches 80% of it’s full power?
+      How much time should pass before an individual’s voting power reaches 80%
+      of it’s full power?
     </h2>
     <div class="layout-form">
       <commons-navigation />
       <grid class="layout-form-grid">
         <grid class="graph-section">
           <!-- <icon icon="GridNet" class="absolute" style="bottom: 23px; zoom: 1.3;" /> -->
-          <icon icon="ElipseGradient" class="absolute" style="bottom: 20px; opacity: 0.2;" />
+          <icon
+            icon="ElipseGradient"
+            class="absolute"
+            style="bottom: 20px; opacity: 0.2;"
+          />
           <div class="relative">
             <Chart :chart="chart" width="600" gradient="#59c973dd #247c9744" />
           </div>
@@ -20,6 +25,7 @@
             v-for="day in [3, 10, 30, 60]"
             :key="day"
             @click="setOption(day)"
+            class="radio"
           >
             <input
               class="cursor-pointer"
@@ -29,7 +35,7 @@
               :value="day"
               v-model="forms.input.decisions"
             />
-            <span>{{ day }} Days</span>
+            <span class="radio-label">{{ day }} Days</span>
           </label>
           <label>
             <form-input
@@ -50,7 +56,11 @@
       </grid>
     </div>
 
-    <button commons @click="$router.push('/level/5/2')" :disabled="!forms.vget.input.form">
+    <button
+      commons
+      @click="$router.push('/level/5/2')"
+      :disabled="!forms.vget.input.form"
+    >
       next
     </button>
 
@@ -58,24 +68,27 @@
       <div class="layout-modal">
         <h2 class="teko-title">Conviction Voting</h2>
         <p class="level-text mt-1">
-          Conviction Voting is a continuous process - kind of like ‘vote streaming’.
+          Conviction Voting is a continuous process - kind of like ‘vote
+          streaming’.
         </p>
         <p class="level-text">
-          Each proposal is like a battery and tokens are the power source. The more tokens held by a
-          community member, the greater the power they have to charge up proposals. Token holders
-          express the degree of their conviction on a proposal by deciding how much of their battery
-          power will go towards each proposal, and the longer they hold their tokens there, the more
-          charge the proposal gets.
+          Each proposal is like a battery and tokens are the power source. The
+          more tokens held by a community member, the greater the power they
+          have to charge up proposals. Token holders express the degree of their
+          conviction on a proposal by deciding how much of their battery power
+          will go towards each proposal, and the longer they hold their tokens
+          there, the more charge the proposal gets.
         </p>
         <p class="level-text">
-          When voting power accrues quickly, the tokens actually have less power but the Commons is
-          able to quickly make decisions on funding. When voting power accrues slowly, the tokens
-          actually have more power and the individuals in the Commons can better predict what
-          proposals are likely to pass in advance.
+          When voting power accrues quickly, the tokens actually have less power
+          but the Commons is able to quickly make decisions on funding. When
+          voting power accrues slowly, the tokens actually have more power and
+          the individuals in the Commons can better predict what proposals are
+          likely to pass in advance.
         </p>
         <p class="level-text">
-          How much time should pass before an individual’s voting power reaches 80% of it’s full
-          power?
+          How much time should pass before an individual’s voting power reaches
+          80% of it’s full power?
         </p>
         <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>
@@ -84,8 +97,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import Chart from '../../components/common/Chart.vue'
+import { mapState } from 'vuex';
+import Chart from '../../components/common/Chart.vue';
 
 export default {
   name: 'level-5-1',
@@ -97,33 +110,39 @@ export default {
           decisions: this.$store.state.CommonsModule.form.decisions,
         },
       },
-    }
+    };
   },
   watch: {
     'forms.input.decisions'(x) {
-      this.$store.commit('CommonsModule/setFormDecisions', x)
+      this.$store.commit('CommonsModule/setFormDecisions', x);
     },
   },
   methods: {
     setOption(day) {
-      this.forms.input.decisions = day
-      this.forms.vset.input.decisions(true)
+      this.forms.input.decisions = day;
+      this.forms.vset.input.decisions(true);
     },
   },
   computed: {
     ...mapState('CommonsModule', ['minmax']),
     chart() {
-      const input = this.forms.input.decisions && this.forms.input.decisions > 2 ? this.forms.input.decisions : 3
-      const H = this.$store.state.CommonsModule.conviction.halfLife
-      const H2 = this.$store.state.CommonsModule.conviction.inflectionPoint
-      const alpha = (1 - H) ** (1 / input)
-      const S = 1 - alpha
-      const t = Math.log((((alpha - 1) * H2) + S) / S) / Math.log(alpha)
-      const maxBound = 180
-      const labels = [...Array(maxBound + 1).keys()]
-      const conviction_lbound = x => S * (1 - alpha**x) / (1 - alpha)
-      const conviction_ubound = (x, t) => H2 * (S / (1 - alpha)) * alpha**(x - t)
-      const data = labels.map(x => 100 * (x < t ? conviction_lbound(x):conviction_ubound(x, t)))
+      const input =
+        this.forms.input.decisions && this.forms.input.decisions > 2
+          ? this.forms.input.decisions
+          : 3;
+      const H = this.$store.state.CommonsModule.conviction.halfLife;
+      const H2 = this.$store.state.CommonsModule.conviction.inflectionPoint;
+      const alpha = (1 - H) ** (1 / input);
+      const S = 1 - alpha;
+      const t = Math.log(((alpha - 1) * H2 + S) / S) / Math.log(alpha);
+      const maxBound = 180;
+      const labels = [...Array(maxBound + 1).keys()];
+      const conviction_lbound = (x) => (S * (1 - alpha ** x)) / (1 - alpha);
+      const conviction_ubound = (x, t) =>
+        H2 * (S / (1 - alpha)) * alpha ** (x - t);
+      const data = labels.map(
+        (x) => 100 * (x < t ? conviction_lbound(x) : conviction_ubound(x, t))
+      );
       return {
         type: 'line',
         data: {
@@ -138,17 +157,23 @@ export default {
               pointBorderColor: '#fff4',
               pointHoverBackgroundColor: '#fff',
               pointHoverBorderWidth: 12,
-              pointRadius: ctx => (ctx.dataIndex === labels.findIndex(x => x === input) ||
-                  ctx.dataIndex === labels.findIndex(x => x === Math.floor(t))) ? 3: 0,
-              pointHitRadius: ctx => (ctx.dataIndex === labels.findIndex(x => x === input) ||
-                  ctx.dataIndex === labels.findIndex(x => x === Math.floor(t))) ? 10: 0,
+              pointRadius: (ctx) =>
+                ctx.dataIndex === labels.findIndex((x) => x === input) ||
+                ctx.dataIndex === labels.findIndex((x) => x === Math.floor(t))
+                  ? 3
+                  : 0,
+              pointHitRadius: (ctx) =>
+                ctx.dataIndex === labels.findIndex((x) => x === input) ||
+                ctx.dataIndex === labels.findIndex((x) => x === Math.floor(t))
+                  ? 10
+                  : 0,
               borderColor: '#67DE69',
               borderWidth: 0.5,
               hoverRadius: 4,
             },
             {
               label: '80p',
-              data: labels.map(x => 100 * (H * (S / (1 - alpha))) + x*0),
+              data: labels.map((x) => 100 * (H * (S / (1 - alpha))) + x * 0),
               borderColor: '#67DE69',
               borderDash: [10, 10],
               borderWidth: 0.5,
@@ -159,65 +184,73 @@ export default {
           ],
         },
         options: {
-          elements: { // default
-            point:{
-                hoverRadius: 0
-            }
+          elements: {
+            // default
+            point: {
+              hoverRadius: 0,
+            },
           },
           legend: {
             display: false,
           },
           scales: {
             // xAxes: [{ type: 'logarithmic' }],
-            xAxes: [{
-              scaleLabel: {
-                display: true,
-                labelString: 'Days'
+            xAxes: [
+              {
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Days',
+                },
               },
-            }],
-            yAxes: [{
-              display: true,
-              scaleLabel: {
+            ],
+            yAxes: [
+              {
                 display: true,
-                labelString: '%'
+                scaleLabel: {
+                  display: true,
+                  labelString: '%',
+                },
+                ticks: { beginAtZero: true },
               },
-              ticks: { beginAtZero: true }
-            }],
+            ],
           },
           tooltips: {
             callbacks: {
-                title: () => {
-                  return ''
-                },
-                label: function(tooltipItem) {
-                  let label = ''
-                  if (Math.round(tooltipItem.yLabel) === 100 * H) {
-                    label = `Conviction reaches ${Math.round(tooltipItem.yLabel * 100) / 100}% in ${tooltipItem.xLabel} days`
-                  } else if (tooltipItem.xLabel === Math.floor(t)) {
-                    label = 'Conviction decays in a similar way when support is withdrawn from a proposal'
-                    // label = `Inflection Point at day ${tooltipItem.xLabel}`
-                  }
-                  return label
-                },   
+              title: () => {
+                return '';
+              },
+              label: function (tooltipItem) {
+                let label = '';
+                if (Math.round(tooltipItem.yLabel) === 100 * H) {
+                  label = `Conviction reaches ${
+                    Math.round(tooltipItem.yLabel * 100) / 100
+                  }% in ${tooltipItem.xLabel} days`;
+                } else if (tooltipItem.xLabel === Math.floor(t)) {
+                  label =
+                    'Conviction decays in a similar way when support is withdrawn from a proposal';
+                  // label = `Inflection Point at day ${tooltipItem.xLabel}`
+                }
+                return label;
+              },
             },
-            custom: function(tooltip) {
-              if (!tooltip) return
+            custom: function (tooltip) {
+              if (!tooltip) return;
               // disable displaying the color box;
-              tooltip.displayColors = false
+              tooltip.displayColors = false;
             },
             filter: function (tooltipItem) {
-                return tooltipItem.datasetIndex === 0
+              return tooltipItem.datasetIndex === 0;
             },
             backgroundColor: 'rgb(44,44,44)',
             cornerRadius: 0,
             xPadding: 24,
             yPadding: 12,
-          }
+          },
         },
-      }
+      };
     },
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -230,7 +263,7 @@ export default {
   justify-content: center;
   justify-items: center;
   align-items: center;
-  column-gap: 2rem;
+  column-gap: 1rem;
   grid-template-columns: repeat(5, auto);
   & > label {
     display: grid;
@@ -239,6 +272,64 @@ export default {
     gap: 0.5rem;
     @extend .font-teko;
     font-size: 26px;
+  }
+}
+.radio {
+  .radio-label {
+    @extend .font-teko;
+    font-size: 26px;
+  }
+  margin: 0.5rem;
+  input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    + .radio-label {
+      &:before {
+        content: '';
+        background: #182932;
+        border-radius: 100%;
+        border: 2px solid #32373e;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        position: relative;
+        margin-right: 0.5em;
+        vertical-align: middle;
+        cursor: pointer;
+        text-align: center;
+        transition: all 250ms ease;
+      }
+    }
+    &:checked {
+      + .radio-label {
+        &:before {
+          background: linear-gradient(180deg, #67de69 0%, #0047b0 100%);
+          box-shadow: inset 0 0 0 5px #182932;
+        }
+      }
+    }
+    &:focus {
+      + .radio-label {
+        &:before {
+          outline: none;
+          border-color: #32373e;
+        }
+      }
+    }
+    &:disabled {
+      + .radio-label {
+        &:before {
+          background: #182932;
+        }
+      }
+    }
+    + .radio-label {
+      &:empty {
+        &:before {
+          margin-right: 0;
+        }
+      }
+    }
   }
 }
 </style>
