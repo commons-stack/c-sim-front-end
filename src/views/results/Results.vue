@@ -122,11 +122,13 @@ export default {
   computed: {
     ...mapState('CommonsModule', ['form', 'outcome']),
     data() {
-      const d = {}
-      Object.entries(this.outcome.result?.data || {}).forEach(
-        ([k, v]) => (d[k] = v.map(x => Math.round(x))),
-      )
-      return d
+      // TODO: disabled but it requires a review of why this was implemeted
+      // const d = {}
+      // Object.entries(this.outcome.result?.data || {}).forEach(
+      //   ([k, v]) => (d[k] = v.map(x => Math.round(x))),
+      // )
+      // return d
+      return this.outcome.result?.data
     },
     chart1() {
       return {
@@ -177,6 +179,10 @@ export default {
         yAxes: [
           {
             id: 'token-price',
+            ticks: {
+              suggestedMin: 0,
+              beginAtZero: true,
+            },
           }
         ],
         title: 'Token Price'
