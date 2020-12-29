@@ -75,9 +75,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import Cylinder from '../../components/common/Cylinder.vue';
-import { utils } from '../../utils/utils';
+import { mapState } from 'vuex'
+import Cylinder from '../../components/common/Cylinder.vue'
+import { utils } from '../../utils/utils'
 
 export default {
   name: 'level-4-1',
@@ -91,7 +91,7 @@ export default {
           votingPower: this.$store.state.CommonsModule.form.votingPower,
         },
       },
-    };
+    }
   },
   computed: {
     ...mapState('CommonsModule', ['minmax']),
@@ -100,15 +100,15 @@ export default {
         this.forms.input.votingPower,
         this.minmax.votingPower.min,
         this.minmax.votingPower.max
-      );
+      )
     },
   },
   watch: {
     'forms.input.votingPower'(x) {
-      this.$store.commit('CommonsModule/setFormVotingPower', x);
+      this.$store.commit('CommonsModule/setFormVotingPower', x)
     },
   },
-};
+}
 </script>
 
 <style scoped lang="scss"></style>

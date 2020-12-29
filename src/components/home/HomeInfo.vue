@@ -53,16 +53,16 @@ export default {
   name: 'home-info',
   created() {
     const interval = setInterval(() => {
-      if (this.state === 5) clearInterval(interval);
-      this.state += 1;
-    }, 200);
+      if (this.state === 5) clearInterval(interval)
+      this.state += 1
+    }, 200)
   },
   data() {
     return {
       state: 0,
-    };
+    }
   },
-};
+}
 </script>
 
 <style scoped lang="scss">

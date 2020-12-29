@@ -97,8 +97,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import Chart from '../../components/common/Chart.vue';
+import { mapState } from 'vuex'
+import Chart from '../../components/common/Chart.vue'
 
 export default {
   name: 'level-5-1',
@@ -110,17 +110,17 @@ export default {
           decisions: this.$store.state.CommonsModule.form.decisions,
         },
       },
-    };
+    }
   },
   watch: {
     'forms.input.decisions'(x) {
-      this.$store.commit('CommonsModule/setFormDecisions', x);
+      this.$store.commit('CommonsModule/setFormDecisions', x)
     },
   },
   methods: {
     setOption(day) {
-      this.forms.input.decisions = day;
-      this.forms.vset.input.decisions(true);
+      this.forms.input.decisions = day
+      this.forms.vset.input.decisions(true)
     },
   },
   computed: {
@@ -129,20 +129,20 @@ export default {
       const input =
         this.forms.input.decisions && this.forms.input.decisions > 2
           ? this.forms.input.decisions
-          : 3;
-      const H = this.$store.state.CommonsModule.conviction.halfLife;
-      const H2 = this.$store.state.CommonsModule.conviction.inflectionPoint;
-      const alpha = (1 - H) ** (1 / input);
-      const S = 1 - alpha;
-      const t = Math.log(((alpha - 1) * H2 + S) / S) / Math.log(alpha);
-      const maxBound = 180;
-      const labels = [...Array(maxBound + 1).keys()];
-      const conviction_lbound = (x) => (S * (1 - alpha ** x)) / (1 - alpha);
+          : 3
+      const H = this.$store.state.CommonsModule.conviction.halfLife
+      const H2 = this.$store.state.CommonsModule.conviction.inflectionPoint
+      const alpha = (1 - H) ** (1 / input)
+      const S = 1 - alpha
+      const t = Math.log(((alpha - 1) * H2 + S) / S) / Math.log(alpha)
+      const maxBound = 180
+      const labels = [...Array(maxBound + 1).keys()]
+      const conviction_lbound = x => (S * (1 - alpha ** x)) / (1 - alpha)
       const conviction_ubound = (x, t) =>
-        H2 * (S / (1 - alpha)) * alpha ** (x - t);
+        H2 * (S / (1 - alpha)) * alpha ** (x - t)
       const data = labels.map(
-        (x) => 100 * (x < t ? conviction_lbound(x) : conviction_ubound(x, t))
-      );
+        x => 100 * (x < t ? conviction_lbound(x) : conviction_ubound(x, t))
+      )
       return {
         type: 'line',
         data: {
@@ -157,14 +157,14 @@ export default {
               pointBorderColor: '#fff4',
               pointHoverBackgroundColor: '#fff',
               pointHoverBorderWidth: 12,
-              pointRadius: (ctx) =>
-                ctx.dataIndex === labels.findIndex((x) => x === input) ||
-                ctx.dataIndex === labels.findIndex((x) => x === Math.floor(t))
+              pointRadius: ctx =>
+                ctx.dataIndex === labels.findIndex(x => x === input) ||
+                ctx.dataIndex === labels.findIndex(x => x === Math.floor(t))
                   ? 3
                   : 0,
-              pointHitRadius: (ctx) =>
-                ctx.dataIndex === labels.findIndex((x) => x === input) ||
-                ctx.dataIndex === labels.findIndex((x) => x === Math.floor(t))
+              pointHitRadius: ctx =>
+                ctx.dataIndex === labels.findIndex(x => x === input) ||
+                ctx.dataIndex === labels.findIndex(x => x === Math.floor(t))
                   ? 10
                   : 0,
               borderColor: '#67DE69',
@@ -173,7 +173,7 @@ export default {
             },
             {
               label: '80p',
-              data: labels.map((x) => 100 * (H * (S / (1 - alpha))) + x * 0),
+              data: labels.map(x => 100 * (H * (S / (1 - alpha))) + x * 0),
               borderColor: '#67DE69',
               borderDash: [10, 10],
               borderWidth: 0.5,
@@ -217,29 +217,29 @@ export default {
           tooltips: {
             callbacks: {
               title: () => {
-                return '';
+                return ''
               },
               label: function (tooltipItem) {
-                let label = '';
+                let label = ''
                 if (Math.round(tooltipItem.yLabel) === 100 * H) {
                   label = `Conviction reaches ${
                     Math.round(tooltipItem.yLabel * 100) / 100
-                  }% in ${tooltipItem.xLabel} days`;
+                  }% in ${tooltipItem.xLabel} days`
                 } else if (tooltipItem.xLabel === Math.floor(t)) {
                   label =
-                    'Conviction decays in a similar way when support is withdrawn from a proposal';
+                    'Conviction decays in a similar way when support is withdrawn from a proposal'
                   // label = `Inflection Point at day ${tooltipItem.xLabel}`
                 }
-                return label;
+                return label
               },
             },
             custom: function (tooltip) {
-              if (!tooltip) return;
+              if (!tooltip) return
               // disable displaying the color box;
-              tooltip.displayColors = false;
+              tooltip.displayColors = false
             },
             filter: function (tooltipItem) {
-              return tooltipItem.datasetIndex === 0;
+              return tooltipItem.datasetIndex === 0
             },
             backgroundColor: 'rgb(44,44,44)',
             cornerRadius: 0,
@@ -247,10 +247,10 @@ export default {
             yPadding: 12,
           },
         },
-      };
+      }
     },
   },
-};
+}
 </script>
 
 <style scoped lang="scss">

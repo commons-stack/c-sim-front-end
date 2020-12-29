@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from 'vuex'
 export default {
   name: 'level-2-1',
   data() {
@@ -72,17 +72,17 @@ export default {
           proposals: this.$store.state.CommonsModule.form.proposals,
         },
       },
-    };
+    }
   },
   watch: {
     'forms.input.proposals'(x) {
-      this.$store.commit('CommonsModule/setFormProposals', x);
+      this.$store.commit('CommonsModule/setFormProposals', x)
     },
   },
   computed: {
     ...mapState('CommonsModule', ['minmax']),
   },
-};
+}
 </script>
 
 <style scoped lang="scss">

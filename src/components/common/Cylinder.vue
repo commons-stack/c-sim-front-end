@@ -19,23 +19,23 @@ const colors = {
   blue: { min: '#007bb0', max: '#1294C4' },
   teal: { min: '#1AB39E', max: '#00A5B0' },
   green: { min: '#4DD07B', max: '#34C28D' },
-};
+}
 
 const topColor = {
   blue: `${colors.blue.min}`,
   teal: `${colors.teal.min}`,
   green: `${colors.green.min}`,
-};
+}
 const botColor = {
   blue: `linear-gradient(180deg, ${colors.blue.min} 0%, ${colors.blue.max} 100%)`,
   teal: `linear-gradient(180deg, ${colors.teal.min} 0%, ${colors.teal.max} 100%)`,
   green: `linear-gradient(180deg, ${colors.green.min} 0%, ${colors.green.max} 100%)`,
-};
+}
 const baseColor = {
   blue: `${colors.blue.max}`,
   teal: `${colors.teal.max}`,
   green: `${colors.green.max}`,
-};
+}
 
 export default {
   name: 'cylinder',
@@ -53,7 +53,7 @@ export default {
     type: {
       type: String,
       required: true,
-      validator: (x) => ['blue', 'green', 'teal'].includes(x),
+      validator: x => ['blue', 'green', 'teal'].includes(x),
     },
   },
   data() {
@@ -66,7 +66,7 @@ export default {
         botColor: botColor[this.type],
         baseColor: baseColor[this.type],
       },
-    };
+    }
   },
   watch: {
     progress: {
@@ -74,17 +74,17 @@ export default {
       handler(x) {
         this.cssVars.botOffset = `${
           9.6 + (this.maxProgress / 100) * (x / 100) * 68
-        }px`;
+        }px`
         this.cssVars.progressHeight = `${
           (this.maxProgress / 100) * (x / 100) * 66
-        }px`;
+        }px`
       },
     },
   },
   methods: {
     setBotOffset() {},
   },
-};
+}
 </script>
 
 <style scoped lang="scss">
