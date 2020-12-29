@@ -77,12 +77,12 @@
 </template>
 
 <script>
-import ScrollableGfx from '@/components/common/ScrollableGfx.vue';
+import ScrollableGfx from '@/components/common/ScrollableGfx.vue'
 
 export default {
   name: 'level-0-2',
   components: { ScrollableGfx },
-};
+}
 </script>
 
 <style scoped lang="scss">

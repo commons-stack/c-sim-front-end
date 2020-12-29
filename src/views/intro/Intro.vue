@@ -94,9 +94,9 @@
 </template>
 
 <script>
-import * as xstate from 'xstate';
+import * as xstate from 'xstate'
 
-const createState = (next) => ({ on: { NEXT: next }, after: { 4500: next } });
+const createState = next => ({ on: { NEXT: next }, after: { 4500: next } })
 const machine = xstate.Machine({
   initial: '1',
   states: {
@@ -115,15 +115,15 @@ const machine = xstate.Machine({
     13: createState('end'),
     end: { type: 'final' },
   },
-});
+})
 
 export default {
   name: 'intro',
   mounted() {
-    setTimeout(() => window.addEventListener('click', this.clickHandler), 750);
+    setTimeout(() => window.addEventListener('click', this.clickHandler), 750)
   },
   beforeDestroy() {
-    window.removeEventListener('click', this.clickHandler);
+    window.removeEventListener('click', this.clickHandler)
   },
   data() {
     return {
@@ -143,22 +143,22 @@ export default {
         12: 'What social impact movement has the greatest chance of',
         13: 'Creating a self-governing, regenerative Commons?',
       },
-    };
+    }
   },
   methods: {
     clickHandler() {
-      this.$send('NEXT');
+      this.$send('NEXT')
     },
     skip() {
-      this.$router.push('/level/0/1');
+      this.$router.push('/level/0/1')
     },
   },
   watch: {
     xstate(x) {
-      if (x === 'end') this.skip();
+      if (x === 'end') this.skip()
     },
   },
-};
+}
 </script>
 
 <style scoped lang="scss">
