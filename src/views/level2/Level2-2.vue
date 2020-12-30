@@ -9,7 +9,7 @@
           once passed?
         </p>
         <p>
-          The second parameter that cadCAD requires is: What percent of the contributions will be
+          The third parameter that cadCAD requires is: What percent of the contributions will be
           allocated to the Funding Pool? The balance will be the Reserve that backs the RxC tokens.
         </p>
       </grid>
