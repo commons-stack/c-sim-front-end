@@ -74,13 +74,13 @@
         </transition>
         <transition name="test-fade" appear>
           <p class="t12-text" v-if="xstate >= '12'">
-            <br /><br />
+            <br />
             {{ text[12] }}
           </p>
         </transition>
         <transition name="test-fade" appear>
           <p class="t13-text" v-if="xstate >= '13'">
-            <br /><br /><br /><br />
+            <br /><br />
             {{ text[13] }}
           </p>
         </transition>
@@ -208,7 +208,7 @@ export default {
 .section > p {
   @extend .font-teko;
   position: absolute;
-  width: 70vw;
+  width: 80vw;
   padding: 0 1.5rem;
   margin-top: 6rem;
   font-size: 36px;
@@ -226,12 +226,16 @@ export default {
   }
 }
 .t7-text {
-  width: 35% !important;
+  @include l {
+    width: 35% !important;
+  }
 }
 .t8-text,
 .t9-text {
-  width: 45% !important;
-  text-align: justify;
+  @include l {
+    width: 45% !important;
+    text-align: justify;
+  }
 }
 img {
   position: fixed;
