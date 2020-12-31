@@ -96,23 +96,27 @@
 <script>
 import * as xstate from 'xstate'
 
-const createState = next => ({ on: { NEXT: next }, after: { 4500: next } })
+const createState = (next, delay = 5000) => ({
+  on: { NEXT: next },
+  after: [{ delay: delay, target: next }]
+})
+
 const machine = xstate.Machine({
   initial: '1',
   states: {
-    1: createState('2'),
+    1: createState('2', 3000),
     2: createState('3'),
     3: createState('4'),
-    4: createState('5'),
+    4: createState('5', 3000),
     5: createState('6'),
-    6: createState('7'),
+    6: createState('7', 8000),
     7: createState('8'),
     8: createState('9'),
     9: createState('10'),
     10: createState('11'),
-    11: createState('12'),
-    12: createState('13'),
-    13: createState('end'),
+    11: createState('12', 3000),
+    12: createState('13', 3000),
+    13: createState('end', 3000),
     end: { type: 'final' },
   },
 })
