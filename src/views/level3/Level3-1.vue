@@ -87,9 +87,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import Cylinder from '../../components/common/Cylinder.vue';
-import { utils } from '../../utils/utils';
+import { mapState } from 'vuex'
+import Cylinder from '../../components/common/Cylinder.vue'
+import { utils } from '../../utils/utils'
 
 export default {
   name: 'level-3-1',
@@ -103,7 +103,7 @@ export default {
           funding: this.$store.state.CommonsModule.form.funding,
         },
       },
-    };
+    }
   },
   computed: {
     ...mapState('CommonsModule', ['minmax']),
@@ -112,15 +112,15 @@ export default {
         this.forms.input.funding,
         this.minmax.funding.min,
         this.minmax.funding.max
-      );
+      )
     },
   },
   watch: {
     'forms.input.funding'(x) {
-      this.$store.commit('CommonsModule/setFormFunding', x);
+      this.$store.commit('CommonsModule/setFormFunding', x)
     },
   },
-};
+}
 </script>
 
 <style scoped lang="scss"></style>

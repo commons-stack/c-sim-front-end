@@ -34,6 +34,7 @@ import Hatchers300 from './icons/Hatchers300.vue'
 import Hatchers60 from './icons/Hatchers60.vue'
 import Hatchers90 from './icons/Hatchers90.vue'
 import Heart from './icons/Heart.vue'
+import LinkedIn from './icons/LinkedIn.vue'
 import Man from './icons/Man.vue'
 import Profile from './icons/Profile.vue'
 import Search from './icons/Search.vue'
@@ -68,6 +69,7 @@ const icons = {
   Hatchers60,
   Hatchers90,
   Heart,
+  LinkedIn,
   Man,
   Profile,
   Search,
@@ -79,7 +81,8 @@ const icons = {
 }
 
 const getIcon = ico => icons[ico]
-const pickColorOrVar = x => (x && x[0] === '#' ? x : utils.css.getVar(`color-${x}`))
+const pickColorOrVar = x =>
+  x && x[0] === '#' ? x : utils.css.getVar(`color-${x}`)
 
 export default {
   name: 'icon',
@@ -147,9 +150,6 @@ export default {
   }
   &-hover:hover > svg > *[stroke] {
     stroke: var(--hover-color);
-  }
-  &-hover:hover > svg > *[fill] {
-    fill: var(--hover-color);
   }
 }
 </style>

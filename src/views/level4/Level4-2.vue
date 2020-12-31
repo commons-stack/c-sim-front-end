@@ -5,15 +5,20 @@
       <h3 class="teko-title">You did good.</h3>
       <grid gap="2" style="max-width: 650px;">
         <p>
-          Seizing the opportunity to harvest another parameter from the wisdom of the group, one of
-          a few you need to configure the Conviction Voting simulator, you ask about how much of the
-          community funds can be distributed at any given time.
+          Conviction Voting is a continuous process - kind of like ‘vote streaming’. Token holders 
+          express the degree of their conviction on a proposal by deciding how much of their voting 
+          power will go towards each proposal. As tokens are held there over time, the weight 
+          increases.
         </p>
         <p>
-          This parameter is defined by selecting a percentage of the available funding pool that can
-          be distributed at any time. It effectively sets a maximum for a single proposal (or for a
-          group of smaller proposals), ensuring that larger proposals require a greater amount of
-          collective voting power from the community in order to pass.
+          When voting power accrues quickly, the tokens have less power but the Commons is able to 
+          quickly make decisions on funding. When voting power accrues slowly, the tokens have more 
+          power, and the individuals in the Commons can better predict what proposals are likely to 
+          pass in advance.
+        </p>
+        <p>
+          For cadCAD to run its simulation, you must define how long it takes to demonstrate 
+          conviction.
         </p>
       </grid>
       <button commons @click="$router.push('/level/5/1')" class="mt-2 mb-3">next</button>

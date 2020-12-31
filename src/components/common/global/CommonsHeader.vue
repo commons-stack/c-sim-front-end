@@ -8,7 +8,7 @@
     <p class="x-title" justify-self align-self>DESIGNING THE COMMONS</p>
     <flex gap="1" justify-self-end v-if="!titleOnly">
       <p class="x-text-button inline" v-if="help" @click="$emit('help')">Help</p>
-      <p class="x-text-button inline" @click="openModal('exit')">Exit</p>
+      <p class="x-text-button inline" v-if="exit" @click="openModal('exit')">Exit</p>
     </flex>
     <modal ref="quit" bg="#222" overlay x-class="border-radius-s p-2 container-xs box">
       <p class="text-center">{{ modal.text }}</p>
@@ -29,6 +29,10 @@
 export default {
   name: 'commons-header',
   props: {
+    exit: {
+      type: Boolean,
+      default: true,
+    },
     help: {
       type: Boolean,
       default: true,
