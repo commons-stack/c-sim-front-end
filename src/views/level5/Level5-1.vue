@@ -81,9 +81,9 @@
         </p>
         <p class="level-text">
           When voting power accrues quickly, the tokens actually have less power
-          but the Commons is able to quickly make decisions on funding. When
+          but the RxC Commons is able to quickly make decisions on funding. When
           voting power accrues slowly, the tokens actually have more power and
-          the individuals in the Commons can better predict what proposals are
+          the individuals in the RxC Commons can better predict what proposals are
           likely to pass in advance.
         </p>
         <p class="level-text">

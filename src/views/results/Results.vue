@@ -2,7 +2,7 @@
   <div class="layout-vertical" text-center>
     <icon icon="CircleNet" class="bg-net" />
     <commons-header :exit="false" :help="false" :restart="false" />
-    <p class="teko-title">Your Commons...</p>
+    <p class="teko-title">Your RxC Commons...</p>
     <div class="level-text">
       <p>Do you think you did a good job?</p>
       <p>Analyze these charts and see if your commons is a success!</p>
