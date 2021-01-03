@@ -42,15 +42,14 @@
               id="days-input"
               type="number"
               placeholder="Custom value"
-              class="text-center"
-              style="font-size: 26px; width: 125px;"
+              class="custom-input text-center"
               v-model="forms.input.decisions"
               @valid="forms.vset.input.decisions"
               required
               :min="minmax.decisions.min"
               :max="minmax.decisions.max"
             />
-            <span style="font-size: 16px;">Days</span>
+            <span class="radio-label">Days</span>
           </label>
         </grid>
       </grid>
@@ -273,6 +272,14 @@ export default {
     @extend .font-teko;
     font-size: 26px;
   }
+}
+.custom-input {
+  border: 2px solid #32373e;
+  border-radius: 15px;
+  background: #182932;
+  font-size: 26px;
+  width: 130px;
+  height: 40px;
 }
 .radio {
   .radio-label {
