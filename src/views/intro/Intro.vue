@@ -144,8 +144,8 @@ export default {
         9: 'YOU have been chosen to bring cadCAD back in time, but there’s a twist...',
         10: '... your consciousness will have to inhabit a human of that time period, and there’s no way to know who in advance!',
         11: 'When and where will you land?',
-        12: 'What social impact movement has the greatest chance of',
-        13: 'Creating a self-governing, regenerative Commons?',
+        12: 'What social impact movement has the greatest chance',
+        13: 'of Creating a self-governing, regenerative Commons?',
       },
     }
   },
