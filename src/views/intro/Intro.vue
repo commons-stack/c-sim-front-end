@@ -102,7 +102,7 @@ const createState = (next, delay = 5000) => ({
 })
 
 const machine = xstate.Machine({
-  initial: '1',
+  initial: '10',
   states: {
     1: createState('2', 3000),
     2: createState('3'),
@@ -167,7 +167,7 @@ export default {
 
 <style scoped lang="scss">
 .skip-intro {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   display: flex;
   width: 100vw;
@@ -244,17 +244,17 @@ export default {
 .t10-text, 
 .t11-text {
   @media (max-width: 640px) {
-    margin-top: 35rem !important;
+    margin-top: 15rem !important;
   }
 }
 .t12-text {
   @media (max-width: 640px) {
-    margin-top: 35rem !important;
+    margin-top: 19rem !important;
   }
 }
 .t13-text {
   @media (max-width: 640px) {
-    margin-top: 38.5rem !important;
+    margin-top: 25.5rem !important;
   }
 }
 img {
