@@ -10,7 +10,7 @@
         <p>
           Members choose to pass good proposals that produce valuable outcomes for the community.
           They contribute time and resources in exchange for their governance tokens. They continue
-          to grow the Commons and raise the price of the token.
+          to grow the RxC Commons and raise the price of the token.
         </p>
         <p>
           Some members may not like the results of the proposals passed by the RadicalxChange
@@ -18,7 +18,7 @@
           their RxC token, the overall price of the token decreases as value is being withdrawn from
           the community. At the same time, a portion of the withdrawal (5%, for example) feeds into
           the community funding pool, as an ‘exit tribute’ to the RadicalxChange community. This
-          protects the Commons from profit-extracting behaviour, and ensures continuous funding for
+          protects the RxC Commons from profit-extracting behaviour, and ensures continuous funding for
           the community pool of funds that can be put towards proposals.
         </p>
         <p>

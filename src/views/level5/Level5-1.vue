@@ -41,16 +41,15 @@
             <form-input
               id="days-input"
               type="number"
-              placeholder="Custom value"
-              class="text-center"
-              style="font-size: 26px; width: 125px;"
+              placeholder="0"
+              class="custom-input text-center"
               v-model="forms.input.decisions"
               @valid="forms.vset.input.decisions"
               required
               :min="minmax.decisions.min"
               :max="minmax.decisions.max"
             />
-            <span style="font-size: 16px;">Days</span>
+            <span class="radio-label">Custom Days</span>
           </label>
         </grid>
       </grid>
@@ -81,9 +80,9 @@
         </p>
         <p class="level-text">
           When voting power accrues quickly, the tokens actually have less power
-          but the Commons is able to quickly make decisions on funding. When
+          but the RxC Commons is able to quickly make decisions on funding. When
           voting power accrues slowly, the tokens actually have more power and
-          the individuals in the Commons can better predict what proposals are
+          the individuals in the RxC Commons can better predict what proposals are
           likely to pass in advance.
         </p>
         <p class="level-text">
@@ -273,6 +272,15 @@ export default {
     @extend .font-teko;
     font-size: 26px;
   }
+}
+.custom-input {
+  border: 2px solid #32373e;
+  border-radius: 15px;
+  background: #182932;
+  font-size: 26px;
+  width: 56px;
+  height: 40px;
+  align-items: middle;
 }
 .radio {
   .radio-label {

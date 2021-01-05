@@ -65,7 +65,7 @@
     <transition name="test-fade" appear>
       <div class="section" v-show="['10', '11', '12', '13'].includes(xstate)">
         <transition name="test-fade" appear>
-          <p v-if="xstate === '10'">{{ text[10] }}</p>
+          <p class="t10-text" v-if="xstate === '10'">{{ text[10] }}</p>
         </transition>
         <transition name="test-fade" appear>
           <p class="t11-text" v-if="xstate >= '11'">
@@ -74,13 +74,13 @@
         </transition>
         <transition name="test-fade" appear>
           <p class="t12-text" v-if="xstate >= '12'">
-            <br /><br />
+            <br />
             {{ text[12] }}
           </p>
         </transition>
         <transition name="test-fade" appear>
           <p class="t13-text" v-if="xstate >= '13'">
-            <br /><br /><br /><br />
+            <br /><br />
             {{ text[13] }}
           </p>
         </transition>
@@ -96,23 +96,27 @@
 <script>
 import * as xstate from 'xstate'
 
-const createState = next => ({ on: { NEXT: next }, after: { 4500: next } })
+const createState = (next, delay = 5000) => ({
+  on: { NEXT: next },
+  after: [{ delay: delay, target: next }]
+})
+
 const machine = xstate.Machine({
   initial: '1',
   states: {
-    1: createState('2'),
+    1: createState('2', 3000),
     2: createState('3'),
     3: createState('4'),
-    4: createState('5'),
+    4: createState('5', 3000),
     5: createState('6'),
-    6: createState('7'),
+    6: createState('7', 8000),
     7: createState('8'),
     8: createState('9'),
     9: createState('10'),
     10: createState('11'),
-    11: createState('12'),
-    12: createState('13'),
-    13: createState('end'),
+    11: createState('12', 3000),
+    12: createState('13', 3000),
+    13: createState('end', 3000),
     end: { type: 'final' },
   },
 })
@@ -163,7 +167,7 @@ export default {
 
 <style scoped lang="scss">
 .skip-intro {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   display: flex;
   width: 100vw;
@@ -208,7 +212,7 @@ export default {
 .section > p {
   @extend .font-teko;
   position: absolute;
-  width: 70vw;
+  width: 80vw;
   padding: 0 1.5rem;
   margin-top: 6rem;
   font-size: 36px;
@@ -226,12 +230,32 @@ export default {
   }
 }
 .t7-text {
-  width: 35% !important;
+  @include l {
+    width: 35% !important;
+  }
 }
 .t8-text,
 .t9-text {
-  width: 45% !important;
-  text-align: justify;
+  @include l {
+    width: 45% !important;
+    text-align: justify;
+  }
+}
+.t10-text, 
+.t11-text {
+  @media (max-width: 640px) {
+    margin-top: 15rem !important;
+  }
+}
+.t12-text {
+  @media (max-width: 640px) {
+    margin-top: 19rem !important;
+  }
+}
+.t13-text {
+  @media (max-width: 640px) {
+    margin-top: 25.5rem !important;
+  }
 }
 img {
   position: fixed;

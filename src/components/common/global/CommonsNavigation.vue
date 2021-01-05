@@ -1,5 +1,5 @@
 <template>
-  <grid gap="1" class="align-self-start">
+  <grid gap="1" class="align-self-start commons-nav">
     <commons-navigation-button v-for="lvl in numOfLevels" :key="lvl" :level="lvl - 1" />
   </grid>
 </template>
@@ -26,4 +26,11 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.commons-nav {
+  display: none !important;
+  @include l {
+    display: grid !important;
+  }
+}
+</style>

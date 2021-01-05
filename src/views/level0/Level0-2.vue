@@ -39,7 +39,7 @@
     <h2 class="teko-title mt-3">Your mission</h2>
     <p class="level-text mt-1">
       You determine that your mission is to initiate the design of a
-      self-sustaining Commons at a strategic open source distribution point.
+      self-sustaining RadicalxChange Commons at a strategic open source distribution point.
       This could ripple the needed economic value throughout the concentric
       spheres of human interaction worldwide regardless of class or access.
     </p>
@@ -50,7 +50,7 @@
     />
     <h2 class="teko-title mt-3">What is a Commons?</h2>
     <p class="level-text mt1">
-      A Commons is a well-engineered, community- focused economy that can reward
+      A Commons is a well-engineered, community-focused economy that can reward
       value creation where business models fail to do so. They can be formed
       whenever a community is creating value for society as a whole.
     </p>

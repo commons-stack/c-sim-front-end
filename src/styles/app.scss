@@ -35,9 +35,11 @@ body {
   display: grid;
   justify-items: center;
   width: 100%;
-  grid-template-columns: 160px 1fr 160px;
+  @include l {
+    grid-template-columns: 160px 1fr 160px;
   & > div:first-child {
     justify-self: start;
+  }
   }
 }
 
