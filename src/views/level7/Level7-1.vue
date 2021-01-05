@@ -71,17 +71,14 @@ export default {
   }
 }
 .layout-form {
-  grid-template-areas: 'nav field field';
+  grid-template-areas: 'field';
   @include m {
     grid-template-areas: 'nav field nothing';
   }
 }
 .sim-data {
-  @include s {
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(3, auto);
-    justify-self: flex-end;
-  }
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
   @include m {
     grid-template-columns: repeat(3, auto);
     grid-template-rows: repeat(2, auto);
@@ -89,13 +86,8 @@ export default {
   gap: 1rem;
   & > div {
     border: 2px solid #143b5f;
-    height: 70px;
-    width: 120px;
-    @include s {
-      width: 130px;
-      height: 90px;
-    }
-    display: grid;
+    height: 90px;
+    width: 130px;
     justify-items: center;
     align-content: center;
     padding: 10px;
