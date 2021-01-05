@@ -102,7 +102,7 @@ const createState = (next, delay = 5000) => ({
 })
 
 const machine = xstate.Machine({
-  initial: '10',
+  initial: '1',
   states: {
     1: createState('2', 3000),
     2: createState('3'),
