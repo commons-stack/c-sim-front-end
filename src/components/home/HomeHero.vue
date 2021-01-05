@@ -1,10 +1,10 @@
 <template>
   <transition-group name="home-trans" tag="div" class="home-list" text-center>
     <h1 key="1" class="item hero" :class="state > 0 && 'item-active'">
-      The Commons Simulator
+      The RadicalxChange Commons Simulator
     </h1>
     <p key="2" class="item sub" :class="state > 1 && 'item-active'">
-      Designing the Commons with the power of cadCAD
+      Designing the RxC Commons with the power of cadCAD
     </p>
     <button
       commons
