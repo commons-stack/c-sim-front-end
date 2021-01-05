@@ -41,7 +41,7 @@
             <form-input
               id="days-input"
               type="number"
-              placeholder="Custom value"
+              placeholder="0"
               class="custom-input text-center"
               v-model="forms.input.decisions"
               @valid="forms.vset.input.decisions"
@@ -49,7 +49,7 @@
               :min="minmax.decisions.min"
               :max="minmax.decisions.max"
             />
-            <span class="radio-label">Days</span>
+            <span class="radio-label">Custom Days</span>
           </label>
         </grid>
       </grid>
@@ -278,8 +278,9 @@ export default {
   border-radius: 15px;
   background: #182932;
   font-size: 26px;
-  width: 130px;
+  width: 56px;
   height: 40px;
+  align-items: middle;
 }
 .radio {
   .radio-label {
