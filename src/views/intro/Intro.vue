@@ -65,7 +65,7 @@
     <transition name="test-fade" appear>
       <div class="section" v-show="['10', '11', '12', '13'].includes(xstate)">
         <transition name="test-fade" appear>
-          <p v-if="xstate === '10'">{{ text[10] }}</p>
+          <p class="t10-text" v-if="xstate === '10'">{{ text[10] }}</p>
         </transition>
         <transition name="test-fade" appear>
           <p class="t11-text" v-if="xstate >= '11'">
@@ -239,6 +239,22 @@ export default {
   @include l {
     width: 45% !important;
     text-align: justify;
+  }
+}
+.t10-text, 
+.t11-text {
+  @media (max-width: 640px) {
+    margin-top: 35rem !important;
+  }
+}
+.t12-text {
+  @media (max-width: 640px) {
+    margin-top: 35rem !important;
+  }
+}
+.t13-text {
+  @media (max-width: 640px) {
+    margin-top: 38.5rem !important;
   }
 }
 img {
