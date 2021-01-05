@@ -145,7 +145,7 @@ export default {
         10: '... your consciousness will have to inhabit a human of that time period, and there’s no way to know who in advance!',
         11: 'When and where will you land?',
         12: 'What social impact movement has the greatest chance',
-        13: 'of Creating a self-governing, regenerative Commons?',
+        13: 'of creating a self-governing, regenerative Commons?',
       },
     }
   },
