@@ -24,8 +24,8 @@ export const CommonsModule = createModule({
       exiting: 25,
     },
     minmax: {
-      foundingMembers: { min: 3, max: 150 },
-      proposals: { min: 1, max: 50 },
+      foundingMembers: { min: 3, max: 50 },
+      proposals: { min: 1, max: 40 },
       funding: { min: 1, max: 99 },
       votingPower: { min: 5, max: 50 },
       decisions: { min: 3, max: 120 },

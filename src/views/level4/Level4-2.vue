@@ -11,10 +11,9 @@
           increases.
         </p>
         <p>
-          When voting power accrues quickly, the tokens have less power but the Commons is able to 
-          quickly make decisions on funding. When voting power accrues slowly, the tokens have more 
-          power, and the individuals in the Commons can better predict what proposals are likely to 
-          pass in advance.
+          When voting power accrues quickly, the Commons is able to quickly make decisions on 
+          funding. When voting power accrues slowly the individuals in the Commons can better 
+          predict what proposals are likely to pass in advance.
         </p>
         <p>
           For cadCAD to run its simulation, you must define how long it takes to demonstrate 

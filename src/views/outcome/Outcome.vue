@@ -11,20 +11,25 @@
 
           <p class="x-improve">Try to improve your score</p>
           <button commons @click="$router.push('/')">play again</button>
-
+          <!-- 
           <grid
             gap="1"
             gtc="repeat(4, auto)"
             align-items
             class="mt-2"
             v-if="future === 'good'"
-          >
+          > 
             <p>Share your score:</p>
             <icon class="ml-1" icon="Twitter" button />
             <icon icon="LinkedIn" />
-            <icon icon="Facebook" />
+            <icon icon="Facebook" /> 
+            
           </grid>
-          <button v-else class="text-button mt-2" @click="$router.push('/')">
+          -->
+          <a class="mt-2" href="https://github.com/commons-stack/commons-simulator/issues/new">
+            Give us feedback to help improve this game!
+          </a>
+          <button v-if="future === 'bad'" class="text-button mt-2" @click="$router.push('/')">
             No thanks, quit the game
           </button>
           <p
