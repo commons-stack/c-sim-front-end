@@ -22,7 +22,7 @@
         <grid class="form-section">
           <label
             :id="`${day}-days`"
-            v-for="day in [3, 10, 30, 60]"
+            v-for="day in [30, 45, 60, 90]"
             :key="day"
             @click="setOption(day)"
             class="radio"
