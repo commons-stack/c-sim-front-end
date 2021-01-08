@@ -91,8 +91,8 @@
       Do you want to submit your score, or do you want to try to run another simulation?
     </p>
     <flex gap="2" class="mt-2">
-      <button commons @click="$router.push('/outcome')">SEE YOUR FUTURE</button>
       <button commons @click="$router.push('/level/1/1')">play again</button>
+      <button commons @click="$router.push('/outcome')">SEE YOUR FUTURE</button>
     </flex>
   </div>
 </template>
