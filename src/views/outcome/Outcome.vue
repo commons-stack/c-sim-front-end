@@ -32,12 +32,6 @@
           <button v-if="future === 'bad'" class="text-button mt-2" @click="$router.push('/')">
             No thanks, quit the game
           </button>
-          <p
-            class="fixed bot right m-1 p-1 cursor-pointer"
-            @click="toggleFuture"
-          >
-            Toggle future
-          </p>
         </grid>
       </grid>
     </transition>
@@ -51,7 +45,7 @@
 export default {
   name: 'outcome',
   created() {
-    this.future = this.score < 800 ? 'bad' : 'good'
+    this.future = this.score < 500 ? 'bad' : 'good'
   },
   data() {
     return {
@@ -68,7 +62,7 @@ export default {
       return this.$store.getters['UserModule/getName']
     },
     score() {
-      return this.$store.state.CommonsModule.response?.score || '800'
+      return this.$store.state.CommonsModule.outcome.result?.data.score
     },
     display() {
       return {
