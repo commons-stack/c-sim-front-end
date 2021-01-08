@@ -68,7 +68,7 @@ export default {
       return this.$store.getters['UserModule/getName']
     },
     score() {
-      return this.$store.state.CommonsModule.response?.score || '800'
+      return this.$store.state.CommonsModule.outcome.result?.data.score
     },
     display() {
       return {
