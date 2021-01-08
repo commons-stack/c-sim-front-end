@@ -227,6 +227,15 @@ export default {
             yAxes: input.yAxes,
             xAxes: [
               {
+                ticks: {
+                  autoSkip: false,
+                  maxTicksLimit: 20,
+                  callback: function(value, index) {
+                    if (index % 25 === 0)
+                      return index
+                    return
+                  }
+                },
                 scaleLabel: {
                   display: true,
                   labelString: 'Days'
