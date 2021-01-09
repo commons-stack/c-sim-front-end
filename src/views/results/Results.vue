@@ -234,7 +234,9 @@ export default {
                 ticks: {
                   autoSkip: false,
                   maxTicksLimit: 20,
-                  callback: function(value, index) {
+                  maxRotation: 0,
+                  minRotation: 0,
+                  callback: function(index) {
                     if (index % timeStep === 0)
                       return index
                     return
