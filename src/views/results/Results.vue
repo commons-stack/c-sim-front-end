@@ -192,6 +192,10 @@ export default {
   methods: {
     buildChart(input) {
       const d = this.data
+      const maxTicksLimit = 20
+      const timeStep = [1, 2, 5, 10, 25, 50, 100, 200, 250].find(function (value) {
+        return (input.datasets[0].data.length / value) < maxTicksLimit
+      })
       return {
         type: 'line',
         data: {
@@ -231,7 +235,7 @@ export default {
                   autoSkip: false,
                   maxTicksLimit: 20,
                   callback: function(value, index) {
-                    if (index % 25 === 0)
+                    if (index % timeStep === 0)
                       return index
                     return
                   }
