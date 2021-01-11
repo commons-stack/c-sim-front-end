@@ -144,8 +144,8 @@ export default {
         9: 'YOU have been chosen to bring cadCAD back in time, but there’s a twist...',
         10: '... your consciousness will have to inhabit a human of that time period, and there’s no way to know who in advance!',
         11: 'When and where will you land?',
-        12: 'What social impact movement has the greatest chance of',
-        13: 'Creating a self-governing, regenerative Commons?',
+        12: 'What social impact movement has the greatest chance',
+        13: 'of creating a self-governing, regenerative Commons?',
       },
     }
   },
@@ -241,20 +241,48 @@ export default {
     text-align: justify;
   }
 }
-.t10-text, 
+.t10-text,
 .t11-text {
-  @media (max-width: 640px) {
+  @media (max-width: 400px) {
     margin-top: 15rem !important;
+  }
+  @media (min-width: 400px)
+    and (max-width: 800px) {
+    margin-top: 15rem !important;
+  }
+  @media (min-width: 800px)
+    and (max-width: 1180px) {
+    margin-top: 12rem !important;
   }
 }
 .t12-text {
-  @media (max-width: 640px) {
+  @media (max-width: 400px) {
+    margin-top: 22rem !important;
+  }
+  @media (min-width: 400px)
+    and (max-width: 800px) {
     margin-top: 19rem !important;
+  }
+  @media (min-width: 800px)
+    and (max-width: 1180px) {
+    margin-top: 16rem !important;
   }
 }
 .t13-text {
-  @media (max-width: 640px) {
+  @media (max-width: 400px) {
+    margin-top: 32rem !important;
+  }
+  @media (min-width: 400px)
+    and (max-width: 800px) {
     margin-top: 25.5rem !important;
+  }
+  @media (min-width: 800px)
+    and (max-width: 960px) {
+    margin-top: 20rem !important;
+  }
+  @media (min-width: 960px)
+    and (max-width: 1180px) {
+    margin-top: 24rem !important;
   }
 }
 img {
