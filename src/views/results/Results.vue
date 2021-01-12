@@ -1,7 +1,7 @@
 <template>
   <div class="layout-vertical" text-center>
     <icon icon="CircleNet" class="bg-net" />
-    <commons-header :exit="false" :help="false" :restart="false" />
+    <commons-header title-only />
     <p class="teko-title">Your RxC Commons...</p>
     <div class="level-text">
       <p>Do you think you did a good job?</p>
@@ -39,8 +39,31 @@
           <p style="color: #43a983;" @click="$refs.chart1.show()">
             What do good Funding Pool results look like?
           </p>
-          <modal :bg="false" :overlay="modalBg" ref="chart1">
-            Example chart 1
+          <modal :bg="false" overlay="dark" ref="chart1">
+            <div class="layout-modal">
+              <h2 class="teko-title">Funding Pool</h2>
+              <p class="level-text mt-1 mb-1">
+                The portion of total community funds that is allocated to support RxC projects. The 
+                funding pool is initialized by the starting investment of the Hatchers (the Hatch 
+                tribute). When projects are approved by the community, the funds required are 
+                withdrawn from the funding pool. The funding pool grows when members choose to sell 
+                their tokens because a portion of their withdrawal, called “the exit tribute”, is 
+                feedback into the community funding pool.
+              </p>
+            </div>
+            <!-- Uncomment when we have an example chart.
+            <p class="level-text mt-1">
+              The chart below is an example of a successful Commons.
+            </p>
+            <Chart
+              responsive="true"
+              :chart="buildChart(chart1)"
+              :width="cssVars.graphWidth"
+              :height="cssVars.graphHeight"
+              :gradient="`${color11}dd ${color12}44`"
+            />
+            -->
+            <button commons class="mt-2" @click="$refs.chart1.hide()">OK</button>
           </modal>
         </div>
         <Chart
@@ -53,11 +76,30 @@
       </div>
       <div class="graph" style="grid-area: graph2;">
         <div class="graph-example">
-          <p style="color: #156ce2;" @click="$refs.chart1.show()">
+          <p style="color: #156ce2;" @click="$refs.chart2.show()">
             What do good Sentiment results look like?
           </p>
-          <modal :bg="false" :overlay="modalBg" ref="chart1">
-            Example chart 1
+          <modal :bg="false" overlay="dark" ref="chart2">
+            <div class="layout-modal">
+              <h2 class="teko-title">Sentiment</h2>
+              <p class="level-text mt-1">
+                The average opinion of the commons community, as indicated by conviction voting and 
+                expressed as a numerical value. As people vote in favour of a proposal, the overall 
+                sentiment for that proposal increases.
+              </p>  
+            </div>
+            <!-- Uncomment when we have an example chart.
+            <p class="level-text mt-1">
+              The chart below is an example of a successful Commons.
+            </p>
+            <Chart
+              :chart="buildChart(chart2)"
+              :width="cssVars.graphWidth"
+              :height="cssVars.graphHeight"
+              :gradient="`${color21}dd ${color21}44`"
+            />
+            -->
+            <button commons class="mt-2" @click="$refs.chart2.hide()">OK</button>
           </modal>
         </div>
         <Chart
@@ -69,11 +111,32 @@
       </div>
       <div class="graph" style="grid-area: graph3;">
          <div class="graph-example">
-          <p style="color: #94b418;" @click="$refs.chart1.show()">
+          <p style="color: #94b418;" @click="$refs.chart3.show()">
             What do good Token Price results look like?
           </p>
-          <modal :bg="false" :overlay="modalBg" ref="chart1">
-            Example chart 1
+          <modal :bg="false" overlay="dark" ref="chart3">
+            <div class="layout-modal">
+              <h2 class="teko-title">Token Price</h2>
+              <p class="level-text mt-1 mb-1">
+                The monetary value associated with the purchase of a token. RxC tokens are backed by 
+                the RxC reserve, ensuring that they always have monetary value. Token price, however, 
+                can fluctuate – decreasing if members sell their tokens (withdrawing value from the 
+                community), and increasing as members contribute time and resources (growing the 
+                commons and adding value to the community).
+              </p>
+            </div>
+            <!-- Uncomment when we have an example chart.
+            <p class="level-text mt-1">
+              The chart below is an example of a successful Commons.
+            </p>
+            <Chart
+              :chart="buildChart(chart3)"
+              :width="cssVars.graphWidth"
+              :height="cssVars.graphHeight"
+              :gradient="`${color31}dd ${color32}44`"
+            />
+            -->
+            <button commons class="mt-2" @click="$refs.chart3.hide()">OK</button>
           </modal>
         </div>
         <Chart
@@ -91,8 +154,8 @@
       Do you want to submit your score, or do you want to try to run another simulation?
     </p>
     <flex gap="2" class="mt-2">
-      <button commons @click="$router.push('/outcome')">SEE YOUR FUTURE</button>
       <button commons @click="$router.push('/level/1/1')">play again</button>
+      <button commons @click="$router.push('/outcome')">SEE YOUR FUTURE</button>
     </flex>
   </div>
 </template>
@@ -266,22 +329,36 @@ export default {
 }
 .graph-wrap {
   text-align: start;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
   display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: repeat(3, auto);
+  grid-template-columns: auto;
+  grid-template-rows: repeat(4, auto);
   grid-template-areas:
-    'gnav graph1'
-    'gnav graph2'
-    'gnav graph3';
-  row-gap: 10rem;
+    'gnav'
+    'graph1'
+    'graph2'
+    'graph3';
+  row-gap: 2rem;
   column-gap: 1.5rem;
+  @include l {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+      'gnav graph1'
+      'gnav graph2'
+      'gnav graph3';
+    row-gap: 10rem;
+  }
 }
 .graph-nav {
   grid-area: gnav;
   align-content: flex-start;
   justify-self: center;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+  @include l {
+    grid-template-columns: repeat(1, auto);
+    grid-template-rows: repeat(2, auto);
+  }
   @include l {
     justify-self: flex-end;
   }
@@ -323,8 +400,11 @@ export default {
   }
 }
 .graph {
-  width: 50vw;
-  height: 20vw;
+  width: 90vw;
+  @include l {
+    width: 50vw;
+    height: 20vw;
+  }
   & > div {
     font-size: 11px;
   }

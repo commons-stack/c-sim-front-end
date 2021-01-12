@@ -1,10 +1,8 @@
 <template>
-  <div class="h-1-1">
-    <transition name="dropdown" appear>
-      <grid class="layout-vertical h-1-1" gtr="auto 1fr">
-        <commons-header title-only />
-
-        <grid class="align-self justify-items">
+    <div class="outcome-bg">
+    <grid class="outcome-grid layout-vertical h-1-1" gtc="1fr">
+        <grid class="score-grid align-self justify-items">
+          <commons-header title-only />
           <p class="teko-subtitle">{{ display.title }}</p>
           <p class="x-subtitle">{{ display.subtitle }}</p>
           <p class="x-score">{{ score }}</p>
@@ -26,18 +24,27 @@
             
           </grid>
           -->
-          <a class="mt-2" href="https://github.com/commons-stack/commons-simulator/issues/new">
+          <a 
+            class="mt-2" 
+            target="_blank"
+            href="https://github.com/commons-stack/commons-simulator/issues/new" 
+          >
             Give us feedback to help improve this game!
           </a>
           <button v-if="future === 'bad'" class="text-button mt-2" @click="$router.push('/')">
             No thanks, quit the game
           </button>
+          <p	
+            class="fixed bot right m-1 p-1 cursor-pointer"
+            @click="toggleFuture()"
+          >	
+            Art of Mark Henson
+          </p>
         </grid>
-      </grid>
-    </transition>
-    <div class="x-img-wrap">
+        <div class="x-img-wrap">
       <img :src="display.image" class="x-img" alt="outcome image background" />
     </div>
+  </grid>
   </div>
 </template>
 
@@ -85,6 +92,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.outcome-bg {
+  background: #000A1A;
+  margin: 0 -40px;
+  padding: 20px;
+  height: 100%;
+}
+.outcome-grid {
+  @include l {
+    grid-template-columns: 1fr 1fr !important; 
+  }
+}
+.score-grid {
+  z-index: 2;
+}
 .x-img {
   object-fit: cover;
   object-position: center;
@@ -95,10 +116,20 @@ export default {
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 1;
   & > img {
     width: 100vw;
     height: 100vh;
+      @include l {
+      width: auto;
+      height: 100vh;
+    }
+  }
+  @include l {
+    width: 50vw;
+    height: 50vh;
+    top: 0;
+    left: 50%;
   }
 }
 .x-subtitle {

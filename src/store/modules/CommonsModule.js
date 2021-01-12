@@ -20,7 +20,7 @@ export const CommonsModule = createModule({
       proposals: 3,
       funding: 40,
       votingPower: 50,
-      decisions: 10,
+      decisions: 45,
       exiting: 25,
     },
     minmax: {
