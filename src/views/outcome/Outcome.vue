@@ -24,7 +24,11 @@
             
           </grid>
           -->
-          <a class="mt-2" href="https://github.com/commons-stack/commons-simulator/issues/new">
+          <a 
+            class="mt-2" 
+            target="_blank"
+            href="https://github.com/commons-stack/commons-simulator/issues/new" 
+          >
             Give us feedback to help improve this game!
           </a>
           <button v-if="future === 'bad'" class="text-button mt-2" @click="$router.push('/')">
