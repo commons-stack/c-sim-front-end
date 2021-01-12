@@ -1,7 +1,7 @@
 <template>
   <div class="layout-vertical" text-center>
     <icon icon="CircleNet" class="bg-net" />
-    <commons-header :exit="false" :help="false" :restart="false" />
+    <commons-header title-only />
     <p class="teko-title">Your RxC Commons...</p>
     <div class="level-text">
       <p>Do you think you did a good job?</p>
