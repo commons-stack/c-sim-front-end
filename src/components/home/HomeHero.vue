@@ -4,7 +4,7 @@
       The Commons Simulator
     </h1>
     <p key="2" class="item sub" :class="state > 1 && 'item-active'">
-      Designing the RxC Commons with the power of cadCAD
+      Designing a Regenerative Commons with the power of cadCAD
     </p>
     <button
       commons
