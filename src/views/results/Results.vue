@@ -329,22 +329,36 @@ export default {
 }
 .graph-wrap {
   text-align: start;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
   display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: repeat(3, auto);
+  grid-template-columns: auto;
+  grid-template-rows: repeat(4, auto);
   grid-template-areas:
-    'gnav graph1'
-    'gnav graph2'
-    'gnav graph3';
-  row-gap: 10rem;
+    'gnav'
+    'graph1'
+    'graph2'
+    'graph3';
+  row-gap: 2rem;
   column-gap: 1.5rem;
+  @include l {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+      'gnav graph1'
+      'gnav graph2'
+      'gnav graph3';
+    row-gap: 10rem;
+  }
 }
 .graph-nav {
   grid-area: gnav;
   align-content: flex-start;
   justify-self: center;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+  @include l {
+    grid-template-columns: repeat(1, auto);
+    grid-template-rows: repeat(2, auto);
+  }
   @include l {
     justify-self: flex-end;
   }
@@ -386,8 +400,11 @@ export default {
   }
 }
 .graph {
-  width: 50vw;
-  height: 20vw;
+  width: 90vw;
+  @include l {
+    width: 50vw;
+    height: 20vw;
+  }
   & > div {
     font-size: 11px;
   }
