@@ -7,11 +7,11 @@
     <div class="layout-form">
       <commons-navigation />
       <grid class="layout-form-grid">
-        <flex class="relative flex-center">
-          <icon icon="Hatchers3" class="justify-self" />
+        <flex class="container relative flex-center">
+          <icon icon="Hatchers3" class="icon justify-self" />
           <icon
             :icon="hatcherIcon"
-            class="absolute-center"
+            class="icon absolute-center"
             style="z-index: -1;"
             v-if="forms.input.foundingMembers > 3"
           />
@@ -86,4 +86,8 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.container {
+  max-width: 300px;
+}
+</style>
