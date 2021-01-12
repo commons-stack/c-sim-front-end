@@ -117,7 +117,7 @@ export default {
   font-size: 16px;
 }
 .levels-button {
-  @include l {
+  @include m {
     display: none;
   }
 }

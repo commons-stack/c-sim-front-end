@@ -38,7 +38,7 @@ export default {
 <style scoped lang="scss">
 .commons-nav {
   display: var(--display) !important;
-  @include l {
+  @include m {
     display: grid !important;
   }
 }
