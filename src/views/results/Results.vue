@@ -256,8 +256,8 @@ export default {
     buildChart(input) {
       const d = this.data
       const maxTicksLimit = 20
-      const timeStep = [1, 2, 5, 10, 25, 50, 100, 200, 250].find(function (value) {
-        return (input.datasets[0].data.length / value) < maxTicksLimit
+      const timeStep = [1, 3, 6].find(function (value) {
+        return (input.datasets[0].data.length / (30* value)) < maxTicksLimit
       })
       return {
         type: 'line',
@@ -300,14 +300,15 @@ export default {
                   maxRotation: 0,
                   minRotation: 0,
                   callback: function(index) {
-                    if (index % timeStep === 0)
-                      return index
+                    const indexToMonths = index / 30
+                    if (indexToMonths % timeStep === 0)
+                      return indexToMonths
                     return
                   }
                 },
                 scaleLabel: {
                   display: true,
-                  labelString: 'Days'
+                  labelString: 'Months'
                 }
               },
             ],
