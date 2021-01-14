@@ -278,7 +278,10 @@ export default {
   justify-items: center;
   align-items: center;
   column-gap: 1rem;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(2, auto);
+  @include l {
+    grid-template-columns: repeat(5, auto);
+  }
   & > label {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -289,6 +292,7 @@ export default {
   }
 }
 .custom-input {
+
   border: 2px solid #32373e;
   border-radius: 15px;
   background: #182932;
