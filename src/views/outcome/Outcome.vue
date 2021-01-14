@@ -34,10 +34,7 @@
           <button v-if="future === 'bad'" class="text-button mt-2" @click="$router.push('/')">
             No thanks, quit the game
           </button>
-          <p	
-            class="fixed bot right m-1 p-1 cursor-pointer"
-            @click="toggleFuture()"
-          >	
+          <p class="credits m-1 p-1">	
             Art of Mark Henson
           </p>
         </grid>
@@ -148,6 +145,13 @@ export default {
   margin-top: 1rem;
   @include s {
     margin-top: 4rem;
+  }
+}
+.credits {
+  @include m {
+    position: fixed; 
+    bottom: 0;
+    right: 0;
   }
 }
 </style>
