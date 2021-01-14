@@ -12,9 +12,18 @@ export default {
   components: {
     CommonsNavigationButton,
   },
+  props: {
+    mobile: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       numOfLevels: 8,
+      cssVars: {
+        display: this.mobile ? 'grid' : 'none'
+      },
     }
   },
   computed: {
@@ -28,8 +37,8 @@ export default {
 
 <style scoped lang="scss">
 .commons-nav {
-  display: none !important;
-  @include l {
+  display: var(--display) !important;
+  @include m {
     display: grid !important;
   }
 }

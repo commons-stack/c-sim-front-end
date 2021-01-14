@@ -1,14 +1,21 @@
 <template>
   <grid :gtc="titleOnly ? '1fr' : '120px 1fr 120px'" class="x-wrap">
     <div justify-self-start v-if="!titleOnly">
-      <p class="x-text-button inline" v-if="restart" @click="openModal('reset')">
-        Restart
+      <p class="x-text-button inline levels-button mh-0p5" @click="$refs.levels.show()">
+        Levels
       </p>
+      <modal :bg="false" overlay="dark" ref="levels">
+            <div class="layout-modal">
+              <h2 class="teko-title">Levels</h2>
+              <commons-navigation :mobile="true"/>
+            </div>
+      <button commons class="mt-2" @click="$refs.levels.hide()">OK</button>
+      </modal>
     </div>
     <p class="x-title" justify-self align-self>DESIGNING THE RxC COMMONS</p>
     <flex gap="1" justify-self-end v-if="!titleOnly">
-      <p class="x-text-button inline" v-if="help" @click="$emit('help')">Help</p>
-      <p class="x-text-button inline" v-if="exit" @click="openModal('exit')">Exit</p>
+      <p class="x-text-button mh-0p5 inline" v-if="help" @click="$emit('help')">Help</p>
+      <p class="x-text-button mh-0p5 inline" v-if="exit" @click="openModal('exit')">Exit</p>
     </flex>
     <modal ref="quit" bg="#222" overlay x-class="border-radius-s p-2 container-xs box">
       <p class="text-center">{{ modal.text }}</p>
@@ -108,5 +115,10 @@ export default {
 .x-text-button {
   @extend .text-button, .font-ibm;
   font-size: 16px;
+}
+.levels-button {
+  @include m {
+    display: none;
+  }
 }
 </style>

@@ -11,7 +11,7 @@
     <grid key="0" class="logo">
       <transition name="fade">
         <p class="logo-loading">
-          Loading
+          Simulating
           <transition-group name="slide" tag="span" class="absolute">
             <span v-for="dot in dots.count" :key="dot" class="logo-loading-dot">.</span>
           </transition-group>

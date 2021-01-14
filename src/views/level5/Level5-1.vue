@@ -142,6 +142,10 @@ export default {
       const data = labels.map(
         x => 100 * (x < t ? conviction_lbound(x) : conviction_ubound(x, t))
       )
+      const maxTicksLimit = 20
+      const timeStep = [1, 2, 5, 10, 25, 50, 100, 200, 250].find(function (value) {
+        return (data.length / value) < maxTicksLimit
+      })
       return {
         type: 'line',
         data: {
@@ -196,6 +200,17 @@ export default {
             // xAxes: [{ type: 'logarithmic' }],
             xAxes: [
               {
+                ticks: {
+                  autoSkip: false,
+                  maxTicksLimit: 20,
+                  maxRotation: 0,
+                  minRotation: 0,
+                  callback: function(index) {
+                    if (index % timeStep === 0)
+                      return index
+                    return
+                  }
+                },
                 scaleLabel: {
                   display: true,
                   labelString: 'Days',

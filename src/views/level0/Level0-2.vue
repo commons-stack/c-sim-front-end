@@ -91,7 +91,10 @@ p {
   max-width: 60% !important;
 }
 p {
-  text-align: justify !important;
+  text-align: left !important;
+  @include l {
+    text-align: justify !important;
+  }
 }
 .level-image {
   margin-top: 2rem;
