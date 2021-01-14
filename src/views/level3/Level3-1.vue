@@ -16,7 +16,7 @@
             <Cylinder :progress="fundingProgress" type="green" />
           </grid>
           <grid class="justify-self-end justify-items" gap="1">
-            <p class="font-teko fs-24">RadicalxChange Commons Reserve</p>
+            <p class="font-teko fs-24">RxC Reserve</p>
             <Cylinder :progress="100 - fundingProgress" type="blue" />
           </grid>
         </grid>
