@@ -3,9 +3,9 @@
     <icon icon="CircleNet" class="bg-net" />
     <commons-header title-only />
     <p class="teko-title">Your RxC Commons...</p>
-    <div class="level-text">
-      <p>Do you think you did a good job?</p>
-      <p>Analyze these charts and see if your commons is a success!</p>
+    <div>
+      <p class="level-text">Do you think you did a good job?</p>
+      <p class="level-text">Analyze these charts and see if your commons is a success!</p>
     </div>
     <div class="graph-wrap">
       <grid class="graph-nav">
@@ -155,7 +155,7 @@
     <p class="level-text">
       Do you want to submit your score, or do you want to try to run another simulation?
     </p>
-    <flex gap="2" class="mt-2">
+    <flex gap="2" class="mt-2" style="flex-wrap: wrap;">
       <button commons @click="$router.push('/level/1/1')">play again</button>
       <button commons @click="$router.push('/outcome')">SEE YOUR FUTURE</button>
     </flex>
@@ -371,6 +371,10 @@ export default {
     border: 2px solid #143b5f;
     height: 70px;
     width: 120px;
+    @media (max-width: 750px) {
+      width: 80px;
+      padding: 4px;
+    }
     @include s {
       width: 130px;
       height: 90px;

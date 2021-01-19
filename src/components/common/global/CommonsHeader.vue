@@ -111,6 +111,9 @@ export default {
   @extend .font-lato;
   opacity: 0.4;
   text-align: center;
+  @media (max-width: 750px) {
+    width: calc(100% - 20px);
+  }
 }
 .x-text-button {
   @extend .text-button, .font-ibm;
