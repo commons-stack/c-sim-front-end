@@ -23,5 +23,11 @@ export default {
   & > *:first-child {
     padding-bottom: var(--app-vertical-padding);
   }
+
+  @media (max-width: 750px) {
+    // width: calc(100% - 50px);
+    width: 100%;
+		height: auto;
+  }
 }
 </style>

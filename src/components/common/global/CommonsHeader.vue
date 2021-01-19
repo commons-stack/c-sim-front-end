@@ -1,5 +1,5 @@
 <template>
-  <grid :gtc="titleOnly ? '1fr' : '120px 1fr 120px'" class="x-wrap">
+  <grid :gtc="titleOnly ? '1fr' : 'auto 1fr auto'" class="x-wrap">
     <div justify-self-start v-if="!titleOnly">
       <p class="x-text-button inline levels-button mh-0p5" @click="$refs.levels.show()">
         Levels
