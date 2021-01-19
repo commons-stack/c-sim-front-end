@@ -5,10 +5,10 @@
         Levels
       </p>
       <modal :bg="false" overlay="dark" ref="levels">
-            <div class="layout-modal">
-              <h2 class="teko-title">Levels</h2>
-              <commons-navigation :mobile="true"/>
-            </div>
+      <div class="layout-modal">
+        <h2 class="teko-title">Levels</h2>
+        <commons-navigation :mobile="true"/>
+      </div>
       <button commons class="mt-2" @click="$refs.levels.hide()">OK</button>
       </modal>
     </div>

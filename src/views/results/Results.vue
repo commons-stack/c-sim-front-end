@@ -67,7 +67,7 @@
           </modal>
         </div>
         <Chart
-          responsive="true"
+          :responsive="true"
           :chart="buildChart(chart1)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
@@ -86,7 +86,7 @@
                 The average opinion of the commons community, as indicated by conviction voting and 
                 expressed as a numerical value. As people vote in favour of a proposal, the overall 
                 sentiment for that proposal increases.
-              </p>  
+              </p>
             </div>
             <!-- Uncomment when we have an example chart.
             <p class="level-text mt-1">
@@ -103,6 +103,7 @@
           </modal>
         </div>
         <Chart
+          :responsive="true"
           :chart="buildChart(chart2)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
@@ -110,7 +111,7 @@
         />
       </div>
       <div class="graph" style="grid-area: graph3;">
-         <div class="graph-example">
+          <div class="graph-example">
           <p style="color: #94b418;" @click="$refs.chart3.show()">
             What do good Token Price results look like?
           </p>
@@ -140,6 +141,7 @@
           </modal>
         </div>
         <Chart
+          :responsive="true"
           :chart="buildChart(chart3)"
           :width="cssVars.graphWidth"
           :height="cssVars.graphHeight"
