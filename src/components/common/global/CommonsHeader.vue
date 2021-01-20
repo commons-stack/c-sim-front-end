@@ -1,14 +1,14 @@
 <template>
-  <grid :gtc="titleOnly ? '1fr' : '120px 1fr 120px'" class="x-wrap">
+  <grid :gtc="titleOnly ? '1fr' : 'auto 1fr auto'" class="x-wrap">
     <div justify-self-start v-if="!titleOnly">
       <p class="x-text-button inline levels-button mh-0p5" @click="$refs.levels.show()">
         Levels
       </p>
       <modal :bg="false" overlay="dark" ref="levels">
-            <div class="layout-modal">
-              <h2 class="teko-title">Levels</h2>
-              <commons-navigation :mobile="true"/>
-            </div>
+      <div class="layout-modal">
+        <h2 class="teko-title">Levels</h2>
+        <commons-navigation :mobile="true"/>
+      </div>
       <button commons class="mt-2" @click="$refs.levels.hide()">OK</button>
       </modal>
     </div>
@@ -111,6 +111,9 @@ export default {
   @extend .font-lato;
   opacity: 0.4;
   text-align: center;
+  @media (max-width: 750px) {
+    width: calc(100% - 20px);
+  }
 }
 .x-text-button {
   @extend .text-button, .font-ibm;

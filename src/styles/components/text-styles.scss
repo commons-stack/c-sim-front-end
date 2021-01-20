@@ -14,6 +14,9 @@
 
 .teko-title {
   @extend .font-teko;
+  @media (max-width: 750px) {
+    width: 200px;
+  }
   font-size: 60px;
   text-align: center;
   line-height: 48px;
@@ -23,13 +26,20 @@
   @extend .font-teko;
   font-size: 36px;
   text-align: center;
+  @media (max-width: 750px) {
+    width: calc(100% - 20px)
+  }
 }
 
 .level-text {
   @extend .font-ibm;
   max-width: 800px;
+  width: auto;
   font-size: 20px;
   text-align: center;
+  @media (max-width: 750px) {
+    width: calc(100% - 20px)
+  }
 }
 
 .form-text {
