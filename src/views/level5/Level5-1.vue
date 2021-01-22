@@ -18,7 +18,6 @@
           <div class="relative">
             <Chart
               :responsive="true"
-              :height="height"
               :width="width"
               :chart="chart"
               gradient="#59c973dd #247c9744"
@@ -131,7 +130,7 @@ export default {
   computed: {
     ...mapState('CommonsModule', ['minmax']),
     width() {
-      return (window.innerWidth <= 750) ? 300 : 600
+      return (window.innerWidth <= 750) ? '300' : '600'
     },
     chart() {
       const input =

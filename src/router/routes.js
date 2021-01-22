@@ -2,10 +2,10 @@ import Home from '@/views/home/Home.vue'
 import Intro from '@/views/intro/Intro.vue'
 import Level01 from '@/views/level0/Level0-1.vue'
 import Level02 from '@/views/level0/Level0-2.vue'
+import Level03 from '@/views/level0/Level0-3.vue'
+import Level04 from '@/views/level0/Level0-4.vue'
 import Level11 from '@/views/level1/Level1-1.vue'
 import Level12 from '@/views/level1/Level1-2.vue'
-import Level13 from '@/views/level1/Level1-3.vue'
-import Level14 from '@/views/level1/Level1-4.vue'
 import Level21 from '@/views/level2/Level2-1.vue'
 import Level22 from '@/views/level2/Level2-2.vue'
 import Level31 from '@/views/level3/Level3-1.vue'
@@ -38,6 +38,20 @@ export const routes = [
     component: Level02,
   },
   {
+    path: '/level/0/3',
+    component: Level03,
+    meta: {
+      title: 'Designing the Commons',
+    },
+  },
+  {
+    path: '/level/0/4',
+    component: Level04,
+    meta: {
+      title: 'Hatchers',
+    },
+  },
+  {
     path: '/level/1/1',
     component: Level11,
     meta: {
@@ -47,20 +61,6 @@ export const routes = [
   {
     path: '/level/1/2',
     component: Level12,
-    meta: {
-      title: 'Hatchers',
-    },
-  },
-  {
-    path: '/level/1/3',
-    component: Level13,
-    meta: {
-      title: 'Hatchers',
-    },
-  },
-  {
-    path: '/level/1/4',
-    component: Level14,
     meta: {
       title: 'Hatchers',
     },
