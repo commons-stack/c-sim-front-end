@@ -16,7 +16,12 @@
             style="bottom: 20px; opacity: 0.2;"
           />
           <div class="relative">
-            <Chart :chart="chart" width="600" gradient="#59c973dd #247c9744" />
+            <Chart
+              :responsive="true"
+              :width="width"
+              :chart="chart"
+              gradient="#59c973dd #247c9744"
+            />
           </div>
         </grid>
         <grid class="form-section">
@@ -124,6 +129,9 @@ export default {
   },
   computed: {
     ...mapState('CommonsModule', ['minmax']),
+    width() {
+      return (window.innerWidth <= 750) ? '300' : '600'
+    },
     chart() {
       const input =
         this.forms.input.decisions && this.forms.input.decisions > 2
@@ -142,7 +150,7 @@ export default {
       const data = labels.map(
         x => 100 * (x < t ? conviction_lbound(x) : conviction_ubound(x, t))
       )
-      const maxTicksLimit = 20
+      const maxTicksLimit = (window.innerWidth <= 750) ? 10 : 20
       const timeStep = [1, 2, 5, 10, 25, 50, 100, 200, 250].find(function (value) {
         return (data.length / value) < maxTicksLimit
       })

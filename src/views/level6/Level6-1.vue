@@ -9,13 +9,18 @@
           <grid class="justify-self-start justify-items align-content relative" gap="1">
             <p class="font-teko fs-24">Your Wallet</p>
             <Cylinder :progress="100 - exitingProgress" type="blue" />
-            <exit-form-circles :progress="100 - exitingProgress" style="right: -90px;" />
+            <exit-form-circles
+              v-if="isDesktop"
+              :progress="100 - exitingProgress"
+              style="right: -90px;"
+            />
           </grid>
           <icon icon="Man" v-if="$breakpoints.xl" />
           <grid class="justify-self-end justify-items align-content relative" gap="1">
             <p class="font-teko fs-24">Funding Pool</p>
             <Cylinder :progress="exitingProgress" type="green" />
             <exit-form-circles
+              v-if="isDesktop"
               :progress="exitingProgress"
               :style="$breakpoints.xl ? 'left: -90px;' : 'right: -90px;'"
             />
@@ -91,6 +96,9 @@ export default {
   },
   computed: {
     ...mapState('CommonsModule', ['minmax']),
+    isDesktop() {
+      return (window.innerWidth > 750)
+    },
     exitingProgress() {
       return utils.changeScale(
         this.forms.input.exiting,
@@ -106,14 +114,3 @@ export default {
   },
 }
 </script>
-
-<style scoped lang="scss">
-.layout-form-icons {
-  height: 300px;
-  gap: 5rem;
-  @include xl {
-    grid-template-columns: 1fr auto 1fr;
-    gap: 2rem;
-  }
-}
-</style>
