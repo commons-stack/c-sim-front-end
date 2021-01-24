@@ -13,11 +13,11 @@
         class="x-input"
         @valid="forms.vset.input.name"
         v-model="forms.input.name"
-        placeholder="Enter your name"
+        placeholder="Enter your Telegram or Discord handle"
         required
       />
+      <button commons @click="goNext" class="mt-2" :disabled="!forms.vget.input.form">next</button>
     </grid>
-    <button commons @click="goNext" class="mt-2" :disabled="!forms.vget.input.form">next</button>
     <div class="x-home-shapes-wrap">
       <div class="x-home-shapes">
         <icon icon="ShapeRight" class="x-shape-right" />
@@ -90,11 +90,34 @@ export default {
   margin-top: 2rem;
   font-size: 40px;
   @include s {
-    font-size: 50px;
+    font-size: 30px;
   }
   @include m {
     font-size: 60px;
   }
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
+}
+::-webkit-input-placeholder {
+  white-space:pre-line;
+  position:relative;
+  top:-7px;
+}
+::-moz-placeholder {
+  white-space:pre-line;
+  position:relative;
+  top:-7px;
+}
+:-ms-input-placeholder {
+  white-space:pre-line;
+  position:relative;
+  top:-7px;
+}
+:-moz-placeholder {
+  white-space:pre-line;
+  position:relative;
+  top:-7px;
 }
 .x-home-bg,
 .x-home-bg-img {
