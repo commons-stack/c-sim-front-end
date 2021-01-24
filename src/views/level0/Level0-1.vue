@@ -17,7 +17,7 @@
         required
       />
       <button commons @click="goNext" class="mt-2" :disabled="!forms.vget.input.form">next</button>
-      <h2 class="teko-subtitle mt-1p5" style="cursor: pointer;" @click="$router.push('/intro')">watch intro again</h2>
+      <p class="x-text-button mh-0p5 inline" style="cursor: pointer;" @click="$router.push('/intro')">Watch Intro again</p>
     </grid>
     <div class="x-home-shapes-wrap">
       <div class="x-home-shapes">
@@ -99,6 +99,10 @@ export default {
   @media (max-width: 600px) {
     font-size: 20px;
   }
+}
+.x-text-button {
+  @extend .text-button, .font-ibm;
+  font-size: 16px;
 }
 ::-webkit-input-placeholder {
   white-space:pre-line;
