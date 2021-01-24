@@ -66,13 +66,15 @@ html {
   line-height: 1.5;
   color: #212121;
   height: 100%;
+  overflow-x: hidden;
 }
 body {
   font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
-  height: 100%;
-  // overflow-x: hidden;
+  overflow-x: hidden;
 }
 *,
 *::before,
