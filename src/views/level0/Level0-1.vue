@@ -17,6 +17,7 @@
         required
       />
       <button commons @click="goNext" class="mt-2" :disabled="!forms.vget.input.form">next</button>
+      <h2 class="teko-subtitle mt-1p5" style="cursor: pointer;" @click="$router.push('/intro')">watch intro again</h2>
     </grid>
     <div class="x-home-shapes-wrap">
       <div class="x-home-shapes">
