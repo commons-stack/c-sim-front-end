@@ -5,8 +5,7 @@
       How much of the community funds can be distributed at any given time?
     </h2>
     <p class="font-ibm fs-20 text-center">
-      Ensuring that larger proposals require a greater amount of collective
-      voting power from the community in order to pass.
+      Capping the relative amount of spending determines how fast the Commons spend their funds.
     </p>
     <div class="layout-form">
       <commons-navigation />
