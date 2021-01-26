@@ -114,3 +114,14 @@ export default {
   },
 }
 </script>
+
+<style scoped lang="scss">	
+.layout-form-icons {	
+  height: 300px;	
+  gap: 5rem;	
+  @include xl {	
+    grid-template-columns: 1fr auto 1fr;	
+    gap: 2rem;	
+  }	
+}	
+</style>
