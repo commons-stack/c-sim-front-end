@@ -8,6 +8,21 @@
     @click="clickHandler"
   >
     <div class="x-button">{{ level }}</div>
+    <vuejs-modal
+      name="my-first-modal"
+      class="level-modal"
+      :adaptive="true"
+      style="background: black; text-align: center;"
+    >
+      <div style="margin-top: 24px; background: black;">
+        <h2 class="teko-subtitle" >Going back will reset your parameters</h2>
+        <p class="text-center">If you go back the parameters you previously selected will be reset.</p>
+        <button commons class="mt-2" @click="$router.push(`/level/${level}/1`)">Continue</button>
+        <div style="margin-top: 16px;">
+          <p class="x-text-button mh-0p5 inline" @click="$modal.hide('my-first-modal')">Cancel</p>
+        </div>
+      </div>
+    </vuejs-modal>
     <p class="x-text">{{ levelName }}</p>
   </grid>
 </template>
@@ -43,13 +58,20 @@ export default {
   methods: {
     clickHandler() {
       if (this.level >= this.currentLevel) return
-      this.$router.push(`/level/${this.level}/1`)
+      this.$modal.show('my-first-modal');
     },
   },
 }
 </script>
 
 <style scoped lang="scss">
+.leve-modal {
+  background-color: black;
+}
+.vm--modal {
+  color: white;
+  background: black;
+}
 .x-wrap {
   align-items: center;
   justify-content: flex-start;
@@ -113,5 +135,10 @@ export default {
   & > .x-button::before {
     opacity: 1;
   }
+}
+
+.x-text-button {
+  @extend .text-button, .font-ibm;
+  font-size: 16px;
 }
 </style>
