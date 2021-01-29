@@ -24,7 +24,7 @@ const defaults = {
 }
 
 export default {
-  name: 'modal-name',
+  name: 'modal',
   created() {
     document.addEventListener('keydown', this.handleEscape)
   },
