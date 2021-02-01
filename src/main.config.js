@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import vOutsideEvents from 'vue-outside-events'
 import en from './locales/en.json'
-import VModal from 'vue-js-modal'
 import { configureComponents } from './main.config.components'
 import { BreakpointPlugin } from './plugins/BreakpointsPlugin'
 import { CSSVars } from './plugins/CSSVars'
@@ -20,7 +19,6 @@ export const configure = () => {
   Vue.use(XState)
   Vue.use(FormsPlugin)
   Vue.use(BreakpointPlugin)
-  Vue.use(VModal, { componentName: 'vuejs-modal' })
 
   Vue.directive('focus', { inserted: el => el.focus() })
 

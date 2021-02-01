@@ -23,8 +23,6 @@
 </template>
 
 <script>
-import Modal from '../../utils/Modal'
-
 const levelNames = {
   0: 'intro',
   1: 'hatchers',
@@ -38,7 +36,6 @@ const levelNames = {
 
 export default {
   name: 'commons-navigation-button',
-  components: { Modal },
   props: {
     level: Number,
   },
