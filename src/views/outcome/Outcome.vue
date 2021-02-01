@@ -6,10 +6,8 @@
           <p class="teko-subtitle">{{ display.title }}</p>
           <p class="x-subtitle">{{ display.subtitle }}</p>
           <p class="x-score">{{ score }}</p>
-
           <p class="x-improve">Try to improve your score</p>
           <button commons @click="$router.push('/')">play again</button>
-          <!-- 
           <grid
             gap="1"
             gtc="repeat(4, auto)"
@@ -18,12 +16,13 @@
             v-if="future === 'good'"
           > 
             <p>Share your score:</p>
-            <icon class="ml-1" icon="Twitter" button />
-            <icon icon="LinkedIn" />
-            <icon icon="Facebook" /> 
-            
+            <a 
+              target="_blank"
+              :href="`https://twitter.com/intent/tweet?text=${share}`"
+            >
+              <icon class="ml-1" icon="Twitter" />
+            </a>
           </grid>
-          -->
           <a 
             class="mt-2" 
             target="_blank"
@@ -84,6 +83,9 @@ export default {
         },
       }[this.future]
     },
+    share() {
+      return "I'm helping design a regenerative future for humanity on the Commons Simulator! Can you beat my high score at https://sim.commonsstack.org/?"
+    }
   },
 }
 </script>
@@ -143,9 +145,6 @@ export default {
 .x-improve {
   @extend .teko-subtitle;
   margin-top: 1rem;
-  @include s {
-    margin-top: 4rem;
-  }
 }
 .credits {
   @include m {
