@@ -1,25 +1,27 @@
 <template>
-  <grid
-    gap="1"
-    gtc="auto auto"
-    class="x-wrap"
-    :active="currentLevel === level"
-    :visited="currentLevel >= level"
-    @click="clickHandler"
-  >
-    <div class="x-button">{{ level }}</div>
-    <p class="x-text">{{ levelName }}</p>
+  <div>
+    <grid
+      gap="1"
+      gtc="auto auto"
+      class="x-wrap"
+      :active="currentLevel === level"
+      :visited="currentLevel >= level"
+      @click="clickHandler"
+    >
+      <div class="x-button">{{ level }}</div>
+      <p class="x-text">{{ levelName }}</p>
+    </grid>
     <modal ref="modal" :bg="false">
       <div class="modal-content">
         <h2 class="teko-subtitle">Going back will reset your parameters</h2>
         <p class="text-center">If you go back the parameters you previously selected will be reset.</p>
         <button commons class="mt-2" @click="$router.push(`/level/${level}/1`)">Continue</button>
         <div style="margin-top: 16px;">
-          <p class="x-text-button mh-0p5 inline" @click="clickTest">Cancel</p>
+          <p class="x-text-button mh-0p5 inline" @click="$refs.modal.hide()">Cancel</p>
         </div>
       </div>
     </modal>
-  </grid>
+  </div>
 </template>
 
 <script>
@@ -54,10 +56,6 @@ export default {
     clickHandler() {
       if (this.level >= this.currentLevel) return
       this.$refs.modal.show()
-    },
-    clickTest () {
-      console.log('test')
-      this.$refs.modal.hide()
     }
   },
 }
