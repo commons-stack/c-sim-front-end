@@ -7,7 +7,7 @@ export const NotificationModule = createModule({
   },
   mutations: {
     clear: state => {
-      state.notificaitons = []
+      state.notifications = []
       state.timeout = undefined
     },
   },
