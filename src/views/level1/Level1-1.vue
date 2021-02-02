@@ -13,7 +13,7 @@
             :icon="hatcherIcon"
             class="icon absolute-center"
             style="z-index: -1;"
-            v-if="forms.input.foundingMembers > 3"
+            v-if="forms.input.foundingMembers > 10"
           />
         </flex>
         <form-input

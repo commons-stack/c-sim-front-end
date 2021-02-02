@@ -42,6 +42,7 @@ import Settings from './icons/Settings.vue'
 import ShapeLeft from './icons/ShapeLeft.vue'
 import ShapeRight from './icons/ShapeRight.vue'
 import Trash from './icons/Trash.vue'
+import Telegram from './icons/Telegram.vue'
 import Twitter from './icons/Twitter.vue'
 import { utils } from '../../utils/utils.js'
 
@@ -77,6 +78,7 @@ const icons = {
   ShapeLeft,
   ShapeRight,
   Trash,
+  Telegram,
   Twitter,
 }
 

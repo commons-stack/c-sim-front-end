@@ -17,14 +17,14 @@
       <p class="x-text-button mh-0p5 inline" v-if="help" @click="$emit('help')">Help</p>
       <p class="x-text-button mh-0p5 inline" v-if="exit" @click="openModal('exit')">Exit</p>
     </flex>
-    <modal ref="quit" bg="#222" overlay x-class="border-radius-s p-2 container-xs box">
-      <p class="text-center">{{ modal.text }}</p>
+    <modal ref="quit" bg="#222" overlay x-class="border-radius-s p-2 box">
+      <h2 class="teko-subtitle">{{ modal.text }}</h2>
       <p class="text-center">All input data will be reset.</p>
       <grid gtc="1fr 1fr" class="justify-items mt-2">
-        <button class="x-button" error @click="modal.confirmAction()">
+        <button error @click="modal.confirmAction()">
           {{ modal.confirmText }}
         </button>
-        <button class="x-button" success @click="modal.declineAction()">
+        <button commons @click="modal.declineAction()">
           {{ modal.declineText }}
         </button>
       </grid>
