@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import vOutsideEvents from 'vue-outside-events'
+import VueSocialSharing from 'vue-social-sharing'
 import en from './locales/en.json'
 import { configureComponents } from './main.config.components'
 import { BreakpointPlugin } from './plugins/BreakpointsPlugin'
@@ -19,6 +20,7 @@ export const configure = () => {
   Vue.use(XState)
   Vue.use(FormsPlugin)
   Vue.use(BreakpointPlugin)
+  Vue.use(VueSocialSharing)
 
   Vue.directive('focus', { inserted: el => el.focus() })
 

@@ -17,6 +17,7 @@
     "vue-i18n": "^8.22.1",
     "vue-outside-events": "^1.1.3",
     "vue-router": "^3.4.9",
+    "vue-social-sharing": "^3.0.4",
     "vuex": "^3.5.1",
     "vuex-persistedstate": "^4.0.0-beta.1",
     "xstate": "^4.14.0"

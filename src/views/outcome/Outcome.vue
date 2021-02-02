@@ -16,12 +16,27 @@
             v-if="future === 'good'"
           > 
             <p>Share your score:</p>
-            <a 
-              target="_blank"
-              :href="`https://twitter.com/intent/tweet?text=${share}`"
+            <ShareNetwork
+              network="twitter"
+              :url="url"
+              :title="text"
             >
               <icon class="ml-1" icon="Twitter" />
-            </a>
+            </ShareNetwork>
+            <ShareNetwork
+              network="facebook"
+              :url="url"
+              :quote="text"
+            >
+              <icon class="ml-1" icon="Facebook" />
+            </ShareNetwork>
+            <ShareNetwork
+              network="telegram"
+              :url="url"
+              :title="text"
+            >
+              <icon class="ml-1" icon="Telegram" />
+            </ShareNetwork>
           </grid>
           <a 
             class="mt-2" 
@@ -53,6 +68,8 @@ export default {
   data() {
     return {
       future: 'bad',
+      url: 'https://sim.commonsstack.org/',
+      text: "I'm helping design a regenerative future for humanity on the Commons Simulator! Can you beat my high score?",
     }
   },
   methods: {
@@ -83,9 +100,6 @@ export default {
         },
       }[this.future]
     },
-    share() {
-      return "I'm helping design a regenerative future for humanity on the Commons Simulator! Can you beat my high score at https://sim.commonsstack.org/?"
-    }
   },
 }
 </script>
