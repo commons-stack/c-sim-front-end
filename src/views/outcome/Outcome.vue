@@ -10,7 +10,7 @@
           <button commons @click="$router.push('/')">play again</button>
           <grid
             gap="1"
-            gtc="repeat(4, auto)"
+            gtc="repeat(5, auto)"
             align-items
             class="mt-2"
             v-if="future === 'good'"
@@ -36,6 +36,12 @@
               :title="text"
             >
               <icon class="ml-1" icon="Telegram" />
+            </ShareNetwork>
+            <ShareNetwork
+              network="linkedin"
+              :url="url"
+            >
+              <icon class="ml-1" icon="LinkedIn" />
             </ShareNetwork>
           </grid>
           <a 
