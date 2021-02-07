@@ -15,7 +15,7 @@
     </p>
     <img
       class="level-image"
-      src="@/assets/level_0_img_1.jpg"
+      src="@/assets/level_0_img_1.jpeg"
       alt="intro image 1"
     />
     <p class="level-text">
@@ -33,7 +33,7 @@
     </p>
     <img
       class="level-image"
-      src="@/assets/level_0_img_2.jpg"
+      src="@/assets/level_0_img_2.jpeg"
       alt="intro image 2"
     />
     <h2 class="teko-title mt-3">Your mission</h2>
@@ -45,7 +45,7 @@
     </p>
     <img
       class="level-image"
-      src="@/assets/level_0_img_3.jpg"
+      src="@/assets/level_0_img_3.jpeg"
       alt="intro image 3"
     />
     <h2 class="teko-title mt-3">What is a Commons?</h2>
