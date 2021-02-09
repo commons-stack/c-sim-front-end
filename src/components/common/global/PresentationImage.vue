@@ -1,10 +1,17 @@
 <template>
-  <img class="x-img" src="@/assets/presentation.jpeg" />
+  <img v-if="alternative" class="x-img" src="@/assets/presentation_1.jpg" />
+  <img v-else class="x-img" src="@/assets/presentation_2.jpg" />
 </template>
 
 <script>
 export default {
   name: 'presentation-image',
+  props: {
+    alternative: {
+      type: Boolean,
+      default: false,
+    }
+  }
 }
 </script>
 

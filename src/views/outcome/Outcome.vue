@@ -6,24 +6,44 @@
           <p class="teko-subtitle">{{ display.title }}</p>
           <p class="x-subtitle">{{ display.subtitle }}</p>
           <p class="x-score">{{ score }}</p>
-
           <p class="x-improve">Try to improve your score</p>
           <button commons @click="$router.push('/')">play again</button>
-          <!-- 
           <grid
             gap="1"
-            gtc="repeat(4, auto)"
+            gtc="repeat(5, auto)"
             align-items
             class="mt-2"
             v-if="future === 'good'"
           > 
             <p>Share your score:</p>
-            <icon class="ml-1" icon="Twitter" button />
-            <icon icon="LinkedIn" />
-            <icon icon="Facebook" /> 
-            
+            <ShareNetwork
+              network="twitter"
+              :url="url"
+              :title="text"
+            >
+              <icon class="ml-1" icon="Twitter" />
+            </ShareNetwork>
+            <ShareNetwork
+              network="facebook"
+              :url="url"
+              :quote="text"
+            >
+              <icon class="ml-1" icon="Facebook" />
+            </ShareNetwork>
+            <ShareNetwork
+              network="telegram"
+              :url="url"
+              :title="text"
+            >
+              <icon class="ml-1" icon="Telegram" />
+            </ShareNetwork>
+            <ShareNetwork
+              network="linkedin"
+              :url="url"
+            >
+              <icon class="ml-1" icon="LinkedIn" />
+            </ShareNetwork>
           </grid>
-          -->
           <a 
             class="mt-2" 
             target="_blank"
@@ -54,6 +74,8 @@ export default {
   data() {
     return {
       future: 'bad',
+      url: 'https://sim.commonsstack.org/',
+      text: "I'm helping design a regenerative future for humanity on the Commons Simulator! Can you beat my high score?",
     }
   },
   methods: {
@@ -143,9 +165,6 @@ export default {
 .x-improve {
   @extend .teko-subtitle;
   margin-top: 1rem;
-  @include s {
-    margin-top: 4rem;
-  }
 }
 .credits {
   @include m {

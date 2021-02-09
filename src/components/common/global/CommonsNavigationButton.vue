@@ -1,15 +1,27 @@
 <template>
-  <grid
-    gap="1"
-    gtc="auto auto"
-    class="x-wrap"
-    :active="currentLevel === level"
-    :visited="currentLevel >= level"
-    @click="clickHandler"
-  >
-    <div class="x-button">{{ level }}</div>
-    <p class="x-text">{{ levelName }}</p>
-  </grid>
+  <div>
+    <grid
+      gap="1"
+      gtc="auto auto"
+      class="x-wrap"
+      :active="currentLevel === level"
+      :visited="currentLevel >= level"
+      @click="clickHandler"
+    >
+      <div class="x-button">{{ level }}</div>
+      <p class="x-text">{{ levelName }}</p>
+    </grid>
+    <modal ref="modal" :bg="false">
+      <div class="modal-content">
+        <h2 class="teko-subtitle">Going back will reset your parameters</h2>
+        <p class="text-center">If you go back the parameters you previously selected will be reset.</p>
+        <button commons class="mt-2" @click="$router.push(`/level/${level}/1`)">Continue</button>
+        <div style="margin-top: 16px;">
+          <p class="x-text-button mh-0p5 inline" @click="$refs.modal.hide()">Cancel</p>
+        </div>
+      </div>
+    </modal>
+  </div>
 </template>
 
 <script>
@@ -43,13 +55,19 @@ export default {
   methods: {
     clickHandler() {
       if (this.level >= this.currentLevel) return
-      this.$router.push(`/level/${this.level}/1`)
-    },
+      this.$refs.modal.show()
+    }
   },
 }
 </script>
 
 <style scoped lang="scss">
+.modal-content {
+  background: #212121;
+  text-align: center;
+  padding: 24px;
+  max-width: 450px
+}
 .x-wrap {
   align-items: center;
   justify-content: flex-start;
@@ -113,5 +131,10 @@ export default {
   & > .x-button::before {
     opacity: 1;
   }
+}
+
+.x-text-button {
+  @extend .text-button, .font-ibm;
+  font-size: 16px;
 }
 </style>
