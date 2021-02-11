@@ -97,12 +97,12 @@ export default {
           subtitle: this.name
             ? `You made a High Score, ${this.name}!`
             : 'You made a High Score!',
-          image: require('@/assets/outcome_good.jpg'),
+          image: require('@/assets/outcome_good.jpeg'),
         },
         bad: {
           title: 'Bad future',
           subtitle: 'Your score',
-          image: require('@/assets/outcome_bad.jpg'),
+          image: require('@/assets/outcome_bad.jpeg'),
         },
       }[this.future]
     },
