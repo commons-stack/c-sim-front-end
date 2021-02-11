@@ -110,6 +110,7 @@ export default {
   @extend .center, .h-1-1, .w-1-1, .flex, .box;
   z-index: 1000;
   overflow: auto;
+  padding: 2rem;
 }
 .x-modal {
   outline: none;

@@ -39,13 +39,18 @@
       <div class="layout-modal">
         <h2 class="teko-title">Founding members - ‘Hatchers’</h2>
         <p class="level-text mt-1">
-          Only trusted experts who accept accountability for upholding the values and honorable
-          intentions of the community should be chosen to be the founding members of your RxC
-          Commons.
+          <strong>'Hatchers'</strong> are the founding members of the RadicalxChange Commons. They 
+          are the first to take responsibility over the Commons, prioritizing the needs of the 
+          community.
         </p>
         <p class="level-text">
-          These founding members, referred to as <strong>‘Hatchers’</strong> are the first to take
-          responsibility over the commons prioritizing the needs of the community.
+          Only trusted experts who accept accountability for upholding the values and honorable 
+          intentions of the community should be chosen to be the founding members of your 
+          RadicalxChange Commons.
+        </p>
+        <p class="level-text">
+          YOU must decide how many Hatchers are needed for the RadicalxChange community to initiate 
+          their Commons... 
         </p>
         <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>

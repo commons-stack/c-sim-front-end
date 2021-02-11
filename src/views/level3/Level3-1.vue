@@ -52,33 +52,31 @@
       <div class="layout-modal">
         <h2 class="teko-title">Funding Pools</h2>
         <p class="level-text mt-1">
-          The RxC Reserve backs the RxC token, guaranteeing liquidity for all
-          tokens issued so that they will always have monetary value. The
-          Funding Pool will be used to fund RadicalxChange initiatives.
+          The total initial funds raised are to be split between the two pools: the Funding Pool 
+          and the RxC Reserve. The initial funding allocated to the Funding Pool is referred to as 
+          <strong>the Hatch Tribute</strong>. 
         </p>
         <grid gtc="1fr 1fr" gap="3" style="max-width: 800px;">
           <div>
             <p class="teko-subtitle" style="text-align: start;">
-              Hatch Tribute
+              Funding Pool
             </p>
             <p class="fs-20 font-ibm">
-              The total funds raised are split between the 2 pools, with the
-              amount going to the Funding Pool being called
-              <strong>the Hatch Tribute</strong>
+              Contains the total funds available for funding approved RadicalxChange initiatives.
             </p>
           </div>
           <div>
-            <p class="teko-subtitle" style="text-align: start;">RxC token</p>
+            <p class="teko-subtitle" style="text-align: start;">RxC Reserve</p>
             <p class="fs-20 font-ibm">
-              The RxC Reserve backs the RxC token, guaranteeing liquidity for
-              all tokens issued so that they will always have monetary value.
+              Backs the RxC token, guaranteeing liquidity for all tokens issued so that they will 
+              always have a monetary value.
             </p>
           </div>
         </grid>
         <p class="level-text">
-          If you put too much funds in the Funding Pool, the token may have
-          trouble maintaining value, and if you put too much in the RxC Reserve,
-          the Commons won’t be able to support very many projects.
+          You must decide what percentage of funding will be allocated to each pool. If you put too 
+          much funding in the Funding Pool, the token may have trouble maintaining value. If you 
+          put too much in the RxC Reserve, the Commons won’t be able to support very many projects.
         </p>
         <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>
