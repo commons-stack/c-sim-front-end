@@ -5,9 +5,9 @@
       <h3 class="teko-title">Well done!</h3>
       <grid gap="2" style="max-width: 650px;">
         <p>
-          Seizing the opportunity to harvest another parameter from the wisdom of the group, one of
-          a few you need to configure the Conviction Voting simulator, you ask about how much of the
-          community funds can be distributed at any given time.
+          There are a few parameters you need to configure the Conviction Voting simulator. Seizing 
+          the opportunity to harvest another, you ask about much of the community funds can be 
+          distributed at any given time.
         </p>
         <p>
           This parameter is defined by selecting a percentage of the available funding pool that can

@@ -1,4 +1,6 @@
-# web.client.js
+# Commons Simulator
+
+![Commons Simulator](public/simulator.jpg)
 
 ## Project setup
 
@@ -24,6 +26,3 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).

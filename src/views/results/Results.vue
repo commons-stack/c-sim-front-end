@@ -51,18 +51,16 @@
                 feedback into the community funding pool.
               </p>
             </div>
-            <!-- Uncomment when we have an example chart.
             <p class="level-text mt-1">
               The chart below is an example of a successful Commons.
             </p>
             <Chart
               responsive="true"
-              :chart="buildChart(chart1)"
+              :chart="buildChart(goodChart1)"
               :width="cssVars.graphWidth"
               :height="cssVars.graphHeight"
               :gradient="`${color11}dd ${color12}44`"
             />
-            -->
             <button commons class="mt-2" @click="$refs.chart1.hide()">OK</button>
           </modal>
         </div>
@@ -88,17 +86,15 @@
                 sentiment for that proposal increases.
               </p>
             </div>
-            <!-- Uncomment when we have an example chart.
             <p class="level-text mt-1">
               The chart below is an example of a successful Commons.
             </p>
             <Chart
-              :chart="buildChart(chart2)"
+              :chart="buildChart(goodChart2)"
               :width="cssVars.graphWidth"
               :height="cssVars.graphHeight"
               :gradient="`${color21}dd ${color21}44`"
             />
-            -->
             <button commons class="mt-2" @click="$refs.chart2.hide()">OK</button>
           </modal>
         </div>
@@ -126,17 +122,15 @@
                 commons and adding value to the community).
               </p>
             </div>
-            <!-- Uncomment when we have an example chart.
             <p class="level-text mt-1">
               The chart below is an example of a successful Commons.
             </p>
             <Chart
-              :chart="buildChart(chart3)"
+              :chart="buildChart(goodChart3)"
               :width="cssVars.graphWidth"
               :height="cssVars.graphHeight"
               :gradient="`${color31}dd ${color32}44`"
             />
-            -->
             <button commons class="mt-2" @click="$refs.chart3.hide()">OK</button>
           </modal>
         </div>
@@ -165,6 +159,7 @@
 <script>
 import { mapState } from 'vuex'
 import Chart from '../../components/common/Chart.vue'
+import goodChart from '../../assets/charts/charts.json'
 
 export default {
   name: 'results',
@@ -236,6 +231,64 @@ export default {
         datasets: [
           {
             data: this.data.token_price,
+            borderColor: this.color31,
+            yAxisID: 'token-price',
+            label: 'Token Price',
+          }
+        ],
+        yAxes: [
+          {
+            id: 'token-price',
+            ticks: {
+              suggestedMin: 0,
+              beginAtZero: true,
+            },
+          }
+        ],
+        title: 'Token Price'
+      }
+    },
+    goodChart1() {
+      return {
+        datasets: [
+          {
+            data: goodChart.funding_pool,
+            borderColor: this.color11,
+            yAxisID: 'funding-pool',
+            label: 'Funding pool',
+          }
+        ],
+        yAxes: [
+          {
+            id: 'funding-pool',
+          }
+        ],
+        title: 'Funding Pool'
+      }
+    },
+    goodChart2() {
+      return {
+        datasets: [
+          {
+            data: goodChart.sentiment,
+            borderColor: this.color21,
+            yAxisID: 'sentiment',
+            label: 'Sentiment',
+          }
+        ],
+        yAxes: [
+          {
+            id: 'sentiment',
+          }
+        ],
+        title: 'Sentiment'
+      }
+    },
+    goodChart3() {
+      return {
+        datasets: [
+          {
+            data: goodChart.token_price,
             borderColor: this.color31,
             yAxisID: 'token-price',
             label: 'Token Price',
