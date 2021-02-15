@@ -8,6 +8,7 @@ import { BreakpointPlugin } from './plugins/BreakpointsPlugin'
 import { CSSVars } from './plugins/CSSVars'
 import { FormsPlugin } from './plugins/FormsPlugin'
 import { XState } from './plugins/XState'
+import VTooltip from 'v-tooltip'
 import { routes } from './router/routes'
 import { Api } from './services/base/Api'
 import { store } from './store/store'
@@ -21,6 +22,15 @@ export const configure = () => {
   Vue.use(FormsPlugin)
   Vue.use(BreakpointPlugin)
   Vue.use(VueSocialSharing)
+
+  Vue.use(VTooltip, {
+    disposeTimeout: 5000,
+  })
+
+  VTooltip.options.defaultDelay = {
+    show: 300,
+    hide: 0,
+  }
 
   Vue.directive('focus', { inserted: el => el.focus() })
 
