@@ -35,7 +35,7 @@ export default {
   .tooltip-inner {
     background: rgb(44,44,44);
     color: white;
-    padding: 10px;
+    padding: 8px 20px;
   }
 
   .tooltip-arrow {

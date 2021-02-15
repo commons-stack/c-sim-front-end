@@ -11,27 +11,57 @@
       <commons-navigation style="grid-area: nav;" />
       <flex class="text-center flex-center" style="grid-area: field;">
         <grid class="sim-data">
-          <div>
+          <div
+            v-tooltip="{
+              content: 'The founding members of the RadicalxChange Commons',
+              placement: 'top',
+            }"
+          >
             <p>{{ form.foundingMembers }}</p>
             <p>HATCHERS</p>
           </div>
-          <div>
+          <div
+            v-tooltip="{
+              content: 'The number of project proposals initially collected before the Hatchers begin their voting',
+              placement: 'top',
+            }"
+          >
             <p>{{ form.proposals }}</p>
             <p>INITIAL PROPOSALS</p>
           </div>
-          <div>
+          <div
+            v-tooltip="{
+              content: 'The percentage of total initial funds delegated to the funding pool to fund approved RadicalxChange initiatives',
+              placement: 'top',
+            }"
+          >
             <p>{{ form.funding }}%</p>
             <p>HATCH TRIBUTE</p>
           </div>
-          <div>
+          <div
+            v-tooltip="{
+              content: 'The maximum percentage of the funds within the Funding Pool that can be withdrawn at any one time',
+              placement: 'bottom',
+            }"
+          >
             <p>{{ form.votingPower }}%</p>
             <p>MAX SPENDING</p>
           </div>
-          <div>
+          <div
+            v-tooltip="{
+              content: 'The amount of time it takes for an individual’s voting power to reach 80% of its full power',
+              placement: 'bottom',
+            }"
+          >
             <p>{{ form.decisions }} Days</p>
             <p>VOTING SPEED</p>
           </div>
-          <div>
+          <div
+            v-tooltip="{
+              content: 'The percentage of funds that feeds back into the Funding Pool when members choose to sell their RxC tokens',
+              placement: 'bottom',
+            }"
+          >
             <p>{{ form.exiting }}%</p>
             <p>EXIT TRIBUTE</p>
           </div>
@@ -106,4 +136,5 @@ export default {
     }
   }
 }
+
 </style>
