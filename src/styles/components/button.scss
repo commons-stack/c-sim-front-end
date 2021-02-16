@@ -56,6 +56,11 @@ button[commons] {
   }
 }
 
+.x-text-button {
+  @extend .text-button, .font-ibm;
+  font-size: 16px;
+}
+
 button[commons]:hover:not(:disabled) {
   &::before {
     opacity: 0.8;

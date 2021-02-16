@@ -31,6 +31,10 @@ export const configure = () => {
     show: 300,
     hide: 0,
   }
+  VTooltip.options.popover.defaultTrigger = 'click'
+  VTooltip.options.popover.defaultAutoHide = false
+
+  Vue.component('v-popover', VTooltip.VPopover)
 
   Vue.directive('focus', { inserted: el => el.focus() })
 

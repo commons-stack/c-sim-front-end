@@ -12,11 +12,31 @@
       <grid class="layout-form-grid">
         <grid class="layout-form-icons">
           <grid class="justify-self-start justify-items" gap="1">
-            <p class="font-teko fs-24">Funding Pool</p>
+            <v-popover trigger="click" :auto-hide="true">
+              <template slot="popover">
+                <flex :column="true">
+                  <p>Funding Pool: contains the total funds available for funding approved RadicalxChange initiatives.</p>
+                  <div style="text-align:center;">
+                    <button commons class="mt-1" @click="$refs.modal.show()" v-close-popover>More info</button>
+                  </div>
+                </flex>
+              </template>
+              <p class="font-teko fs-24 underline-pointer">Funding Pool</p>
+            </v-popover>
             <Cylinder :progress="fundingProgress" type="green" />
           </grid>
           <grid class="justify-self-end justify-items" gap="1">
-            <p class="font-teko fs-24">RxC Reserve</p>
+            <v-popover trigger="click" :auto-hide="true">
+              <template slot="popover">
+                <flex :column="true">
+                  <p>RxC Reserve: backs the RxC token, guaranteeing liquidity for all tokens issued so that they will always have monetary value.</p>
+                  <div style="text-align:center;">
+                    <button commons class="mt-1" @click="$refs.modal.show()" v-close-popover>More info</button>
+                  </div>
+                </flex>
+              </template>
+              <p class="font-teko fs-24 underline-pointer">RxC Reserve</p>
+            </v-popover>
             <Cylinder :progress="100 - fundingProgress" type="blue" />
           </grid>
         </grid>
@@ -54,7 +74,7 @@
         <p class="level-text mt-1">
           The total initial funds raised are to be split between the two pools: the Funding Pool 
           and the RxC Reserve. The initial funding allocated to the Funding Pool is referred to as 
-          <strong>the Hatch Tribute</strong>. 
+          <strong>the Hatch Tribute</strong>.
         </p>
         <grid gtc="1fr 1fr" gap="3" style="max-width: 800px;">
           <div>

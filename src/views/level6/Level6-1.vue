@@ -1,7 +1,17 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
-    <h2 class="teko-subtitle text-center">What percentage goes to funding at exit?</h2>
+    <v-popover trigger="click" :auto-hide="true">
+      <template slot="popover">
+        <flex :column="true">
+          <p>Exit Tribute: the percentage of funds that feeds back into the Funding Pool when members choose to sell their RxC tokens.</p>
+          <div style="text-align:center;">
+            <button commons class="mt-1" @click="$refs.modal.show()" v-close-popover>More info</button>
+          </div>
+        </flex>
+      </template>
+      <h2 class="teko-subtitle text-center">What percentage goes to funding at <span class="underline-pointer">exit</span>?</h2>
+    </v-popover>
     <div class="layout-form">
       <commons-navigation />
       <grid class="layout-form-grid">
@@ -117,12 +127,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.layout-form-icons {	
-  height: 300px;	
-  gap: 5rem;	
-  @include xl {	
-    grid-template-columns: 1fr auto 1fr;	
-    gap: 2rem;	
-  }	
+.layout-form-icons {
+  height: 300px;
+  gap: 5rem;
+  @include xl {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+  }
 }
 </style>
