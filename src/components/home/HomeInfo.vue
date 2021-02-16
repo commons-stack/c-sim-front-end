@@ -14,7 +14,7 @@
       class="item mt-1p5"
       :class="state > 3 && 'item-active'"
     >
-      Initiating the RadicalxChange Commons
+      Initiating the <a target="_blank" href="https://www.radicalxchange.org/" style="text-decoration: underline;">RadicalxChange</a> Commons
     </p>
     <p
       style="max-width: 700px;"
