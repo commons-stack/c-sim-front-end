@@ -48,7 +48,7 @@
       src="@/assets/level_0_img_3.jpeg"
       alt="intro image 3"
     />
-    <h2 class="teko-title mt-3">What is a Commons?</h2>
+    <h2 class="teko-title mt-3">What is a <a target="_blank" href="https://medium.com/@w_watson/governing-the-commons-1397b74b8ecc" style="text-decoration: underline;">Commons</a>?</h2>
     <p class="level-text mt1">
       A Commons is a well-engineered, community-focused economy that can reward
       value creation where business models fail to do so. They can be formed
