@@ -270,15 +270,8 @@ export default {
             filter: function (tooltipItem) {
               return tooltipItem.datasetIndex === 0
             },
-            titleFont: {
-              family: "'Teko', sans-serif",
-            },
-            bodyFont: {
-              family: "'Teko', sans-serif",
-            },
-            footerFont: {
-              family: "'Teko', sans-serif",
-            },
+            bodyFontFamily: "'Teko', sans-serif",
+            bodyFontSize: 20,
             backgroundColor: 'rgb(44,44,44)',
             cornerRadius: 0,
             xPadding: 24,
@@ -316,7 +309,6 @@ export default {
   }
 }
 .custom-input {
-
   border: 2px solid #32373e;
   border-radius: 15px;
   background: #182932;
