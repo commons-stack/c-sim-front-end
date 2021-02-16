@@ -5,7 +5,7 @@
       <h3 class="teko-title">Well done!</h3>
       <grid gap="2" style="max-width: 650px;">
         <p>
-          There are a few parameters you need to configure the <a target="_blank" href="https://medium.com/giveth/conviction-voting-a-novel-continuous-decision-making-alternative-to-governance-aa746cfb9475" style="text-decoration: underline;">Conviction Voting</a> simulator. Seizing
+          There are a few parameters you need to configure the Conviction Voting simulator. Seizing
           the opportunity to harvest another, you ask about much of the community funds can be
           distributed at any given time.
         </p>
