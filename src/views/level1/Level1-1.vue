@@ -6,12 +6,12 @@
         <flex :column="true">
           <p>Hatchers: founding members of the RadicalxChange Commons.</p>
           <div style="text-align:center;">
-            <button commons class="mt-1" @click="$refs.modal.show()" v-close-popover>More info</button>
+            <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
           </div>
         </flex>
       </template>
       <h2 class="teko-subtitle text-center">
-        How many <span class="underline-pointer">‘Hatchers’</span> will you choose to initialize the RadicalxChange Commons?
+        How many ‘<span class="underline-pointer">Hatchers</span>’ will you choose to initialize the RadicalxChange Commons?
       </h2>
     </v-popover>
     <div class="layout-form">

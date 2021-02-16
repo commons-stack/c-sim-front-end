@@ -17,7 +17,7 @@
                 <flex :column="true">
                   <p>Funding Pool: contains the total funds available for funding approved RadicalxChange initiatives.</p>
                   <div style="text-align:center;">
-                    <button commons class="mt-1" @click="$refs.modal.show()" v-close-popover>More info</button>
+                    <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
                   </div>
                 </flex>
               </template>
@@ -31,7 +31,7 @@
                 <flex :column="true">
                   <p>RxC Reserve: backs the RxC token, guaranteeing liquidity for all tokens issued so that they will always have monetary value.</p>
                   <div style="text-align:center;">
-                    <button commons class="mt-1" @click="$refs.modal.show()" v-close-popover>More info</button>
+                    <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
                   </div>
                 </flex>
               </template>

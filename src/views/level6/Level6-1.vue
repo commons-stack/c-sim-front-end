@@ -6,7 +6,7 @@
         <flex :column="true">
           <p>Exit Tribute: the percentage of funds that feeds back into the Funding Pool when members choose to sell their RxC tokens.</p>
           <div style="text-align:center;">
-            <button commons class="mt-1" @click="$refs.modal.show()" v-close-popover>More info</button>
+            <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
           </div>
         </flex>
       </template>

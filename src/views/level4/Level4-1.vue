@@ -6,7 +6,7 @@
         <flex :column="true">
           <p>Funding Distribution: the maximum funds that can be withdrawn at any time by a large proposal or group of smaller proposals.</p>
           <div style="text-align:center;">
-            <button commons class="mt-1" @click="$refs.modal.show()" v-close-popover>More info</button>
+            <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
           </div>
         </flex>
       </template>
