@@ -14,7 +14,7 @@
     </div>
     <p class="x-title" justify-self align-self>DESIGNING THE RxC COMMONS</p>
     <flex gap="1" justify-self-end v-if="!titleOnly">
-      <p class="x-text-button mh-0p5 inline" v-if="help" @click="$emit('help')">Help</p>
+      <p class="x-text-button mh-0p5 inline" v-if="help" @click="$emit('help')">More Info</p>
       <p class="x-text-button mh-0p5 inline" v-if="exit" @click="openModal('exit')">Exit</p>
     </flex>
     <modal ref="quit" bg="#222" overlay x-class="border-radius-s p-2 box">

@@ -10,10 +10,12 @@
     "storybook:build": "vue-cli-service storybook:build -c config/storybook"
   },
   "dependencies": {
+    "animejs": "^3.2.1",
     "axios": "^0.21.1",
     "chart.js": "^2.9.4",
     "core-js": "^3.7.0",
     "v-tooltip": "2.0.3",
+    "hammerjs": "^2.0.8",
     "vue": "^2.6.12",
     "vue-i18n": "^8.22.1",
     "vue-outside-events": "^1.1.3",

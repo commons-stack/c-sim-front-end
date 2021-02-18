@@ -6,8 +6,9 @@
     <div>
       <p class="level-text">Do you think you did a good job?</p>
       <p class="level-text">Analyze these charts and see if your commons is a success!</p>
-    </div>
-    <div class="graph-wrap">
+      <p class="level-text results-text mv-2">
+        You initiated
+      </p>
       <grid class="graph-nav">
         <div
           v-tooltip="{
@@ -64,6 +65,37 @@
           <p>EXIT TRIBUTE</p>
         </div>
       </grid>
+      <p class="level-text results-text mv-2">
+        Results after the simulation
+      </p>
+      <div class="graph-results mb-2">
+        <div>
+          <p>PARTICIPANTS</p>
+          <p>{{ data.participants }}</p>
+        </div>
+        <div>
+          <p>TOTAL PROPOSALS</p>
+          <p>{{ data.proposals.total }}</p>
+        </div>
+        <div>
+          <p>CANDIDATE PROPOSALS</p>
+          <p>{{ data.proposals.candidates }}</p>
+        </div>
+        <div>
+          <p>ACTIVE PROPOSALS</p>
+          <p>{{ data.proposals.actives }}</p>
+        </div>
+        <div>
+          <p>COMPLETED PROPOSALS</p>
+          <p>{{ data.proposals.completed }}</p>
+        </div>
+        <div>
+          <p>FAILED PROPOSALS</p>
+          <p>{{ data.proposals.failed }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="graph-wrap">
       <div class="graph" style="grid-area: graph1;">
         <div class="graph-example">
           <p style="color: #43a983;" @click="$refs.chart1.show()">
@@ -144,7 +176,7 @@
           <modal :bg="false" overlay="dark" ref="chart3">
             <div class="layout-modal">
               <h2 class="teko-title">Token Price</h2>
-              <p class="level-text mt-1 mb-1">
+              <p class="level-text mt-1">
                 The monetary value associated with the purchase of a token. RxC tokens are backed by 
                 the RxC reserve, ensuring that they always have monetary value. Token price, however, 
                 can fluctuate – decreasing if members sell their tokens (withdrawing value from the 
@@ -156,6 +188,7 @@
               The chart below is an example of a successful Commons.
             </p>
             <Chart
+              class="mt-10"
               :chart="buildChart(goodChart3)"
               :width="cssVars.graphWidth"
               :height="cssVars.graphHeight"
@@ -406,6 +439,36 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.results-text {
+  color: #E5F0FF;
+  font-size: 16px;
+}
+.graph-results {
+  @extend .font-lato;
+  font-size: 12px;
+  div {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & > * {
+      &:last-child {
+        @extend .font-teko;
+        font-size: 24px;
+        @include s {
+          font-size: 22px;
+        }
+      }
+      &:first-child {
+        @extend .font-lato;
+        font-size: 12px;
+      }
+    }
+  }
+  div:not(:last-child) {
+    border-bottom: 2px solid #143B5F;
+  }
+}
 .graph-example {
   text-align: center;
   cursor: pointer;
@@ -417,45 +480,32 @@ export default {
   text-align: start;
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: repeat(3, auto);
   grid-template-areas:
-    'gnav'
     'graph1'
     'graph2'
     'graph3';
   row-gap: 2rem;
   column-gap: 1.5rem;
   @include l {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: repeat(3, auto);
-    grid-template-areas:
-      'gnav graph1'
-      'gnav graph2'
-      'gnav graph3';
     row-gap: 10rem;
   }
 }
 .graph-nav {
   grid-area: gnav;
-  align-content: flex-start;
+  align-content: center;
   justify-self: center;
   grid-template-columns: repeat(3, auto);
   grid-template-rows: repeat(2, auto);
   @include l {
-    grid-template-columns: repeat(1, auto);
-    grid-template-rows: repeat(2, auto);
-  }
-  @include l {
-    justify-self: flex-end;
+    grid-template-columns: repeat(6, auto);
   }
   gap: 1rem;
   text-align: center;
   & > div {
     border: 2px solid #143b5f;
     height: 70px;
-    width: 120px;
     @media (max-width: 750px) {
-      width: 80px;
       padding: 4px;
     }
     @include s {
