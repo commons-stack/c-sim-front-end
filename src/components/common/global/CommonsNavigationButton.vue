@@ -132,9 +132,4 @@ export default {
     opacity: 1;
   }
 }
-
-.x-text-button {
-  @extend .text-button, .font-ibm;
-  font-size: 16px;
-}
 </style>

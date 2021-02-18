@@ -1,10 +1,20 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
-    <h2 class="teko-subtitle text-center">
-      How much time should pass before an individual’s voting power reaches 80%
-      of it’s full power?
-    </h2>
+    <v-popover trigger="click" :auto-hide="true">
+      <template slot="popover">
+        <flex :column="true">
+          <p>Funding Distribution: the maximum funds that can be withdrawn at any time by a large proposal or group of smaller proposals.</p>
+          <div style="text-align:center;">
+            <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
+          </div>
+        </flex>
+      </template>
+      <h2 class="teko-subtitle text-center">
+        How much time should pass before an individual’s <span class="underline-pointer">voting power</span> reaches 80%
+        of it’s full power?
+      </h2>
+    </v-popover>
     <div class="layout-form">
       <commons-navigation />
       <grid class="layout-form-grid">
@@ -260,6 +270,8 @@ export default {
             filter: function (tooltipItem) {
               return tooltipItem.datasetIndex === 0
             },
+            bodyFontFamily: "'Teko', sans-serif",
+            bodyFontSize: 20,
             backgroundColor: 'rgb(44,44,44)',
             cornerRadius: 0,
             xPadding: 24,
@@ -297,7 +309,6 @@ export default {
   }
 }
 .custom-input {
-
   border: 2px solid #32373e;
   border-radius: 15px;
   background: #182932;

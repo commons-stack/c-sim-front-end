@@ -1,9 +1,19 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
-    <h2 class="teko-subtitle text-center">
-      How much of the community funds can be distributed at any given time?
-    </h2>
+    <v-popover trigger="click" :auto-hide="true">
+      <template slot="popover">
+        <flex :column="true">
+          <p>Funding Distribution: the maximum funds that can be withdrawn at any time by a large proposal or group of smaller proposals.</p>
+          <div style="text-align:center;">
+            <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
+          </div>
+        </flex>
+      </template>
+      <h2 class="teko-subtitle text-center">
+        How much of the community funds can be <span class="underline-pointer">distributed</span> at any given time?
+      </h2>
+    </v-popover>
     <p class="font-ibm fs-20 text-center">
       Capping the relative amount of spending determines how fast the Commons spend their funds.
     </p>

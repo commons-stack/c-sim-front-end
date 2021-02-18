@@ -100,10 +100,6 @@ export default {
     font-size: 20px;
   }
 }
-.x-text-button {
-  @extend .text-button, .font-ibm;
-  font-size: 16px;
-}
 ::-webkit-input-placeholder {
   white-space:pre-line;
   position:relative;

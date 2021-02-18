@@ -24,6 +24,5 @@ export default {
   & > *:first-child {
     padding-bottom: var(--app-vertical-padding);
   }
-
 }
 </style>

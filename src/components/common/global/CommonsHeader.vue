@@ -115,10 +115,6 @@ export default {
     width: calc(100% - 20px);
   }
 }
-.x-text-button {
-  @extend .text-button, .font-ibm;
-  font-size: 16px;
-}
 .levels-button {
   @include m {
     display: none;

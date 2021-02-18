@@ -1,9 +1,19 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" :restart="false" />
-    <h2 class="teko-subtitle text-center">
-      How many ‘Hatchers’ will you choose to initialize the RadicalxChange Commons?
-    </h2>
+    <v-popover trigger="click" :auto-hide="true">
+      <template slot="popover">
+        <flex :column="true">
+          <p>Hatchers: founding members of the RadicalxChange Commons.</p>
+          <div style="text-align:center;">
+            <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
+          </div>
+        </flex>
+      </template>
+      <h2 class="teko-subtitle text-center">
+        How many ‘<span class="underline-pointer">Hatchers</span>’ will you choose to initialize the RadicalxChange Commons?
+      </h2>
+    </v-popover>
     <div class="layout-form">
       <commons-navigation />
       <grid class="layout-form-grid">
@@ -50,7 +60,7 @@
         </p>
         <p class="level-text">
           YOU must decide how many Hatchers are needed for the RadicalxChange community to initiate 
-          their Commons... 
+          their Commons...
         </p>
         <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>
