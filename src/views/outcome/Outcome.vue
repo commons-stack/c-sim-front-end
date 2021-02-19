@@ -5,7 +5,7 @@
           <commons-header title-only />
           <p class="teko-subtitle">{{ display.title }}</p>
           <p class="x-subtitle">{{ display.subtitle }}</p>
-          <p class="x-score">{{ score }}<span v-if=" score >= 500">/1000</span></p>
+          <p class="x-score">{{ score }}<span>/1000</span></p>
           <p class="x-improve">Try to improve your score</p>
           <button commons @click="$router.push('/')">play again</button>
           <grid
