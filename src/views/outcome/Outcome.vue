@@ -5,7 +5,7 @@
           <commons-header title-only />
           <p class="teko-subtitle">{{ display.title }}</p>
           <p class="x-subtitle">{{ display.subtitle }}</p>
-          <p class="x-score">{{ score }}</p>
+          <p class="x-score">{{ score }}<span>/1000</span></p>
           <p class="x-improve">Try to improve your score</p>
           <button commons @click="$router.push('/')">play again</button>
           <grid
@@ -161,6 +161,13 @@ export default {
 .x-score {
   @extend .font-teko;
   font-size: 124px;
+  span {
+    color: #FFF;
+    font-size: 44px;
+    @include l {
+      color: #4D4D4D;
+    }
+  }
 }
 .x-improve {
   @extend .teko-subtitle;
