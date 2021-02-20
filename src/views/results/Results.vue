@@ -266,7 +266,11 @@ export default {
         yAxes: [
           {
             id: 'funding-pool',
-          }
+            ticks: {
+              suggestedMin: 0,
+              beginAtZero: true,
+            },
+          },
         ],
         title: 'Funding Pool'
       }
@@ -284,6 +288,10 @@ export default {
         yAxes: [
           {
             id: 'sentiment',
+            ticks: {
+              suggestedMin: 0,
+              beginAtZero: true,
+            },
           }
         ],
         title: 'Sentiment'
@@ -324,6 +332,10 @@ export default {
         yAxes: [
           {
             id: 'funding-pool',
+            ticks: {
+              suggestedMin: 0,
+              beginAtZero: true,
+            },
           }
         ],
         title: 'Funding Pool'
@@ -342,6 +354,10 @@ export default {
         yAxes: [
           {
             id: 'sentiment',
+            ticks: {
+              suggestedMin: 0,
+              beginAtZero: true,
+            },
           }
         ],
         title: 'Sentiment'
