@@ -3,7 +3,7 @@
     <p
       uppercase
       key="1"
-      class="item lato-header pt-3"
+      class="item lato-header mt-2"
       :class="state > 4 && 'item-active'"
     >
       leap one
@@ -11,7 +11,7 @@
     <p
       text-xxxl
       key="2"
-      class="item mt-1p5"
+      class="item teko-title mt-1p5"
       :class="state > 3 && 'item-active'"
     >
       Initiating the RadicalxChange Commons
