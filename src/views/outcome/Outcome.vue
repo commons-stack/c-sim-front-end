@@ -13,7 +13,6 @@
           gtc="repeat(5, auto)"
           align-items
           class="mt-2"
-          v-if="future === 'good'"
         >
           <p class="x-text">Share your score:</p>
           <ShareNetwork
@@ -54,9 +53,6 @@
           </a>
         to help improve this game!
         </p>
-        <button v-if="future === 'bad'" class="text-button mt-2" @click="$router.push('/')">
-          No thanks, quit the game
-        </button>
         <p class="credits m-1 p-1">
           Art of Mark Henson
         </p>
