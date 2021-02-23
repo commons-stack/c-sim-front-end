@@ -25,8 +25,7 @@
     >
       Become the futuristic, solarpunk character in this Commons Simulator
       adventure to correct the course of history. Your mission is to travel back
-      in time with <span style="text-decoration: underline;" v-tooltip="'cadCAD: a modelling framework that assists in the processes of designing, testing and validating complex systems through simulation'">cadCAD</span>
-      , and save the planet by teaching communities how to
+      in time with <span style="text-decoration: underline;" v-tooltip="'cadCAD: a modelling framework that assists in the processes of designing, testing and validating complex systems through simulation'">cadCAD</span>, and save the planet by teaching communities how to
       create a regenerative Commons.
     </p>
     <button
