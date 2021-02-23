@@ -266,6 +266,9 @@ export default {
         yAxes: [
           {
             id: 'funding-pool',
+            ticks: {
+              callback: value => this.addSuffix(value)
+            }
           }
         ],
         title: 'Funding Pool'
@@ -324,6 +327,9 @@ export default {
         yAxes: [
           {
             id: 'funding-pool',
+            ticks: {
+              callback: value => this.addSuffix(value)
+            }
           }
         ],
         title: 'Funding Pool'
@@ -371,6 +377,18 @@ export default {
     },
   },
   methods: {
+    addSuffix(value) {
+      const ranges = [
+        { divider: 1e6, suffix: 'M' },
+        { divider: 1e3, suffix: 'K' }
+      ]
+      for (var i = 0; i < ranges.length; i++) {
+        if (value >= ranges[i].divider) {
+          return (value / ranges[i].divider).toString() + ranges[i].suffix
+        }
+      } 
+      return value
+    }, 
     buildChart(input) {
       const d = this.data
       const maxTicksLimit = 20
