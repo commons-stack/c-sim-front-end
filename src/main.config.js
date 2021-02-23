@@ -23,16 +23,15 @@ export const configure = () => {
   Vue.use(BreakpointPlugin)
   Vue.use(VueSocialSharing)
 
-  Vue.use(VTooltip, {
-    disposeTimeout: 5000,
-  })
+  Vue.use(VTooltip)
 
   VTooltip.options.defaultDelay = {
     show: 300,
     hide: 0,
   }
-  VTooltip.options.popover.defaultTrigger = 'click'
   VTooltip.options.popover.defaultAutoHide = false
+  VTooltip.options.popover.defaultTrigger = 'hover focus'
+  VTooltip.options.popover.defaultDelay = 300
 
   Vue.component('v-popover', VTooltip.VPopover)
 
