@@ -362,6 +362,13 @@ export default {
     margin-top: 24rem !important;
   }
 }
+.disable-select {
+  -webkit-user-select:none;
+  -khtml-user-select:none;
+  -moz-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+}
 img {
   position: fixed;
   z-index: -1;
@@ -370,5 +377,10 @@ img {
   top: 0;
   left: 0;
   @extend .image-center;
+  @extend .disable-select;
+  pointer-events:none;
+}
+p, .hero, .bar, .progress {
+  @extend .disable-select;
 }
 </style>
