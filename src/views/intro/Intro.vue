@@ -299,9 +299,6 @@ export default {
     font-size: 44px;
     width: 65vw;
   }
-  @include l {
-    width: 55vw;
-  }
   @include xl {
     margin-top: 25.5rem;
   }
