@@ -1,5 +1,5 @@
 <template>
-  <div class="h-1-1">
+  <div class="h-vh">
     <Notification />
     <main class="app-content" container-expand>
       <router-view />
@@ -19,7 +19,7 @@ export default {
 <style lang="scss">
 // leave this comment if style tag is empty; scss doesn't compile properly otherwise
 .app-content {
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   & > *:first-child {
     padding-bottom: var(--app-vertical-padding);
