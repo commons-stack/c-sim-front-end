@@ -12,7 +12,7 @@
       <grid class="layout-form-grid">
         <grid class="layout-form-icons">
           <grid class="justify-self-start justify-items" gap="1">
-            <v-popover trigger="click" :auto-hide="false">
+            <v-popover trigger="hover" :auto-hide="false">
               <template slot="popover">
                 <flex :column="true">
                   <p>Funding Pool: contains the total funds available for funding approved RadicalxChange initiatives.</p>
@@ -26,7 +26,7 @@
             <Cylinder :progress="fundingProgress" type="green" />
           </grid>
           <grid class="justify-self-end justify-items" gap="1">
-            <v-popover trigger="click" :auto-hide="false">
+            <v-popover trigger="hover" :auto-hide="false">
               <template slot="popover">
                 <flex :column="true">
                   <p>RxC Reserve: backs the RxC token, guaranteeing liquidity for all tokens issued so that they will always have monetary value.</p>
