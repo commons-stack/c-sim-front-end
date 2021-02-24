@@ -345,13 +345,15 @@ export default {
           {
             id: 'funding-pool',
             ticks: {
+              suggestedMin: 0,
+              beginAtZero: true,
               callback: value => this.addSuffix(value)
             },
             scaleLabel: {
                 display: true,
                 labelString: 'xDai'
             },
-          }
+          },
         ],
         title: ''
       }
@@ -371,7 +373,11 @@ export default {
             id: 'sentiment',
             scaleLabel: {
                 display: true,
-                labelString: 'Sentiment'
+                labelString: 'Sentiment',
+            },
+            ticks: {
+              suggestedMin: 0,
+              beginAtZero: true,
             },
           }
         ],
@@ -418,6 +424,8 @@ export default {
           {
             id: 'funding-pool',
             ticks: {
+              suggestedMin: 0,
+              beginAtZero: true,
               callback: value => this.addSuffix(value)
             },
             scaleLabel: {
@@ -442,11 +450,15 @@ export default {
         yAxes: [
           {
             id: 'sentiment',
-            scaleLabel: {
-                display: true,
-                labelString: 'Sentiment'
+            ticks: {
+              suggestedMin: 0,
+              beginAtZero: true,
             },
-          }
+            scaleLabel: {
+              display: true,
+              labelString: 'Sentiment'
+            },
+          },
         ],
         title: ''
       }
