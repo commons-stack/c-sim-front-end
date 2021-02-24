@@ -1,6 +1,6 @@
 <template>
     <div class="outcome-bg">
-    <grid class="outcome-grid layout-vertical h-1-1" gtc="1fr">
+    <grid class="outcome-grid layout-vertical h-vh" gtc="1fr">
       <grid class="score-grid align-self justify-items">
         <commons-header title-only />
         <p class="teko-title">{{ display.title }}</p>
@@ -139,7 +139,7 @@ export default {
     width: 100vw;
     height: 100vh;
       @include l {
-      width: auto;
+      width: 100%;
       height: 100vh;
     }
   }
