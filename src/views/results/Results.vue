@@ -117,7 +117,7 @@
                 function of time in months (x-axis).
               </p>
               <p class="level-text">
-                The Funding Pool contain funds available for approved RadicalxChange projects. As 
+                The Funding Pool contains funds available for approved RadicalxChange projects. As 
                 you recall, the funding pool is initialized by the starting investment of the Hatchers 
                 (the Hatch Tribute). When projects are approved by the community, the funds required 
                 are withdrawn from the funding pool and the quantity of funds left decreases. The 
