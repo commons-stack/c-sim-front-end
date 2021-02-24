@@ -1,7 +1,7 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
-    <v-popover trigger="click" :auto-hide="true">
+    <v-popover>
       <template slot="popover">
         <flex :column="true">
           <p>Exit Tribute: the percentage of funds that feeds back into the Funding Pool when members choose to sell their RxC tokens.</p>

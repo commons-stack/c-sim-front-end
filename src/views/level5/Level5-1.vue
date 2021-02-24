@@ -1,10 +1,10 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
-    <v-popover trigger="click" :auto-hide="true">
+    <v-popover>
       <template slot="popover">
         <flex :column="true">
-          <p>Funding Distribution: the maximum funds that can be withdrawn at any time by a large proposal or group of smaller proposals.</p>
+          <p>Conviction Voting: the weight of a person's vote increases over time.</p>
           <div style="text-align:center;">
             <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
           </div>

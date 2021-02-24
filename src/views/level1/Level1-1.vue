@@ -1,7 +1,7 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" :restart="false" />
-    <v-popover trigger="click" :auto-hide="true">
+    <v-popover>
       <template slot="popover">
         <flex :column="true">
           <p>Hatchers: founding members of the RadicalxChange Commons.</p>

@@ -1,10 +1,20 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
-    <h2 class="teko-subtitle text-center">
-      How many proposals should be collected for the Hatchers to kick off their
-      voting?
-    </h2>
+    <v-popover>
+      <template slot="popover">
+        <flex :column="true">
+          <p>Proposals: projects suggested by RadicalxChange members requesting funds.</p>
+          <div style="text-align:center;">
+            <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
+          </div>
+        </flex>
+      </template>
+      <h2 class="teko-subtitle text-center">
+        How many <span class="underline-pointer">proposals</span> should be collected for the Hatchers to kick off their
+        voting?
+      </h2>
+    </v-popover>
     <div class="layout-form">
       <commons-navigation />
       <grid class="layout-form-grid">

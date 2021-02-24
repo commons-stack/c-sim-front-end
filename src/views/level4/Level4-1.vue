@@ -1,7 +1,7 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
-    <v-popover trigger="click" :auto-hide="true">
+    <v-popover>
       <template slot="popover">
         <flex :column="true">
           <p>Funding Distribution: the maximum funds that can be withdrawn at any time by a large proposal or group of smaller proposals.</p>
