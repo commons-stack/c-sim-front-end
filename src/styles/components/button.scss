@@ -13,6 +13,7 @@ body button[commons]:disabled {
     );
   }
 }
+
 button[commons] {
   @extend .font-teko;
   text-transform: uppercase;
@@ -53,6 +54,11 @@ button[commons] {
   &:hover {
     color: lighter(#43a983, 5%);
   }
+}
+
+.x-text-button {
+  @extend .text-button, .font-ibm;
+  font-size: 16px;
 }
 
 button[commons]:hover:not(:disabled) {
@@ -107,8 +113,19 @@ button[success] {
   }
 }
 button[error] {
+  @extend .font-teko;
   color: var(--color-white);
   background: var(--color-error);
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  text-indent: 10px;
+  position: relative;
+  z-index: 100;
+  padding: 0 2rem;
+  min-height: 64px;
+  min-width: 200px;
+  font-size: 21px;
+  border: 2px solid #840E10;
   &:hover {
     background: darker($color-error);
   }

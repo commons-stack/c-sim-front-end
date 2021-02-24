@@ -1,10 +1,20 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
-    <h2 class="teko-subtitle text-center">
-      How many proposals should be collected for the Hatchers to kick off their
-      voting?
-    </h2>
+    <v-popover>
+      <template slot="popover">
+        <flex :column="true">
+          <p>Proposals: projects suggested by RadicalxChange members requesting funds.</p>
+          <div style="text-align:center;">
+            <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
+          </div>
+        </flex>
+      </template>
+      <h2 class="teko-subtitle text-center">
+        How many <span class="underline-pointer">proposals</span> should be collected for the Hatchers to kick off their
+        voting?
+      </h2>
+    </v-popover>
     <div class="layout-form">
       <commons-navigation />
       <grid class="layout-form-grid">
@@ -38,22 +48,21 @@
       <div class="layout-modal">
         <h2 class="teko-title">Proposals</h2>
         <p class="level-text mt-1">
-          It was evident from the introductions round at this kickoff of the
-          Barcelona RxC Chapter that there are many great projects to create
-          value for and by this community, and at a global scale for the
-          RadicalxChange movement, too. However, it was not so clear on how to
-          decide which proposals to start with!
-        </p>
-        <p class="level-text fs-24 italic">
-          “This Commons can operate well on a work proposal system.
-          RadicalxChange organizers can request funding to launch an initiative
-          for reimbursement of expenses by submitting a proposal, and we can
-          vote on whether or not to accept it.”
+          It was evident from the introductions round at RadicalxChange’s new chapter kickoff in 
+          Barcelona that there are many great projects to create value for and by the community, 
+          and for the global RadicalxChange movement. To determine where to initially focus their 
+          efforts, they will collect a series of proposals and then vote on whether or not to 
+          accept them.
         </p>
         <p class="level-text">
-          The initial conditions are critical to understand because they
-          determine the outcomes for complex systems. You must find out how many
-          proposals will be collected for when the Hatchers start their voting.
+          RadicalxChange project organizers can submit proposals to launch an initiative to request 
+          funding for reimbursement of expenses for their projects. The RadicalxChange commons 
+          can then vote on whether or not to accept it.
+        </p>
+        <p class="level-text">
+          The initial conditions are critical to understanding because they determine the outcomes 
+          for complex systems. You must determine how many proposals will be collected for when the 
+          Hatchers start their voting.
         </p>
         <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>

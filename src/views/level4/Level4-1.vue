@@ -1,9 +1,19 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
-    <h2 class="teko-subtitle text-center">
-      How much of the community funds can be distributed at any given time?
-    </h2>
+    <v-popover>
+      <template slot="popover">
+        <flex :column="true">
+          <p>Funding Distribution: the maximum funds that can be withdrawn at any time by a large proposal or group of smaller proposals.</p>
+          <div style="text-align:center;">
+            <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
+          </div>
+        </flex>
+      </template>
+      <h2 class="teko-subtitle text-center">
+        How much of the community funds can be <span class="underline-pointer">distributed</span> at any given time?
+      </h2>
+    </v-popover>
     <p class="font-ibm fs-20 text-center">
       Capping the relative amount of spending determines how fast the Commons spend their funds.
     </p>
@@ -53,19 +63,17 @@
 
     <modal ref="modal" :bg="false" overlay="dark">
       <div class="layout-modal">
-        <h2 class="teko-title">Funding distribution</h2>
+        <h2 class="teko-title">Funding Distribution</h2>
         <p class="level-text mt-1">
-          The graph demonstrates how if the threshold is high it will allow
-          large proposals to pass, however it may drain your funding pool too
-          fast, weakening the economy. A lower threshold conserves the pool but
-          then blocks essential initiatives from being approved.
+          You must select what percentage of the available funds in the Funding Pool can be 
+          distributed at any one time. This effectively sets a maximum for a single proposal 
+          (or group of proposals), ensuring that larger proposals require a greater amount of 
+          collective voting power from the community in order to pass.
         </p>
         <p class="level-text">
-          This parameter is defined by selecting a percentage of the available
-          funding pool that can be distributed at any time. It effectively sets
-          a maximum for a single proposal (or for a group of smaller proposals),
-          ensuring that larger proposals require a greater amount of collective
-          voting power from the community in order to pass.
+          If the threshold is high, it will allow large proposals to pass but may drain the funding 
+          pool too quickly. If the threshold is low, it conserves the pool but can also block 
+          essential initiatives from being approved.
         </p>
         <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>

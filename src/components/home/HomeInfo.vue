@@ -3,7 +3,7 @@
     <p
       uppercase
       key="1"
-      class="item lato-header pt-3"
+      class="item lato-header mt-2"
       :class="state > 4 && 'item-active'"
     >
       leap one
@@ -11,7 +11,7 @@
     <p
       text-xxxl
       key="2"
-      class="item mt-1p5"
+      class="item teko-title mt-1p5"
       :class="state > 3 && 'item-active'"
     >
       Initiating the RadicalxChange Commons
@@ -25,7 +25,8 @@
     >
       Become the futuristic, solarpunk character in this Commons Simulator
       adventure to correct the course of history. Your mission is to travel back
-      in time with cadCAD, and save the planet by teaching communities how to
+      in time with <span style="text-decoration: underline;" v-tooltip="'cadCAD: a modelling framework that assists in the processes of designing, testing and validating complex systems through simulation'">cadCAD</span>
+      , and save the planet by teaching communities how to
       create a regenerative Commons.
     </p>
     <button

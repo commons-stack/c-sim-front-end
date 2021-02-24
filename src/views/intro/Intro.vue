@@ -1,92 +1,100 @@
 <template>
   <div class="wrap">
     <transition name="test-fade" appear>
-      <div class="section" v-show="xstate === '1'">
+      <div class="section" v-show="currentIntro === 1">
         <div class="hero hero-1">{{ text[1] }}</div>
         <p>{{ text[1] }}</p>
-        <img src="@/assets/intro_1.jpg" alt="Intro image (1)" />
+        <img src="@/assets/intro_1.jpeg" alt="Intro image (1)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
-      <div class="section" v-show="xstate === '2'">
+      <div class="section" v-show="currentIntro === 2">
         <div class="hero">{{ text[2] }}</div>
         <p>{{ text[2] }}</p>
-        <img src="@/assets/intro_2.jpg" alt="Intro image (2)" />
+        <img src="@/assets/intro_2.jpeg" alt="Intro image (2)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
-      <div v-show="['3', '4'].includes(xstate)">
+      <div v-show="[3, 4].includes(currentIntro)">
         <transition name="test-fade" appear>
-          <div v-show="xstate === '3'" class="section">
+          <div v-show="currentIntro === 3" class="section">
             <div class="hero">{{ text[3] }}</div>
             <p>{{ text[3] }}</p>
-            <img src="@/assets/intro_3.jpg" alt="Intro image (3)" />
+            <img src="@/assets/intro_3.jpeg" alt="Intro image (3)" />
           </div>
         </transition>
         <transition name="test-fade" appear>
-          <div v-show="xstate === '4'" class="section">
+          <div v-show="currentIntro === 4" class="section">
             <div class="hero">{{ text[4] }}</div>
             <p>{{ text[4] }}</p>
-            <img src="@/assets/intro_3.jpg" alt="Intro image (3)" />
+            <img src="@/assets/intro_3.jpeg" alt="Intro image (3)" />
           </div>
         </transition>
-        <img src="@/assets/intro_3.jpg" alt="Intro image (3)" />
+        <img src="@/assets/intro_3.jpeg" alt="Intro image (3)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
-      <div class="section" v-show="xstate === '5'">
+      <div class="section" v-show="currentIntro === 5">
         <p>{{ text[5] }}</p>
-        <img src="@/assets/intro_5.jpg" alt="Intro image (4)" />
+        <img src="@/assets/intro_5.jpeg" alt="Intro image (4)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
-      <div class="section" v-show="xstate === '6'">
+      <div class="section" v-show="currentIntro === 6">
         <p>{{ text[6] }}</p>
-        <img src="@/assets/intro_6.jpg" alt="Intro image (5)" />
+        <img src="@/assets/intro_6.jpeg" alt="Intro image (5)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
-      <div class="section" v-show="xstate === '7'">
+      <div class="section" v-show="currentIntro === 7">
         <p class="t7-text" v-html="text[7]">{{ text[7] }}</p>
-        <img src="@/assets/intro_7.jpg" alt="Intro image (6)" />
+        <img src="@/assets/intro_7.jpeg" alt="Intro image (6)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
-      <div class="section" v-show="['8', '9'].includes(xstate)">
+      <div class="section" v-show="[8, 9].includes(currentIntro)">
         <transition name="test-fade" appear>
-          <p class="t8-text" v-if="xstate === '8'">{{ text[8] }}</p>
+          <p class="t8-text" v-if="currentIntro === 8">{{ text[8] }}</p>
         </transition>
         <transition name="test-fade" appear>
-          <p class="t9-text" v-if="xstate === '9'">{{ text[9] }}</p>
+          <p class="t9-text" v-if="currentIntro === 9">{{ text[9] }}</p>
         </transition>
-        <img src="@/assets/intro_8.jpg" alt="Intro image (7)" />
+        <img src="@/assets/intro_8.jpeg" alt="Intro image (7)" />
       </div>
     </transition>
     <transition name="test-fade" appear>
-      <div class="section" v-show="['10', '11', '12', '13'].includes(xstate)">
+      <div class="section" v-show="[10, 11, 12, 13].includes(currentIntro)">
         <transition name="test-fade" appear>
-          <p class="t10-text" v-if="xstate === '10'">{{ text[10] }}</p>
+          <p class="t10-text" v-if="currentIntro === 10">{{ text[10] }}</p>
         </transition>
         <transition name="test-fade" appear>
-          <p class="t11-text" v-if="xstate >= '11'">
+          <p class="t11-text" v-if="currentIntro >= 11">
             {{ text[11] }}
           </p>
         </transition>
         <transition name="test-fade" appear>
-          <p class="t12-text" v-if="xstate >= '12'">
+          <p class="t12-text" v-if="currentIntro >= 12">
             <br />
             {{ text[12] }}
           </p>
         </transition>
         <transition name="test-fade" appear>
-          <p class="t13-text" v-if="xstate >= '13'">
+          <p class="t13-text" v-if="currentIntro >= 13">
             <br /><br />
             {{ text[13] }}
           </p>
         </transition>
-        <img src="@/assets/intro_10.jpg" alt="Intro image (8)" />
+        <img src="@/assets/intro_10.jpeg" alt="Intro image (8)" />
       </div>
     </transition>
+    <nav
+      class="nav"
+      :style="{ gridTemplateColumns: `repeat(${Object.keys(statesDuration).length}, 1fr)` }"
+    >      
+    <div class="bar" v-for="state in Object.keys(statesDuration)" :key="state">
+        <div class="progress">&nbsp;</div>
+      </div>
+    </nav>
     <div class="skip-intro">
       <p @click="skip">SKIP</p>
     </div>
@@ -94,47 +102,39 @@
 </template>
 
 <script>
-import * as xstate from 'xstate'
-
-const createState = (next, delay = 5000) => ({
-  on: { NEXT: next },
-  after: [{ delay: delay, target: next }]
-})
-
-const machine = xstate.Machine({
-  initial: '1',
-  states: {
-    1: createState('2', 3000),
-    2: createState('3'),
-    3: createState('4'),
-    4: createState('5', 3000),
-    5: createState('6'),
-    6: createState('7', 8000),
-    7: createState('8'),
-    8: createState('9'),
-    9: createState('10'),
-    10: createState('11'),
-    11: createState('12', 3000),
-    12: createState('13', 3000),
-    13: createState('end', 3000),
-    end: { type: 'final' },
-  },
-})
+import anime from 'animejs/lib/anime.es.js'
+import Hammer from 'hammerjs'
 
 export default {
   name: 'intro',
-  mounted() {
-    setTimeout(() => window.addEventListener('click', this.clickHandler), 750)
-  },
-  beforeDestroy() {
-    window.removeEventListener('click', this.clickHandler)
-  },
   data() {
+    const timeline = anime.timeline({
+      autoplay: true,
+      easing: 'linear',
+      loop: false,
+    })
+
     return {
-      machine: xstate.interpret(machine),
+      timeline,
+      currentIntro: 1,
+      statesDuration: {
+        1: 3000,
+        2: 5000,
+        3: 5000,
+        4: 3000,
+        5: 5000,
+        6: 8000,
+        7: 5000,
+        8: 5000,
+        9: 5000,
+        10: 5000,
+        11: 3000,
+        12: 3000,
+        13: 3000,
+      },
       text: {
         1: 'Greed. War. Violence.',
-        2: 'Extraction, pollution and poor decision-making have rendered the water and air toxic to life.',
+        2: 'Extraction, pollution and poor decision making have rendered the water and air toxic to life.',
         3: 'The sun has been blotted out. Millions of life forms have gone extinct.',
         4: 'yet pockets of humanity survived...',
         5: '...mostly basement gamers, holed up in secret bunkers, many of whom have never seen the sun.',
@@ -150,22 +150,99 @@ export default {
     }
   },
   methods: {
-    clickHandler() {
-      this.$send('NEXT')
+    elapsedTime() { 
+        return Object.values(this.statesDuration).slice(0, this.currentIntro - 1).reduce((acc, cur) => acc + cur, 0)
+    },
+    resetState() {
+      this.timeline.pause()
+      this.timeline.seek(this.elapsedTime())
+      this.timeline.play()
     },
     skip() {
-      this.$router.push('/level/0/1')
+      this.timeline.pause()
+      this.timeline.seek(0)
+      this.hammer.destroy()
+      if (this.$route.path !== '/level/0/1') this.$router.push('/level/0/1')
     },
   },
-  watch: {
-    xstate(x) {
-      if (x === 'end') this.skip()
-    },
+  mounted() {
+    const $timeline = this.$el.getElementsByClassName('nav')[0]
+
+    Object.entries(this.statesDuration).forEach(([index, duration]) => {
+      this.timeline.add({
+        targets: $timeline.getElementsByClassName('bar')[index - 1].getElementsByClassName('progress'),
+        width: '100%',
+        duration,
+        changeBegin: () => {
+          this.currentIntro = Number(index)
+        },
+        complete: () => {
+          if (this.currentIntro === Object.keys(this.statesDuration).length) {
+            this.skip()
+            this.timeline.pause()
+          }
+        }
+      })
+    })
+
+    this.hammer = new Hammer.Manager(window, {
+      recognizers: [
+        [Hammer.Tap],
+        [Hammer.Press, { time: 1, threshold: 1000000 }]
+      ]
+    })
+
+    this.hammer.on('press', () => {
+      this.timeline.pause()
+    })
+
+    this.hammer.on('pressup tap', () => {
+      this.timeline.play()
+    })
+
+    this.hammer.on('tap', e => { 
+      if (e.center.x > window.innerWidth / 2) {
+        if (this.currentIntro < Object.keys(this.statesDuration).length) {
+          this.timeline.pause()
+          this.currentIntro++
+          this.resetState()
+        }
+        else {
+          this.skip()
+        }
+      } else {
+        if (this.currentIntro > 1) {
+          this.timeline.pause()
+          this.currentIntro--
+          this.resetState()
+        }
+      }
+    })
   },
 }
 </script>
 
 <style scoped lang="scss">
+.nav {
+  box-sizing: border-box;
+  display: grid;
+  grid-column-gap: 0.2em;
+  height: 0.2em;
+  padding: 0 1em;
+  position: fixed;
+  top: 1em;
+  width: 100%;
+}
+.bar {
+  background: rgba(0,0,0,0.25);
+  border-radius: 10em;
+  height: 100%;
+}
+.progress {
+  background: #EAFAEA;
+  height: 100%;
+  width: 0%;
+}
 .skip-intro {
   position: fixed;
   bottom: 0;
@@ -221,9 +298,6 @@ export default {
     padding: 0 2rem;
     font-size: 44px;
     width: 65vw;
-  }
-  @include l {
-    width: 55vw;
   }
   @include xl {
     margin-top: 25.5rem;
@@ -285,6 +359,13 @@ export default {
     margin-top: 24rem !important;
   }
 }
+.disable-select {
+  -webkit-user-select:none;
+  -khtml-user-select:none;
+  -moz-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+}
 img {
   position: fixed;
   z-index: -1;
@@ -293,5 +374,10 @@ img {
   top: 0;
   left: 0;
   @extend .image-center;
+  @extend .disable-select;
+  pointer-events:none;
+}
+p, .hero, .bar, .progress {
+  @extend .disable-select;
 }
 </style>

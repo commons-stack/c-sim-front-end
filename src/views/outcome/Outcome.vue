@@ -1,44 +1,63 @@
 <template>
     <div class="outcome-bg">
     <grid class="outcome-grid layout-vertical h-1-1" gtc="1fr">
-        <grid class="score-grid align-self justify-items">
-          <commons-header title-only />
-          <p class="teko-subtitle">{{ display.title }}</p>
-          <p class="x-subtitle">{{ display.subtitle }}</p>
-          <p class="x-score">{{ score }}</p>
-
-          <p class="x-improve">Try to improve your score</p>
-          <button commons @click="$router.push('/')">play again</button>
-          <!-- 
-          <grid
-            gap="1"
-            gtc="repeat(4, auto)"
-            align-items
-            class="mt-2"
-            v-if="future === 'good'"
-          > 
-            <p>Share your score:</p>
-            <icon class="ml-1" icon="Twitter" button />
-            <icon icon="LinkedIn" />
-            <icon icon="Facebook" /> 
-            
-          </grid>
-          -->
-          <a 
-            class="mt-2" 
-            target="_blank"
-            href="https://github.com/commons-stack/commons-simulator/issues/new" 
+      <grid class="score-grid align-self justify-items">
+        <commons-header title-only />
+        <p class="teko-title">{{ display.title }}</p>
+        <p class="x-subtitle">{{ display.subtitle }}</p>
+        <p class="x-score">{{ score }}<span>/1000</span></p>
+        <p class="x-improve">Try to improve your score.</p>
+        <button commons @click="$router.push('/')">play again</button>
+        <grid
+          gap="0.5"
+          gtc="repeat(5, auto)"
+          align-items
+          class="mt-2"
+        >
+          <p class="x-text">Share your score:</p>
+          <ShareNetwork
+            network="twitter"
+            :url="url"
+            :title="text"
           >
-            Give us feedback to help improve this game!
-          </a>
-          <button v-if="future === 'bad'" class="text-button mt-2" @click="$router.push('/')">
-            No thanks, quit the game
-          </button>
-          <p class="credits m-1 p-1">	
-            Art of Mark Henson
-          </p>
+            <icon class="ml-1" icon="Twitter" />
+          </ShareNetwork>
+          <ShareNetwork
+            network="facebook"
+            :url="url"
+            :quote="text"
+          >
+            <icon class="ml-1" icon="Facebook" />
+          </ShareNetwork>
+          <ShareNetwork
+            network="telegram"
+            :url="url"
+            :title="text"
+          >
+            <icon class="ml-1" icon="Telegram" />
+          </ShareNetwork>
+          <ShareNetwork
+            network="linkedin"
+            :url="url"
+          >
+            <icon class="ml-1" icon="LinkedIn" />
+          </ShareNetwork>
         </grid>
-        <div class="x-img-wrap">
+        <p class="mt-2 x-improve">
+          <a
+            class="x-text-button"
+            target="_blank"
+            href="https://github.com/commons-stack/commons-simulator/issues/new"
+          >
+            Give us feedback
+          </a>
+        to help improve this game!
+        </p>
+        <p class="credits m-1 p-1">
+          Art of Mark Henson
+        </p>
+      </grid>
+      <div class="x-img-wrap">
       <img :src="display.image" class="x-img" alt="outcome image background" />
     </div>
   </grid>
@@ -54,6 +73,8 @@ export default {
   data() {
     return {
       future: 'bad',
+      url: 'https://sim.commonsstack.org/',
+      text: "I'm helping design a regenerative future for humanity on the Commons Simulator! Can you beat my high score?",
     }
   },
   methods: {
@@ -75,12 +96,12 @@ export default {
           subtitle: this.name
             ? `You made a High Score, ${this.name}!`
             : 'You made a High Score!',
-          image: require('@/assets/outcome_good.jpg'),
+          image: require('@/assets/outcome_good.jpeg'),
         },
         bad: {
           title: 'Bad future',
           subtitle: 'Your score',
-          image: require('@/assets/outcome_bad.jpg'),
+          image: require('@/assets/outcome_bad.jpeg'),
         },
       }[this.future]
     },
@@ -97,7 +118,7 @@ export default {
 }
 .outcome-grid {
   @include l {
-    grid-template-columns: 1fr 1fr !important; 
+    grid-template-columns: 1fr 1fr !important;
   }
 }
 .score-grid {
@@ -130,26 +151,33 @@ export default {
   }
 }
 .x-subtitle {
-  @extend .teko-title;
-  margin-top: 3rem;
+  @extend .teko-subtitle;
+  margin-top: 1rem;
   @include s {
-    margin-top: 6rem;
+    margin-top: 3rem;
   }
 }
 .x-score {
   @extend .font-teko;
-  font-size: 124px;
+  font-size: 64px;
+  span {
+    color: #FFF;
+    font-size: 36px;
+    @include l {
+      color: #4D4D4D;
+    }
+  }
 }
 .x-improve {
-  @extend .teko-subtitle;
-  margin-top: 1rem;
-  @include s {
-    margin-top: 4rem;
-  }
+  font-size: 16px;
+  margin-bottom: 1rem;
+}
+.x-text {
+  font-size: 16px;
 }
 .credits {
   @include m {
-    position: fixed; 
+    position: fixed;
     bottom: 0;
     right: 0;
   }

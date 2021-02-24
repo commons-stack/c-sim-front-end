@@ -1,9 +1,19 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" :restart="false" />
-    <h2 class="teko-subtitle text-center">
-      How many ‘Hatchers’ will you choose to initialize the RadicalxChange Commons?
-    </h2>
+    <v-popover>
+      <template slot="popover">
+        <flex :column="true">
+          <p>Hatchers: founding members of the RadicalxChange Commons.</p>
+          <div style="text-align:center;">
+            <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
+          </div>
+        </flex>
+      </template>
+      <h2 class="teko-subtitle text-center">
+        How many ‘<span class="underline-pointer">Hatchers</span>’ will you choose to initialize the RadicalxChange Commons?
+      </h2>
+    </v-popover>
     <div class="layout-form">
       <commons-navigation />
       <grid class="layout-form-grid">
@@ -13,7 +23,7 @@
             :icon="hatcherIcon"
             class="icon absolute-center"
             style="z-index: -1;"
-            v-if="forms.input.foundingMembers > 3"
+            v-if="forms.input.foundingMembers > 10"
           />
         </flex>
         <form-input
@@ -39,13 +49,18 @@
       <div class="layout-modal">
         <h2 class="teko-title">Founding members - ‘Hatchers’</h2>
         <p class="level-text mt-1">
-          Only trusted experts who accept accountability for upholding the values and honorable
-          intentions of the community should be chosen to be the founding members of your RxC
-          Commons.
+          <strong>'Hatchers'</strong> are the founding members of the RadicalxChange Commons. They 
+          are the first to take responsibility over the Commons, prioritizing the needs of the 
+          community.
         </p>
         <p class="level-text">
-          These founding members, referred to as <strong>‘Hatchers’</strong> are the first to take
-          responsibility over the commons prioritizing the needs of the community.
+          Only trusted experts who accept accountability for upholding the values and honorable 
+          intentions of the community should be chosen to be the founding members of your 
+          RadicalxChange Commons.
+        </p>
+        <p class="level-text">
+          YOU must decide how many Hatchers are needed for the RadicalxChange community to initiate 
+          their Commons...
         </p>
         <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>

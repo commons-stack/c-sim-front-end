@@ -1,6 +1,6 @@
 <template>
   <div class="layout-right h-1-1">
-    <presentation-image />
+    <presentation-image alternative />
     <grid gtr="auto auto 1fr auto" class="h-1-1" justify-items-start align-items-start gap="2">
       <p class="lato-title">DESIGNING THE COMMONS</p>
       <p class="x-title font-ibm fs-20">

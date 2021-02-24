@@ -5,15 +5,14 @@
       <h3 class="teko-title">Well done!</h3>
       <grid gap="2" style="max-width: 650px;">
         <p>
-          Seizing the opportunity to harvest another parameter from the wisdom of the group, one of
-          a few you need to configure the Conviction Voting simulator, you ask about how much of the
-          community funds can be distributed at any given time.
+          There are a few parameters you need to configure the Conviction Voting simulator. Seizing
+          the opportunity to harvest another parameter, you ask about how much of the community funds can be
+          distributed at any given time.
         </p>
         <p>
-          This parameter is defined by selecting a percentage of the available funding pool that can
+          This parameter will determine the percentage of the available funding pool that can
           be distributed at any time. It effectively sets a maximum for a single proposal (or for a
-          group of smaller proposals), ensuring that larger proposals require a greater amount of
-          collective voting power from the community in order to pass.
+          group of smaller proposals), creating a sort of budget for the community that is realtive to how much funding the community has.
         </p>
       </grid>
       <button commons @click="$router.push('/level/4/1')" class="mt-2 mb-3">next</button>

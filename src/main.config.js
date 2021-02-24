@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import vOutsideEvents from 'vue-outside-events'
+import VueSocialSharing from 'vue-social-sharing'
 import en from './locales/en.json'
 import { configureComponents } from './main.config.components'
 import { BreakpointPlugin } from './plugins/BreakpointsPlugin'
 import { CSSVars } from './plugins/CSSVars'
 import { FormsPlugin } from './plugins/FormsPlugin'
 import { XState } from './plugins/XState'
+import VTooltip from 'v-tooltip'
 import { routes } from './router/routes'
 import { Api } from './services/base/Api'
 import { store } from './store/store'
@@ -19,6 +21,19 @@ export const configure = () => {
   Vue.use(XState)
   Vue.use(FormsPlugin)
   Vue.use(BreakpointPlugin)
+  Vue.use(VueSocialSharing)
+
+  Vue.use(VTooltip)
+
+  VTooltip.options.defaultDelay = {
+    show: 300,
+    hide: 0,
+  }
+  VTooltip.options.popover.defaultAutoHide = false
+  VTooltip.options.popover.defaultTrigger = 'hover focus'
+  VTooltip.options.popover.defaultDelay = 300
+
+  Vue.component('v-popover', VTooltip.VPopover)
 
   Vue.directive('focus', { inserted: el => el.focus() })
 

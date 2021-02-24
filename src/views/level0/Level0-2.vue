@@ -15,7 +15,7 @@
     </p>
     <img
       class="level-image"
-      src="@/assets/level_0_img_1.jpg"
+      src="@/assets/level_0_img_1.jpeg"
       alt="intro image 1"
     />
     <p class="level-text">
@@ -33,7 +33,7 @@
     </p>
     <img
       class="level-image"
-      src="@/assets/level_0_img_2.jpg"
+      src="@/assets/level_0_img_2.jpeg"
       alt="intro image 2"
     />
     <h2 class="teko-title mt-3">Your mission</h2>
@@ -45,7 +45,7 @@
     </p>
     <img
       class="level-image"
-      src="@/assets/level_0_img_3.jpg"
+      src="@/assets/level_0_img_3.jpeg"
       alt="intro image 3"
     />
     <h2 class="teko-title mt-3">What is a Commons?</h2>
@@ -64,7 +64,7 @@
       Designing the protocols that can successfully govern Commons can only be
       done by the community that is intimately connected to the shared
       resource... <br /><strong
-        >your task is to guide them down that path.</strong
+        >Your task is to guide them down that path.</strong
       >
     </p>
     <button commons @click="$router.push('/level/0/3')" class="mt-3">
