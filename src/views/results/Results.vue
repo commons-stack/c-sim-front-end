@@ -635,7 +635,13 @@ export default {
   gap: 1rem;
   text-align: center;
   & > div {
+    transition: all 250ms ease;
     border: 2px solid #143b5f;
+    cursor: pointer;
+    &:hover {
+      background: rgba(20, 59, 95, 0.4);
+      border: 2px solid #1565A2;
+    }
     height: 70px;
     @media (max-width: 750px) {
       padding: 4px;
