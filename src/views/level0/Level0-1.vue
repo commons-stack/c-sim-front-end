@@ -97,14 +97,8 @@ export default {
 .x-input {
   @extend .teko-title;
   font-size: 40px;
-  @include s {
-    font-size: 30px;
-  }
   @include m {
     font-size: 60px;
-  }
-  @media (max-width: 600px) {
-    font-size: 20px;
   }
 }
 ::-webkit-input-placeholder {
