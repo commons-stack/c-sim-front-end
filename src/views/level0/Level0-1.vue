@@ -9,14 +9,15 @@
         Who will be the one to help humanity save life on earth? <br/>
         Are you ready to find out?
       </p>
+      <p class="t-input mt-2">TELEGRAM OR DISCORD</p>
       <form-input
         class="x-input"
         @valid="forms.vset.input.name"
         v-model="forms.input.name"
-        placeholder="Enter your Telegram or Discord handle"
+        placeholder="Username"
         required
       />
-      <button commons @click="goNext" class="mt-2" :disabled="!forms.vget.input.form">next</button>
+      <button commons @click="goNext" class="mt-2" :disabled="!forms.vget.input.form">I'M READY</button>
       <p class="x-text-button mh-0p5 inline" style="cursor: pointer;" @click="$router.push('/intro')">Watch Intro again</p>
     </grid>
     <div class="x-home-shapes-wrap">
@@ -86,9 +87,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.t-input {
+  @extend .font-lato;
+  color: #4D4D4D;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
 .x-input {
   @extend .teko-title;
-  margin-top: 2rem;
   font-size: 40px;
   @include s {
     font-size: 30px;
