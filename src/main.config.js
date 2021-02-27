@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import vOutsideEvents from 'vue-outside-events'
 import VueSocialSharing from 'vue-social-sharing'
+import { TippyComponent } from "vue-tippy";
 import en from './locales/en.json'
 import { configureComponents } from './main.config.components'
 import { BreakpointPlugin } from './plugins/BreakpointsPlugin'
@@ -29,12 +30,10 @@ export const configure = () => {
 
   VTooltip.options.defaultDelay = {
     show: 300,
-    hide: 0,
+    hide: 300,
   }
-  VTooltip.options.popover.defaultTrigger = 'click'
-  VTooltip.options.popover.defaultAutoHide = false
 
-  Vue.component('v-popover', VTooltip.VPopover)
+  Vue.component("tippy", TippyComponent);
 
   Vue.directive('focus', { inserted: el => el.focus() })
 

@@ -12,31 +12,27 @@
       <grid class="layout-form-grid">
         <grid class="layout-form-icons">
           <grid class="justify-self-start justify-items" gap="1">
-            <v-popover trigger="click" :auto-hide="true">
-              <template slot="popover">
-                <flex :column="true">
-                  <p>Funding Pool: contains the total funds available for funding approved RadicalxChange initiatives.</p>
-                  <div style="text-align:center;">
-                    <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
-                  </div>
-                </flex>
-              </template>
-              <p class="font-teko fs-24 underline-pointer">Funding Pool</p>
-            </v-popover>
+            <tippy to="triggerFunding" :interactive="true" arrow>
+              <flex :column="true" class="tippy-inner">
+                <p>Funding Pool: contains the total funds available for funding approved RadicalxChange initiatives.</p>
+                <div style="text-align:center;">
+                  <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()">More info</button>
+                </div>
+              </flex>
+            </tippy>
+            <p name="triggerFunding" class="font-teko fs-24 underline-pointer">Funding Pool</p>
             <Cylinder :progress="fundingProgress" type="green" />
           </grid>
           <grid class="justify-self-end justify-items" gap="1">
-            <v-popover trigger="click" :auto-hide="true">
-              <template slot="popover">
-                <flex :column="true">
-                  <p>RxC Reserve: backs the RxC token, guaranteeing liquidity for all tokens issued so that they will always have monetary value.</p>
-                  <div style="text-align:center;">
-                    <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
-                  </div>
-                </flex>
-              </template>
-              <p class="font-teko fs-24 underline-pointer">RxC Reserve</p>
-            </v-popover>
+            <tippy to="triggerReserve" :interactive="true" arrow>
+              <flex :column="true" class="tippy-inner">
+                <p>RxC Reserve: backs the RxC token, guaranteeing liquidity for all tokens issued so that they will always have monetary value.</p>
+                <div style="text-align:center;">
+                  <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()">More info</button>
+                </div>
+              </flex>
+            </tippy>
+            <p name="triggerReserve" class="font-teko fs-24 underline-pointer">RxC Reserve</p>
             <Cylinder :progress="100 - fundingProgress" type="blue" />
           </grid>
         </grid>
