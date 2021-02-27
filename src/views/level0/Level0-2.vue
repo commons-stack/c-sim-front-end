@@ -64,7 +64,7 @@
       Designing the protocols that can successfully govern Commons can only be
       done by the community that is intimately connected to the shared
       resource... <br /><strong
-        >your task is to guide them down that path.</strong
+        >Your task is to guide them down that path.</strong
       >
     </p>
     <button commons @click="$router.push('/level/0/3')" class="mt-3">

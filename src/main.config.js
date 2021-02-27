@@ -24,9 +24,7 @@ export const configure = () => {
   Vue.use(BreakpointPlugin)
   Vue.use(VueSocialSharing)
 
-  Vue.use(VTooltip, {
-    disposeTimeout: 5000,
-  })
+  Vue.use(VTooltip)
 
   VTooltip.options.defaultDelay = {
     show: 300,

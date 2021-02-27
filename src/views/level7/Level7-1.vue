@@ -115,12 +115,18 @@ export default {
   }
   gap: 1rem;
   & > div {
+    transition: all 250ms ease;
     border: 2px solid #143b5f;
     height: 90px;
     width: 130px;
     justify-items: center;
     align-content: center;
     padding: 10px;
+    cursor: pointer;
+    &:hover {
+      background: rgba(20, 59, 95, 0.4);
+      border: 2px solid #1565A2;
+    }
     & > * {
       &:first-child {
         @extend .font-teko;
