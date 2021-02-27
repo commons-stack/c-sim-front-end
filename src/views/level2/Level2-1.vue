@@ -1,8 +1,16 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
+    <tippy to="trigger" :interactive="true" arrow>
+      <flex :column="true" class="tippy-inner">
+        <p>Proposals: projects suggested by RadicalxChange members requesting funds.</p>
+        <div style="text-align:center;">
+          <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()">More info</button>
+        </div>
+      </flex>
+    </tippy>
     <h2 class="teko-subtitle text-center">
-      How many proposals should be collected for the Hatchers to kick off their
+      How many <span name="trigger" class="underline-pointer">proposals</span> should be collected for the Hatchers to kick off their
       voting?
     </h2>
     <div class="layout-form">
