@@ -94,6 +94,11 @@
   }
 }
 
+.tippy-tooltip {
+  border-radius: 0;
+  width: auto;
+}
+
 .tippy-inner {
   padding: 8px;
   font-family: 'Teko', sans-serif;
