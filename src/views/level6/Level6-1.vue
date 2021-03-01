@@ -1,17 +1,15 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
-    <v-popover>
-      <template slot="popover">
-        <flex :column="true">
-          <p>Exit Tribute: the percentage of funds that feeds back into the Funding Pool when members choose to sell their RxC tokens.</p>
-          <div style="text-align:center;">
-            <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
-          </div>
-        </flex>
-      </template>
-      <h2 class="teko-subtitle text-center">What percentage goes to funding at <span class="underline-pointer">exit</span>?</h2>
-    </v-popover>
+    <tippy to="trigger" :interactive="true" arrow>
+      <flex :column="true" class="tippy-inner">
+        <p>Exit Tribute: the percentage of funds that feeds back into the Funding Pool when members choose to sell their RxC tokens.</p>
+        <div style="text-align:center;">
+          <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()">More info</button>
+        </div>
+      </flex>
+    </tippy>
+    <h2 class="teko-subtitle text-center">What percentage goes to funding at <span name="trigger" class="underline-pointer">exit</span>?</h2>
     <div class="layout-form">
       <commons-navigation />
       <grid class="layout-form-grid">
