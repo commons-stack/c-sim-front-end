@@ -108,7 +108,7 @@ export default {
 <style scoped lang="scss">
 .x-wrap {
   @extend .center, .h-1-1, .w-1-1, .flex, .box;
-  z-index: 1000;
+  z-index: 2147483647; // max z-index possible
   overflow: auto;
   padding: 2rem;
 }
