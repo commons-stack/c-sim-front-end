@@ -1,20 +1,18 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
-    <v-popover>
-      <template slot="popover">
-        <flex :column="true">
-          <p>Conviction Voting: the weight of a person's vote increases over time.</p>
-          <div style="text-align:center;">
-            <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()" v-close-popover>More info</button>
-          </div>
-        </flex>
-      </template>
-      <h2 class="teko-subtitle text-center">
-        How much time should pass before an individual’s <span class="underline-pointer">voting power</span> reaches 80%
-        of it’s full power?
-      </h2>
-    </v-popover>
+    <tippy to="trigger" :interactive="true" arrow>
+      <flex :column="true" class="tippy-inner">
+        <p>Conviction Voting: the weight of a person's vote increases over time.</p>
+        <div style="text-align:center;">
+          <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()">More info</button>
+        </div>
+      </flex>
+    </tippy>
+    <h2 class="teko-subtitle text-center">
+      How much time should pass before an individual’s <span name="trigger" class="underline-pointer">voting power</span> reaches 80%
+      of it’s full power?
+    </h2>
     <div class="layout-form">
       <commons-navigation />
       <grid class="layout-form-grid">

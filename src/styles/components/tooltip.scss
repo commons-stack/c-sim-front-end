@@ -93,3 +93,15 @@
     transition: opacity .15s;
   }
 }
+
+.tippy-tooltip {
+  border-radius: 0;
+  width: auto;
+}
+
+.tippy-inner {
+  padding: 8px;
+  font-family: 'Teko', sans-serif;
+  font-size: 20px;
+  line-height: 1.3;
+}
