@@ -1,9 +1,9 @@
 <template>
   <div class="layout-right h-1-1">
     <presentation-image />
-    <grid justify-items-start align-items-start gap="2">
+    <grid justify-items-start align-items-start gap="1">
       <h3 class="teko-title">You did good.</h3>
-      <grid gap="2" style="max-width: 650px;">
+      <grid gap="1" style="max-width: 650px;">
         <p>
           Conviction Voting is a continuous process - kind of like ‘vote streaming’. Token holders 
           express the degree of their conviction on a proposal by deciding how much of their voting 
@@ -35,6 +35,6 @@ export default {
 
 <style scoped lang="scss">
 p {
-  @extend .font-ibm, .fs-20;
+  @extend .font-ibm, .fs-18;
 }
 </style>

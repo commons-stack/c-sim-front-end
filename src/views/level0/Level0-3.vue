@@ -1,14 +1,14 @@
 <template>
   <div class="layout-right h-1-1">
     <presentation-image alternative />
-    <grid gtr="auto auto 1fr auto" class="h-1-1" justify-items-start align-items-start gap="2">
+    <grid gtr="auto auto 1fr auto" class="h-1-1" justify-items-start align-items-start gap="1">
       <p class="lato-title">DESIGNING THE COMMONS</p>
-      <p class="x-title font-ibm fs-20">
+      <p class="x-title font-ibm fs-18">
         Holographically embedded into your arm and invisible to others, cadCAD can simulate millions 
         of possible futures with just a few key inputs. First, you must collect those inputs from the
         assembled group by:
       </p>
-      <grid class="x-points" gtc="auto 1fr" gap="2" align-items>
+      <grid class="x-points" gtc="auto 1fr" gap="1" align-items>
         <img src="@/assets/p-button-1.png" alt="" />
         <p>
           Educating the RadicalxChange community on what a Commons is and how the mechanisms work.
