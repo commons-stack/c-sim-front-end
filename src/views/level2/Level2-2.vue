@@ -1,9 +1,9 @@
 <template>
   <div class="layout-right h-1-1">
     <presentation-image />
-    <grid justify-items-start align-items-start gap="2">
+    <grid justify-items-start align-items-start gap="1">
       <h3 class="teko-title">You are on a roll!</h3>
-      <grid gap="2" style="max-width: 650px;">
+      <grid gap="1" style="max-width: 650px;">
         <p>
           The crowd is engaged, we have many proposals on the table - now how will they be funded
           once passed?
@@ -14,7 +14,7 @@
         </p>
       </grid>
       <p class="teko-subtitle">Funding Pools</p>
-      <grid gap="2" style="max-width: 650px;">
+      <grid gap="1" style="max-width: 650px;">
         <p>
           The RxC Reserve backs the RxC token, guaranteeing liquidity for all tokens issued so that
           they will always have monetary value. The Funding Pool will be used to fund RadicalxChange
@@ -42,6 +42,6 @@ export default {
 
 <style scoped lang="scss">
 p {
-  @extend .font-ibm, .fs-20;
+  @extend .font-ibm, .fs-18;
 }
 </style>
