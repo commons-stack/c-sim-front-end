@@ -1,6 +1,5 @@
 <template>
   <div class="layout-vertical" text-center>
-    <icon icon="CircleNet" class="bg-net" />
     <commons-header title-only />
     <p class="teko-title">Your RxC Commons...</p>
     <div>

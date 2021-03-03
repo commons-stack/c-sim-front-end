@@ -37,9 +37,9 @@ body {
   width: 100%;
   @include m {
     grid-template-columns: 160px 1fr 160px;
-  & > div:first-child {
-    justify-self: start;
-  }
+    & > div:first-child {
+      justify-self: start;
+    }
   }
 }
 
