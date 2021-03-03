@@ -23,15 +23,15 @@ body {
 
 .layout-vertical {
   display: grid;
-  gap: 1rem;
+  gap: 0.1rem;
   justify-items: center;
   transition: padding-top 0.5s ease;
   padding-top: var(--app-margin-top);
 }
 
 .layout-form {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   display: grid;
   justify-items: center;
   width: 100%;
