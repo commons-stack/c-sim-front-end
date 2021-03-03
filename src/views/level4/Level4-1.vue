@@ -12,7 +12,7 @@
     <h2 class="teko-subtitle text-center">
       How much of the community funds can be <span name="trigger" class="underline-pointer">distributed</span> at any given time?
     </h2>
-    <p class="font-ibm fs-20 text-center">
+    <p class="font-ibm fs-18 text-center">
       Capping the relative amount of spending determines how fast the Commons spend their funds.
     </p>
     <div class="layout-form">
