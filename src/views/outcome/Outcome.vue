@@ -8,6 +8,7 @@
         <p class="x-score">{{ score }}<span>/1000</span></p>
         <p class="x-improve">Try to improve your score.</p>
         <button commons @click="$router.push('/')">play again</button>
+        <a class="x-text-button mt-1" @click="$router.push('/results')">Analyze your charts again</a>
         <grid
           gap="0.5"
           gtc="repeat(5, auto)"
