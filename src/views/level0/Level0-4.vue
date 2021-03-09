@@ -1,9 +1,9 @@
 <template>
   <div class="layout-right h-1-1">
     <presentation-image />
-    <grid justify-items-start align-items-start gap="2">
+    <grid justify-items-start align-items-start gap="1">
       <h3 class="teko-title">Who can initiate a Commons?</h3>
-      <grid gap="2" style="max-width: 650px;">
+      <grid gap="1" style="max-width: 650px;">
         <p>
           Trusted experts who accept accountability for upholding the values and honorable intentions 
           of the community should be chosen to be the founding members of the RxC Commons. 
@@ -27,6 +27,6 @@ export default {
 
 <style scoped lang="scss">
 p {
-  @extend .font-ibm, .fs-20;
+  @extend .font-ibm, .fs-18;
 }
 </style>
