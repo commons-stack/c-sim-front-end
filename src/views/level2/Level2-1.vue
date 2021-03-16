@@ -54,13 +54,22 @@
         </p>
         <p class="level-text">
           RadicalxChange project organizers can submit proposals to launch an initiative to request 
-          funding for reimbursement of expenses for their projects. The RadicalxChange commons 
+          funding for reimbursement of expenses for their projects. The RadicalxChange Commons 
           can then vote on whether or not to accept it.
         </p>
         <p class="level-text">
           The initial conditions are critical to understanding because they determine the outcomes 
-          for complex systems. You must determine how many proposals will be collected for when the 
-          Hatchers start their voting.
+          for complex systems. If there are only a few Hatchers and a large number of proposals, it 
+          may be difficult for proposals to receive enough conviction to be passed. If there are a 
+          large number of Hatchers and only a few initial proposals, even if all the proposals are 
+          passed initially it will take some time for new ones to be generated and implemented. 
+          This means that progress towards saving the future will be slow and people may begin to 
+          lose faith in the Commons.
+        </p>
+        <p class="level-text">
+          There are many factors to consider when making the optimal choice for your Commons. You 
+          must determine how many proposals will be collected for when the Hatchers start their 
+          voting.
         </p>
         <button commons class="mt-2" @click="$refs.modal.hide()">OK</button>
       </div>

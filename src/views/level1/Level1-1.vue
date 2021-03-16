@@ -57,6 +57,14 @@
           RadicalxChange Commons.
         </p>
         <p class="level-text">
+          A larger number of Hatchers means there will be a larger amount of initial funds in the 
+          Funding Pool (to fund projects) and the RxC reserve (to give value to the RxC token). 
+          However, a larger number of Hatchers may make the token price more volatile after the 
+          initial vesting period. Also, consider that the success of the Commons depends on the 
+          success of projects which is affected by the number of proposals and the ability for 
+          proposals to receive enough support (conviction) to be passed.
+        </p>
+        <p class="level-text">
           YOU must decide how many Hatchers are needed for the RadicalxChange community to initiate 
           their Commons...
         </p>

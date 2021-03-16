@@ -11,7 +11,7 @@
     <grid key="0" class="logo">
       <transition name="fade">
         <p class="logo-loading">
-          Simulating
+          {{ loading.phrases[loading.count] }}
           <transition-group name="slide" tag="span" class="absolute">
             <span v-for="dot in dots.count" :key="dot" class="logo-loading-dot">.</span>
           </transition-group>
@@ -29,9 +29,12 @@ export default {
   name: 'submit',
   created() {
     this.dots.interval = setInterval(() => {
-      if (this.dots.count === 3) this.dots.count = 0
+      if (this.dots.count === 3) {
+        this.dots.count = 0
+        if (this.loading.count < this.loading.phrases.length - 1) this.loading.count += 1
+      }
       else this.dots.count += 1
-    }, 400)
+    }, 750)
     this.runSimulationWithTimer()
   },
   beforeDestroy() {
@@ -43,6 +46,21 @@ export default {
         interval: undefined,
         count: 0,
       },
+      loading: {
+        count: 0,
+        phrases: [
+          'Initializing Hatch',
+          'Calibrating Funding Pool',
+          'Backing-up RxC Token',
+          'Attracting New Participants',
+          'Generating New Proposals',
+          'Accounting For Speculation',
+          'Building Conviction on Proposals',
+          'Tallying Project Successes',
+          'Gauging Community Sentiment',
+          'Assessing Global Impact'
+        ]
+      }
     }
   },
   computed: {
@@ -74,7 +92,7 @@ export default {
     },
     runTimer: () =>
       new Promise(resolve => {
-        setTimeout(() => resolve(true), 2500)
+        setTimeout(() => resolve(true), 30000)
       }),
     runSimulationWithTimer() {
       Promise.all([this.runSimulation(), this.runTimer()])
