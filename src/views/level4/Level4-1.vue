@@ -1,7 +1,7 @@
 <template>
   <div class="layout-vertical">
     <commons-header @help="$refs.modal.show()" @restart="() => {}" />
-    <tippy to="trigger" :interactive="true" arrow>
+    <tippy to="trigger-distributed" :interactive="true" arrow>
       <flex :column="true" class="tippy-inner">
         <p>Funding Distribution: the maximum funds that can be withdrawn at any time by a large proposal or group of smaller proposals.</p>
         <div style="text-align:center;">
@@ -10,7 +10,7 @@
       </flex>
     </tippy>
     <h2 class="teko-subtitle text-center">
-      How much of the community funds can be <span name="trigger" class="underline-pointer">distributed</span> at any given time?
+      How much of the community funds can be <span name="trigger-distributed" class="underline-pointer">distributed</span> at any given time?
     </h2>
     <p class="font-ibm fs-18 text-center">
       Capping the relative amount of spending determines how fast the Commons spend their funds.
@@ -45,7 +45,15 @@
             <p class="form-text-value justify-self">
               {{ forms.input.votingPower }}%
             </p>
-            <p class="form-text">{{ minmax.votingPower.max }}%</p>
+            <p class="form-text underline-pointer" name="trigger-percentage">{{ minmax.votingPower.max }}%</p>
+            <tippy to="trigger-percentage" :interactive="true" arrow>
+              <flex :column="true" class="tippy-inner">
+                <p>The maximum amount of funds that can be withdrawn at any given time is a percentage of the amount of funds that are remaining in the funding pool at that time.</p>
+                <div style="text-align:center;">
+                  <button class="x-text-button mh-0p5 inline" @click="$refs.modal.show()">More info</button>
+                </div>
+              </flex>
+            </tippy>
           </grid>
         </grid>
       </grid>
