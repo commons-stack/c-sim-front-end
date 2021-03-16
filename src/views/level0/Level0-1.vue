@@ -14,7 +14,7 @@
         class="x-input"
         @valid="forms.vset.input.name"
         v-model="forms.input.name"
-        placeholder="Username"
+        placeholder="@Username"
         required
       />
       <button commons @click="goNext" class="mt-2" :disabled="!forms.vget.input.form">I'M READY</button>
