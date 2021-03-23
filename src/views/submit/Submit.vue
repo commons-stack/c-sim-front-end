@@ -31,11 +31,15 @@ export default {
     this.dots.interval = setInterval(() => {
       if (this.dots.count === 3) {
         this.dots.count = 0
-        if (this.loading.count < this.loading.phrases.length - 1) this.loading.count += 1
+        if (this.loading.count < this.loading.phrases.length - 1) {
+          this.loading.count += 1
+        }
+        else {
+          this.runSimulationWithTimer()
+        }
       }
       else this.dots.count += 1
     }, 750)
-    this.runSimulationWithTimer()
   },
   beforeDestroy() {
     clearInterval(this.dots.interval)
@@ -92,8 +96,8 @@ export default {
     },
     runTimer: () =>
       new Promise(resolve => {
-        setTimeout(() => resolve(true), 30000)
-      }),
+        setTimeout(() => resolve(true), 0)
+    }),
     runSimulationWithTimer() {
       Promise.all([this.runSimulation(), this.runTimer()])
         .then(() => {

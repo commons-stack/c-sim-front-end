@@ -36,7 +36,7 @@
             }"
           >
             <p>{{ form.funding }}%</p>
-            <p>HATCH TRIBUTE</p>
+            <p>COMMONS TRIBUTE</p>
           </div>
           <div
             v-tooltip="{

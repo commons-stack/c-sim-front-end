@@ -83,14 +83,14 @@ export const routes = [
     path: '/level/3/1',
     component: Level31,
     meta: {
-      title: 'Hatch Tribute',
+      title: 'Commons Tribute',
     },
   },
   {
     path: '/level/3/2',
     component: Level32,
     meta: {
-      title: 'Hatch Tribute',
+      title: 'Commons Tribute',
     },
   },
   {
