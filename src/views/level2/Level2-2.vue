@@ -22,7 +22,7 @@
         </p>
         <p>
           The total funds raised are split between the 2 pools, with the amount going to the Funding
-          Pool being called the Hatch Tribute. If you put too much funds in the Funding Pool, the
+          Pool being called the Commons Tribute. If you put too much funds in the Funding Pool, the
           token may have trouble maintaining value, and if you put too much in the RxC Reserve, the
           Commons won’t be able to support very many projects.
         </p>

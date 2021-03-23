@@ -70,7 +70,7 @@
         <p class="level-text mt-1">
           The total initial funds raised are to be split between the two pools: the Funding Pool 
           and the RxC Reserve. The initial funding allocated to the Funding Pool is referred to as 
-          <strong>the Hatch Tribute</strong>.
+          <strong>the Commons Tribute</strong>.
         </p>
         <grid gtc="1fr 1fr" gap="3" style="max-width: 800px;">
           <div>

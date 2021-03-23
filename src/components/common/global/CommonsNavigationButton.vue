@@ -29,7 +29,7 @@ const levelNames = {
   0: 'intro',
   1: 'hatchers',
   2: 'initial proposals',
-  3: 'hatch tribute',
+  3: 'commons tribute',
   4: 'max spending',
   5: 'voting speed',
   6: 'exit tribute',
