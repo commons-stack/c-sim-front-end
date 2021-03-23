@@ -105,6 +105,7 @@
                 </div>
               </div>
             </grid>
+            <button commons class="mt-2" @click="$refs.score.hide()">OK</button>
           </div>
         </modal>
         <p class="x-improve">Try to improve your score.</p>
