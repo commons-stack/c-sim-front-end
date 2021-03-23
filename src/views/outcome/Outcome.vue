@@ -3,7 +3,7 @@
     <grid class="outcome-grid layout-vertical h-vh" gtc="1fr">
       <grid class="score-grid align-self justify-items">
         <commons-header title-only />
-        <p class="teko-title">{{ display.title }}</p>
+        <p class="teko-title" style="max-width: 80%;">{{ display.title }}</p>
         <p class="x-subtitle">{{ display.subtitle }}</p>
         <p class="x-score">{{ score }}<span>/1000</span></p>
         <a class="x-text-button mb-2" @click="$refs.score.show()">
@@ -191,17 +191,41 @@ export default {
     score() {
       return this.$store.state.CommonsModule.outcome.result?.data.score
     },
+    title() {
+      if (this.score <= 124) {
+        return 'Your future is so bad you must have tried to fail!'
+      }
+      else if (this.score >= 125 && this.score <= 249) {
+        return 'Oh no! Life on earth will not survive with these conditions, try again!'
+      }
+      else if (this.score >= 250 && this.score <= 374) {
+        return 'You clearly need help. Try again, with very different choices!'
+      }
+      else if (this.score >= 375 && this.score <= 499) {
+        return 'Not quite! You are so close to saving the planet, please play again.'
+      }
+      else if (this.score >= 500 && this.score <= 624) {
+        return "Oh Yeah! You've saved the planet, play again to improve your score!"
+      }
+      else if (this.score >= 625 && this.score <= 749) {
+        return 'You made great choices! The future looks bright for your Commons.'
+      }
+      else if (this.score >= 750 && this.score <= 874) {
+        return 'Congratulations, you nailed it! Humanity is saved thanks to you!'
+      }
+      return "Amazing, you win! You've clearly been doing your homework!"
+    },
     display() {
       return {
         good: {
-          title: 'Good future',
+          title: this.title,
           subtitle: this.name
             ? `You made a High Score, ${this.name}!`
             : 'You made a High Score!',
           image: require('@/assets/outcome_good.jpeg'),
         },
         bad: {
-          title: 'Bad future',
+          title: this.title,
           subtitle: 'Your score',
           image: require('@/assets/outcome_bad.jpeg'),
         },
