@@ -1,9 +1,9 @@
 <template>
   <div class="layout-right h-1-1">
     <presentation-image />
-    <grid justify-items-start align-items-start gap="2">
+    <grid justify-items-start align-items-start gap="1">
       <h3 class="teko-title">Great!</h3>
-      <grid gap="2" style="max-width: 650px;">
+      <grid gap="1" style="max-width: 650px;">
         <p>
           Now you know how many Hatchers will contribute to the first round of funding. But what
           will be funded? There are many great projects to create value for this community, but it
@@ -30,6 +30,6 @@ export default {
 
 <style scoped lang="scss">
 p {
-  @extend .font-ibm, .fs-20;
+  @extend .font-ibm, .fs-18;
 }
 </style>

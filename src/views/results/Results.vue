@@ -1,6 +1,5 @@
 <template>
   <div class="layout-vertical" text-center>
-    <icon icon="CircleNet" class="bg-net" />
     <commons-header title-only />
     <p class="teko-title">Your RxC Commons...</p>
     <div>
@@ -35,7 +34,7 @@
           }"
         >
           <p>{{ form.funding }}%</p>
-          <p>HATCH TRIBUTE</p>
+          <p>COMMONS TRIBUTE</p>
         </div>
         <div
           v-tooltip="{
@@ -119,7 +118,7 @@
               <p class="level-text">
                 The Funding Pool contains funds available for approved RadicalxChange projects. As 
                 you recall, the funding pool is initialized by the starting investment of the Hatchers 
-                (the Hatch Tribute). When projects are approved by the community, the funds required 
+                (the Commons Tribute). When projects are approved by the community, the funds required 
                 are withdrawn from the funding pool and the quantity of funds left decreases. The 
                 funding pool grows when members choose to sell their tokens because a portion of 
                 their withdrawal, called “the exit tribute”, is fed back into the community funding 
@@ -140,7 +139,7 @@
                 1. The number of proposals funded compared to the initial proposals<br/>
                 2. The total amount spent by the funding pool for all proposals compared to the Hatch 
                 Tribute<br/>
-                3. The average amount in the funding pool over time compared to the Hatch Tribute
+                3. The average amount in the funding pool over time compared to the Commons Tribute
               </p>
             </div>
             <p class="level-text mt-1">
@@ -290,7 +289,7 @@
     <p class="level-text">
       Do you want to submit your score, or do you want to try to run another simulation?
     </p>
-    <flex gap="2" class="mt-2" style="flex-wrap: wrap;">
+    <flex gap="1" class="mt-2" style="flex-wrap: wrap;">
       <button commons @click="$router.push('/level/1/1')">play again</button>
       <button commons @click="$router.push('/outcome')">SEE YOUR FUTURE</button>
     </flex>

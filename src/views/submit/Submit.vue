@@ -2,7 +2,7 @@
   <div class="layout-vertical">
     <commons-header title-only />
     <p class="teko-subtitle">Generating your Commons Simulation</p>
-    <p class="text-center font-ibm fs-20 mt-2" style="max-width: 800px;">
+    <p class="text-center font-ibm fs-18 mt-2" style="max-width: 800px;">
       This is the moment of truth! Did they choose the right parameters to yield positive results
       for the success of the RxC community, and the continuation of humankind into a just,
       prosperous, and decentralized future?
@@ -11,7 +11,7 @@
     <grid key="0" class="logo">
       <transition name="fade">
         <p class="logo-loading">
-          Simulating
+          {{ loading.phrases[loading.count] }}
           <transition-group name="slide" tag="span" class="absolute">
             <span v-for="dot in dots.count" :key="dot" class="logo-loading-dot">.</span>
           </transition-group>
@@ -29,10 +29,17 @@ export default {
   name: 'submit',
   created() {
     this.dots.interval = setInterval(() => {
-      if (this.dots.count === 3) this.dots.count = 0
+      if (this.dots.count === 3) {
+        this.dots.count = 0
+        if (this.loading.count < this.loading.phrases.length - 1) {
+          this.loading.count += 1
+        }
+        else {
+          this.runSimulationWithTimer()
+        }
+      }
       else this.dots.count += 1
-    }, 400)
-    this.runSimulationWithTimer()
+    }, 750)
   },
   beforeDestroy() {
     clearInterval(this.dots.interval)
@@ -43,6 +50,21 @@ export default {
         interval: undefined,
         count: 0,
       },
+      loading: {
+        count: 0,
+        phrases: [
+          'Initializing Hatch',
+          'Calibrating Funding Pool',
+          'Backing-up RxC Token',
+          'Attracting New Participants',
+          'Generating New Proposals',
+          'Accounting For Speculation',
+          'Building Conviction on Proposals',
+          'Tallying Project Successes',
+          'Gauging Community Sentiment',
+          'Assessing Global Impact'
+        ]
+      }
     }
   },
   computed: {
@@ -74,8 +96,8 @@ export default {
     },
     runTimer: () =>
       new Promise(resolve => {
-        setTimeout(() => resolve(true), 2500)
-      }),
+        setTimeout(() => resolve(true), 0)
+    }),
     runSimulationWithTimer() {
       Promise.all([this.runSimulation(), this.runTimer()])
         .then(() => {

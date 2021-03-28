@@ -1,9 +1,9 @@
 <template>
   <div class="layout-right h-1-1">
     <presentation-image />
-    <grid justify-items-start align-items-start gap="2">
+    <grid justify-items-start align-items-start gap="1">
       <h3 class="teko-title">You are on a roll!</h3>
-      <grid gap="2" style="max-width: 650px;">
+      <grid gap="1" style="max-width: 650px;">
         <p>
           The crowd is engaged, we have many proposals on the table - now how will they be funded
           once passed?
@@ -14,7 +14,7 @@
         </p>
       </grid>
       <p class="teko-subtitle">Funding Pools</p>
-      <grid gap="2" style="max-width: 650px;">
+      <grid gap="1" style="max-width: 650px;">
         <p>
           The RxC Reserve backs the RxC token, guaranteeing liquidity for all tokens issued so that
           they will always have monetary value. The Funding Pool will be used to fund RadicalxChange
@@ -22,7 +22,7 @@
         </p>
         <p>
           The total funds raised are split between the 2 pools, with the amount going to the Funding
-          Pool being called the Hatch Tribute. If you put too much funds in the Funding Pool, the
+          Pool being called the Commons Tribute. If you put too much funds in the Funding Pool, the
           token may have trouble maintaining value, and if you put too much in the RxC Reserve, the
           Commons won’t be able to support very many projects.
         </p>
@@ -42,6 +42,6 @@ export default {
 
 <style scoped lang="scss">
 p {
-  @extend .font-ibm, .fs-20;
+  @extend .font-ibm, .fs-18;
 }
 </style>

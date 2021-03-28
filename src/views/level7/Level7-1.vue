@@ -3,7 +3,7 @@
     <icon icon="CircleNet" class="bg-net" />
     <commons-header @restart="() => {}" :help="false" />
     <h2 class="teko-subtitle">Inputs Received by cadCAD!</h2>
-    <p class="font-ibm fs-20 text-center">
+    <p class="font-ibm fs-18 text-center">
       Will the RadicalxChange Commons succeed, the Movement take off, and new economy creation cascade around the
       world?
     </p>
@@ -36,7 +36,7 @@
             }"
           >
             <p>{{ form.funding }}%</p>
-            <p>HATCH TRIBUTE</p>
+            <p>COMMONS TRIBUTE</p>
           </div>
           <div
             v-tooltip="{

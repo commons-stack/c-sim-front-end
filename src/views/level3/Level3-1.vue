@@ -4,7 +4,7 @@
     <h2 class="teko-subtitle text-center">
       What percent of the contributions will be allocated to the Funding Pool?
     </h2>
-    <p class="font-ibm fs-20 text-center">
+    <p class="font-ibm fs-18 text-center">
       The balance will be the Reserve that backs the RxC tokens.
     </p>
     <div class="layout-form">
@@ -70,20 +70,20 @@
         <p class="level-text mt-1">
           The total initial funds raised are to be split between the two pools: the Funding Pool 
           and the RxC Reserve. The initial funding allocated to the Funding Pool is referred to as 
-          <strong>the Hatch Tribute</strong>.
+          <strong>the Commons Tribute</strong>.
         </p>
         <grid gtc="1fr 1fr" gap="3" style="max-width: 800px;">
           <div>
             <p class="teko-subtitle" style="text-align: start;">
               Funding Pool
             </p>
-            <p class="fs-20 font-ibm">
+            <p class="fs-18 font-ibm">
               Contains the total funds available for funding approved RadicalxChange initiatives.
             </p>
           </div>
           <div>
             <p class="teko-subtitle" style="text-align: start;">RxC Reserve</p>
-            <p class="fs-20 font-ibm">
+            <p class="fs-18 font-ibm">
               Backs the RxC token, guaranteeing liquidity for all tokens issued so that they will 
               always have a monetary value.
             </p>
