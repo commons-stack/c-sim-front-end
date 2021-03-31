@@ -177,7 +177,6 @@ export default {
     return {
       future: 'bad',
       url: 'https://sim.commonsstack.org/',
-      text: "I'm helping design a regenerative future for humanity on the Commons Simulator! Can you beat my high score?",
     }
   },
   methods: {
@@ -191,6 +190,9 @@ export default {
     },
     score() {
       return this.$store.state.CommonsModule.outcome.result?.data.score
+    },
+    text() {
+      return `I'm helping design a regenerative future for humanity on the Commons Simulator and scored ${this.score}! Can you do better?`
     },
     title() {
       if (this.score <= 124) {
