@@ -174,7 +174,7 @@
               <h2 class="teko-title">Sentiment</h2>
               <p class="level-text mt-1">
                 The Sentiment graph shows the average opinion of the community on a scale from 0 to 
-                1 (y-axis) as a function of time in months (x-axis).
+                100 (y-axis) as a function of time in months (x-axis).
               </p>
               <p class="level-text">
                 Sentiment grows when approved and funded projects are successful and add value to the 
