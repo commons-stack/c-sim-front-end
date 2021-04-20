@@ -99,7 +99,7 @@ export default {
         setTimeout(() => resolve(true), 0)
     }),
     runSimulationWithTimer() {
-      Promise.all([this.runSimulation(), this.runTimer()])
+      Promise.race([this.runSimulation(), this.runTimer()])
         .then(() => {
           this.$notification.success('Simulation finished')
           this.$router.push('/results')
