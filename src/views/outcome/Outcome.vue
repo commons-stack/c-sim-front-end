@@ -95,7 +95,7 @@
                   Improve your score
                 </p>
                 <div>
-                  <button commons @click="$router.push('/')" class="mt-1">play again</button>
+                  <button commons @click="$router.push('/level/1/1')" class="mt-1">play again</button>
                   <a 
                     style="display: block;"
                     class="x-text-button mt-1" 
@@ -109,7 +109,7 @@
           </div>
         </modal>
         <p class="x-improve">Try to improve your score.</p>
-        <button commons @click="$router.push('/')">play again</button>
+        <button commons @click="$router.push('/level/1/1')">play again</button>
         <a class="x-text-button mt-1" @click="$router.push('/results')">Analyze your charts again</a>
         <grid
           gap="0.5"
