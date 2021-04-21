@@ -78,12 +78,6 @@ import { mapState } from 'vuex'
 export default {
   name: 'level-7-1',
   computed: { ...mapState('CommonsModule', ['form']) },
-  methods: {
-    runSimulation() {
-      this.$store.dispatch('CommonsModule/runSimulation')
-      this.$router.push('/submit')
-    },
-  },
 }
 </script>
 
