@@ -34,12 +34,10 @@ export default {
         if (this.loading.count < this.loading.phrases.length - 1) {
           this.loading.count += 1
         }
-        else {
-          this.runSimulationWithTimer()
-        }
       }
       else this.dots.count += 1
     }, 750)
+    this.runSimulationWithCompetingTimer()
   },
   beforeDestroy() {
     clearInterval(this.dots.interval)
@@ -96,10 +94,27 @@ export default {
     },
     runTimer: () =>
       new Promise(resolve => {
-        setTimeout(() => resolve(true), 0)
+        setTimeout(() => resolve(false), 40000)
     }),
     runSimulationWithTimer() {
-      Promise.race([this.runSimulation(), this.runTimer()])
+      return this.runSimulation()
+        .then(() => {
+          return new Promise(resolve =>
+            setTimeout(() => {
+              resolve()
+            }, 30000)
+          )
+        })
+        .catch(() => {
+          return new Promise((resolve, reject) =>
+            setTimeout(() => {
+              reject()
+            }, 30000)
+          )
+        })
+    },
+    runSimulationWithCompetingTimer() {
+      Promise.race([this.runSimulationWithTimer(), this.runTimer()])
         .then(() => {
           this.$notification.success('Simulation finished')
           this.$router.push('/results')
