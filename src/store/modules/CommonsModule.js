@@ -61,7 +61,7 @@ export const CommonsModule = createModule({
       }),
     runSimulation: ({ dispatch }) => {
       const timer = new Promise(resolve => setTimeout(() => resolve(true), 2500))
-      return Promise.race([timer, dispatch('fetch')])
+      return Promise.all([timer, dispatch('fetch')])
         .then(() => {
           dispatch('NotificationModule/success', 'Simulation finished')
           this.$router.push('/results')
